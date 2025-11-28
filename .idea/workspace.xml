@@ -5,97 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f309bd34-6daf-497b-848b-1edcdc297f83" name="Default Changelist" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/admin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/auth.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/property-view.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/settings.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/442996.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/abovyan.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/after-slider-section-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/agents/agent-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/agents/agent-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/agents/agent-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/agents/agent-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/agents/agent-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/agents/agent-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/dilijan.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/ejmiacin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/gyumri.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/home-header-image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/home-slider/slide-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/home-slider/slide-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/home-slider/slide-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icons/home/apartment.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icons/home/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icons/home/house.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icons/home/townhouse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icons/man.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icons/woman.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/modern-apartment.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/partners/partner-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/partners/partner-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/partners/partner-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/partners/partner-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/partners/partner-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/property/floor-plan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/property/video-overlay.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/tips/art-tip-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/tips/art-tip-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/tips/art-tip-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/user-avarats/avarar-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/user-avarats/avatar-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/user-avarats/avatar-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/user-avarats/avatar-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/user-avarats/avatar-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/user-avarats/avatar-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/vanadzor.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/yerevan.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/images/layers-2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/images/layers.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/images/marker-icon-2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/images/marker-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/images/marker-shadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/leaflet-src.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/leaflet-src.esm.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/leaflet-src.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/leaflet-src.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/leaflet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/leaflet.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/leaflet/leaflet.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/uikit/css/uikit-rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/uikit/css/uikit-rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/uikit/css/uikit.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/uikit/css/uikit.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/uikit/js/uikit-icons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/uikit/js/uikit-icons.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/uikit/js/uikit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/uikit/js/uikit.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/dashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/details.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/favorites.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/forgot.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/messages.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/my-properties.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/partial/admin-head.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/partial/admin-header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/partial/admin/admin-sidebar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/partial/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/partial/head.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/partial/header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/partial/nearby-places.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/properties.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/sign-in.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/sign-up.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/file-sample_100kB.doc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/sample.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pages/forgot.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/forgot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pages/sign-in.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/sign-in.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pages/sign-up.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/sign-up.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +185,7 @@
       <workItem from="1760623265818" duration="333000" />
       <workItem from="1760962286699" duration="15000" />
       <workItem from="1761049444274" duration="38000" />
-      <workItem from="1764326934524" duration="6825000" />
+      <workItem from="1764326934524" duration="7104000" />
     </task>
     <task id="LOCAL-00013" summary="First commit">
       <created>1759731752509</created>
@@ -617,7 +530,7 @@
       <option name="project" value="LOCAL" />
       <updated>1760623584742</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

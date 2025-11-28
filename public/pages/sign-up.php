@@ -28,40 +28,45 @@
     <section class="auth-form">
 
         <h2 class="mb-10 t-center">Register to your account</h2>
-        <div class="mb-30 t-center">Already have an account? - <strong><a href="/pages/sign-in.php">Sign in</a></strong></div>
+        <div class="mb-30 t-center">Already have an account? - <strong><a class="color-red" href="/pages/sign-in.php">Sign
+                    in</a></strong></div>
 
-        <div class="form-input-row">
-            <select name="account-type" id="account-type" class="form-input">
-                <option value="">-- select Account type --</option>
-                <option value="">User</option>
-                <option value="">Broker</option>
-            </select>
+        <form action="" method="post">
 
-        </div>
+            <div class="form-input-row">
+                <select name="account-type" id="account-type" class="form-input">
+                    <option value="">-- select Account type --</option>
+                    <option value="">User</option>
+                    <option value="">Broker</option>
+                </select>
 
-        <div class="form-input-row mt-30">
-            <input type="text" class="form-input" id="full_name" name="full_name" placeholder="Full name">
-        </div>
+            </div>
 
-        <div class="form-input-row mt-30">
-            <input type="text" class="form-input mobile-number" id="mobile_number"  name="mobile_number" placeholder="(099) 99-99-99">
-        </div>
+            <div class="form-input-row mt-30">
+                <input type="text" class="form-input" id="full_name" name="full_name" placeholder="Full name">
+            </div>
 
-        <div class="form-input-row mt-30">
-            <input type="text" class="form-input" id="email" name="email" placeholder="Email">
-        </div>
+            <div class="form-input-row mt-30">
+                <input type="text" class="form-input mobile-number" id="mobile_number" name="mobile_number"
+                       placeholder="(099) 99-99-99">
+            </div>
 
-        <div class="form-input-row mt-30">
-            <input type="password" class="form-input" id="password" placeholder="Password">
-        </div>
+            <div class="form-input-row mt-30">
+                <input required type="email" class="form-input" id="email" name="email" placeholder="Email">
+            </div>
 
-        <div class="form-input-row mt-30">
-            <input type="password" class="form-input" id="password-confirm" placeholder="Password confirmation">
-        </div>
+            <div class="form-input-row mt-30">
+                <input type="password" class="form-input" id="password" placeholder="Password">
+            </div>
 
-        <div class="form-input-row mt-30">
-            <button type="submit" class="btn w-100">Register</button>
-        </div>
+            <div class="form-input-row mt-30">
+                <input type="password" class="form-input" id="password-confirm" placeholder="Password confirmation">
+            </div>
+
+            <div class="form-input-row mt-30">
+                <button type="submit" class="btn w-100">Register</button>
+            </div>
+        </form>
 
         <div class="form-input-row mt-30 t-center">
             - OR -

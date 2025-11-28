@@ -28,18 +28,21 @@
     <section class="auth-form">
 
         <h2 class="mb-10 t-center">Recover your password</h2>
-        <div class="mb-30 t-center">Already recovered your password? - <strong><a href="/pages/sign-in.php">Sign in</a></strong></div>
-
-
-
-        <div class="form-input-row mt-30">
-            <input type="text" class="form-input" id="email" name="email" placeholder="Email">
+        <div class="mb-30 t-center">Already recovered your password? - <strong><a class="color-red"
+                                                                                  href="/pages/sign-in.php">Sign in</a></strong>
         </div>
 
 
-        <div class="form-input-row mt-30">
-            <button type="submit" class="btn w-100">Forgot</button>
-        </div>
+        <form action="" method="post">
+            <div class="form-input-row mt-30">
+                <input required type="email" class="form-input" id="email" name="email" placeholder="Email">
+            </div>
+
+
+            <div class="form-input-row mt-30">
+                <button type="submit" class="btn w-100">Forgot</button>
+            </div>
+        </form>
 
     </section>
 </div>

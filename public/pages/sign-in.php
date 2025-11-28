@@ -28,29 +28,31 @@
     <section class="auth-form">
 
         <h2 class="mb-10 t-center">Login to your account</h2>
-        <div class="mb-30 t-center">Dont have an account - <strong><a href="/pages/sign-up.php">Sign up</a></strong></div>
+        <div class="mb-30 t-center">Dont have an account - <strong><a class="color-red" href="/pages/sign-up.php">Sign
+                    up</a></strong></div>
 
-        <div class="form-input-row">
-            <input type="text" class="form-input" id="email" name="email" placeholder="Email">
-        </div>
+        <form action="" method="post">
+            <div class="form-input-row">
+                <input type="email" required class="form-input" id="email" name="email" placeholder="Email">
+            </div>
 
+            <div class="form-input-row mt-30">
+                <input type="password" class="form-input" id="password" placeholder="Password">
+            </div>
 
-        <div class="form-input-row mt-30">
-            <input type="password" class="form-input" id="password" placeholder="Password">
-        </div>
+            <div class="form-input-row mt-30 flex flex-row">
+                <label for="remember-me">
+                    <input type="checkbox" class="" id="remember-me" name="remember-me">
+                    Remember me
+                </label>
 
-        <div class="form-input-row mt-30 flex flex-row">
-            <label for="remember-me">
-                <input type="checkbox" class="" id="remember-me" name="remember-me">
-                Remember me
-            </label>
+                <a href="/pages/forgot.php" class="ml-auto color-red">Forgot password</a>
+            </div>
 
-            <a href="/pages/forgot.php" class="ml-auto">Forgot password</a>
-        </div>
-
-        <div class="form-input-row mt-30">
+            <div class="form-input-row mt-30">
                 <button type="submit" class="btn w-100">Login</button>
-        </div>
+            </div>
+        </form>
 
         <div class="form-input-row mt-30 t-center">
             - OR -
