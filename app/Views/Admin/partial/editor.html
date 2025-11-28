@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor.js CDN Example</title>
+</head>
+<body>
+<h1>Editor.js Plain JS/CDN Setup</h1>
+
+<div id="editorjs"></div>
+
+<button id="saveButton">Save Content</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/image@latest"></script>
+
+<script>
+    const editor = new EditorJS({
+        holder: 'editorjs',
+        tools: {
+
+            List: {
+                class: EditorjsList,
+                inlineToolbar: true,
+                config: {
+                    defaultStyle: 'unordered'
+                },
+            },
+            image: {
+                class: ImageTool,
+                config: {
+                    endpoints: {
+                        byFile: 'http://localhost:8008/uploadFile', // Your backend file uploader endpoint
+                        byUrl: 'http://localhost:8008/fetchUrl', // Your endpoint that provides uploading by Url
+                    }
+                }
+            },
+        },
+    });
+</script>
+</body>
+</html>
