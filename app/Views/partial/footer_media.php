@@ -1,12 +1,4 @@
-
-<!-- ##### All Javascript Files ##### -->
-<!-- jQuery-2.2.4 js -->
-<script src="/assets/js/jquery/jquery-2.2.4.min.js"></script>
-<!-- Popper js -->
-<script src="/assets/js/bootstrap/popper.min.js"></script>
-<!-- Bootstrap js -->
-<script src="/assets/js/bootstrap/bootstrap.min.js"></script>
-<!-- All Plugins js -->
-<script src="/assets/js/plugins/plugins.js"></script>
-<!-- Active js -->
-<script src="/assets/js/active.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/menu.js"></script>
+<script type="text/javascript" src="/assets/js/main.js"></script>

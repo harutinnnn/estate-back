@@ -30,22 +30,22 @@
     <link rel="icon" href="/assets/img/core-img/favicon.ico">
 
 
-    <link rel="stylesheet"
-          href="/assets/css/style.css?<?= is_file(FCPATH . '/assets/css/style.min.css') ? filesize(FCPATH . '/assets/css/style.min.css') : '0' ?>">
-    <link rel="stylesheet"
-          href="/assets/css/custom.css?<?= is_file(FCPATH . '/assets/css/custom.min.css') ? filesize(FCPATH . '/assets/css/custom.min.css') : '0' ?>">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&amp;display=swap" rel="stylesheet"
+          data-optimized-fonts="true">
 
+    <link data-next-font="" rel="preconnect" href="/" crossorigin="anonymous">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Itim&family=News+Cycle:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans+Armenian:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&amp;display=swap">
 
-    <style type="text/css">
-        *{
-            font-family: <?= langFontFamily(isset($_lang)?$_lang:'') ?>;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <link rel="stylesheet" href="/assets/css/settings.css?<?= is_file(FCPATH . '/assets/css/settings.css') ? filesize(FCPATH . '/assets/css/settings.css') : '0' ?>">
+    <link rel="stylesheet" href="/assets/css/style.css?<?= is_file(FCPATH . '/assets/css/style.css') ? filesize(FCPATH . '/assets/css/style.css') : '0' ?>">
+    <link rel="stylesheet" href="/assets/css/auth.css?<?= is_file(FCPATH . '/assets/css/auth.css') ? filesize(FCPATH . '/assets/css/auth.css') : '0' ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
 
     <script type="text/javascript">
         const lang = '<?= isset($_lang) ? $_lang : 'en' ?>';

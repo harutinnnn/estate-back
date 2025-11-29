@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 
 use App\Controllers\Admin\FrontendLabels;
+use App\Libraries\AuthUtils;
 use App\Libraries\DbUtils;
 use App\Libraries\LangUtils;
 use App\Models\ContentModel;
@@ -18,6 +19,8 @@ use Config\App;
 
 class MainController extends BaseController
 {
+
+    public $userData = null;
 
     public array $pageData = [];
     public $_lang;
@@ -39,7 +42,18 @@ class MainController extends BaseController
         $config = new App();
         $this->_lang = $config->defaultLocale;
 
+
+        AuthUtils::checkRememberMeFront();
+
+        if (session()->get('user')) {
+            $this->userData = session()->get('user');
+        }
+
+        $this->pageData['userData'] = $this->userData;
+
         $uri = service('uri');
+
+
 
         $firstSegment = $uri->getSegment(1);
         $secondSegment = $uri->setSilent()->getSegment(2);
@@ -57,17 +71,6 @@ class MainController extends BaseController
             $this->slug = $firstSegment;
         }
 
-
-        $newsCategoryModel = new NewsCategoryModel();
-        $newsCategories = $newsCategoryModel->getAllItems($this->_lang, 0, ['status' => 1], [
-            'col' => 'pos',
-            'sort' => 'ASC',
-        ]);
-
-
-        $this->pageData['newsCategories'] = $newsCategories;
-        $this->pageData['catList'] = array_column($newsCategories, 'title', 'id');
-        $this->pageData['catSlugs'] = array_column($newsCategories, 'slug', 'id');
 
         $this->pageData['langList'] = $langList;
 

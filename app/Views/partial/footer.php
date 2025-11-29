@@ -1,124 +1,127 @@
-<!-- ##### Footer Add Area Start ##### -->
-<div class="footer-add-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="footer-add">
-                    <a href="#"><img src="/assets/img/bg-img/footer-add.gif" alt=""></a>
-                </div>
+<footer>
+
+    <ul class="footer-nav">
+        <li>
+            <h3>About Site</h3>
+
+            <p>
+                We’re reimagining how you buy, sell and rent. It’s now easier to get into a place you love. So let’s do
+                this, together.
+            </p>
+
+        </li>
+        <li>
+            <h3>Quick Links</h3>
+            <ul class="footer-nav-inner">
+                <li>
+                    <a href="#">About Us</a>
+                </li>
+                <li>
+                    <a href="#">Terms & Conditions</a>
+                </li>
+                <li>
+                    <a href="#">User’s Guide</a>
+                </li>
+                <li>
+                    <a href="#">Support Center Guide</a>
+                </li>
+                <li>
+                    <a href="#">Press Info</a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <h3>Contact Us</h3>
+
+            <ul class="footer-nav-inner">
+                <li>
+                    <a href="mailto:info@findhouse.com">info@findhouse.com</a>
+                </li>
+                <li>
+                    <a href="#">Terms & Conditions</a>
+                </li>
+                <li>
+                    <a href="#">Collins Street West, Victoria</a>
+                </li>
+                <li>
+                    <a href="#">8007, Australia.</a>
+                </li>
+                <li>
+                    <a href="tel:+1 246-345-0699">+1 246-345-0699</a>
+                </li>
+                <li>
+                    <a href="tel:+1 246-345-0695">+1 246-345-0695</a>
+                </li>
+
+            </ul>
+
+        </li>
+        <li>
+            <h3>Follow us</h3>
+            <ul class="social-links mb-20">
+                <li>
+                    <a href="#">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </li>
+
+            </ul>
+            <h3>Subscribe</h3>
+            <div class="footer-subscribe">
+                <input type="email" id="footer-subscribe-email" class="form-input br-25" placeholder="Your email">
+                <button class="btn br-25 btn-gray">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
-        </div>
+        </li>
+    </ul>
+
+
+</footer>
+
+<div class="footer-end">
+    <div class="footer-end-inner">
+        <ul class="footer-end-nav">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Listing</a>
+            </li>
+            <li>
+                <a href="#">Property</a>
+            </li>
+            <li>
+                <a href="#">About Us</a>
+            </li>
+            <li>
+                <a href="#">Blog</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+
+        </ul>
+        <ul class="footer-end-nav">
+            <li class="footer-rights">
+                © 2025 by estate.am. All rights reserved.
+            </li>
+        </ul>
     </div>
 </div>
-<!-- ##### Footer Add Area End ##### -->
-
-<!-- ##### Footer Area Start ##### -->
-<footer class="footer-area">
-
-    <!-- Main Footer Area -->
-    <div class="main-footer-area">
-        <div class="container">
-            <div class="row">
-
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="footer-widget-area mt-80">
-                        <!-- Footer Logo -->
-                        <div class="footer-logo">
-                            <a href="index.html"><img src="/assets/img/core-img/logo.png" alt=""></a>
-                        </div>
-                        <!-- List -->
-                        <ul class="list">
-                            <li><a href="/cdn-cgi/l/email-protection#e0838f8e94818394a0998f9592858d81898cce838f8d"><span class="__cf_email__" data-cfemail="accfc3c2d8cdcfd8ecd5c3d9dec9c1cdc5c082cfc3c1">[email&#160;protected]</span></a></li>
-                            <li><a href="tel:+4352782883884">+43 5278 2883 884</a></li>
-                            <li><a href="http://yoursitename.com">www.yoursitename.com</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-2">
-                    <div class="footer-widget-area mt-80">
-                        <!-- Title -->
-                        <h4 class="widget-title">Politics</h4>
-                        <!-- List -->
-                        <ul class="list">
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Markets</a></li>
-                            <li><a href="#">Tech</a></li>
-                            <li><a href="#">Luxury</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-4 col-lg-2">
-                    <div class="footer-widget-area mt-80">
-                        <!-- Title -->
-                        <h4 class="widget-title">Featured</h4>
-                        <!-- List -->
-                        <ul class="list">
-                            <li><a href="#">Football</a></li>
-                            <li><a href="#">Golf</a></li>
-                            <li><a href="#">Tennis</a></li>
-                            <li><a href="#">Motorsport</a></li>
-                            <li><a href="#">Horseracing</a></li>
-                            <li><a href="#">Equestrian</a></li>
-                            <li><a href="#">Sailing</a></li>
-                            <li><a href="#">Skiing</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-4 col-lg-2">
-                    <div class="footer-widget-area mt-80">
-                        <!-- Title -->
-                        <h4 class="widget-title">FAQ</h4>
-                        <!-- List -->
-                        <ul class="list">
-                            <li><a href="#">Aviation</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Traveller</a></li>
-                            <li><a href="#">Destinations</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Food/Drink</a></li>
-                            <li><a href="#">Hotels</a></li>
-                            <li><a href="#">Partner Hotels</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-4 col-lg-2">
-                    <div class="footer-widget-area mt-80">
-                        <!-- Title -->
-                        <h4 class="widget-title">+More</h4>
-                        <!-- List -->
-                        <ul class="list">
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Architecture</a></li>
-                            <li><a href="#">Arts</a></li>
-                            <li><a href="#">Autos</a></li>
-                            <li><a href="#">Luxury</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bottom Footer Area -->
-    <div class="bottom-footer-area">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- ##### Footer Area Start ##### -->
-

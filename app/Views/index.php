@@ -1,567 +1,717 @@
-<?= view('partial/breaking') ?>
-<!-- ##### Featured Post Area Start ##### -->
-<div class="featured-post-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-8">
-                <div class="row">
+<section class="home-header-section">
+    <div class="home-header-inner-section">
+        <h1 class="t-center">Enjoy The Finest Homes</h1>
+        <div class="sub-text t-center">
+            From as low as $10 per day with limited time offer discounts.
+        </div>
 
-                    <!-- Single Featured Post -->
-                    <div class="col-12 col-lg-7">
-                        <div class="single-blog-post featured-post">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/16.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-catagory">Finance</a>
-                                <a href="#" class="post-title">
-                                    <h6>Financial news: A new company is born today at the stock market</h6>
-                                </a>
-                                <div class="post-meta">
-                                    <p class="post-author">By <a href="#">Christinne Williams</a></p>
-                                    <p class="post-excerp">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placerat. Sed varius leo ac leo fermentum, eu cursus nunc maximus. Integer convallis nisi nibh, et ornare neque ullamcorper ac. Nam id congue lectus, a venenatis massa. Maecenas justo libero, vulputate vel nunc id, blandit feugiat sem. </p>
-                                    <!-- Post Like & Post Comment -->
-                                    <div class="d-flex align-items-center">
-                                        <a href="#" class="post-like"><img src="/assets/img/core-img/like.png" alt=""> <span>392</span></a>
-                                        <a href="#" class="post-comment"><img src="/assets/img/core-img/chat.png" alt=""> <span>10</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-lg-5">
-                        <!-- Single Featured Post -->
-                        <div class="single-blog-post featured-post-2">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/17.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-catagory">Finance</a>
-                                <div class="post-meta">
-                                    <a href="#" class="post-title">
-                                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placerat. Sed varius leo ac...</h6>
-                                    </a>
-                                    <!-- Post Like & Post Comment -->
-                                    <div class="d-flex align-items-center">
-                                        <a href="#" class="post-like"><img src="/assets/img/core-img/like.png" alt=""> <span>392</span></a>
-                                        <a href="#" class="post-comment"><img src="/assets/img/core-img/chat.png" alt=""> <span>10</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Featured Post -->
-                        <div class="single-blog-post featured-post-2">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/18.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-catagory">Finance</a>
-                                <div class="post-meta">
-                                    <a href="#" class="post-title">
-                                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placerat. Sed varius leo ac...</h6>
-                                    </a>
-                                    <!-- Post Like & Post Comment -->
-                                    <div class="d-flex align-items-center">
-                                        <a href="#" class="post-like"><img src="/assets/img/core-img/like.png" alt=""> <span>392</span></a>
-                                        <a href="#" class="post-comment"><img src="/assets/img/core-img/chat.png" alt=""> <span>10</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="header-search-container">
+            <div class="buy-or-rent">
+                <div>
+                    <input type="radio" id="buy" name="buy-rent" value="buy" checked/>
+                    <label for="buy">Buy</label>
+                </div>
+                <div>
+                    <input type="radio" id="rent" name="buy-rent" value="rent"/>
+                    <label for="rent">Rent</label>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-4">
-                <!-- Single Featured Post -->
-                <div class="single-blog-post small-featured-post d-flex">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/19.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-catagory">Finance</a>
-                        <div class="post-meta">
-                            <a href="#" class="post-title">
-                                <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                            </a>
-                            <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                        </div>
-                    </div>
-                </div>
+            <ul class="header-search-form">
+                <li>
+                    <input type="text" placeholder="Enter keyword" id="keyword" name="keyword"/>
+                </li>
 
-                <!-- Single Featured Post -->
-                <div class="single-blog-post small-featured-post d-flex">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/20.jpg" alt=""></a>
+                <li>
+                    <select name="property_type" id="property_type">
+                        <option>Property type</option>
+                        <option>Apartment</option>
+                        <option>House</option>
+                        <option>Garage</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="text" placeholder="Location" id="location" name="location"/>
+                </li>
+                <li>
+                    <select name="price" id="price">
+                        <option value="">Price</option>
+                    </select>
+                </li>
+                <li>
+                    <div class="advanced-input" id="advanced-filters">
+                        Advanced <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
-                    <div class="post-data">
-                        <a href="#" class="post-catagory">Politics</a>
-                        <div class="post-meta">
-                            <a href="#" class="post-title">
-                                <h6>Sed a elit euismod augue semper congue sit amet ac sapien.</h6>
-                            </a>
-                            <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                        </div>
-                    </div>
-                </div>
+                </li>
+                <li>
+                    <button class="btn">Search</button>
+                </li>
+            </ul>
+        </div>
+        <div class="advanced-search-container">
+            <h3 class="mb-20">Amenities</h3>
+            <div class="filter-amenities">
+                <ul>
+                    <li>
+                        <label for="amenities-air">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-air"/>
+                            Air conditionoing
+                        </label>
+                    </li>
+                    <li>
 
-                <!-- Single Featured Post -->
-                <div class="single-blog-post small-featured-post d-flex">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/21.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-catagory">Health</a>
-                        <div class="post-meta">
-                            <a href="#" class="post-title">
-                                <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                            </a>
-                            <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                        </div>
-                    </div>
-                </div>
+                        <label for="amenities-barbeque">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-barbeque"/>
+                            Barbeque
+                        </label>
+                    </li>
+                    <li>
 
-                <!-- Single Featured Post -->
-                <div class="single-blog-post small-featured-post d-flex">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/22.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-catagory">Finance</a>
-                        <div class="post-meta">
-                            <a href="#" class="post-title">
-                                <h6>Augue semper congue sit amet ac sapien. Fusce consequat.</h6>
-                            </a>
-                            <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                        </div>
-                    </div>
-                </div>
+                        <label for="amenities-dryer">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-dryer"/>
+                            Dryer
+                        </label>
+                    </li>
+                    <li>
 
-                <!-- Single Featured Post -->
-                <div class="single-blog-post small-featured-post d-flex">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/23.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-catagory">Travel</a>
-                        <div class="post-meta">
-                            <a href="#" class="post-title">
-                                <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                            </a>
-                            <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                        </div>
-                    </div>
-                </div>
+                        <label for="amenities-gym">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-gym"/>
+                            Gym
+                        </label>
+                    </li>
+                    <li>
+                        <label for="amenities-laundry">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-laundry"/>
+                            Laundry
+                        </label>
+                    </li>
+                    <li>
+                        <label for="amenities-lawn">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-lawn"/>
+                            Lawn
+                        </label>
+                    </li>
+                    <li>
 
-                <!-- Single Featured Post -->
-                <div class="single-blog-post small-featured-post d-flex">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/24.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-catagory">Politics</a>
-                        <div class="post-meta">
-                            <a href="#" class="post-title">
-                                <h6>Augue semper congue sit amet ac sapien. Fusce consequat.</h6>
-                            </a>
-                            <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                        </div>
-                    </div>
-                </div>
+                        <label for="amenities-microwave">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-microwave"/>
+                            Microwave
+                        </label>
+                    </li>
+                    <li>
+
+                        <label for="amenities-refrigerator">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-refrigerator"/>
+                            Refrigerator
+                        </label>
+                    </li>
+                    <li>
+
+                        <label for="amenities-sauna">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-sauna"/>
+                            Sauna
+                        </label>
+                    </li>
+                    <li>
+                        <label for="amenities-swimming-pool">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-swimming-pool"/>
+                            Swimming Pool
+                        </label>
+                    </li>
+                    <li>
+                        <label for="amenities-wifi">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-tv-cable"/>
+                            TV Cable
+                        </label>
+                    </li>
+                    <li>
+                        <label for="amenities-wifi">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-wifi"/>
+                            WIFI
+                        </label>
+                    </li>
+                    <li>
+                        <label for="amenities-wifi">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-washer"/>
+                            Washer
+                        </label>
+                    <li>
+                        <label for="amenities-wifi">
+                            <input type="checkbox" name="amenities" value="air" id="amenities-window-coverings"/>
+                            Window Coverings
+                        </label>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-</div>
-<!-- ##### Featured Post Area End ##### -->
+</section>
 
-<!-- ##### Popular News Area Start ##### -->
-<div class="popular-news-area section-padding-80-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-8">
-                <div class="section-heading">
-                    <h6>Popular News</h6>
+<section class="featured-properties-slider">
+
+    <h2 class="section-title t-center">Featured Properties</h2>
+    <p class="section-sub-title t-center">
+        Handpicked properties by our team.
+    </p>
+
+    <div class="slider-container">
+        <div class="swiper" id="featured-properties-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/assets/images/home-slider/slide-1.jpg" alt="">
+                    <div class="slide-caption">
+
+                        <div class="caption-tags">
+                            <div class="tag tag-featured">Featured</div>
+                            <div class="tag tag-rent">For Rent</div>
+                        </div>
+
+                        <div class="caption-info">
+                            <div class="caption-price">$16000/mo</div>
+                            <div class="caption-title">Renovated Apartment</div>
+                            <div class="caption-params">
+                                <div>Beds: 4</div>
+                                <div>Baths: 6</div>
+                                <div>SqFt: 5280</div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-
-                <div class="row">
-
-                    <!-- Single Post -->
-                    <div class="col-12 col-md-6">
-                        <div class="single-blog-post style-3">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/12.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-catagory">Finance</a>
-                                <a href="#" class="post-title">
-                                    <h6>Dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo ac...</h6>
-                                </a>
-                                <div class="post-meta d-flex align-items-center">
-                                    <a href="#" class="post-like"><img src="/assets/img/core-img/like.png" alt=""> <span>392</span></a>
-                                    <a href="#" class="post-comment"><img src="/assets/img/core-img/chat.png" alt=""> <span>10</span></a>
-                                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/home-slider/slide-2.jpg" alt="">
+                    <div class="slide-caption">
+                        <div class="caption-tags">
+                            <div class="tag tag-featured">Featured</div>
+                        </div>
+                        <div class="caption-info">
+                            <div class="caption-price">$16000/mo</div>
+                            <div class="caption-title">Renovated Apartment</div>
+                            <div class="caption-params">
+                                <div>Beds: 4</div>
+                                <div>Baths: 6</div>
+                                <div>SqFt: 5280</div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/home-slider/slide-3.jpg" alt="">
+                    <div class="slide-caption">
+                        <div class="caption-tags">
+                            <div class="tag tag-featured">Featured</div>
+                            <div class="tag tag-rent">For Rent</div>
+                        </div>
 
-                    <!-- Single Post -->
-                    <div class="col-12 col-md-6">
-                        <div class="single-blog-post style-3">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/13.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-catagory">Finance</a>
-                                <a href="#" class="post-title">
-                                    <h6>Dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo ac...</h6>
-                                </a>
-                                <div class="post-meta d-flex align-items-center">
-                                    <a href="#" class="post-like"><img src="/assets/img/core-img/like.png" alt=""> <span>392</span></a>
-                                    <a href="#" class="post-comment"><img src="/assets/img/core-img/chat.png" alt=""> <span>10</span></a>
-                                </div>
+                        <div class="caption-info">
+                            <div class="caption-price">$16000/mo</div>
+                            <div class="caption-title">Renovated Apartment</div>
+                            <div class="caption-params">
+                                <div>Beds: 4</div>
+                                <div>Baths: 6</div>
+                                <div>SqFt: 5280</div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/home-slider/slide-1.jpg" alt="">
+                    <div class="slide-caption">
+                        <div class="caption-tags">
+                            <div class="tag tag-rent">For Rent</div>
+                        </div>
 
-                    <!-- Single Post -->
-                    <div class="col-12 col-md-6">
-                        <div class="single-blog-post style-3">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/14.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-catagory">Finance</a>
-                                <a href="#" class="post-title">
-                                    <h6>Dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo ac...</h6>
-                                </a>
-                                <div class="post-meta d-flex align-items-center">
-                                    <a href="#" class="post-like"><img src="/assets/img/core-img/like.png" alt=""> <span>392</span></a>
-                                    <a href="#" class="post-comment"><img src="/assets/img/core-img/chat.png" alt=""> <span>10</span></a>
-                                </div>
+                        <div class="caption-info">
+                            <div class="caption-price">$16000/mo</div>
+                            <div class="caption-title">Renovated Apartment</div>
+                            <div class="caption-params">
+                                <div>Beds: 4</div>
+                                <div>Baths: 6</div>
+                                <div>SqFt: 5280</div>
                             </div>
                         </div>
+
                     </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/home-slider/slide-2.jpg" alt="">
+                    <div class="slide-caption">
+                        <div class="caption-tags">
+                            <div class="tag tag-rent">For Rent</div>
+                        </div>
 
-                    <!-- Single Post -->
-                    <div class="col-12 col-md-6">
-                        <div class="single-blog-post style-3">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/15.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-catagory">Finance</a>
-                                <a href="#" class="post-title">
-                                    <h6>Dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo ac...</h6>
-                                </a>
-                                <div class="post-meta d-flex align-items-center">
-                                    <a href="#" class="post-like"><img src="/assets/img/core-img/like.png" alt=""> <span>392</span></a>
-                                    <a href="#" class="post-comment"><img src="/assets/img/core-img/chat.png" alt=""> <span>10</span></a>
-                                </div>
+                        <div class="caption-info">
+                            <div class="caption-price">$16000/mo</div>
+                            <div class="caption-title">Renovated Apartment</div>
+                            <div class="caption-params">
+                                <div>Beds: 4</div>
+                                <div>Baths: 6</div>
+                                <div>SqFt: 5280</div>
                             </div>
                         </div>
+
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/home-slider/slide-3.jpg" alt="">
+                    <div class="slide-caption">
+                        <div class="caption-tags">
+                            <div class="tag tag-rent">For Rent</div>
+                        </div>
+
+                        <div class="caption-info">
+                            <div class="caption-price">$16000/mo</div>
+                            <div class="caption-title">Renovated Apartment</div>
+                            <div class="caption-params">
+                                <div>Beds: 4</div>
+                                <div>Baths: 6</div>
+                                <div>SqFt: 5280</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/home-slider/slide-1.jpg" alt="">
+                    <div class="slide-caption">
+                        <div class="caption-tags">
+                            <div class="tag tag-rent">For Rent</div>
+                        </div>
+
+                        <div class="caption-info">
+                            <div class="caption-price">$16000/mo</div>
+                            <div class="caption-title">Renovated Apartment</div>
+                            <div class="caption-params">
+                                <div>Beds: 4</div>
+                                <div>Baths: 6</div>
+                                <div>SqFt: 5280</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/home-slider/slide-2.jpg" alt="">
+                    <div class="slide-caption">
+                        <div class="caption-tags">
+                            <div class="tag tag-rent">For Rent</div>
+                        </div>
+
+                        <div class="caption-info">
+                            <div class="caption-price">$16000/mo</div>
+                            <div class="caption-title">Renovated Apartment</div>
+                            <div class="caption-params">
+                                <div>Beds: 4</div>
+                                <div>Baths: 6</div>
+                                <div>SqFt: 5280</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/home-slider/slide-3.jpg" alt="">
+                    <div class="slide-caption">
+                        <div class="caption-tags">
+                            <div class="tag tag-rent">For Rent</div>
+                        </div>
+
+                        <div class="caption-info">
+                            <div class="caption-price">$16000/mo</div>
+                            <div class="caption-title">Renovated Apartment</div>
+                            <div class="caption-params">
+                                <div>Beds: 4</div>
+                                <div>Baths: 6</div>
+                                <div>SqFt: 5280</div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
 
-            <div class="col-12 col-lg-4">
-                <div class="section-heading">
-                    <h6>Info</h6>
-                </div>
-                <!-- Popular News Widget -->
-                <div class="popular-news-widget mb-30">
-                    <h3>4 Most Popular News</h3>
+<section class="section-bg-img after-slider-section">
+    <h2 class="section-title t-center">
+        What are you looking for?
+    </h2>
+    <p class="section-sub-title t-center">
+        We provide full service at every step.
+    </p>
 
-                    <!-- Single Popular Blog -->
-                    <div class="single-popular-post">
-                        <a href="#">
-                            <h6><span>1.</span> Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.</h6>
-                        </a>
-                        <p>April 14, 2018</p>
-                    </div>
+    <div class="building-type-blocks">
+        <div class="building-type-block">
+            <div class="icon-house">
+                <img src="/assets/images/icons/home/house.png" alt="">
+            </div>
+            <h3>Modern Villa</h3>
+            <p class="t-center">Aliquam dictum elit vitae mauris facilisis, at dictum urna.</p>
+        </div>
+        <div class="building-type-block">
+            <div class="icon-house">
+                <img src="/assets/images/icons/home/home.png" alt="">
+            </div>
+            <h3>Family House</h3>
+            <p class="t-center">
+                Aliquam dictum elit vitae mauris facilisis, at dictum urna.
+            </p>
+        </div>
+        <div class="building-type-block">
+            <div class="icon-house">
+                <img src="/assets/images/icons/home/townhouse.png" alt="">
+            </div>
+            <h3>Town House</h3>
+            <p class="t-center">Aliquam dictum elit vitae mauris facilisis, at dictum urna.</p>
+        </div>
+        <div class="building-type-block">
+            <div class="icon-house">
+                <img src="/assets/images/icons/home/apartment.png" alt="">
+            </div>
+            <h3>Apartment</h3>
+            <p class="t-center">Aliquam dictum elit vitae mauris facilisis, at dictum urna.</p>
+        </div>
+    </div>
 
-                    <!-- Single Popular Blog -->
-                    <div class="single-popular-post">
-                        <a href="#">
-                            <h6><span>2.</span> Consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer.</h6>
-                        </a>
-                        <p>April 14, 2018</p>
-                    </div>
+    <h2 class="section-title t-center">
+        Find Properties in These Cities
+    </h2>
+    <p class="section-sub-title t-center">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
 
-                    <!-- Single Popular Blog -->
-                    <div class="single-popular-post">
-                        <a href="#">
-                            <h6><span>3.</span> Adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo.</h6>
-                        </a>
-                        <p>April 14, 2018</p>
-                    </div>
+    <div class="property-cities">
 
-                    <!-- Single Popular Blog -->
-                    <div class="single-popular-post">
-                        <a href="#">
-                            <h6><span>4.</span> Eu metus sit amet odio sodales placer. Sed varius leo ac...</h6>
-                        </a>
-                        <p>April 14, 2018</p>
-                    </div>
-                </div>
+        <div class="property-city">
+            <img src="/assets/images/yerevan.jpg" alt="">
+            <div class="city-info">
+                <div class="city-name">Yerevan</div>
+                <div class="city-properties-count">245 Properties</div>
+            </div>
+        </div>
 
-                <!-- Newsletter Widget -->
-                <div class="newsletter-widget">
-                    <h4>Newsletter</h4>
-                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    <form action="#" method="post">
-                        <input type="text" name="text" placeholder="Name">
-                        <input type="email" name="email" placeholder="Email">
-                        <button type="submit" class="btn w-100">Subscribe</button>
-                    </form>
-                </div>
+        <div class="property-city">
+            <img src="/assets/images/gyumri.jpeg" alt="">
+            <div class="city-info">
+                <div class="city-name">Gyumri</div>
+                <div class="city-properties-count">245 Properties</div>
+            </div>
+        </div>
+
+        <div class="property-city">
+            <img src="/assets/images/ejmiacin.jpg" alt="">
+            <div class="city-info">
+                <div class="city-name">Ejmiacin</div>
+                <div class="city-properties-count">245 Properties</div>
+            </div>
+        </div>
+
+        <div class="property-city">
+            <img src="/assets/images/abovyan.jpg" alt="">
+            <div class="city-info">
+                <div class="city-name">Abovyan</div>
+                <div class="city-properties-count">245 Properties</div>
+            </div>
+        </div>
+        <div class="property-city">
+            <img src="/assets/images/vanadzor.jpg" alt="">
+            <div class="city-info">
+                <div class="city-name">Vanadzor</div>
+                <div class="city-properties-count">245 Properties</div>
+            </div>
+        </div>
+
+        <div class="property-city">
+            <img src="/assets/images/dilijan.jpg" alt="">
+            <div class="city-info">
+                <div class="city-name">Dilijan</div>
+                <div class="city-properties-count">245 Properties</div>
             </div>
         </div>
     </div>
-</div>
-<!-- ##### Popular News Area End ##### -->
+</section>
 
-<!-- ##### Video Post Area Start ##### -->
-<div class="video-post-area bg-img bg-overlay" style="background-image: url(img/bg-img/bg1.jpg);">
-    <div class="container">
-        <div class="row justify-content-center">
-            <!-- Single Video Post -->
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="single-video-post">
-                    <img src="/assets/img/bg-img/video1.jpg" alt="">
-                    <!-- Video Button -->
-                    <div class="videobtn">
-                        <a href="https://www.youtube.com/watch?v=5BQr-j3BBzU" class="videoPlayer"><i class="fa fa-play" aria-hidden="true"></i></a>
+<section class="section-bg-img modern-apartment-section">
+    <div class="modern-apartment-inner-section">
+        <div class="modern-apartment-block">
+            <div class="modern-apartment-block-inner">
+                <h2 class="section-title fs-30">
+                    Modern Apartment
+                </h2>
+                <h3 class="mb-20 fs-18">
+                    $79 at night
+                </h3>
+                <p class="section-sub-title fs-14">
+                    I am text block. Click edit button to change this text. Lorem ipsum dolor sit
+                    amet, consectetur adipiscing elit.
+                </p>
+                <a href="#">
+                    <button class="btn">Book now</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="featured-properties-slider">
+    <h2 class="section-title t-center">Our Agents</h2>
+    <p class="section-sub-title t-center">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+
+    <div class="slider-container">
+        <div class="swiper" id="our-agents-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/assets/images/agents/agent-1.jpg" alt="">
+                    <div class="slide-caption">
+
+                        <div class="caption-info">
+                            <div class="caption-title fs-18">Jennifer Barton</div>
+                            <div class="agent-rate">
+                                <div class="fs-14">
+                                    Agent
+                                </div>
+                                <div class="ml-auto fs-14">
+                                    <span class="rate-point">3.5</span>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/agents/agent-2.jpg" alt="">
+                    <div class="slide-caption">
 
-            <!-- Single Video Post -->
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="single-video-post">
-                    <img src="/assets/img/bg-img/video2.jpg" alt="">
-                    <!-- Video Button -->
-                    <div class="videobtn">
-                        <a href="https://www.youtube.com/watch?v=5BQr-j3BBzU" class="videoPlayer"><i class="fa fa-play" aria-hidden="true"></i></a>
+                        <div class="caption-info">
+                            <div class="caption-title fs-18">Kathleen Myers</div>
+                            <div class="agent-rate">
+                                <div class="fs-14">
+                                    Agent
+                                </div>
+                                <div class="ml-auto fs-14">
+                                    <span class="rate-point">5</span>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/agents/agent-3.jpg" alt="">
+                    <div class="slide-caption">
 
-            <!-- Single Video Post -->
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="single-video-post">
-                    <img src="/assets/img/bg-img/video3.jpg" alt="">
-                    <!-- Video Button -->
-                    <div class="videobtn">
-                        <a href="https://www.youtube.com/watch?v=5BQr-j3BBzU" class="videoPlayer"><i class="fa fa-play" aria-hidden="true"></i></a>
+                        <div class="caption-info">
+                            <div class="caption-title fs-18">Mariusz Ciesla</div>
+                            <div class="agent-rate">
+                                <div class="fs-14">
+                                    Agent
+                                </div>
+                                <div class="ml-auto fs-14">
+                                    <span class="rate-point">4.5</span>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/agents/agent-4.jpg" alt="">
+                    <div class="slide-caption">
+
+                        <div class="caption-info">
+                            <div class="caption-title fs-18">Helene Powers</div>
+                            <div class="agent-rate">
+                                <div class="fs-14">
+                                    Agent
+                                </div>
+                                <div class="ml-auto fs-14">
+                                    <span class="rate-point">4</span>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/agents/agent-5.jpg" alt="">
+                    <div class="slide-caption">
+
+
+                        <div class="caption-info">
+                            <div class="caption-title fs-18">Jade Northon</div>
+                            <div class="agent-rate">
+                                <div class="fs-14">
+                                    Agent
+                                </div>
+                                <div class="ml-auto fs-14">
+                                    <span class="rate-point">5</span>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/agents/agent-6.jpg" alt="">
+                    <div class="slide-caption">
+
+                        <div class="caption-info">
+                            <div class="caption-title fs-18">Kevin Harris</div>
+                            <div class="agent-rate">
+                                <div class="fs-14">
+                                    Agent
+                                </div>
+                                <div class="ml-auto fs-14">
+                                    <span class="rate-point">4.5</span>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/agents/agent-5.jpg" alt="">
+                    <div class="slide-caption">
+
+
+                        <div class="caption-info">
+                            <div class="caption-title fs-18">Jade Northon</div>
+                            <div class="agent-rate">
+                                <div class="fs-14">
+                                    Agent
+                                </div>
+                                <div class="ml-auto fs-14">
+                                    <span class="rate-point">5</span>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/assets/images/agents/agent-6.jpg" alt="">
+                    <div class="slide-caption">
+
+                        <div class="caption-info">
+                            <div class="caption-title fs-18">Kevin Harris</div>
+                            <div class="agent-rate">
+                                <div class="fs-14">
+                                    Agent
+                                </div>
+                                <div class="ml-auto fs-14">
+                                    <span class="rate-point">4.5</span>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+</section>
+
+<section class="articles-and-tips">
+    <h2 class="section-title t-center">Articles & Tips</h2>
+    <p class="section-sub-title t-center">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+
+    <div class="articles-and-tips-container">
+
+        <div class="article-tip-card">
+            <img src="/assets/images/tips/art-tip-1.jpg" alt="">
+            <div class="article-tip-info">
+                <div class="article-type fs-14 mb-20 mt-10">Business</div>
+                <h3 class="article-tip-title fs-18 mb-20">Skills That You Can Learn In The Real Estate Market</h3>
+            </div>
+            <div class="line mb-20"></div>
+            <div class="article-tip-publisher">
+                <img src="/assets/images/icons/man.png" alt="">
+                <div class="publisher-info fs-14">
+                    <div class="publisher-name">Sarah Taylor</div>
+                    <div class="publish-date ml-auto">March 10, 2023</div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- ##### Video Post Area End ##### -->
 
-<!-- ##### Editorial Post Area Start ##### -->
-<div class="editors-pick-post-area section-padding-80-50">
-    <div class="container">
-        <div class="row">
-            <!-- Editors Pick -->
-            <div class="col-12 col-md-7 col-lg-9">
-                <div class="section-heading">
-                    <h6>Editor’s Pick</h6>
-                </div>
-
-                <div class="row">
-
-                    <!-- Single Post -->
-                    <div class="col-12 col-lg-4">
-                        <div class="single-blog-post">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/1.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-title">
-                                    <h6>Orci varius natoque penatibus et magnis dis parturient montes.</h6>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-date"><a href="#">February 11, 2018</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Post -->
-                    <div class="col-12 col-lg-4">
-                        <div class="single-blog-post">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-title">
-                                    <h6>Orci varius natoque penatibus et magnis dis parturient montes.</h6>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-date"><a href="#">February 11, 2018</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Post -->
-                    <div class="col-12 col-lg-4">
-                        <div class="single-blog-post">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/3.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-title">
-                                    <h6>Orci varius natoque penatibus et magnis dis parturient montes.</h6>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-date"><a href="#">February 11, 2018</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Post -->
-                    <div class="col-12 col-lg-4">
-                        <div class="single-blog-post">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/4.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-title">
-                                    <h6>Orci varius natoque penatibus et magnis dis parturient montes.</h6>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-date"><a href="#">February 11, 2018</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Post -->
-                    <div class="col-12 col-lg-4">
-                        <div class="single-blog-post">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/5.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-title">
-                                    <h6>Orci varius natoque penatibus et magnis dis parturient montes.</h6>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-date"><a href="#">February 11, 2018</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Post -->
-                    <div class="col-12 col-lg-4">
-                        <div class="single-blog-post">
-                            <div class="post-thumb">
-                                <a href="#"><img src="/assets/img/bg-img/6.jpg" alt=""></a>
-                            </div>
-                            <div class="post-data">
-                                <a href="#" class="post-title">
-                                    <h6>Orci varius natoque penatibus et magnis dis parturient montes.</h6>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-date"><a href="#">February 11, 2018</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="article-tip-card">
+            <img src="/assets/images/tips/art-tip-2.jpg" alt="">
+            <div class="article-tip-info">
+                <div class="article-type fs-14 mb-20 mt-10">Construction</div>
+                <h3 class="article-tip-title fs-18 mb-20">Bedroom Colors You will Never this Regret</h3>
             </div>
-
-            <!-- World News -->
-            <div class="col-12 col-md-5 col-lg-3">
-                <div class="section-heading">
-                    <h6>World News</h6>
+            <div class="line mb-20"></div>
+            <div class="article-tip-publisher">
+                <img src="/assets/images/icons/man.png" alt="">
+                <div class="publisher-info fs-14">
+                    <div class="publisher-name">Ali Tufan</div>
+                    <div class="publish-date ml-auto">March 10, 2023</div>
                 </div>
-
-                <!-- Single Post -->
-                <div class="single-blog-post style-2">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/7.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-title">
-                            <h6>Orci varius natoque penatibus et magnis</h6>
-                        </a>
-                        <div class="post-meta">
-                            <div class="post-date"><a href="#">February 11, 2018</a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Post -->
-                <div class="single-blog-post style-2">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/8.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-title">
-                            <h6>Orci varius natoque penatibus et magnis</h6>
-                        </a>
-                        <div class="post-meta">
-                            <div class="post-date"><a href="#">February 11, 2018</a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Post -->
-                <div class="single-blog-post style-2">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/9.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-title">
-                            <h6>Orci varius natoque penatibus et magnis</h6>
-                        </a>
-                        <div class="post-meta">
-                            <div class="post-date"><a href="#">February 11, 2018</a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Post -->
-                <div class="single-blog-post style-2">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/10.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-title">
-                            <h6>Orci varius natoque penatibus et magnis</h6>
-                        </a>
-                        <div class="post-meta">
-                            <div class="post-date"><a href="#">February 11, 2018</a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Post -->
-                <div class="single-blog-post style-2">
-                    <div class="post-thumb">
-                        <a href="#"><img src="/assets/img/bg-img/11.jpg" alt=""></a>
-                    </div>
-                    <div class="post-data">
-                        <a href="#" class="post-title">
-                            <h6>Orci varius natoque penatibus et magnis</h6>
-                        </a>
-                        <div class="post-meta">
-                            <div class="post-date"><a href="#">February 11, 2018</a></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+
+        <div class="article-tip-card">
+            <img src="/assets/images/tips/art-tip-4.jpg" alt="">
+            <div class="article-tip-info">
+                <div class="article-type fs-14 mb-20 mt-10">Business</div>
+                <h3 class="article-tip-title fs-18 mb-20">5 Essential Steps for Buying everyone Investment</h3>
+            </div>
+            <div class="line mb-20"></div>
+            <div class="article-tip-publisher">
+                <img src="/assets/images/icons/woman.png" alt="">
+                <div class="publisher-info fs-14">
+                    <div class="publisher-name">Sarah Taylor</div>
+                    <div class="publish-date ml-auto">March 10, 2023</div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
-</div>
-<!-- ##### Editorial Post Area End ##### -->
+</section>
+
+<section class="our-partners border-top-line mt-50 pt-40 mb-20">
+    <h2 class="section-title t-center">Our Partners</h2>
+    <p class="section-sub-title t-center">
+        We only work with the best companies around the globe
+    </p>
+
+    <div class="partners-block mt-50">
+
+        <div class="partner">
+            <img src="/assets/images/partners/partner-1.png" alt="">
+        </div>
+        <div class="partner">
+            <img src="/assets/images/partners/partner-2.png" alt="">
+        </div>
+        <div class="partner">
+            <img src="/assets/images/partners/partner-3.png" alt="">
+        </div>
+        <div class="partner">
+            <img src="/assets/images/partners/partner-4.png" alt="">
+        </div>
+        <div class="partner">
+            <img src="/assets/images/partners/partner-5.png" alt="">
+        </div>
+
+    </div>
+
+</section>
+

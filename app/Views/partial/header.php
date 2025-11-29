@@ -1,99 +1,104 @@
-<!-- ##### Header Area Start ##### -->
-<header class="header-area">
+<header>
 
-    <!-- Top Header Area -->
-    <div class="top-header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="top-header-content d-flex align-items-center justify-content-between">
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a href="/<?= $_lang ?>"><img src="/assets/img/core-img/logo.png" alt=""></a>
-                        </div>
+    <div class="inner-header">
 
-                        <!-- Login Search Area -->
-                        <div class="login-search-area d-flex align-items-center">
-                            <!-- Login -->
-                            <div class="login d-flex">
-                                <ul class="language-list">
-                                    <?php foreach ($langList as $langKey => $langTitle): ?>
+        <div class="header-burger-menu">
+            <span></span>
+        </div>
 
-                                            <li class="<?= $langKey == $_lang  ? 'active-lang' : ''?>">
-                                                <?php if (isset($langPageLinks[$langKey])): ?>
-                                                    <a href="/<?= $langPageLinks[$langKey] ?>">
-                                                        <img src="/assets/flags/<?= $langKey ?>-l.png" alt="<?= $langTitle ?>">
-                                                    </a>
-                                                <?php else: ?>
-                                                    <a href="/<?= $langKey ?>">
-                                                        <img src="/assets/flags/<?= $langKey ?>-l.png" alt="<?= $langTitle ?>" >
-                                                    </a>
-                                                <?php endif; ?>
-                                            </li>
+        <div class="mobile-menu">
+            <div class="inner-mobile-menu">
 
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                            <!-- Search Form -->
-                            <div class="search-form">
-                                <form action="#" method="post">
-                                    <input type="search" name="search" class="form-control" placeholder="Search">
-                                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mobile-menu-header">
+                    <a href="/index.php">
+                        <img src="/assets/images/logo.png" alt="FindHouse">
+                        <span class="fs-28 mt-5">FindHouse</span>
+                    </a>
                 </div>
+                <div class="mobile-menu-body">
+                    <ul class="nav">
+                        <li class="active"><a href="/index.php" class="active">Home</a></li>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li class=" ">
+                            <a href="javascript:void(0)">Pages
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                            <ul class="sub-nav">
+                                <li><a href="#">Page 1</a></li>
+                                <li><a href="#">Page 2</a></li>
+                                <li><a href="#">Page 3</a></li>
+                                <li><a href="#">Page 4</a></li>
+                                <li><a href="#">Page 5</a></li>
+                                <li><a href="#">Page 6</a></li>
+                                <li><a href="#">Page 7</a></li>
+                                <li><a href="#">Page 8</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/properties.php">Properties</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li class="user-nav-item">
+                            <a href="#">
+                                <span>Login/Register</span> <i class="fa-regular fa-user"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
             </div>
         </div>
-    </div>
 
-    <!-- Navbar Area -->
-    <div class="newspaper-main-menu" id="stickyMenu">
-        <div class="classy-nav-container breakpoint-off">
-            <div class="container">
-                <!-- Menu -->
-                <nav class="classy-navbar justify-content-between" id="newspaperNav">
-
-                    <!-- Logo -->
-                    <div class="logo">
-                        <a href="/<?= $_lang ?>"><img src="/assets/img/core-img/logo.png" alt=""></a>
-                    </div>
-
-                    <!-- Navbar Toggler -->
-                    <div class="classy-navbar-toggler">
-                        <span class="navbarToggler"><span></span><span></span><span></span></span>
-                    </div>
-
-                    <!-- Menu -->
-                    <div class="classy-menu">
-
-                        <!-- close btn -->
-                        <div class="classycloseIcon">
-                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                        </div>
-
-                        <!-- Nav Start -->
-                        <div class="classynav">
-                            <ul>
-                                <?php if (isset($newsCategories) && !empty($newsCategories)): ?>
-                                    <?php foreach ($newsCategories as $newsCategory): ?>
-                                        <li  class="">
-                                            <a href="/<?= $_lang ?>/posts/<?= $newsCategory->slug ?>"
-                                              >
-                                                <?= $newsCategory->title ?>
-                                            </a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-
-                            </ul>
-                        </div>
-                        <!-- Nav End -->
-                    </div>
-                </nav>
+        <div class="header-logo">
+            <a href="/index.php" class="fw-700 flex flex-align-items-center">
+                <img src="/assets/images/logo.png" alt="FindHouse">
+                <span class="fs-28 mt-5">FindHouse</span>
+            </a>
+        </div>
+        <form action="">
+            <div class="header-search">
+                <input type="text" name="search-text" placeholder="What are you looking for?"/>
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </div>
+        </form>
+        <div class="header-nav">
+            <ul class="nav">
+                <li class="active"><a href="/index.php" class="active">Home</a></li>
+                <li><a href="/about.html">About Us</a></li>
+                <li class="active">
+                    <a href="javascript:void(0)">Pages <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-nav">
+                        <li><a href="#">Page 1</a></li>
+                        <li><a href="#">Page 2</a></li>
+                        <li><a href="#">Page 3</a></li>
+                        <li><a href="#">Page 4</a></li>
+                        <li><a href="#">Page 5</a></li>
+                    </ul>
+                </li>
+                <li><a href="/properties.php">Properties</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li class="user-nav-item">
+                    <?php if (isset($userData->id) && $userData->id): ?>
+                        <a href="/sign-out">
+                            <span>Sign Out</span> <i class="fa-regular fa-user"></i>
+                        </a>
+                    <?php else: ?>
+                        <a href="/sign-in">
+                            <span>Login/Register</span> <i class="fa-regular fa-user"></i>
+                        </a>
+                    <?php endif; ?>
+
+                </li>
+            </ul>
+        </div>
+        <div class="header-create-btn">
+            <a href="/create.php">
+                <button class="btn br-25"><i class="fa-solid fa-plus"></i> <span>Create Listing</span></button>
+            </a>
         </div>
     </div>
 </header>
-<!-- ##### Header Area End ##### -->

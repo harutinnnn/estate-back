@@ -10,7 +10,7 @@
     <link rel="icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&amp;display=swap" rel="stylesheet"
           data-optimized-fonts="true">
-    <link rel="icon" href="favicon.ico">
+    
     <link data-next-font="" rel="preconnect" href="/" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&amp;display=swap">
