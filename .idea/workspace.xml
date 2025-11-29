@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f309bd34-6daf-497b-848b-1edcdc297f83" name="Default Changelist" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/app/Controllers/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/Layout/admin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/partial/admin-head.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/partial/admin-sidebar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/partial/header-tmp.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/user/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/user/dashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/user/favorites.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/user/messages.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/user/properties.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Config/Routes/Front.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Routes/Front.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/auth/sign-in.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/auth/sign-in.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/auth/sign-up.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/auth/sign-up.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/partial/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/partial/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/partial/admin-sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/partial/admin-sidebar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +190,7 @@
       <workItem from="1761049444274" duration="38000" />
       <workItem from="1764326934524" duration="7104000" />
       <workItem from="1764346348398" duration="2597000" />
-      <workItem from="1764394964197" duration="7398000" />
+      <workItem from="1764394964197" duration="7830000" />
     </task>
     <task id="LOCAL-00013" summary="First commit">
       <created>1759731752509</created>
@@ -548,7 +535,7 @@
       <option name="project" value="LOCAL" />
       <updated>1760623584742</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -16,6 +16,7 @@ class User extends MainController
         }
 
 
+        $this->pageData['activeMenu'] = 'dashboard';
         $this->currentView = 'user/dashboard';
         return $this->render('admin');
     }
@@ -27,6 +28,7 @@ class User extends MainController
         }
 
 
+        $this->pageData['activeMenu'] = 'create';
         $this->currentView = 'user/create';
         return $this->render('admin');
     }
@@ -37,7 +39,7 @@ class User extends MainController
             return redirect()->to($this->_lang . '/sign-in')->send();
         }
 
-
+        $this->pageData['activeMenu'] = 'messages';
         $this->currentView = 'user/messages';
         return $this->render('admin');
     }
@@ -49,7 +51,7 @@ class User extends MainController
             return redirect()->to($this->_lang . '/sign-in')->send();
         }
 
-
+        $this->pageData['activeMenu'] = 'properties';
         $this->currentView = 'user/properties';
         return $this->render('admin');
     }
@@ -57,7 +59,7 @@ class User extends MainController
     public function favorites(): string|\CodeIgniter\HTTP\RedirectResponse
     {
 
-
+        $this->pageData['activeMenu'] = 'favorites';
         if (!isset($this->userData->id)) {
             return redirect()->to($this->_lang . '/sign-in')->send();
         }

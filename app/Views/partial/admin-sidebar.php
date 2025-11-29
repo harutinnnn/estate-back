@@ -22,7 +22,7 @@
                 <a href="/<?= $_lang ?>/user/messages"><i class="fa-solid fa-envelope"></i> Messages</a>
             </li>
 
-            <li class="<?= isset($activeMenu) && $activeMenu == 'my-properties' ? 'active' : '' ?>">
+            <li class="<?= isset($activeMenu) && $activeMenu == 'properties' ? 'active' : '' ?>">
                 <a href="/<?= $_lang ?>/user/properties"><i class="fa-solid fa-house-chimney-window"></i> My properties</a>
             </li>
 
@@ -30,11 +30,11 @@
                 <a href="/<?= $_lang ?>/user/favorites"><i class="fa-solid fa-heart"></i> Favorites</a>
             </li>
 
-            <li class="<?= isset($activeMenu) && $activeMenu == '' ? 'active' : '' ?>">
+            <li class="<?= isset($activeMenu) && $activeMenu == 'package' ? 'active' : '' ?>">
                 <a href="#"><i class="fa-solid fa-box-open"></i> Package</a>
             </li>
 
-            <li class="<?= isset($activeMenu) && $activeMenu == 'messages' ? 'active' : '' ?>">
+            <li class="<?= isset($activeMenu) && $activeMenu == 'profile' ? 'active' : '' ?>">
                 <a href="#"><i class="fa-regular fa-id-card"></i> Profile</a>
             </li>
 
