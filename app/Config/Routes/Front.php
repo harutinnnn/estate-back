@@ -20,6 +20,10 @@ $categories = array_column($categoriesQuery, 'slug', 'id');
 
 $routes->get('/', 'Home::index');
 $routes->get('/(' . implode('|', $locales) . ')', 'Home::index');
+
+$routes->get('/(' . implode('|', $locales) . ')/properties', 'Properties::index');
+
+
 $routes->get('/(' . implode('|', $locales) . ')/sign-in', 'Auth::signIn');
 $routes->post('/(' . implode('|', $locales) . ')/sign-in', 'Auth::signIn');
 

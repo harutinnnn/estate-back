@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f309bd34-6daf-497b-848b-1edcdc297f83" name="Default Changelist" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/app/Controllers/Properties.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/partial/admin-sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/partial/admin-sidebar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Routes/Front.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Routes/Front.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/auth/sign-in.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/auth/sign-in.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/auth/sign-up.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/auth/sign-up.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/settings.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/settings.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +194,7 @@
       <workItem from="1761049444274" duration="38000" />
       <workItem from="1764326934524" duration="7104000" />
       <workItem from="1764346348398" duration="2597000" />
-      <workItem from="1764394964197" duration="7830000" />
+      <workItem from="1764394964197" duration="9311000" />
     </task>
     <task id="LOCAL-00013" summary="First commit">
       <created>1759731752509</created>
@@ -535,7 +539,7 @@
       <option name="project" value="LOCAL" />
       <updated>1760623584742</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

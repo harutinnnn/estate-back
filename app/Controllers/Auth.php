@@ -138,8 +138,6 @@ class Auth extends MainController
 
                 if (empty($user)) {
 
-//                    session()->set('user', $user);
-
                     $userData = [
                         'role' => $this->request->getPost('role'),
                         'name' => $this->request->getPost('name'),

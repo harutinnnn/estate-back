@@ -20,7 +20,8 @@
     <section class="auth-form">
 
         <h2 class="mb-10 t-center">Register to your account</h2>
-        <div class="mb-30 t-center">Already have an account? - <strong><a class="color-red" href="/<?= $_lang ?>/sign-in">Sign
+        <div class="mb-30 t-center">Already have an account? - <strong><a class="color-red"
+                                                                          href="/<?= $_lang ?>/sign-in">Sign
                     in</a></strong></div>
 
         <form action="" method="post">
@@ -35,7 +36,8 @@
             </div>
 
             <div class="form-input-row mt-30">
-                <input type="text" class="form-input" id="name" name="name" placeholder="Full name" value="<?= set_value('name') ?>">
+                <input type="text" class="form-input" id="name" name="name" placeholder="Full name"
+                       value="<?= set_value('name') ?>">
                 <?= show_error('name', $validation) ?>
             </div>
 
@@ -46,7 +48,8 @@
             </div>
 
             <div class="form-input-row mt-30">
-                <input type="text" class="form-input" id="email" name="email" placeholder="Email" value="<?= set_value('email') ?>">
+                <input type="text" class="form-input" id="email" name="email" placeholder="Email"
+                       value="<?= set_value('email') ?>">
                 <?= show_error('email', $validation) ?>
             </div>
 
@@ -81,7 +84,18 @@
 
         <div class="form-input-row mt-30">
             <a href="/<?= $_lang ?>/google">
-                <button type="button" class="btn google w-100">Google</button>
+                <button type="button" class="btn google w-100">
+                    <i class="fa-brands fa-google"></i>
+                    <span>Google</span>
+                </button>
+            </a>
+        </div>
+        <div class="form-input-row mt-30">
+            <a href="/<?= $_lang ?>/google">
+                <button type="button" class="btn linkedin w-100">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span>Google</span>
+                </button>
             </a>
         </div>
 

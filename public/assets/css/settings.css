@@ -320,6 +320,26 @@ button.btn:hover * {
 
 .btn.google {
     background-color: #ea4335;
+    position: relative;
+}
+
+.btn.linkedin {
+    background-color: #0a66c2;
+    border-color: #1473d2;
+    position: relative;
+}
+
+.btn.linkedin:hover,
+.btn.linkedin:hover * {
+    color: #0a66c2 !important;
+}
+
+.btn.google i,
+.btn.linkedin i {
+    position: absolute;
+    left: 15px;
+    transform: translateY(-50%);
+    top: 50%
 }
 
 /*END - Buttons*/
@@ -607,7 +627,7 @@ ul.breadcrumb li:not(:first-child):before {
     color: #f8d526;
 }
 
-.error-msg{
+.error-msg {
     color: var(--link-hover-color);
     font-size: 12px;
     margin: 5px 0;

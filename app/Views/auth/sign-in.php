@@ -63,7 +63,18 @@
 
         <div class="form-input-row mt-30">
             <a href="/<?= $_lang ?>/google">
-                <button type="button" class="btn google w-100">Google</button>
+                <button type="button" class="btn google w-100">
+                    <i class="fa-brands fa-google"></i>
+                    <span>Google</span>
+                </button>
+            </a>
+        </div>
+        <div class="form-input-row mt-30">
+            <a href="/<?= $_lang ?>/google">
+                <button type="button" class="btn linkedin w-100">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span>Google</span>
+                </button>
             </a>
         </div>
 
