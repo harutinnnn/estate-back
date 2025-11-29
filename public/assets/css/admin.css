@@ -90,7 +90,13 @@ footer,
     height: 90px;
 
 }
+.sidebar-head img{
+    height: 50px;
+}
 
+.header-logo{
+    display: none;
+}
 .admin-nav .sidebar-nav {
 
 }

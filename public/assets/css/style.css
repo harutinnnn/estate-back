@@ -173,6 +173,9 @@ header .header-nav ul.nav .sub-nav li:hover a {
 
 header .header-nav ul.nav .user-nav-item {
     padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 header .header-nav ul.nav .user-nav-item:before {

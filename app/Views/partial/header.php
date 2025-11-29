@@ -73,11 +73,15 @@
                 <li class="user-nav-item">
                     <?php if (isset($userData->id) && $userData->id): ?>
                         <a href="/<?= $_lang ?>/sign-out">
-                            <span>Sign Out</span> <i class="fa-regular fa-user"></i>
+                            <span>Sign Out</span>
+                        </a>
+
+                        <a href="/<?= $_lang ?>/profile">
+                            <span><?= $userData->name ?></span> <i class="fa-regular fa-user"></i>
                         </a>
                     <?php else: ?>
                         <a href="/<?= $_lang ?>/sign-in">
-                            <span>Login/Register</span> <i class="fa-regular fa-user"></i>
+                            <span>Login/Register</span>
                         </a>
                     <?php endif; ?>
 
