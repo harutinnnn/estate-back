@@ -19,13 +19,29 @@ $categories = array_column($categoriesQuery, 'slug', 'id');
 
 
 $routes->get('/', 'Home::index');
-$routes->get('/sign-in', 'Auth::signIn');
-$routes->post('/sign-in', 'Auth::signIn');
+$routes->get('/(' . implode('|', $locales) . ')', 'Home::index');
+$routes->get('/(' . implode('|', $locales) . ')/sign-in', 'Auth::signIn');
+$routes->post('/(' . implode('|', $locales) . ')/sign-in', 'Auth::signIn');
 
-$routes->get('/sign-up', 'Auth::signUp');
-$routes->post('/sign-up', 'Auth::signUp');
+$routes->get('/(' . implode('|', $locales) . ')/sign-up', 'Auth::signUp');
+$routes->post('/(' . implode('|', $locales) . ')/sign-up', 'Auth::signUp');
 
-$routes->get('/sign-out', 'Auth::signOut');
+$routes->get('/(' . implode('|', $locales) . ')/sign-out', 'Auth::signOut');
+
+$routes->get('/(' . implode('|', $locales) . ')/user/dashboard', 'User::dashboard');
+
+$routes->get('/(' . implode('|', $locales) . ')/user/create', 'User::create');
+$routes->post('/(' . implode('|', $locales) . ')/user/create', 'User::create');
+
+
+$routes->get('/(' . implode('|', $locales) . ')/user/messages', 'User::messages');
+
+
+$routes->get('/(' . implode('|', $locales) . ')/user/properties', 'User::properties');
+
+$routes->get('/(' . implode('|', $locales) . ')/user/favorites', 'User::favorites');
+
+
 
 $routes->get('/email-send', 'Content::emailSend');
 

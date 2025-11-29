@@ -4,7 +4,7 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="/">Home</a>
+                <a href="/<?= $_lang ?>">Home</a>
             </li>
             <li>
                 <span>Sign Up</span>
@@ -20,7 +20,7 @@
     <section class="auth-form">
 
         <h2 class="mb-10 t-center">Register to your account</h2>
-        <div class="mb-30 t-center">Already have an account? - <strong><a class="color-red" href="/sign-in">Sign
+        <div class="mb-30 t-center">Already have an account? - <strong><a class="color-red" href="/<?= $_lang ?>/sign-in">Sign
                     in</a></strong></div>
 
         <form action="" method="post">
@@ -80,7 +80,7 @@
         </div>
 
         <div class="form-input-row mt-30">
-            <a href="/google">
+            <a href="/<?= $_lang ?>/google">
                 <button type="button" class="btn google w-100">Google</button>
             </a>
         </div>

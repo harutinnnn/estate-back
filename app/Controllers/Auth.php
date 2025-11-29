@@ -10,7 +10,7 @@ class Auth extends MainController
     {
 
         if ($this->userData) {
-            redirect()->to('/')->send();
+            redirect()->to('/' . $this->_lang)->send();
             exit;
         }
 
@@ -56,7 +56,7 @@ class Auth extends MainController
                             setcookie('f_remember_me', $token, time() + 60 * 60 * 24 * 30, "/"); // 30 days
                         }
 
-                        return redirect()->to('/')->send();
+                        return redirect()->to($this->_lang . '/user/dashboard')->send();
                     }
 
                 } else {
@@ -79,7 +79,7 @@ class Auth extends MainController
     {
 
         if ($this->userData) {
-            redirect()->to('/')->send();
+            redirect()->to('/' . $this->_lang)->send();
             exit;
         }
 
@@ -153,7 +153,7 @@ class Auth extends MainController
 
                     if ($userId) {
 
-                        return redirect()->to('/sign-in')->send();
+                        return redirect()->to($this->_lang . '/sign-in')->send();
                     } else {
 
                         session()->setFlashdata('error_message', 'Some thing went wrong. Please try lather.');
@@ -179,7 +179,7 @@ class Auth extends MainController
 
         session()->destroy();
         setcookie('f_remember_me', '', time() - 3600, "/");
-        return redirect()->to('/')->send();
+        return redirect()->to('/' . $this->_lang)->send();
 
     }
 

@@ -5,25 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f309bd34-6daf-497b-848b-1edcdc297f83" name="Default Changelist" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/app/Controllers/Auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/SiteUserModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/auth/sign-in.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Views/auth/sign-up.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controllers/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/Layout/admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/partial/admin-head.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/partial/admin-sidebar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/partial/header-tmp.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/user/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/user/dashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/user/favorites.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/user/messages.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/user/properties.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.osp/project.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.osp/project.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Config/Routes/Front.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Routes/Front.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/error_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/error_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Libraries/AuthUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Libraries/AuthUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/partial/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/partial/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/partial/footer_media.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/partial/footer_media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/partial/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/partial/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/auth/sign-in.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/auth/sign-in.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/auth/sign-up.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/auth/sign-up.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/partial/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/partial/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/settings.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/settings.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pages/partial/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/partial/head.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +122,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/OSPanel/home/estate-back.local/app/Views/auth",
+    "last_opened_file_path": "C:/OSPanel/home/estate-back.local/app/Views/user",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -137,11 +134,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\home\estate-back.local\app\Views\user" />
+      <recent name="C:\OSPanel\home\estate-back.local\app\Views\partial" />
+      <recent name="C:\OSPanel\home\estate-back.local\app\Views\Layout" />
       <recent name="C:\OSPanel\home\estate-back.local\app\Views\auth" />
       <recent name="C:\OSPanel\home\estate-back.local\public\pages" />
-      <recent name="C:\OSPanel\home\estate-back.local\public\assets\js" />
-      <recent name="C:\OSPanel\home\estate-back.local\public\uploads" />
-      <recent name="C:\OSPanel\home\estate-back.local\public\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\OSPanel\home\estate-back.local\public\assets\images" />
@@ -206,7 +203,7 @@
       <workItem from="1761049444274" duration="38000" />
       <workItem from="1764326934524" duration="7104000" />
       <workItem from="1764346348398" duration="2597000" />
-      <workItem from="1764394964197" duration="5150000" />
+      <workItem from="1764394964197" duration="7398000" />
     </task>
     <task id="LOCAL-00013" summary="First commit">
       <created>1759731752509</created>
@@ -551,7 +548,7 @@
       <option name="project" value="LOCAL" />
       <updated>1760623584742</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -4,7 +4,7 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="/">Home</a>
+                <a href="/<?= $_lang ?>">Home</a>
             </li>
             <li>
                 <span>Sign In</span>
@@ -20,7 +20,7 @@
     <section class="auth-form">
 
         <h2 class="mb-10 t-center">Login to your account</h2>
-        <div class="mb-30 t-center">Dont have an account - <strong><a class="color-red" href="/sign-up">Sign
+        <div class="mb-30 t-center">Dont have an account - <strong><a class="color-red" href="/<?= $_lang ?>/sign-up">Sign
                     up</a></strong></div>
 
         <form action="" method="post">
@@ -35,12 +35,12 @@
             </div>
 
             <div class="form-input-row mt-30 flex flex-row">
-                <label for="remember-me">
+                <label for="remember">
                     <input type="checkbox" class="" id="remember" name="remember" value="1">
                     Remember me
                 </label>
 
-                <a href="/forgot" class="ml-auto color-red">Forgot password</a>
+                <a href="/<?= $_lang ?>/forgot" class="ml-auto color-red">Forgot password</a>
             </div>
 
 
@@ -62,7 +62,7 @@
         </div>
 
         <div class="form-input-row mt-30">
-            <a href="/google">
+            <a href="/<?= $_lang ?>/google">
                 <button type="button" class="btn google w-100">Google</button>
             </a>
         </div>
