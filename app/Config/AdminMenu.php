@@ -33,6 +33,12 @@ class AdminMenu extends BaseConfig
             'nodes' => null
         ],
         [
+            'link' => '/categories',
+            'title' => 'Categories',
+            'icon' => 'far fa-gem nav-icon',
+            'nodes' => null
+        ],
+        [
             'link' => null,
             'title' => 'News',
             'icon' => 'nav-icon fas fa-newspaper',
@@ -43,6 +49,7 @@ class AdminMenu extends BaseConfig
                     'icon' => 'far fa-circle nav-icon',
                     'nodes' => null
                 ],
+
                 [
                     'link' => '/news_categories',
                     'title' => 'News categories',

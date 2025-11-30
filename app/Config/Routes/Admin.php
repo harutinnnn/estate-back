@@ -70,6 +70,14 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($rou
     $routes->get('news_categories/(:segment)/(:segment)', 'NewsCategory::$1/$2');
     $routes->get('news_categories/(:segment)', 'NewsCategory::$1');
 
+    /*News*/
+    $routes->get('categories', 'Categories::index');
+    $routes->post('categories/edit/(:segment)/(:segment)', 'Categories::edit/$1/$2');
+    $routes->post('categories/edit/(:segment)', 'Categories::edit/$1');
+    $routes->get('categories/(:segment)/(:segment)/(:segment)', 'Categories::$1/$2/$3');
+    $routes->get('categories/(:segment)/(:segment)', 'Categories::$1/$2');
+    $routes->get('categories/(:segment)', 'Categories::$1');
+
     /*AdminLabels*/
     $routes->get('admin_labels', 'AdminLabels::index');
     $routes->post('admin_labels/edit/(:segment)', 'AdminLabels::edit/$1');

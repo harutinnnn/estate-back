@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f309bd34-6daf-497b-848b-1edcdc297f83" name="Default Changelist" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/app/Controllers/Admin/Categories.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CategoryMLModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CategoryModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/Admin/categories/edit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/Admin/categories/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/partial/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/partial/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/AdminMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/AdminMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Routes/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Routes/Admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +114,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/OSPanel/home/estate-back.local/public/assets/images",
+    "last_opened_file_path": "C:/OSPanel/home/estate-back.local/app/Views/Admin",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -123,11 +126,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\home\estate-back.local\app\Views\Admin" />
       <recent name="C:\OSPanel\home\estate-back.local\public\assets\images" />
       <recent name="C:\OSPanel\home\estate-back.local\app\Views\user" />
       <recent name="C:\OSPanel\home\estate-back.local\app\Views\partial" />
       <recent name="C:\OSPanel\home\estate-back.local\app\Views\Layout" />
-      <recent name="C:\OSPanel\home\estate-back.local\app\Views\auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\OSPanel\home\estate-back.local\public\assets\images" />
@@ -192,7 +195,8 @@
       <workItem from="1761049444274" duration="38000" />
       <workItem from="1764326934524" duration="7104000" />
       <workItem from="1764346348398" duration="2597000" />
-      <workItem from="1764394964197" duration="11596000" />
+      <workItem from="1764394964197" duration="11650000" />
+      <workItem from="1764488949432" duration="2057000" />
     </task>
     <task id="LOCAL-00013" summary="First commit">
       <created>1759731752509</created>
@@ -537,7 +541,7 @@
       <option name="project" value="LOCAL" />
       <updated>1760623584742</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
