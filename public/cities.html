@@ -3749,6 +3749,8 @@
 
 </div>
 
+<pre></pre>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script type="text/javascript">
 
@@ -3761,9 +3763,8 @@
     elements.forEach(ele => {
 
 
-        console.log(ele.attributes['data-value'])
-        let id = ele.attributes['data-value'];
-        let title = ele.attributes['data-name'];
+        let id = ele.attributes['data-value'].value;
+        let title = ele.attributes['data-name'].value;
 
         if (!ele.classList.contains('g')) {
             parentId = id
@@ -3780,6 +3781,15 @@
         }
     })
 
-    console.log(JSON.stringify(list))
+    $.ajax({
+        type:'post',
+        url:'/city.php',
+        data:{
+            cities:list
+        }
+    })
+
+    // document.getElementsByTagName('pre').innerText = JSON.stringify(list,null,2)
+    console.log(JSON.stringify(list,null,2))
 
 </script>
