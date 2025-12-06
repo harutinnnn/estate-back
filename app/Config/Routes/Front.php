@@ -62,6 +62,8 @@ $routes->get('(' . implode('|', $locales) . ')/(' . implode('|', $categories) . 
 $routes->get('(' . implode('|', $locales) . ')/news/(:num)', 'News::view/$2');
 $routes->get('/news/(:num)', 'News::view/$1');
 
+$routes->get('/cities', 'Cities::index');
+
 $routes->get('(' . implode('|', $locales) . ')/news', 'News::index');
 $routes->get('/news', 'News::index');
 
