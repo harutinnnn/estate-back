@@ -36,7 +36,6 @@ class User extends MainController
 
         $citiesModel = new CityModel();
         $states = $citiesModel->getAllItems($this->_lang, 0, [$citiesModel->getTable() . '.pid' => 0], ['col' => 'title', 'sort' => 'ASC']);
-        dd($states);
         $this->pageData['states'] = array_column($states, 'title', 'id');
 
 
