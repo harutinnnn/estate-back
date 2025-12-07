@@ -1,4 +1,3 @@
-
 <div class="main-content">
 
     <section class="properties-header">
@@ -24,11 +23,15 @@
 
             <div class="form-input-row">
                 <label for="property-type">Property Type</label>
-                <select name="property-type" id="property-type" class="form-input">
-                    <option value="">Apartment</option>
-                    <option value="">House</option>
-                    <option value="">Garage</option>
-                </select>
+                <?= form_dropdown(
+                    [
+                        'class' => 'form-input',
+                        'name' => 'property-type',
+                        'id' => 'property-type',
+                    ],
+                    $categories,
+                ) ?>
+
 
             </div>
 
@@ -68,12 +71,20 @@
             <div class="col-3-grid">
                 <div class="form-input-row">
                     <label for="state">State</label>
-                    <input type="text" class="form-input" id="state">
+
+                    <?= form_dropdown(
+                        [
+                            'class' => 'form-input',
+                            'name' => 'state',
+                            'id' => 'state',
+                        ],
+                        $states
+                    ) ?>
                 </div>
 
                 <div class="form-input-row">
                     <label for="city">City</label>
-                    <input type="text" class="form-input" id="city">
+                    <select name="city" id="city" class="form-input"></select>
                 </div>
                 <div class="form-input-row">
                     <label for="postal-code">Postal code</label>
@@ -308,9 +319,9 @@
         console.log(addr)
 
         console.log(addr.city)
-        document.getElementById('city').value = addr.city || addr.town || addr.village || ""
+        // document.getElementById('city').value = addr.city || addr.town || addr.village || ""
         document.getElementById('postal-code').value = addr.postcode
-        document.getElementById('state').value = addr.state || addr.suburb
+        // document.getElementById('state').value = addr.state || addr.suburb
 
         return {
             street: addr.road,

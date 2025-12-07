@@ -159,5 +159,28 @@ $(document).ready(function () {
         $(this).val(number);
     })
 
+    $('#state').change(function () {
+        const state = $(this).val();
+
+        $.ajax({
+            type: 'post',
+            url: '/' + lang + '/ajax/get-cities',
+            data: {
+                'state': state
+            },
+            dataType: 'html',
+            beforeSend: function (data) {
+
+            }, success: function (data) {
+                $('#city').html(data)
+
+            }, error: function (error) {
+
+            }
+        })
+
+
+    })
+
 })
 

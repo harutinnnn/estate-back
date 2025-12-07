@@ -94,13 +94,23 @@ class Cities extends MainController
         $modelMl = new CityMLModel();
 
 
+        $prePid = 0;
         foreach ($cities as $key => $value) {
             try {
+
+                if ($value['parent_id'] == 0) {
+                    $prePid = 0;
+                }
+
                 $lid = $model->insert([
                     'status' => 1,
-                    'parent_id' =>
-                        $value['parent_id'],
+                    'pid' => $prePid,
                 ]);
+
+                if ($value['parent_id'] == 0) {
+                    $prePid = $lid;
+                }
+
 
                 if ($lid && count($value['title'])) {
 

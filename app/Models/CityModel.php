@@ -8,7 +8,7 @@ class CityModel extends MainModel
     protected $primaryKey = "id";
     protected $allowedFields = [
         "status",
-        "parent_id",
+        "pid",
         "created_at",
         "updated_at",
     ];

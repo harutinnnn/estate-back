@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\CategoryMLModel;
+use App\Models\CategoryModel;
+use App\Models\CityModel;
 use App\Models\SiteUserModel;
 
 class User extends MainController
@@ -26,6 +29,15 @@ class User extends MainController
         if (!isset($this->userData->id)) {
             return redirect()->to($this->_lang . '/sign-in')->send();
         }
+
+        $categoriesModel = new CategoryModel();
+        $categories = $categoriesModel->getAllItems($this->_lang, 0, [], ['col' => 'pos', 'sort' => 'ASC']);
+        $this->pageData['categories'] = array_column($categories, 'title', 'id');
+
+        $citiesModel = new CityModel();
+        $states = $citiesModel->getAllItems($this->_lang, 0, [$citiesModel->getTable() . '.pid' => 0], ['col' => 'title', 'sort' => 'ASC']);
+        dd($states);
+        $this->pageData['states'] = array_column($states, 'title', 'id');
 
 
         $this->pageData['activeMenu'] = 'create';

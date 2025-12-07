@@ -69,6 +69,7 @@ $routes->get('/news', 'News::index');
 
 $routes->get('(' . implode('|', $locales) . ')', 'Home::index/$1');
 
+$routes->post('(' . implode('|', $locales) . ')/ajax/get-cities', 'Ajax::getCities');
 
 // With language prefix
 $routes->get('(' . implode('|', $locales) . ')/(:segment)', 'Content::index/$1/$lang');

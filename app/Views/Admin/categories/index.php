@@ -41,8 +41,8 @@
                                 <tr>
 
                                     <th><?= translate('title') ?></th>
-                                    <th><?= translate('status') ?></th>
                                     <th><?= translate('pos') ?></th>
+                                    <th><?= translate('status') ?></th>
                                     <th class="text-right"><?= translate('actions') ?></th>
                                 </tr>
                                 </thead>
