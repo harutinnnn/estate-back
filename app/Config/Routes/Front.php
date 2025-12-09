@@ -34,16 +34,20 @@ $routes->get('/(' . implode('|', $locales) . ')/sign-out', 'Auth::signOut');
 
 $routes->get('/(' . implode('|', $locales) . ')/user/dashboard', 'User::dashboard');
 
-$routes->get('/(' . implode('|', $locales) . ')/user/create', 'User::create');
-$routes->post('/(' . implode('|', $locales) . ')/user/create', 'User::create');
+$routes->get('/(' . implode('|', $locales) . ')/user/create', 'Properties::create');
+$routes->post('/(' . implode('|', $locales) . ')/user/create', 'Properties::create');
+
+
+$routes->get('/(' . implode('|', $locales) . ')/user/create-step-2', 'Properties::create_step_2');
+$routes->post('/(' . implode('|', $locales) . ')/user/create-step-2', 'Properties::create_step_2');
 
 
 $routes->get('/(' . implode('|', $locales) . ')/user/messages', 'User::messages');
 
 
-$routes->get('/(' . implode('|', $locales) . ')/user/properties', 'User::properties');
+$routes->get('/(' . implode('|', $locales) . ')/user/properties', 'Properties::properties');
 
-$routes->get('/(' . implode('|', $locales) . ')/user/favorites', 'User::favorites');
+$routes->get('/(' . implode('|', $locales) . ')/user/favorites', 'Properties::favorites');
 
 
 

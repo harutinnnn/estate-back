@@ -2,23 +2,107 @@
 
 namespace App\Controllers;
 
-use App\Controllers\Admin\FrontendLabels;
-use App\Models\FrontendLabelsModel;
-use App\Models\UserModel;
+use App\Models\CategoryMLModel;
+use App\Models\CategoryModel;
+use App\Models\CityModel;
+use App\Models\SiteUserModel;
+use App\Models\StatesModel;
 
 class Properties extends MainController
 {
-    public function index(): string
+
+
+    public function create(): string|\CodeIgniter\HTTP\RedirectResponse
     {
-        $this->currentView = 'properties/index';
+        if (!isset($this->userData->id)) {
+            return redirect()->to($this->_lang . '/sign-in')->send();
+        }
 
 
-        $labels = new FrontendLabelsModel();
-        $this->pageData['labels'] = $labels->getAllItems(ADMIN_DEF_LANG);
+        $categoriesModel = new CategoryModel();
+        $categories = $categoriesModel->getAllItems($this->_lang, 0, [], ['col' => 'pos', 'sort' => 'ASC']);
+        $this->pageData['categories'] = array_column($categories, 'title', 'id');
 
 
-        return $this->render();
+        $validationRules = [
+            'property-type' => [
+                'rules' => 'required|numeric',
+                'label' => 'Property'
+            ]
+        ];
+
+        if ($this->request->getPost('submit')) {
+
+            if ($this->validate($validationRules)) {
+
+
+                session()->set('property-type', $this->request->getPost('property-type'));
+
+                return redirect()->to($this->_lang . '/user/create-step-2')->send();
+
+            } else {
+                $this->pageData['validation'] = $this->validator;
+            }
+        }
+
+
+        $this->pageData['activeMenu'] = 'create';
+        $this->currentView = 'properties/create_step_1';
+        return $this->render('admin');
     }
 
+
+    public function create_step_2(): string|\CodeIgniter\HTTP\RedirectResponse
+    {
+        if (!isset($this->userData->id)) {
+            return redirect()->to($this->_lang . '/sign-in')->send();
+        }
+
+        if (!session()->get('property-type')) {
+            return redirect()->to($this->_lang . '/user/create')->send();
+        } else {
+            $this->pageData['propertyType'] = session()->get('property-type');
+        }
+
+
+        $categoriesModel = new CategoryModel();
+        $categories = $categoriesModel->getAllItems($this->_lang, 0, [], ['col' => 'pos', 'sort' => 'ASC']);
+        $this->pageData['categories'] = array_column($categories, 'title', 'id');
+
+        $citiesModel = new StatesModel();
+        $states = $citiesModel->getAllItems($this->_lang, 0, [$citiesModel->getTable() . '.pid' => 0], ['col' => 'pos', 'sort' => 'ASC']);
+        $this->pageData['states'] = array_column($states, 'title', 'id');
+
+
+        $this->pageData['activeMenu'] = 'create';
+        $this->currentView = 'properties/create';
+        return $this->render('admin');
+    }
+
+
+    public function properties(): string|\CodeIgniter\HTTP\RedirectResponse
+    {
+
+        if (!isset($this->userData->id)) {
+            return redirect()->to($this->_lang . '/sign-in')->send();
+        }
+
+        $this->pageData['activeMenu'] = 'properties';
+        $this->currentView = 'properties/properties';
+        return $this->render('admin');
+    }
+
+    public function favorites(): string|\CodeIgniter\HTTP\RedirectResponse
+    {
+
+        $this->pageData['activeMenu'] = 'favorites';
+        if (!isset($this->userData->id)) {
+            return redirect()->to($this->_lang . '/sign-in')->send();
+        }
+
+
+        $this->currentView = 'properties/favorites';
+        return $this->render('admin');
+    }
 
 }

@@ -128,6 +128,8 @@ class MainController extends BaseController
 
         $renderer->setData($rendererPageData);
 
+        $this->pageData['validation'] = null;
+
     }
 
 
