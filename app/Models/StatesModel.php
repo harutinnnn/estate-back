@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-class CityModel extends MainModel
+class StatesModel extends MainModel
 {
-    protected $table = "cities";
+    protected $table = "states";
     protected $primaryKey = "id";
     protected $allowedFields = [
         "status",
-        "state",
+        "pos",
+        "pid",
         "created_at",
         "updated_at",
     ];

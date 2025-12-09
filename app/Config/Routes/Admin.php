@@ -62,7 +62,7 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($rou
     $routes->get('news/(:segment)/(:segment)', 'News::$1/$2');
     $routes->get('news/(:segment)', 'News::$1');
 
-    /*News*/
+
     $routes->get('news_categories', 'NewsCategory::index');
     $routes->post('news_categories/edit/(:segment)/(:segment)', 'NewsCategory::edit/$1/$2');
     $routes->post('news_categories/edit/(:segment)', 'NewsCategory::edit/$1');
@@ -70,13 +70,29 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($rou
     $routes->get('news_categories/(:segment)/(:segment)', 'NewsCategory::$1/$2');
     $routes->get('news_categories/(:segment)', 'NewsCategory::$1');
 
-    /*News*/
+
     $routes->get('categories', 'Categories::index');
     $routes->post('categories/edit/(:segment)/(:segment)', 'Categories::edit/$1/$2');
     $routes->post('categories/edit/(:segment)', 'Categories::edit/$1');
     $routes->get('categories/(:segment)/(:segment)/(:segment)', 'Categories::$1/$2/$3');
     $routes->get('categories/(:segment)/(:segment)', 'Categories::$1/$2');
     $routes->get('categories/(:segment)', 'Categories::$1');
+
+
+    $routes->get('states', 'States::index');
+    $routes->post('states/edit/(:segment)/(:segment)', 'States::edit/$1/$2');
+    $routes->post('states/edit/(:segment)', 'States::edit/$1');
+    $routes->get('states/(:segment)/(:segment)/(:segment)', 'States::$1/$2/$3');
+    $routes->get('states/(:segment)/(:segment)', 'States::$1/$2');
+    $routes->get('states/(:segment)', 'States::$1');
+
+
+    $routes->get('cities', 'Cities::index');
+    $routes->post('cities/edit/(:segment)/(:segment)', 'Cities::edit/$1/$2');
+    $routes->post('cities/edit/(:segment)', 'Cities::edit/$1');
+    $routes->get('cities/(:segment)/(:segment)/(:segment)', 'Cities::$1/$2/$3');
+    $routes->get('cities/(:segment)/(:segment)', 'Cities::$1/$2');
+    $routes->get('cities/(:segment)', 'Cities::$1');
 
     /*AdminLabels*/
     $routes->get('admin_labels', 'AdminLabels::index');

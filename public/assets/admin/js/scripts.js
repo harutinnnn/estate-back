@@ -5,6 +5,8 @@ $(document).ready(function () {
             location.href = $(this).attr('data-href');
         }
     })
+
+    $("[data-toggle=tooltip]").tooltip()
 })
 
 

@@ -21,6 +21,18 @@ class AdminMenu extends BaseConfig
             'nodes' => null
         ],
         [
+            'link' => '/states',
+            'title' => 'States',
+            'icon' => 'nav-icon fas fa-map',
+            'nodes' => null
+        ],
+        [
+            'link' => '/cities',
+            'title' => 'Cities',
+            'icon' => 'nav-icon far fa-map',
+            'nodes' => null
+        ],
+        [
             'link' => '/content',
             'title' => 'Content',
             'icon' => 'nav-icon fas fa-file-alt',
