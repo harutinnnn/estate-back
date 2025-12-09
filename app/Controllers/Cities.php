@@ -16,118 +16,142 @@ class Cities extends MainController
     public function index(): void
     {
 
-
-        $cities = [
-
-        ];
-
-        $cities_hy = file_get_contents(FCPATH . '/cities_hy.json');
-        $cities_hy = json_decode($cities_hy);
-        $cities_en = file_get_contents(FCPATH . '/cities_en.json');
-        $cities_en = json_decode($cities_en);
-        $cities_ru = file_get_contents(FCPATH . '/cities_ru.json');
-        $cities_ru = json_decode($cities_ru);
-
-
-        $lang = 'hy';
-        foreach ($cities_hy as $key => $value) {
-
-            $cities[$value->id] = [
-                'status' => 1,
-                'id' => $value->id,
-                'title' => [
-                    $lang => $value->title,
-                ],
-                'parent_id' => 0,
+        die;
+        $cities = [];
+        $cities['en'] =
+            [
+                "Jermuk",
+                "Vayk",
+                "Yeghegnadzor",
+                "Aghavnadzor",
+                "Aghnjadzor",
+                "Areni",
+                "Arpi",
+                "Artabuynk",
+                "Chiva",
+                "Gladzor",
+                "Gndevaz",
+                "Hermon",
+                "Khachik",
+                "Malishka",
+                "Rind",
+                "Shatin",
+                "Taratumb",
+                "Yeghegis",
+                "Yelpin",
+                "Zaritap",
+                "Zedea",
+            ];
+        $cities['hy'] =
+            [
+                "Ջերմուկ",
+                "Վայք",
+                "Եղեգնաձոր",
+                "Աղավնաձոր",
+                "Աղնջաձոր",
+                "Արենի",
+                "Արփի",
+                "Արտաբույնք",
+                "Չիվա",
+                "Գլաձոր",
+                "Գնդեվազ",
+                "Հերմոն",
+                "Խաչիկ",
+                "Մալիշկա",
+                "Ռինդ",
+                "Շատին",
+                "Թառաթումբ",
+                "Եղեգիս",
+                "Ելփին",
+                "Զառիթափ",
+                "Զեդեա",
+            ];
+        $cities['ru'] =
+            [
+                "Джермук",
+                "Вайк",
+                "Егегнадзор",
+                "Агавнадзор",
+                "Агнджадзор",
+                "Арени",
+                "Арпи",
+                "Артабуйнк",
+                "Чива",
+                "Гладзор",
+                "Гндеваз",
+                "Эрмон",
+                "Хачик",
+                "Малишка",
+                "Ринд",
+                "Шатин",
+                "Таратумб",
+                "Ехегис",
+                "Елпин",
+                "Заритап",
+                "Зедеа",
             ];
 
-            if (!empty($value->nodes)) {
-                foreach ($value->nodes as $node) {
-
-                    $cities[$node->id] = [
-                        'id' => $node->id,
-                        'status' => 1,
-                        'title' => [
-                            $lang => $node->title,
-                        ],
-                        'parent_id' => $value->id,
-                    ];
-
-                }
-            }
-        }
-
-
-        $lang = 'en';
-        foreach ($cities_en as $key => $value) {
-
-            $cities[$value->id]['title'][$lang] = $value->title;
-
-            if (!empty($value->nodes)) {
-                foreach ($value->nodes as $node) {
-
-                    $cities[$node->id]['title'][$lang] = $node->title;
-
-                }
-            }
-        }
-
-        $lang = 'ru';
-        foreach ($cities_ru as $key => $value) {
-
-            $cities[$value->id]['title'][$lang] = $value->title;
-
-            if (!empty($value->nodes)) {
-                foreach ($value->nodes as $node) {
-
-                    $cities[$node->id]['title'][$lang] = $node->title;
-
-                }
-            }
-        }
-
-//        echo '<pre>';
-//        var_dump($cities);
+        echo '<table border="1">';
 
 
         $model = new CityModel();
         $modelMl = new CityMLModel();
 
+        foreach ($cities['en'] as $i => $cityName) {
+            echo '<tr>';
 
-        $prePid = 0;
-        foreach ($cities as $key => $value) {
-            try {
 
-                if ($value['parent_id'] == 0) {
-                    $prePid = 0;
+            foreach ($cities as $kLang => $cityLangList) {
+
+
+                try {
+
+
+                    echo '<td>';
+                    echo $cities[$kLang][$i];
+                    echo '</td>';
+
+
+                } catch (\Throwable $e) {
+                    var_dump($e->getMessage());
                 }
+            }
+            echo '</tr>';
 
-                $lid = $model->insert([
-                    'status' => 1,
-                    'pid' => $prePid,
-                ]);
+        }
+        echo '</table>';
 
-                if ($value['parent_id'] == 0) {
-                    $prePid = $lid;
-                }
+        die;
+
+        $stateId = 11;
+
+        foreach ($cities['en'] as $i => $cityName) {
+            $lid = $model->insert([
+                'state' => $stateId,
+                'status' => 1,
+            ]);
+
+            foreach ($cities as $kLang => $cityLangList) {
 
 
-                if ($lid && count($value['title'])) {
+                try {
 
-                    foreach ($value['title'] as $lKey => $title) {
+
+                    if ($lid) {
                         $modelMl->insert([
                             'parent_id' => $lid,
-                            'title' => $title,
-                            'lang' => $lKey
+                            'lang' => $kLang,
+                            'title' => $cities[$kLang][$i],
                         ]);
                     }
 
-                }
-            } catch (\Throwable $e) {
-                var_dump($value);
-            }
-        }
 
+                } catch (\Throwable $e) {
+                    var_dump($e->getMessage());
+                }
+            }
+
+        }
 
     }
 
