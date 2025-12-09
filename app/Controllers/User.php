@@ -30,6 +30,7 @@ class User extends MainController
             return redirect()->to($this->_lang . '/sign-in')->send();
         }
 
+
         $categoriesModel = new CategoryModel();
         $categories = $categoriesModel->getAllItems($this->_lang, 0, [], ['col' => 'pos', 'sort' => 'ASC']);
         $this->pageData['categories'] = array_column($categories, 'title', 'id');
