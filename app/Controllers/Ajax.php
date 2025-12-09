@@ -19,7 +19,7 @@ class Ajax extends MainController
 
             $cityModel = new CityModel();
 
-            $states = $cityModel->getAllItems($this->_lang, 0, [$cityModel->getTable() . '.pid' => intval($state)], ['col' => 'title', 'sort' => 'ASC']);
+            $states = $cityModel->getAllItems($this->_lang, 0, [$cityModel->getTable() . '.state' => intval($state)], ['col' => 'title', 'sort' => 'ASC']);
             foreach ($states as $state) {
                 $html .= '<option value="' . $state->id . '">' . $state->title . '</option>';
             }

@@ -6,6 +6,7 @@ use App\Models\CategoryMLModel;
 use App\Models\CategoryModel;
 use App\Models\CityModel;
 use App\Models\SiteUserModel;
+use App\Models\StatesModel;
 
 class User extends MainController
 {
@@ -36,8 +37,8 @@ class User extends MainController
         $categories = $categoriesModel->getAllItems($this->_lang, 0, [], ['col' => 'pos', 'sort' => 'ASC']);
         $this->pageData['categories'] = array_column($categories, 'title', 'id');
 
-        $citiesModel = new CityModel();
-        $states = $citiesModel->getAllItems($this->_lang, 0, [$citiesModel->getTable() . '.pid' => 0], ['col' => 'title', 'sort' => 'ASC']);
+        $citiesModel = new StatesModel();
+        $states = $citiesModel->getAllItems($this->_lang, 0, [$citiesModel->getTable() . '.pid' => 0], ['col' => 'pos', 'sort' => 'ASC']);
         $this->pageData['states'] = array_column($states, 'title', 'id');
 
 
