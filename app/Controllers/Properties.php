@@ -75,6 +75,11 @@ class Properties extends MainController
 
 
         $this->pageData['activeMenu'] = 'create';
+
+        $this->pageData['propertyCategory'] = $categoriesModel->find( $this->pageData['propertyType']);
+
+
+
         $this->currentView = 'properties/create';
         return $this->render('admin');
     }

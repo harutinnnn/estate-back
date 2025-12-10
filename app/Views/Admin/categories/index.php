@@ -42,6 +42,7 @@
 
                                     <th><?= translate('title') ?></th>
                                     <th><?= translate('pos') ?></th>
+                                    <th><?= translate('cat_key') ?></th>
                                     <th><?= translate('status') ?></th>
                                     <th class="text-right"><?= translate('actions') ?></th>
                                 </tr>
@@ -53,6 +54,7 @@
 
                                             <td class="white-normal"><?= $item->title ?></td>
                                             <td class="white-normal"><?= $item->pos ?></td>
+                                            <td class="white-normal"><?= $item->cat_key ?></td>
                                             <td>
                                                 <span class="tag tag-success"><?= $item->status ? 'Approved' : 'Pending' ?></span>
                                             </td>

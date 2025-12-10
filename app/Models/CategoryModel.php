@@ -10,9 +10,21 @@ class CategoryModel extends MainModel
         "status",
         "pos",
         "slug",
+        "cat_key",
         "created_at",
         "updated_at",
     ];
+
+
+    const TYPE_APARTMENT = 'apartment';
+    const TYPE_HOUSES = 'houses';
+    const TYPE_ROOMS = 'rooms';
+    const TYPE_COMMERCIAL_REAL_ESTATE = 'commercial_real_estate';
+    const TYPE_LAND_PLOT = 'land_plot';
+    const TYPE_GARAGES_AND_PARKING = 'garages_and_parking';
+    const TYPE_BOOTHS_AND_KIOSKS = 'booths_and_kiosks';
+    const TYPE_EVENT_VENUE_RENTAL = 'event_venue_rental';
+
 
     public function getItem($id, $lang)
     {

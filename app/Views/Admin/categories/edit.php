@@ -78,6 +78,30 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail1"><?= translate('pos') ?></label>
+                                        <?php
+                                        $inputData = [
+                                            'type' => 'text',
+                                            'name' => "cat_key",
+                                            'value' => (isset($item->cat_key) ? $item->cat_key : intval(set_value("cat_key"))),
+                                            'class' => 'form-control',
+                                            'placeholder' => translate('cat_key'),
+                                        ];
+
+                                        if($id){
+                                            $inputData['disabled'] = true;
+                                        }
+
+                                        echo form_input($inputData);
+                                        ?>
+                                        <div class="error-msg mb-3">
+                                            <?= show_error("cat_key", $validation); ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-12">
                                         <div class="card card-primary card-outline card-tabs">
                                             <div class="card-header p-0 pt-1">

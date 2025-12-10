@@ -39,7 +39,7 @@ class Categories extends AdminMainController
             ];
         }
 
-        $pager = $this->paginationMl($model, ['t.id', 't.status', 't.pos', 'tML.title',], $where, ADMIN_DEF_LANG, ['col' => 'pos', 'sort' => 'ASC']);
+        $pager = $this->paginationMl($model, ['t.id', 't.status', 't.pos', 'tML.title','t.cat_key'], $where, ADMIN_DEF_LANG, ['col' => 'pos', 'sort' => 'ASC']);
 
         $this->pageData['pager'] = $pager['pager'];
         $this->pageData['items'] = $pager['items'];
@@ -92,6 +92,9 @@ class Categories extends AdminMainController
                     'status' => $this->request->getPost('status'),
                     'pos' => intval($this->request->getPost('pos'))
                 ];
+                if (!$id) {
+                    $data['cat_key'] = $this->request->getPost('cat_key');
+                }
 
 
                 $data['slug'] = UrlHelper::slugify(urldecode($this->request->getPost('title_en')));
