@@ -1,3 +1,8 @@
+<?php
+
+use App\Models\ArticleModel;
+
+?>
 <div class="main-content">
 
     <section class="properties-header">
@@ -13,18 +18,39 @@
 
 
             <form method="post">
-                <div class="form-input-row">
+                <div class="col-2-grid">
+                    <div class="form-input-row">
 
-                    <?= form_dropdown(
-                        [
-                            'class' => 'form-input',
-                            'name' => 'property-type',
-                            'id' => 'property-type',
-                        ],
-                        $categories,
-                    ) ?>
-                    <div class="error-msg mb-3">
-                        <?= show_error('status', $validation) ?>
+                        <label for="property-type"><?= translate('property_type') ?></label>
+                        <?= form_dropdown(
+                            [
+                                'class' => 'form-input',
+                                'name' => 'property-type',
+                                'id' => 'property-type',
+                            ],
+                            $categories,
+                        ) ?>
+                        <div class="error-msg mb-3">
+                            <?= show_error('property-type', $validation) ?>
+                        </div>
+
+                    </div>
+
+                    <div class="form-input-row">
+
+                        <label for="property-rent-type"><?= translate('property_deal_type') ?></label>
+                        <?= form_dropdown(
+                            [
+                                'class' => 'form-input',
+                                'name' => 'property-rent-type',
+                                'id' => 'property-rent-type',
+                            ],
+                            ArticleModel::getPropertyTypes(),
+                        ) ?>
+                        <div class="error-msg mb-3">
+                            <?= show_error('property-rent-type', $validation) ?>
+                        </div>
+
                     </div>
 
                 </div>

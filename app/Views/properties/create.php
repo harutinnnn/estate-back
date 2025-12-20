@@ -1,5 +1,6 @@
 <?php
 
+use App\Libraries\PropertyParameters;
 use App\Models\CategoryModel;
 
 ?>
@@ -15,11 +16,14 @@ use App\Models\CategoryModel;
     <section class="admin-section">
         <form method="post">
             <div class="admin-section-block mb-30">
-                <h2 class="mb-30 flex flex-align-items-center gap-5"><?= translate('create_item') ?> <i
-                            class="fa-solid fa-caret-right fs-16"></i> <?= $categories[$propertyType] ?></h2>
-
+                <h2 class="mb-30 flex flex-align-items-center gap-5">
+                    <?= translate('create_item') ?> <i
+                            class="fa-solid fa-caret-right fs-16"></i> <?= $categories[$propertyType] ?> <i
+                            class="fa-solid fa-caret-right fs-16"></i> <?= translate($propertyRentType) ?>
+                </h2>
 
                 <?= form_hidden('property-type', $propertyType) ?>
+                <?= form_hidden('property-rent-type', $propertyRentType) ?>
 
                 <div class="form-input-row">
                     <label for="property-title"><?= translate('property_name') ?></label>
@@ -40,25 +44,30 @@ use App\Models\CategoryModel;
 
                     <!--TODO only for rent--->
                     <div class="form-input-row">
-                        <label for="rooms"><?= translate('prepayment') ?></label>
-                        <select name="rooms" id="rooms" class="form-input">
-                            <option value="">Առանց կանխավճարի</option>
-                            <option value="">Համաձայնությամբ</option>
-                            <option value="">2 շաբաթ</option>
-                            <option value="">1 ամիս</option>
-                            <option value="">3 ամիս</option>
-                            <option value="">6 ամիս</option>
-                        </select>
+                        <label for="prepayment"><?= translate('prepayment') ?></label>
+                        <?= form_dropdown(
+                            [
+                                'class' => 'form-input',
+                                'name' => 'prepayment',
+                                'id' => 'prepayment',
+                            ],
+                            PropertyParameters::getPrepaymentParameters(),
+                        ) ?>
+
                     </div>
 
 
                     <div class="form-input-row">
                         <label for="rooms"><?= translate('rooms') ?></label>
-                        <select name="rooms" id="rooms" class="form-input">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
+                        <?= form_dropdown(
+                            [
+                                'class' => 'form-input',
+                                'name' => 'rooms',
+                                'id' => 'rooms',
+                            ],
+                            PropertyParameters::getRooms(),
+                        ) ?>
+
                     </div>
 
 
@@ -73,24 +82,29 @@ use App\Models\CategoryModel;
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS])): ?>
                         <div class="form-input-row">
                             <label for="floor"><?= translate('floor') ?></label>
-                            <select name="floor" id="floor" class="form-input">
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                            </select>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'floor',
+                                    'id' => 'floor',
+                                ],
+                                PropertyParameters::getPropertyFloor(),
+                            ) ?>
                         </div>
                     <?php endif; ?>
 
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT])): ?>
                         <div class="form-input-row">
                             <label for="balcony"><?= translate('balcony') ?></label>
-                            <select name="balcony" id="balcony" class="form-input">
-                                <option value="">Առանց պատշգամբ</option>
-                                <option value="">Բաց պատշգամբ</option>
-                                <option value="">Փակ պատշգամբ</option>
-                                <option value="">Մի քանի պատշգամբ</option>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'balcony',
+                                    'id' => 'balcony',
+                                ],
+                                PropertyParameters::getBalcony(),
+                            ) ?>
 
-                            </select>
                         </div>
                     <?php endif; ?>
 
@@ -98,37 +112,43 @@ use App\Models\CategoryModel;
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])): ?>
                         <div class="form-input-row">
                             <label for="balcony"><?= translate('utility_payments') ?></label>
-                            <select name="balcony" id="balcony" class="form-input">
-                                <option value="">Ներառված</option>
-                                <option value="">Չներառված</option>
-                                <option value="">Համաձայնությամբ</option>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'utility_payments',
+                                    'id' => 'utility_payments',
+                                ],
+                                PropertyParameters::getUtilityPayments(),
+                            ) ?>
 
-                            </select>
                         </div>
                     <?php endif; ?>
 
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
                         <div class="form-input-row">
                             <label for="furniture"><?= translate('furniture') ?></label>
-                            <select name="furniture" id="furniture" class="form-input">
-                                <option value="">Կահույքով</option>
-                                <option value="">Առանց կահույք</option>
-                                <option value="">Մասնակի կահույք</option>
-                                <option value="">Համաձայնությամբ</option>
-                            </select>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'furniture',
+                                    'id' => 'furniture',
+                                ],
+                                PropertyParameters::getFurniture(),
+                            ) ?>
+
                         </div>
                     <?php endif; ?>
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
                         <div class="form-input-row">
                             <label for="furniture"><?= translate('views_from_windows') ?></label>
-                            <select name="furniture" id="furniture" class="form-input">
-                                <option value="">Տեսարան դեպի բակ</option>
-                                <option value="">Տեսարան դեպի փողոց</option>
-                                <option value="">Տեսարան դեպի քաղաք</option>
-                                <option value="">Տեսարան դեպի այգի</option>
-                                <option value="">Տեսարան դեպի Արարատ</option>
-
-                            </select>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'views_from_windows',
+                                    'id' => 'views_from_windows',
+                                ],
+                                PropertyParameters::getViewsFromWindows(),
+                            ) ?>
                         </div>
                     <?php endif; ?>
 
@@ -202,11 +222,14 @@ use App\Models\CategoryModel;
 
                         <div class="form-input-row">
                             <label for="area_size_prefix"><?= translate('size_prefix') ?></label>
-                            <select name="area_size_prefix" id="area_size_prefix" class="form-input">
-                                <option value="">Մք</option>
-                                <option value="">Կմք</option>
-                                <option value="">Հա</option>
-                            </select>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'size_prefix',
+                                    'id' => 'size_prefix',
+                                ],
+                                PropertyParameters::getAreaUnits()
+                            ) ?>
                         </div>
 
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES])): ?>
@@ -217,11 +240,15 @@ use App\Models\CategoryModel;
 
                             <div class="form-input-row">
                                 <label for="land_area_size_prefix"><?= translate('size_prefix') ?></label>
-                                <select name="land_area_size_prefix" id="land_area_size_prefix" class="form-input">
-                                    <option value="">Մք</option>
-                                    <option value="">Կմք</option>
-                                    <option value="">Հա</option>
-                                </select>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'land_area_size_prefix',
+                                        'id' => 'land_area_size_prefix',
+                                    ],
+                                    PropertyParameters::getAreaUnits()
+                                ) ?>
+
                             </div>
                         <?php endif; ?>
 
@@ -231,31 +258,42 @@ use App\Models\CategoryModel;
 
                         <div class="form-input-row">
                             <label for="bedrooms"><?= translate('bedrooms') ?></label>
-                            <select name="bedrooms" id="bedrooms" class="form-input">
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                            </select>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'bedrooms',
+                                    'id' => 'bedrooms',
+                                ],
+                                PropertyParameters::getBadRooms()
+                            ) ?>
 
 
                         </div>
 
                         <div class="form-input-row">
-                            <label for="Bathrooms"><?= translate('bathrooms') ?></label>
-                            <select name="Bathrooms" id="Bathrooms" class="form-input">
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                            </select>
+                            <label for="bathrooms"><?= translate('bathrooms') ?></label>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'bathrooms',
+                                    'id' => 'bathrooms',
+                                ],
+                                PropertyParameters::getBathRooms()
+                            ) ?>
+
                         </div>
 
                         <div class="form-input-row">
-                            <label for="Garages"><?= translate('garages') ?></label>
-                            <select name="Garages" id="Garages" class="form-input">
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                            </select>
+                            <label for="garages"><?= translate('garages') ?></label>
+
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'garages',
+                                    'id' => 'garages',
+                                ],
+                                PropertyParameters::getGarages()
+                            ) ?>
                         </div>
                     </div>
 
@@ -263,28 +301,30 @@ use App\Models\CategoryModel;
 
                         <div class="form-input-row">
                             <label for=" Year Built"><?= translate('year_built') ?></label>
-                            <select name=" Year Built" id=" Year Built" class="form-input">
-                                <option value="">2025</option>
-                                <option value="">2024</option>
-                                <option value="">2023</option>
-                                <option value="">2022</option>
-                                <option value="">2021</option>
-                                <option value="">2020</option>
-                                <option value="">2019</option>
-                                <option value="">2018</option>
-                                <option value="">2001</option>
-                            </select>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'year_built',
+                                    'id' => 'year_built',
+                                ],
+                                PropertyParameters::getBuildYears()
+                            ) ?>
+
                         </div>
 
 
                         <?php if ($propertyCategory->cat_key == CategoryModel::TYPE_APARTMENT): ?>
                             <div class="form-input-row">
                                 <label for="new_building"><?= translate('new_building') ?></label>
-                                <select name="new_building" id="new_building" class="form-input">
 
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'new_building',
+                                        'id' => 'new_building',
+                                    ],
+                                    PropertyParameters::getYesNo()
+                                ) ?>
                             </div>
                         <?php endif; ?>
 
@@ -292,46 +332,47 @@ use App\Models\CategoryModel;
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
 
                             <div class="form-input-row">
-                                <label for="elevator"><?= translate('number_of_floors') ?></label>
-                                <select name="number_of_floors" id="number_of_floors" class="form-input">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
-                                    <option value="">5</option>
-                                    <option value="">6</option>
-                                    <option value="">7</option>
-                                    <option value="">8</option>
-                                    <option value="">9</option>
-                                    <option value="">10</option>
-                                </select>
+                                <label for="number_of_floors"><?= translate('number_of_floors') ?></label>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'number_of_floors',
+                                        'id' => 'number_of_floors',
+                                    ],
+                                    PropertyParameters::getPropertyFloor(),
+                                ) ?>
+
                             </div>
                         <?php endif; ?>
 
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
 
                             <div class="form-input-row">
-                                <label for="number_of_bathrooms"><?= translate('building_type') ?></label>
-                                <select name="number_of_floors" id="number_of_floors" class="form-input">
-                                    <option value="">Քարե</option>
-                                    <option value="">Պանելային</option>
-                                    <option value="">Մոնոլիտ</option>
-                                    <option value="">Աղյուսե</option>
-                                    <option value="">Կասետային</option>
-                                    <option value="">Փայտե</option>
+                                <label for="building_type"><?= translate('building_type') ?></label>
 
-                                </select>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'building_type',
+                                        'id' => 'building_type',
+                                    ],
+                                    PropertyParameters::getBuildingType(),
+                                ) ?>
                             </div>
                         <?php endif; ?>
+
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])): ?>
 
                             <div class="form-input-row">
                                 <label for="number_of_bathrooms"><?= translate('number_of_rooms') ?></label>
-                                <select name="number_of_bathrooms" id="number_of_bathrooms" class="form-input">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3+</option>
-                                </select>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'number_of_bathrooms',
+                                        'id' => 'number_of_bathrooms',
+                                    ],
+                                    PropertyParameters::getBadRooms(),
+                                ) ?>
                             </div>
                         <?php endif; ?>
 
@@ -339,12 +380,15 @@ use App\Models\CategoryModel;
 
                             <div class="form-input-row">
                                 <label for="parking"><?= translate('parking') ?></label>
-                                <select name="parking" id="parking" class="form-input">
 
-                                    <option value="1">Բացօթյա կայանատեղի</option>
-                                    <option value="2">Ծածկապատ կայանատեղի</option>
-                                    <option value="2">Ավտոտնակ</option>
-                                </select>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'parking',
+                                        'id' => 'parking',
+                                    ],
+                                    PropertyParameters::getParkingParams(),
+                                ) ?>
                             </div>
                         <?php endif; ?>
 

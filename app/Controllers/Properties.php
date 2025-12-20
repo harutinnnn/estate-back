@@ -31,6 +31,10 @@ class Properties extends MainController
             'property-type' => [
                 'rules' => 'required|numeric',
                 'label' => 'Property'
+            ],
+            'property-rent-type' => [
+                'rules' => 'required',
+                'label' => 'property-rent-type'
             ]
         ];
 
@@ -40,6 +44,7 @@ class Properties extends MainController
 
 
                 session()->set('property-type', $this->request->getPost('property-type'));
+                session()->set('property-rent-type', $this->request->getPost('property-rent-type'));
 
                 return redirect()->to($this->_lang . '/user/create-step-2')->send();
 
@@ -57,14 +62,16 @@ class Properties extends MainController
 
     public function create_step_2(): string|\CodeIgniter\HTTP\RedirectResponse
     {
+
         if (!isset($this->userData->id)) {
             return redirect()->to($this->_lang . '/sign-in')->send();
         }
 
-        if (!session()->get('property-type')) {
+        if (!session()->get('property-type') || !session()->get('property-rent-type')) {
             return redirect()->to($this->_lang . '/user/create')->send();
         } else {
             $this->pageData['propertyType'] = session()->get('property-type');
+            $this->pageData['propertyRentType'] = session()->get('property-rent-type');
         }
 
         $amenitiesModel = new AmenitiesModel();
@@ -84,11 +91,11 @@ class Properties extends MainController
 
 
         $householdAppliancesModel = new HouseholdAppliancesModel();
-        $householdAppliances = $householdAppliancesModel->getAllItems($this->_lang,0,[], ['col' => 'id', 'sort' => 'ASC']);
+        $householdAppliances = $householdAppliancesModel->getAllItems($this->_lang, 0, [], ['col' => 'id', 'sort' => 'ASC']);
         $this->pageData['householdAppliances'] = array_column($householdAppliances, 'title', 'id');
 
         $communicationsModel = new CommunicationsModel();
-        $communications = $communicationsModel->getAllItems($this->_lang,0,[], ['col' => 'id', 'sort' => 'ASC']);
+        $communications = $communicationsModel->getAllItems($this->_lang, 0, [], ['col' => 'id', 'sort' => 'ASC']);
         $this->pageData['communications'] = array_column($communications, 'title', 'id');
 
 
