@@ -11,7 +11,7 @@
  Target Server Version : 50744 (5.7.44)
  File Encoding         : 65001
 
- Date: 20/12/2025 14:40:30
+ Date: 20/12/2025 23:00:22
 */
 
 SET NAMES utf8mb4;
@@ -5084,7 +5084,7 @@ CREATE TABLE `frontend_labels`  (
   `key` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `type` enum('content','label') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'label',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 304 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 349 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of frontend_labels
@@ -5135,6 +5135,51 @@ INSERT INTO `frontend_labels` VALUES (300, 'parking', 'label');
 INSERT INTO `frontend_labels` VALUES (301, 'save', 'label');
 INSERT INTO `frontend_labels` VALUES (302, 'back', 'label');
 INSERT INTO `frontend_labels` VALUES (303, 'choose_property_type', 'label');
+INSERT INTO `frontend_labels` VALUES (304, 'rent', 'label');
+INSERT INTO `frontend_labels` VALUES (305, 'sale', 'label');
+INSERT INTO `frontend_labels` VALUES (306, 'property_type', 'label');
+INSERT INTO `frontend_labels` VALUES (307, 'property_deal_type', 'label');
+INSERT INTO `frontend_labels` VALUES (308, 'without_prepayment', 'label');
+INSERT INTO `frontend_labels` VALUES (309, 'by_prepayment_agreement', 'label');
+INSERT INTO `frontend_labels` VALUES (310, 'two_weeks', 'label');
+INSERT INTO `frontend_labels` VALUES (311, 'three_weeks', 'label');
+INSERT INTO `frontend_labels` VALUES (312, 'one_month', 'label');
+INSERT INTO `frontend_labels` VALUES (313, 'two_month', 'label');
+INSERT INTO `frontend_labels` VALUES (314, 'three_month', 'label');
+INSERT INTO `frontend_labels` VALUES (315, 'six_month', 'label');
+INSERT INTO `frontend_labels` VALUES (316, 'without_balcony', 'label');
+INSERT INTO `frontend_labels` VALUES (317, 'open_balcony', 'label');
+INSERT INTO `frontend_labels` VALUES (318, 'enclosed_balcony', 'label');
+INSERT INTO `frontend_labels` VALUES (319, 'several_balconies', 'label');
+INSERT INTO `frontend_labels` VALUES (320, 'utility_payments_included', 'label');
+INSERT INTO `frontend_labels` VALUES (321, 'utility_payments_no_included', 'label');
+INSERT INTO `frontend_labels` VALUES (322, 'utility_payments_by_agreement', 'label');
+INSERT INTO `frontend_labels` VALUES (323, 'with_furniture', 'label');
+INSERT INTO `frontend_labels` VALUES (324, 'without_furniture', 'label');
+INSERT INTO `frontend_labels` VALUES (325, 'partial_furniture', 'label');
+INSERT INTO `frontend_labels` VALUES (326, 'with_agreement_furniture', 'label');
+INSERT INTO `frontend_labels` VALUES (327, 'view_to_the_courtyard', 'label');
+INSERT INTO `frontend_labels` VALUES (328, 'street_view', 'label');
+INSERT INTO `frontend_labels` VALUES (329, 'city_view', 'label');
+INSERT INTO `frontend_labels` VALUES (330, 'garden_view', 'label');
+INSERT INTO `frontend_labels` VALUES (331, 'unit_sqm', 'label');
+INSERT INTO `frontend_labels` VALUES (332, 'unit_kmq', 'label');
+INSERT INTO `frontend_labels` VALUES (333, 'unit_heq', 'label');
+INSERT INTO `frontend_labels` VALUES (334, 'garage_not_available', 'label');
+INSERT INTO `frontend_labels` VALUES (335, 'garage_one_place', 'label');
+INSERT INTO `frontend_labels` VALUES (336, 'garage_two_place', 'label');
+INSERT INTO `frontend_labels` VALUES (337, 'garage_three_or_more_places', 'label');
+INSERT INTO `frontend_labels` VALUES (338, 'yes', 'label');
+INSERT INTO `frontend_labels` VALUES (339, 'no', 'label');
+INSERT INTO `frontend_labels` VALUES (340, 'building_type_stone', 'label');
+INSERT INTO `frontend_labels` VALUES (341, 'building_type_panel', 'label');
+INSERT INTO `frontend_labels` VALUES (342, 'building_type_monolith', 'label');
+INSERT INTO `frontend_labels` VALUES (343, 'building_type_brick', 'label');
+INSERT INTO `frontend_labels` VALUES (344, 'building_type_cassette', 'label');
+INSERT INTO `frontend_labels` VALUES (345, 'building_type_wooden', 'label');
+INSERT INTO `frontend_labels` VALUES (346, 'outdoor_parking', 'label');
+INSERT INTO `frontend_labels` VALUES (347, 'covered_parking', 'label');
+INSERT INTO `frontend_labels` VALUES (348, 'garage_parking', 'label');
 
 -- ----------------------------
 -- Table structure for frontend_labels_ml
@@ -5148,7 +5193,7 @@ CREATE TABLE `frontend_labels_ml`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`parent_id`, `lang`) USING BTREE,
   CONSTRAINT `frontend_labels_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `frontend_labels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 438 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 579 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of frontend_labels_ml
@@ -5291,6 +5336,141 @@ INSERT INTO `frontend_labels_ml` VALUES (434, 303, 'ru', 'Выберите ти�
 INSERT INTO `frontend_labels_ml` VALUES (435, 285, 'en', 'Unit of measure');
 INSERT INTO `frontend_labels_ml` VALUES (436, 285, 'hy', 'Չափի միավոր');
 INSERT INTO `frontend_labels_ml` VALUES (437, 285, 'ru', 'Единица измерения');
+INSERT INTO `frontend_labels_ml` VALUES (441, 305, 'en', 'For sale');
+INSERT INTO `frontend_labels_ml` VALUES (442, 305, 'hy', 'Վաճառք');
+INSERT INTO `frontend_labels_ml` VALUES (443, 305, 'ru', 'Для продажи');
+INSERT INTO `frontend_labels_ml` VALUES (444, 306, 'en', 'Property type');
+INSERT INTO `frontend_labels_ml` VALUES (445, 306, 'hy', 'Անշարժ գույքի տեսակը');
+INSERT INTO `frontend_labels_ml` VALUES (446, 306, 'ru', 'Тип недвижимости');
+INSERT INTO `frontend_labels_ml` VALUES (447, 307, 'en', 'Property Deal Type');
+INSERT INTO `frontend_labels_ml` VALUES (448, 307, 'hy', 'Գույքի Գործարքի տեսակը');
+INSERT INTO `frontend_labels_ml` VALUES (449, 307, 'ru', 'Тип сделки с недвижимостью');
+INSERT INTO `frontend_labels_ml` VALUES (450, 304, 'en', 'For rent');
+INSERT INTO `frontend_labels_ml` VALUES (451, 304, 'hy', 'Վարձակալութուն');
+INSERT INTO `frontend_labels_ml` VALUES (452, 304, 'ru', 'Сдача в аренду');
+INSERT INTO `frontend_labels_ml` VALUES (453, 308, 'en', 'Without prepayment');
+INSERT INTO `frontend_labels_ml` VALUES (454, 308, 'hy', 'Առանց կանխավճարի');
+INSERT INTO `frontend_labels_ml` VALUES (455, 308, 'ru', 'Без предоплаты');
+INSERT INTO `frontend_labels_ml` VALUES (456, 309, 'en', 'With agreement');
+INSERT INTO `frontend_labels_ml` VALUES (457, 309, 'hy', 'Համաձայնությամբ');
+INSERT INTO `frontend_labels_ml` VALUES (458, 309, 'ru', 'По соглашению');
+INSERT INTO `frontend_labels_ml` VALUES (459, 310, 'en', '2 weeks');
+INSERT INTO `frontend_labels_ml` VALUES (460, 310, 'hy', '2 շաբաթ');
+INSERT INTO `frontend_labels_ml` VALUES (461, 310, 'ru', '2 недели');
+INSERT INTO `frontend_labels_ml` VALUES (462, 311, 'en', '3 weeks');
+INSERT INTO `frontend_labels_ml` VALUES (463, 311, 'hy', '3 շաբաթ');
+INSERT INTO `frontend_labels_ml` VALUES (464, 311, 'ru', '3 недели');
+INSERT INTO `frontend_labels_ml` VALUES (465, 312, 'en', '1 month');
+INSERT INTO `frontend_labels_ml` VALUES (466, 312, 'hy', '1 ամիս');
+INSERT INTO `frontend_labels_ml` VALUES (467, 312, 'ru', '1 месяц');
+INSERT INTO `frontend_labels_ml` VALUES (468, 313, 'en', '2 month');
+INSERT INTO `frontend_labels_ml` VALUES (469, 313, 'hy', '2 ամիս');
+INSERT INTO `frontend_labels_ml` VALUES (470, 313, 'ru', '2 месяц');
+INSERT INTO `frontend_labels_ml` VALUES (471, 314, 'en', '3 month');
+INSERT INTO `frontend_labels_ml` VALUES (472, 314, 'hy', '3 ամիս');
+INSERT INTO `frontend_labels_ml` VALUES (473, 314, 'ru', '3 месяц');
+INSERT INTO `frontend_labels_ml` VALUES (474, 315, 'en', '6 month');
+INSERT INTO `frontend_labels_ml` VALUES (475, 315, 'hy', '6 ամիս');
+INSERT INTO `frontend_labels_ml` VALUES (476, 315, 'ru', '6 месяц');
+INSERT INTO `frontend_labels_ml` VALUES (477, 316, 'en', 'Without balcony');
+INSERT INTO `frontend_labels_ml` VALUES (478, 316, 'hy', 'Առանց պատշգամբի');
+INSERT INTO `frontend_labels_ml` VALUES (479, 316, 'ru', 'Без балкона');
+INSERT INTO `frontend_labels_ml` VALUES (480, 317, 'en', 'Open balcony');
+INSERT INTO `frontend_labels_ml` VALUES (481, 317, 'hy', 'Բաց պատշգամբ');
+INSERT INTO `frontend_labels_ml` VALUES (482, 317, 'ru', 'Открытый балкон');
+INSERT INTO `frontend_labels_ml` VALUES (483, 318, 'en', 'Enclosed balcony');
+INSERT INTO `frontend_labels_ml` VALUES (484, 318, 'hy', 'Փակ պատշգամբ');
+INSERT INTO `frontend_labels_ml` VALUES (485, 318, 'ru', 'Закрытый балкон');
+INSERT INTO `frontend_labels_ml` VALUES (486, 319, 'en', 'Several balconies');
+INSERT INTO `frontend_labels_ml` VALUES (487, 319, 'hy', 'Մի քանի պատշգամբ');
+INSERT INTO `frontend_labels_ml` VALUES (488, 319, 'ru', 'Несколько балконов');
+INSERT INTO `frontend_labels_ml` VALUES (489, 320, 'en', 'Included');
+INSERT INTO `frontend_labels_ml` VALUES (490, 320, 'hy', 'Ներառված');
+INSERT INTO `frontend_labels_ml` VALUES (491, 320, 'ru', 'Включено');
+INSERT INTO `frontend_labels_ml` VALUES (492, 321, 'en', 'Not included');
+INSERT INTO `frontend_labels_ml` VALUES (493, 321, 'hy', 'Չի ներառված');
+INSERT INTO `frontend_labels_ml` VALUES (494, 321, 'ru', 'Не включено');
+INSERT INTO `frontend_labels_ml` VALUES (495, 322, 'en', 'By agreement');
+INSERT INTO `frontend_labels_ml` VALUES (496, 322, 'hy', 'Համաձայնությամբ');
+INSERT INTO `frontend_labels_ml` VALUES (497, 322, 'ru', 'По соглашению');
+INSERT INTO `frontend_labels_ml` VALUES (498, 323, 'en', 'With furniture');
+INSERT INTO `frontend_labels_ml` VALUES (499, 323, 'hy', 'Կահույքով');
+INSERT INTO `frontend_labels_ml` VALUES (500, 323, 'ru', 'С мебелью');
+INSERT INTO `frontend_labels_ml` VALUES (501, 324, 'en', 'Without furniture');
+INSERT INTO `frontend_labels_ml` VALUES (502, 324, 'hy', 'Առանց կահույքի');
+INSERT INTO `frontend_labels_ml` VALUES (503, 324, 'ru', 'Без мебели');
+INSERT INTO `frontend_labels_ml` VALUES (504, 325, 'en', 'Partial furniture');
+INSERT INTO `frontend_labels_ml` VALUES (505, 325, 'hy', 'Մասնակի կահույք');
+INSERT INTO `frontend_labels_ml` VALUES (506, 325, 'ru', 'Частичная мебель');
+INSERT INTO `frontend_labels_ml` VALUES (507, 326, 'en', 'With agreement');
+INSERT INTO `frontend_labels_ml` VALUES (508, 326, 'hy', 'Համաձայնությամբ');
+INSERT INTO `frontend_labels_ml` VALUES (509, 326, 'ru', 'С соглашением');
+INSERT INTO `frontend_labels_ml` VALUES (510, 327, 'en', 'View to the courtyard');
+INSERT INTO `frontend_labels_ml` VALUES (511, 327, 'hy', 'Տեսարան դեպի բակ');
+INSERT INTO `frontend_labels_ml` VALUES (512, 327, 'ru', 'Вид на двор');
+INSERT INTO `frontend_labels_ml` VALUES (513, 328, 'en', 'Street view');
+INSERT INTO `frontend_labels_ml` VALUES (514, 328, 'hy', 'Տեսարան դեպի փողոց');
+INSERT INTO `frontend_labels_ml` VALUES (515, 328, 'ru', 'Вид на улицу');
+INSERT INTO `frontend_labels_ml` VALUES (516, 329, 'en', 'City view');
+INSERT INTO `frontend_labels_ml` VALUES (517, 329, 'hy', 'Տեսարան դեպի քաղաք');
+INSERT INTO `frontend_labels_ml` VALUES (518, 329, 'ru', 'Вид на город');
+INSERT INTO `frontend_labels_ml` VALUES (519, 330, 'en', 'Garden view');
+INSERT INTO `frontend_labels_ml` VALUES (520, 330, 'hy', 'Տեսարան դեպի այգի');
+INSERT INTO `frontend_labels_ml` VALUES (521, 330, 'ru', 'Вид на сад');
+INSERT INTO `frontend_labels_ml` VALUES (525, 331, 'en', 'sq.m.');
+INSERT INTO `frontend_labels_ml` VALUES (526, 331, 'hy', 'մք');
+INSERT INTO `frontend_labels_ml` VALUES (527, 331, 'ru', 'кв.м.');
+INSERT INTO `frontend_labels_ml` VALUES (528, 332, 'en', 'sq.km');
+INSERT INTO `frontend_labels_ml` VALUES (529, 332, 'hy', 'կմ․ք');
+INSERT INTO `frontend_labels_ml` VALUES (530, 332, 'ru', 'кв.км');
+INSERT INTO `frontend_labels_ml` VALUES (531, 333, 'en', 'Հեկտար');
+INSERT INTO `frontend_labels_ml` VALUES (532, 333, 'hy', 'Hectare');
+INSERT INTO `frontend_labels_ml` VALUES (533, 333, 'ru', 'Гектар ');
+INSERT INTO `frontend_labels_ml` VALUES (534, 334, 'en', 'Not available');
+INSERT INTO `frontend_labels_ml` VALUES (535, 334, 'hy', 'Չկա');
+INSERT INTO `frontend_labels_ml` VALUES (536, 334, 'ru', 'Нет');
+INSERT INTO `frontend_labels_ml` VALUES (537, 335, 'en', '1 place');
+INSERT INTO `frontend_labels_ml` VALUES (538, 335, 'hy', '1 տեղ');
+INSERT INTO `frontend_labels_ml` VALUES (539, 335, 'ru', '1 место');
+INSERT INTO `frontend_labels_ml` VALUES (540, 336, 'en', '2 place');
+INSERT INTO `frontend_labels_ml` VALUES (541, 336, 'hy', '2 տեղ');
+INSERT INTO `frontend_labels_ml` VALUES (542, 336, 'ru', '2 место');
+INSERT INTO `frontend_labels_ml` VALUES (543, 337, 'en', '3 and more place');
+INSERT INTO `frontend_labels_ml` VALUES (544, 337, 'hy', '3 և ավելի տեղ');
+INSERT INTO `frontend_labels_ml` VALUES (545, 337, 'ru', '3 и более мест');
+INSERT INTO `frontend_labels_ml` VALUES (546, 338, 'en', 'Yes');
+INSERT INTO `frontend_labels_ml` VALUES (547, 338, 'hy', 'Այո');
+INSERT INTO `frontend_labels_ml` VALUES (548, 338, 'ru', 'Да');
+INSERT INTO `frontend_labels_ml` VALUES (549, 339, 'en', 'No');
+INSERT INTO `frontend_labels_ml` VALUES (550, 339, 'hy', 'Ոչ');
+INSERT INTO `frontend_labels_ml` VALUES (551, 339, 'ru', 'Нет');
+INSERT INTO `frontend_labels_ml` VALUES (552, 340, 'en', 'Stone');
+INSERT INTO `frontend_labels_ml` VALUES (553, 340, 'hy', 'Քար');
+INSERT INTO `frontend_labels_ml` VALUES (554, 340, 'ru', 'Камень');
+INSERT INTO `frontend_labels_ml` VALUES (555, 341, 'en', 'Panel');
+INSERT INTO `frontend_labels_ml` VALUES (556, 341, 'hy', 'Պանելային');
+INSERT INTO `frontend_labels_ml` VALUES (557, 341, 'ru', 'Панельное');
+INSERT INTO `frontend_labels_ml` VALUES (558, 342, 'en', 'Monolith');
+INSERT INTO `frontend_labels_ml` VALUES (559, 342, 'hy', 'Մոնոլիտ');
+INSERT INTO `frontend_labels_ml` VALUES (560, 342, 'ru', 'Монолит');
+INSERT INTO `frontend_labels_ml` VALUES (561, 343, 'en', 'Brick');
+INSERT INTO `frontend_labels_ml` VALUES (562, 343, 'hy', 'Աղյուսե');
+INSERT INTO `frontend_labels_ml` VALUES (563, 343, 'ru', 'Кирпичное');
+INSERT INTO `frontend_labels_ml` VALUES (564, 344, 'en', 'Cassette');
+INSERT INTO `frontend_labels_ml` VALUES (565, 344, 'hy', 'Կասետային');
+INSERT INTO `frontend_labels_ml` VALUES (566, 344, 'ru', 'Кассетное');
+INSERT INTO `frontend_labels_ml` VALUES (567, 345, 'en', 'Wooden');
+INSERT INTO `frontend_labels_ml` VALUES (568, 345, 'hy', 'Փայտե');
+INSERT INTO `frontend_labels_ml` VALUES (569, 345, 'ru', 'Деревянное');
+INSERT INTO `frontend_labels_ml` VALUES (570, 346, 'en', 'Outdoor parking');
+INSERT INTO `frontend_labels_ml` VALUES (571, 346, 'hy', 'Բացօթյա կայանատեղի');
+INSERT INTO `frontend_labels_ml` VALUES (572, 346, 'ru', 'Открытая парковка');
+INSERT INTO `frontend_labels_ml` VALUES (573, 347, 'en', 'Covered parking');
+INSERT INTO `frontend_labels_ml` VALUES (574, 347, 'hy', 'Ծածկած կայանատեղի');
+INSERT INTO `frontend_labels_ml` VALUES (575, 347, 'ru', 'Закрытая парковка');
+INSERT INTO `frontend_labels_ml` VALUES (576, 348, 'en', 'Garage');
+INSERT INTO `frontend_labels_ml` VALUES (577, 348, 'hy', 'Ավտոտնակ');
+INSERT INTO `frontend_labels_ml` VALUES (578, 348, 'ru', 'Гараж');
 
 -- ----------------------------
 -- Table structure for household_appliances
