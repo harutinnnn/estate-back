@@ -588,6 +588,31 @@ footer,
     background-color: var(--link-hover-color);
 }
 
+.addr-autocomplete {
+    position: absolute;
+    top: 70px;
+    left: 0;
+
+}
+
+.addr-autocomplete ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: var(--white-color);
+    border: solid 1px #e9e6e6;
+    -o-box-shadow: 0 0 50px 0 rgba(32, 32, 32, .15);
+    box-shadow: 0 0 50px 0 rgba(32, 32, 32, .15);
+    border-radius: var(--border-r-8);
+}
+
+.addr-autocomplete ul li {
+    padding: 10px;
+    cursor: pointer;
+}
+.addr-autocomplete ul li:hover {
+    background-color: var(--text-thm6);
+}
 
 @media only screen and (max-width: 1200px) {
 

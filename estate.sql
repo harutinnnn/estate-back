@@ -11,7 +11,7 @@
  Target Server Version : 50744 (5.7.44)
  File Encoding         : 65001
 
- Date: 20/12/2025 11:11:43
+ Date: 20/12/2025 14:40:30
 */
 
 SET NAMES utf8mb4;
@@ -4984,31 +4984,15 @@ CREATE TABLE `communications`  (
   `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `cat_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of communications
 -- ----------------------------
-INSERT INTO `communications` VALUES (24, 1, 0, 'refrigerator', '2025-12-19 21:01:14', '2025-12-20 10:20:03', '');
-INSERT INTO `communications` VALUES (27, 1, 0, 'coffee-maker', '2025-12-19 21:01:42', '2025-12-20 10:20:38', '');
-INSERT INTO `communications` VALUES (28, 1, 0, 'freezer', '2025-12-20 10:19:43', '2025-12-20 10:19:43', '');
-INSERT INTO `communications` VALUES (29, 1, 0, 'oven', '2025-12-20 10:21:01', '2025-12-20 10:21:01', '');
-INSERT INTO `communications` VALUES (30, 1, 0, 'stove-cooker', '2025-12-20 10:21:48', '2025-12-20 10:21:48', '');
-INSERT INTO `communications` VALUES (31, 1, 0, 'microwave', '2025-12-20 10:22:41', '2025-12-20 10:22:41', '');
-INSERT INTO `communications` VALUES (32, 1, 0, 'dishwasher', '2025-12-20 10:23:15', '2025-12-20 10:23:15', '');
-INSERT INTO `communications` VALUES (33, 1, 0, 'washing-machine', '2025-12-20 10:23:32', '2025-12-20 10:23:32', '');
-INSERT INTO `communications` VALUES (34, 1, 0, 'dryer', '2025-12-20 10:23:51', '2025-12-20 10:23:51', '');
-INSERT INTO `communications` VALUES (35, 1, 0, 'vacuum-cleaner', '2025-12-20 10:24:18', '2025-12-20 10:24:18', '');
-INSERT INTO `communications` VALUES (36, 1, 0, 'air-conditioner', '2025-12-20 10:24:40', '2025-12-20 10:24:40', '');
-INSERT INTO `communications` VALUES (37, 1, 0, 'heater', '2025-12-20 10:24:52', '2025-12-20 10:24:52', '');
-INSERT INTO `communications` VALUES (38, 1, 0, 'water-heater', '2025-12-20 10:25:25', '2025-12-20 10:25:25', '');
-INSERT INTO `communications` VALUES (39, 1, 0, 'toaster', '2025-12-20 10:25:36', '2025-12-20 10:25:36', '');
-INSERT INTO `communications` VALUES (40, 1, 0, 'blender', '2025-12-20 10:25:58', '2025-12-20 10:25:58', '');
-INSERT INTO `communications` VALUES (41, 1, 0, 'electric-kettle', '2025-12-20 10:26:18', '2025-12-20 10:26:18', '');
-INSERT INTO `communications` VALUES (42, 1, 0, 'electric-grill', '2025-12-20 10:26:59', '2025-12-20 10:26:59', '');
-INSERT INTO `communications` VALUES (43, 1, 0, 'humidifier', '2025-12-20 10:27:37', '2025-12-20 10:27:37', '');
-INSERT INTO `communications` VALUES (44, 1, 0, 'iron', '2025-12-20 10:27:56', '2025-12-20 10:27:56', '');
-INSERT INTO `communications` VALUES (45, 1, 0, 'hair-dryer', '2025-12-20 10:29:05', '2025-12-20 10:29:05', '');
+INSERT INTO `communications` VALUES (46, 1, 0, 'electricity', '2025-12-20 11:12:54', '2025-12-20 11:12:54', '');
+INSERT INTO `communications` VALUES (47, 1, 0, 'water-supply', '2025-12-20 11:13:15', '2025-12-20 11:13:15', '');
+INSERT INTO `communications` VALUES (48, 1, 0, 'natural-gas', '2025-12-20 11:13:54', '2025-12-20 11:13:54', '');
+INSERT INTO `communications` VALUES (49, 1, 0, 'sewer', '2025-12-20 11:14:20', '2025-12-20 11:14:20', '');
 
 -- ----------------------------
 -- Table structure for communications_ml
@@ -5022,71 +5006,23 @@ CREATE TABLE `communications_ml`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `parent_id`(`parent_id`, `lang`) USING BTREE,
   CONSTRAINT `communications_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `communications` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 224 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 236 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of communications_ml
 -- ----------------------------
-INSERT INTO `communications_ml` VALUES (164, 28, 'en', 'Freezer');
-INSERT INTO `communications_ml` VALUES (165, 28, 'hy', 'Սառցարան');
-INSERT INTO `communications_ml` VALUES (166, 28, 'ru', 'Морозильник');
-INSERT INTO `communications_ml` VALUES (167, 24, 'en', 'Refrigerator');
-INSERT INTO `communications_ml` VALUES (168, 24, 'hy', 'Սառնարան');
-INSERT INTO `communications_ml` VALUES (169, 24, 'ru', 'Холодильник');
-INSERT INTO `communications_ml` VALUES (170, 27, 'en', 'Coffee Maker');
-INSERT INTO `communications_ml` VALUES (171, 27, 'hy', 'Սրճեփ');
-INSERT INTO `communications_ml` VALUES (172, 27, 'ru', 'Кофеварка');
-INSERT INTO `communications_ml` VALUES (173, 29, 'en', 'Oven');
-INSERT INTO `communications_ml` VALUES (174, 29, 'hy', 'Խոհանոցային վառարան');
-INSERT INTO `communications_ml` VALUES (175, 29, 'ru', 'Духовка');
-INSERT INTO `communications_ml` VALUES (176, 30, 'en', 'Stove / Cooker');
-INSERT INTO `communications_ml` VALUES (177, 30, 'hy', 'Վառարան');
-INSERT INTO `communications_ml` VALUES (178, 30, 'ru', 'Плита');
-INSERT INTO `communications_ml` VALUES (179, 31, 'en', 'Microwave');
-INSERT INTO `communications_ml` VALUES (180, 31, 'hy', 'Մայկրոալիքային վառարան');
-INSERT INTO `communications_ml` VALUES (181, 31, 'ru', 'Микроволновка');
-INSERT INTO `communications_ml` VALUES (182, 32, 'en', 'Dishwasher');
-INSERT INTO `communications_ml` VALUES (183, 32, 'hy', 'Սպասք լվացող մեքենա');
-INSERT INTO `communications_ml` VALUES (184, 32, 'ru', 'Посудомоечная машина');
-INSERT INTO `communications_ml` VALUES (185, 33, 'en', 'Washing Machine');
-INSERT INTO `communications_ml` VALUES (186, 33, 'hy', 'Լվացքի մեքենա');
-INSERT INTO `communications_ml` VALUES (187, 33, 'ru', 'Стиральная машина');
-INSERT INTO `communications_ml` VALUES (188, 34, 'en', 'Dryer');
-INSERT INTO `communications_ml` VALUES (189, 34, 'hy', 'Չորանոց');
-INSERT INTO `communications_ml` VALUES (190, 34, 'ru', 'Сушилка');
-INSERT INTO `communications_ml` VALUES (191, 35, 'en', 'Vacuum Cleaner');
-INSERT INTO `communications_ml` VALUES (192, 35, 'hy', 'Փոշեկուլ');
-INSERT INTO `communications_ml` VALUES (193, 35, 'ru', 'Пылесос');
-INSERT INTO `communications_ml` VALUES (194, 36, 'en', 'Air Conditioner');
-INSERT INTO `communications_ml` VALUES (195, 36, 'hy', 'Օդորակիչ');
-INSERT INTO `communications_ml` VALUES (196, 36, 'ru', 'Кондиционер');
-INSERT INTO `communications_ml` VALUES (197, 37, 'en', 'Heater');
-INSERT INTO `communications_ml` VALUES (198, 37, 'hy', 'Ջեռուցիչ');
-INSERT INTO `communications_ml` VALUES (199, 37, 'ru', 'Обогреватель');
-INSERT INTO `communications_ml` VALUES (200, 38, 'en', 'Water Heater');
-INSERT INTO `communications_ml` VALUES (201, 38, 'hy', 'Ջրատաքացուցիչ');
-INSERT INTO `communications_ml` VALUES (202, 38, 'ru', 'Водонагреватель');
-INSERT INTO `communications_ml` VALUES (203, 39, 'en', 'Toaster');
-INSERT INTO `communications_ml` VALUES (204, 39, 'hy', 'Թոստեր');
-INSERT INTO `communications_ml` VALUES (205, 39, 'ru', 'Тостер');
-INSERT INTO `communications_ml` VALUES (206, 40, 'en', 'Blender');
-INSERT INTO `communications_ml` VALUES (207, 40, 'hy', 'Բլենդեր');
-INSERT INTO `communications_ml` VALUES (208, 40, 'ru', 'Блендер');
-INSERT INTO `communications_ml` VALUES (209, 41, 'en', 'Electric Kettle');
-INSERT INTO `communications_ml` VALUES (210, 41, 'hy', 'Էլեկտրական թեյնիկ');
-INSERT INTO `communications_ml` VALUES (211, 41, 'ru', 'Электрический чайник');
-INSERT INTO `communications_ml` VALUES (212, 42, 'en', 'Electric Grill');
-INSERT INTO `communications_ml` VALUES (213, 42, 'hy', 'Էլեկտրական գրիլ');
-INSERT INTO `communications_ml` VALUES (214, 42, 'ru', 'Электрический гриль');
-INSERT INTO `communications_ml` VALUES (215, 43, 'en', 'Humidifier');
-INSERT INTO `communications_ml` VALUES (216, 43, 'hy', 'Խոնավացուցիչ');
-INSERT INTO `communications_ml` VALUES (217, 43, 'ru', 'Увлажнитель');
-INSERT INTO `communications_ml` VALUES (218, 44, 'en', 'Iron');
-INSERT INTO `communications_ml` VALUES (219, 44, 'hy', 'Արդուկ');
-INSERT INTO `communications_ml` VALUES (220, 44, 'ru', 'Утюг');
-INSERT INTO `communications_ml` VALUES (221, 45, 'en', 'Hair dryer');
-INSERT INTO `communications_ml` VALUES (222, 45, 'hy', 'Ֆեն');
-INSERT INTO `communications_ml` VALUES (223, 45, 'ru', 'Фен');
+INSERT INTO `communications_ml` VALUES (224, 46, 'en', 'Electricity');
+INSERT INTO `communications_ml` VALUES (225, 46, 'hy', 'Էլեկտրականություն');
+INSERT INTO `communications_ml` VALUES (226, 46, 'ru', 'Электричество');
+INSERT INTO `communications_ml` VALUES (227, 47, 'en', 'Water supply');
+INSERT INTO `communications_ml` VALUES (228, 47, 'hy', 'Ջրամատակարարում');
+INSERT INTO `communications_ml` VALUES (229, 47, 'ru', 'Водоснабжение');
+INSERT INTO `communications_ml` VALUES (230, 48, 'en', 'Natural gas');
+INSERT INTO `communications_ml` VALUES (231, 48, 'hy', 'Գազ');
+INSERT INTO `communications_ml` VALUES (232, 48, 'ru', 'Газ');
+INSERT INTO `communications_ml` VALUES (233, 49, 'en', 'Sewer');
+INSERT INTO `communications_ml` VALUES (234, 49, 'hy', 'Կոյուղի');
+INSERT INTO `communications_ml` VALUES (235, 49, 'ru', 'Канализация');
 
 -- ----------------------------
 -- Table structure for content
@@ -5148,17 +5084,57 @@ CREATE TABLE `frontend_labels`  (
   `key` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `type` enum('content','label') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'label',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 255 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 304 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of frontend_labels
 -- ----------------------------
 INSERT INTO `frontend_labels` VALUES (245, 'title', 'label');
-INSERT INTO `frontend_labels` VALUES (250, 'dad1dddd', 'label');
-INSERT INTO `frontend_labels` VALUES (251, 'Hello', 'label');
-INSERT INTO `frontend_labels` VALUES (252, 'asd sdsa dsads', 'content');
 INSERT INTO `frontend_labels` VALUES (253, 'home_page', 'label');
 INSERT INTO `frontend_labels` VALUES (254, 'home_page_content', 'content');
+INSERT INTO `frontend_labels` VALUES (255, 'communications', 'label');
+INSERT INTO `frontend_labels` VALUES (256, 'amenities', 'label');
+INSERT INTO `frontend_labels` VALUES (257, 'household_appliances', 'label');
+INSERT INTO `frontend_labels` VALUES (258, 'main', 'label');
+INSERT INTO `frontend_labels` VALUES (259, 'kitchen', 'label');
+INSERT INTO `frontend_labels` VALUES (260, 'bedroom', 'label');
+INSERT INTO `frontend_labels` VALUES (261, 'outdoor', 'label');
+INSERT INTO `frontend_labels` VALUES (262, 'additional', 'label');
+INSERT INTO `frontend_labels` VALUES (263, 'create_item', 'label');
+INSERT INTO `frontend_labels` VALUES (264, 'add_new_property', 'label');
+INSERT INTO `frontend_labels` VALUES (265, 'property_name', 'label');
+INSERT INTO `frontend_labels` VALUES (266, 'description', 'label');
+INSERT INTO `frontend_labels` VALUES (267, 'price', 'label');
+INSERT INTO `frontend_labels` VALUES (268, 'prepayment', 'label');
+INSERT INTO `frontend_labels` VALUES (269, 'area', 'label');
+INSERT INTO `frontend_labels` VALUES (270, 'land_area', 'label');
+INSERT INTO `frontend_labels` VALUES (271, 'rooms', 'label');
+INSERT INTO `frontend_labels` VALUES (272, 'ceiling_height', 'label');
+INSERT INTO `frontend_labels` VALUES (273, 'floor', 'label');
+INSERT INTO `frontend_labels` VALUES (274, 'balcony', 'label');
+INSERT INTO `frontend_labels` VALUES (275, 'utility_payments', 'label');
+INSERT INTO `frontend_labels` VALUES (276, 'furniture', 'label');
+INSERT INTO `frontend_labels` VALUES (277, 'views_from_windows', 'label');
+INSERT INTO `frontend_labels` VALUES (278, 'location', 'label');
+INSERT INTO `frontend_labels` VALUES (279, 'state', 'label');
+INSERT INTO `frontend_labels` VALUES (280, 'city', 'label');
+INSERT INTO `frontend_labels` VALUES (281, 'postal_code', 'label');
+INSERT INTO `frontend_labels` VALUES (282, 'address', 'label');
+INSERT INTO `frontend_labels` VALUES (283, 'detailed_Information', 'label');
+INSERT INTO `frontend_labels` VALUES (284, 'area_size', 'label');
+INSERT INTO `frontend_labels` VALUES (285, 'size_prefix', 'label');
+INSERT INTO `frontend_labels` VALUES (286, 'bedrooms', 'label');
+INSERT INTO `frontend_labels` VALUES (287, 'bathrooms', 'label');
+INSERT INTO `frontend_labels` VALUES (288, 'garages', 'label');
+INSERT INTO `frontend_labels` VALUES (289, 'year_built', 'label');
+INSERT INTO `frontend_labels` VALUES (290, 'new_building', 'label');
+INSERT INTO `frontend_labels` VALUES (291, 'number_of_floors', 'label');
+INSERT INTO `frontend_labels` VALUES (292, 'building_type', 'label');
+INSERT INTO `frontend_labels` VALUES (293, 'number_of_rooms', 'label');
+INSERT INTO `frontend_labels` VALUES (300, 'parking', 'label');
+INSERT INTO `frontend_labels` VALUES (301, 'save', 'label');
+INSERT INTO `frontend_labels` VALUES (302, 'back', 'label');
+INSERT INTO `frontend_labels` VALUES (303, 'choose_property_type', 'label');
 
 -- ----------------------------
 -- Table structure for frontend_labels_ml
@@ -5171,8 +5147,8 @@ CREATE TABLE `frontend_labels_ml`  (
   `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`parent_id`, `lang`) USING BTREE,
-  CONSTRAINT `frontend_labels_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `admin_labels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 295 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `frontend_labels_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `frontend_labels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 438 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of frontend_labels_ml
@@ -5180,33 +5156,141 @@ CREATE TABLE `frontend_labels_ml`  (
 INSERT INTO `frontend_labels_ml` VALUES (265, 245, 'en', 'Title');
 INSERT INTO `frontend_labels_ml` VALUES (266, 245, 'hy', 'Title');
 INSERT INTO `frontend_labels_ml` VALUES (267, 245, 'ru', 'Title');
-INSERT INTO `frontend_labels_ml` VALUES (268, 246, 'en', 'Status');
-INSERT INTO `frontend_labels_ml` VALUES (269, 246, 'hy', 'Status');
-INSERT INTO `frontend_labels_ml` VALUES (270, 246, 'ru', 'Status');
-INSERT INTO `frontend_labels_ml` VALUES (271, 247, 'en', 'Text');
-INSERT INTO `frontend_labels_ml` VALUES (272, 247, 'hy', 'Text');
-INSERT INTO `frontend_labels_ml` VALUES (273, 247, 'ru', 'Text');
-INSERT INTO `frontend_labels_ml` VALUES (274, 248, 'en', 'Key');
-INSERT INTO `frontend_labels_ml` VALUES (275, 248, 'hy', 'Key');
-INSERT INTO `frontend_labels_ml` VALUES (276, 248, 'ru', 'Key');
-INSERT INTO `frontend_labels_ml` VALUES (277, 249, 'en', 'Type');
-INSERT INTO `frontend_labels_ml` VALUES (278, 249, 'hy', 'Type');
-INSERT INTO `frontend_labels_ml` VALUES (279, 249, 'ru', 'Type');
-INSERT INTO `frontend_labels_ml` VALUES (280, 250, 'en', 'asdsadsad');
-INSERT INTO `frontend_labels_ml` VALUES (281, 250, 'hy', 'asd sadsad');
-INSERT INTO `frontend_labels_ml` VALUES (282, 250, 'ru', 'adsadasd');
-INSERT INTO `frontend_labels_ml` VALUES (283, 251, 'en', 'Hello');
-INSERT INTO `frontend_labels_ml` VALUES (284, 251, 'hy', 'Hello');
-INSERT INTO `frontend_labels_ml` VALUES (285, 251, 'ru', 'Hello');
-INSERT INTO `frontend_labels_ml` VALUES (286, 252, 'en', 'as dsadsa');
-INSERT INTO `frontend_labels_ml` VALUES (287, 252, 'hy', '&lt;p&gt;asd sadsadsa&lt;/p&gt;');
-INSERT INTO `frontend_labels_ml` VALUES (288, 252, 'ru', '&lt;p&gt;asd sads&lt;/p&gt;');
 INSERT INTO `frontend_labels_ml` VALUES (289, 253, 'en', 'Home page');
 INSERT INTO `frontend_labels_ml` VALUES (290, 253, 'hy', 'Գլխավոր էջ');
 INSERT INTO `frontend_labels_ml` VALUES (291, 253, 'ru', 'Home page');
 INSERT INTO `frontend_labels_ml` VALUES (292, 254, 'en', '<h2 style=\"margin: 0px 0px 10px; padding: 0px; font-weight: 400; font-family: DauphinPlain; font-size: 24px; line-height: 24px;\">What is Lorem Ipsum?</h2>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\"><strong style=\"margin: 0px; padding: 0px;\">Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>');
 INSERT INTO `frontend_labels_ml` VALUES (293, 254, 'hy', '<h2 style=\"margin: 0px 0px 10px; padding: 0px; font-weight: 400; font-family: DauphinPlain; font-size: 24px; line-height: 24px;\">Ի՞նչ է Lorem Ipsum-ը</h2>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\"><strong style=\"margin: 0px; padding: 0px;\">Lorem Ipsum</strong>-ը տպագրության և տպագրական արդյունաբերության համար նախատեսված մոդելային տեքստ է: Սկսած 1500-ականներից` Lorem Ipsum-ը հանդիսացել է տպագրական արդյունաբերության ստանդարտ մոդելային տեքստ, ինչը մի անհայտ տպագրիչի կողմից տարբեր տառատեսակների օրինակների գիրք ստեղծելու ջանքերի արդյունք է: Այս տեքստը ոչ միայն կարողացել է գոյատևել հինգ դարաշրջան, այլև ներառվել է էլեկտրոնային տպագրության մեջ` մնալով էապես անփոփոխ: Այն հայտնի է դարձել 1960-ականներին Lorem Ipsum բովանդակող Letraset էջերի թողարկման արդյունքում, իսկ ավելի ուշ համակարգչային տպագրության այնպիսի ծրագրերի թողարկման հետևանքով, ինչպիսին է Aldus PageMaker-ը, որը ներառում է Lorem Ipsum-ի տարատեսակներ:</p>');
 INSERT INTO `frontend_labels_ml` VALUES (294, 254, 'ru', '<h2 style=\"margin: 0px 0px 10px; padding: 0px; font-weight: 400; font-family: DauphinPlain; font-size: 24px; line-height: 24px;\">Что такое Lorem Ipsum?</h2>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\"><strong style=\"margin: 0px; padding: 0px;\">Lorem Ipsum</strong>&nbsp;- это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>');
+INSERT INTO `frontend_labels_ml` VALUES (295, 255, 'en', 'Communications');
+INSERT INTO `frontend_labels_ml` VALUES (296, 255, 'hy', 'Կոմունիկացիաներ');
+INSERT INTO `frontend_labels_ml` VALUES (297, 255, 'ru', 'Коммуникации');
+INSERT INTO `frontend_labels_ml` VALUES (298, 256, 'en', 'Amenities');
+INSERT INTO `frontend_labels_ml` VALUES (299, 256, 'hy', 'Հարմարություններ');
+INSERT INTO `frontend_labels_ml` VALUES (300, 256, 'ru', 'Удобства');
+INSERT INTO `frontend_labels_ml` VALUES (301, 257, 'en', 'Household appliances');
+INSERT INTO `frontend_labels_ml` VALUES (302, 257, 'hy', 'Կենցաղային տեխնիկա');
+INSERT INTO `frontend_labels_ml` VALUES (303, 257, 'ru', 'Бытовая техника');
+INSERT INTO `frontend_labels_ml` VALUES (304, 258, 'en', 'General');
+INSERT INTO `frontend_labels_ml` VALUES (305, 258, 'hy', 'Ընդհանուր');
+INSERT INTO `frontend_labels_ml` VALUES (306, 258, 'ru', 'Общий');
+INSERT INTO `frontend_labels_ml` VALUES (307, 259, 'en', 'Kitchen');
+INSERT INTO `frontend_labels_ml` VALUES (308, 259, 'hy', 'Խոհանոց');
+INSERT INTO `frontend_labels_ml` VALUES (309, 259, 'ru', 'Кухня');
+INSERT INTO `frontend_labels_ml` VALUES (310, 260, 'en', 'Bedroom');
+INSERT INTO `frontend_labels_ml` VALUES (311, 260, 'hy', 'Ննջասենյակ');
+INSERT INTO `frontend_labels_ml` VALUES (312, 260, 'ru', 'Спальня');
+INSERT INTO `frontend_labels_ml` VALUES (313, 261, 'en', 'Outdoor');
+INSERT INTO `frontend_labels_ml` VALUES (314, 261, 'hy', 'Արտաքին');
+INSERT INTO `frontend_labels_ml` VALUES (315, 261, 'ru', 'Внешний');
+INSERT INTO `frontend_labels_ml` VALUES (316, 262, 'en', 'Additional');
+INSERT INTO `frontend_labels_ml` VALUES (317, 262, 'hy', 'Լրացուցիչ');
+INSERT INTO `frontend_labels_ml` VALUES (318, 262, 'ru', 'Дополнительный');
+INSERT INTO `frontend_labels_ml` VALUES (319, 263, 'en', 'Create item');
+INSERT INTO `frontend_labels_ml` VALUES (320, 263, 'hy', 'Ստեղծել տարր');
+INSERT INTO `frontend_labels_ml` VALUES (321, 263, 'ru', 'Создать элемент');
+INSERT INTO `frontend_labels_ml` VALUES (322, 264, 'en', 'Add New Property');
+INSERT INTO `frontend_labels_ml` VALUES (323, 264, 'hy', 'Ավելացնել նոր գույք');
+INSERT INTO `frontend_labels_ml` VALUES (324, 264, 'ru', 'Добавить новый объект недвижимости');
+INSERT INTO `frontend_labels_ml` VALUES (325, 265, 'en', 'Property Name');
+INSERT INTO `frontend_labels_ml` VALUES (326, 265, 'hy', 'Անշարժ գույքի անվանումը');
+INSERT INTO `frontend_labels_ml` VALUES (327, 265, 'ru', 'Название объекта недвижимости');
+INSERT INTO `frontend_labels_ml` VALUES (328, 266, 'en', 'Description');
+INSERT INTO `frontend_labels_ml` VALUES (329, 266, 'hy', 'Նկարագրություն');
+INSERT INTO `frontend_labels_ml` VALUES (330, 266, 'ru', 'Описание');
+INSERT INTO `frontend_labels_ml` VALUES (331, 267, 'en', 'Price');
+INSERT INTO `frontend_labels_ml` VALUES (332, 267, 'hy', 'Գինը');
+INSERT INTO `frontend_labels_ml` VALUES (333, 267, 'ru', 'Цена');
+INSERT INTO `frontend_labels_ml` VALUES (334, 268, 'en', 'Prepayment');
+INSERT INTO `frontend_labels_ml` VALUES (335, 268, 'hy', 'Կանխավճար');
+INSERT INTO `frontend_labels_ml` VALUES (336, 268, 'ru', 'Предоплата');
+INSERT INTO `frontend_labels_ml` VALUES (337, 269, 'en', 'Area');
+INSERT INTO `frontend_labels_ml` VALUES (338, 269, 'hy', 'Տարածք');
+INSERT INTO `frontend_labels_ml` VALUES (339, 269, 'ru', 'Область');
+INSERT INTO `frontend_labels_ml` VALUES (340, 270, 'en', 'Land area');
+INSERT INTO `frontend_labels_ml` VALUES (341, 270, 'hy', 'Հողատարածքի մակերես');
+INSERT INTO `frontend_labels_ml` VALUES (342, 270, 'ru', 'Площадь земли');
+INSERT INTO `frontend_labels_ml` VALUES (343, 271, 'en', 'Rooms');
+INSERT INTO `frontend_labels_ml` VALUES (344, 271, 'hy', 'Սենյակներ');
+INSERT INTO `frontend_labels_ml` VALUES (345, 271, 'ru', 'Комнаты');
+INSERT INTO `frontend_labels_ml` VALUES (346, 272, 'en', 'Ceiling height');
+INSERT INTO `frontend_labels_ml` VALUES (347, 272, 'hy', 'Առաստաղի բարձրություն');
+INSERT INTO `frontend_labels_ml` VALUES (348, 272, 'ru', 'Высота потолка');
+INSERT INTO `frontend_labels_ml` VALUES (349, 273, 'en', 'Floor');
+INSERT INTO `frontend_labels_ml` VALUES (350, 273, 'hy', 'Հարկ');
+INSERT INTO `frontend_labels_ml` VALUES (351, 273, 'ru', 'Этаж');
+INSERT INTO `frontend_labels_ml` VALUES (352, 274, 'en', 'Balcony');
+INSERT INTO `frontend_labels_ml` VALUES (353, 274, 'hy', 'Պատշգամբ');
+INSERT INTO `frontend_labels_ml` VALUES (354, 274, 'ru', 'Балкон');
+INSERT INTO `frontend_labels_ml` VALUES (355, 275, 'en', 'Utility payments');
+INSERT INTO `frontend_labels_ml` VALUES (356, 275, 'hy', 'Կոմունալ վճարումներ');
+INSERT INTO `frontend_labels_ml` VALUES (357, 275, 'ru', 'Коммунальные платежи');
+INSERT INTO `frontend_labels_ml` VALUES (358, 276, 'en', 'Furniture');
+INSERT INTO `frontend_labels_ml` VALUES (359, 276, 'hy', 'Կահույք');
+INSERT INTO `frontend_labels_ml` VALUES (360, 276, 'ru', 'Мебель');
+INSERT INTO `frontend_labels_ml` VALUES (361, 277, 'en', 'Views from the windows');
+INSERT INTO `frontend_labels_ml` VALUES (362, 277, 'hy', 'Տեսարաններ պատուհաններից');
+INSERT INTO `frontend_labels_ml` VALUES (363, 277, 'ru', 'Вид из окон');
+INSERT INTO `frontend_labels_ml` VALUES (364, 278, 'en', 'Location');
+INSERT INTO `frontend_labels_ml` VALUES (365, 278, 'hy', 'Գտնվելու վայրը');
+INSERT INTO `frontend_labels_ml` VALUES (366, 278, 'ru', 'Расположение');
+INSERT INTO `frontend_labels_ml` VALUES (367, 279, 'en', 'State');
+INSERT INTO `frontend_labels_ml` VALUES (368, 279, 'hy', 'Մարզ');
+INSERT INTO `frontend_labels_ml` VALUES (369, 279, 'ru', 'Штат');
+INSERT INTO `frontend_labels_ml` VALUES (370, 280, 'en', 'City');
+INSERT INTO `frontend_labels_ml` VALUES (371, 280, 'hy', 'Քաղաք');
+INSERT INTO `frontend_labels_ml` VALUES (372, 280, 'ru', 'Город');
+INSERT INTO `frontend_labels_ml` VALUES (373, 281, 'en', 'Postal code');
+INSERT INTO `frontend_labels_ml` VALUES (374, 281, 'hy', 'Փոստային ինդեքս');
+INSERT INTO `frontend_labels_ml` VALUES (375, 281, 'ru', 'Почтовый индекс');
+INSERT INTO `frontend_labels_ml` VALUES (376, 282, 'en', 'Address');
+INSERT INTO `frontend_labels_ml` VALUES (377, 282, 'hy', 'Հասցե');
+INSERT INTO `frontend_labels_ml` VALUES (378, 282, 'ru', 'Адрес');
+INSERT INTO `frontend_labels_ml` VALUES (379, 283, 'en', 'Detailed Information');
+INSERT INTO `frontend_labels_ml` VALUES (380, 283, 'hy', 'Մանրամասն տեղեկություն');
+INSERT INTO `frontend_labels_ml` VALUES (381, 283, 'ru', 'Подробная информация');
+INSERT INTO `frontend_labels_ml` VALUES (382, 284, 'en', 'Area Size');
+INSERT INTO `frontend_labels_ml` VALUES (383, 284, 'hy', 'Տարածքի չափը');
+INSERT INTO `frontend_labels_ml` VALUES (384, 284, 'ru', 'Размер площади');
+INSERT INTO `frontend_labels_ml` VALUES (388, 286, 'en', 'Bedrooms');
+INSERT INTO `frontend_labels_ml` VALUES (389, 286, 'hy', 'Ննջասենյակներ');
+INSERT INTO `frontend_labels_ml` VALUES (390, 286, 'ru', 'Спальни');
+INSERT INTO `frontend_labels_ml` VALUES (391, 287, 'en', 'Bathrooms');
+INSERT INTO `frontend_labels_ml` VALUES (392, 287, 'hy', 'Սանհանգույցների քանակ');
+INSERT INTO `frontend_labels_ml` VALUES (393, 287, 'ru', 'Количество санузлов');
+INSERT INTO `frontend_labels_ml` VALUES (397, 288, 'en', 'Garages');
+INSERT INTO `frontend_labels_ml` VALUES (398, 288, 'hy', 'Ավտոտնակ');
+INSERT INTO `frontend_labels_ml` VALUES (399, 288, 'ru', 'Гараж');
+INSERT INTO `frontend_labels_ml` VALUES (400, 289, 'en', 'Year Built');
+INSERT INTO `frontend_labels_ml` VALUES (401, 289, 'hy', 'Կառուցման տարեթիվը');
+INSERT INTO `frontend_labels_ml` VALUES (402, 289, 'ru', 'Год постройки');
+INSERT INTO `frontend_labels_ml` VALUES (403, 290, 'en', 'New building');
+INSERT INTO `frontend_labels_ml` VALUES (404, 290, 'hy', 'Նորակառույց');
+INSERT INTO `frontend_labels_ml` VALUES (405, 290, 'ru', 'Новостройка');
+INSERT INTO `frontend_labels_ml` VALUES (406, 291, 'en', 'Number of floors');
+INSERT INTO `frontend_labels_ml` VALUES (407, 291, 'hy', 'Հարկերի քանակ');
+INSERT INTO `frontend_labels_ml` VALUES (408, 291, 'ru', 'Количество этажей');
+INSERT INTO `frontend_labels_ml` VALUES (409, 292, 'en', 'Building type');
+INSERT INTO `frontend_labels_ml` VALUES (410, 292, 'hy', 'Շինության տիպ');
+INSERT INTO `frontend_labels_ml` VALUES (411, 292, 'ru', 'Тип здания');
+INSERT INTO `frontend_labels_ml` VALUES (412, 293, 'en', 'Number of rooms');
+INSERT INTO `frontend_labels_ml` VALUES (413, 293, 'hy', 'Սենյակների քանակ');
+INSERT INTO `frontend_labels_ml` VALUES (414, 293, 'ru', 'Количество комнат');
+INSERT INTO `frontend_labels_ml` VALUES (423, 300, 'en', 'Parking');
+INSERT INTO `frontend_labels_ml` VALUES (424, 300, 'hy', 'Կայանատեղի');
+INSERT INTO `frontend_labels_ml` VALUES (425, 300, 'ru', 'Парковка');
+INSERT INTO `frontend_labels_ml` VALUES (426, 301, 'en', 'Save');
+INSERT INTO `frontend_labels_ml` VALUES (427, 301, 'hy', 'Պահպանել');
+INSERT INTO `frontend_labels_ml` VALUES (428, 301, 'ru', 'Сохранить');
+INSERT INTO `frontend_labels_ml` VALUES (429, 302, 'en', 'Back');
+INSERT INTO `frontend_labels_ml` VALUES (430, 302, 'hy', 'Հետ');
+INSERT INTO `frontend_labels_ml` VALUES (431, 302, 'ru', 'Назад');
+INSERT INTO `frontend_labels_ml` VALUES (432, 303, 'en', 'Choose property type');
+INSERT INTO `frontend_labels_ml` VALUES (433, 303, 'hy', 'Ընտրեք գույքի տեսակը');
+INSERT INTO `frontend_labels_ml` VALUES (434, 303, 'ru', 'Выберите тип недвижимости');
+INSERT INTO `frontend_labels_ml` VALUES (435, 285, 'en', 'Unit of measure');
+INSERT INTO `frontend_labels_ml` VALUES (436, 285, 'hy', 'Չափի միավոր');
+INSERT INTO `frontend_labels_ml` VALUES (437, 285, 'ru', 'Единица измерения');
 
 -- ----------------------------
 -- Table structure for household_appliances

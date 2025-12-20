@@ -52,8 +52,6 @@ use App\Models\CategoryModel;
                     </div>
 
 
-
-
                     <div class="form-input-row">
                         <label for="rooms"><?= translate('rooms') ?></label>
                         <select name="rooms" id="rooms" class="form-input">
@@ -170,9 +168,15 @@ use App\Models\CategoryModel;
                                 <input type="number" class="form-input" id="postal-code">
                             </div>
 
-                            <div class="form-input-row">
+                            <div class="form-input-row relative">
                                 <label for="address"><?= translate('address') ?></label>
-                                <input type="text" class="form-input" id="address">
+                                <input type="text" class="form-input" id="address" autocomplete="off">
+
+                                <div class="addr-autocomplete" id="addr-autocomplete">
+
+
+                                </div>
+
                             </div>
                         <?php endif; ?>
 
@@ -390,8 +394,6 @@ use App\Models\CategoryModel;
                                 <?php endif; ?>
 
 
-
-
                             <?php endforeach; ?>
 
                         <?php endif; ?>
@@ -465,7 +467,7 @@ use App\Models\CategoryModel;
     })
 
     const getPointInfo = async (lat, lng) => {
-        const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1&&accept-language=hy`;
+        const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1&&accept-language=<?= $_lang ?>`;
 
         const res = await fetch(url, {
             headers: {'User-Agent': 'YourAppName'} // required by Nominatim rules
@@ -494,6 +496,73 @@ use App\Models\CategoryModel;
             zip: addr.postcode,
             country: addr.country
         }
+    }
+
+    async function searchAddress(query) {
+        const url = `https://nominatim.openstreetmap.org/search?` +
+            new URLSearchParams({
+                q: query,
+                format: 'json',
+                addressdetails: 1,
+                limit: 10,
+                countrycodes: 'am', // Armenia only
+            });
+
+        const response = await fetch(url, {
+            headers: {
+                'Accept': 'application/json',
+                // REQUIRED by Nominatim usage policy
+                'User-Agent': 'YourAppName/1.0 (your@email.com)'
+            }
+        });
+
+        return await response.json();
+    }
+
+    let addrTimeout = null;
+    document.querySelector('#address').addEventListener('input', async (e) => {
+        if (addrTimeout) {
+            clearTimeout(addrTimeout);
+        }
+        if (e.target.value.length < 3) return;
+
+        addrTimeout = setTimeout(async () => {
+
+            const addrList = [];
+            const results = await searchAddress(e.target.value);
+            if (results && results.length) {
+
+                let addrHtmlList = document.createElement('ul');
+
+                results.map(ele => {
+
+                    const addrData = {
+                        display_name: ele.display_name,
+                        lat: ele.lat,
+                        lng: ele.lon
+                    }
+
+                    const li = document.createElement('li');
+                    li.textContent = ele.display_name;
+                    console.log('addrData', addrData)
+                    li.onclick = () => {
+                        useAddress(addrData)
+                    }
+                    addrHtmlList.appendChild(li);
+                    addrList.push(addrData)
+                })
+
+                console.log(addrHtmlList)
+                document.querySelector('#addr-autocomplete').appendChild(addrHtmlList)
+            }
+
+            console.log(addrList);
+        }, 2000)
+    });
+
+    const useAddress = (addr) => {
+        console.log(addr)
+        document.querySelector('#address').value = addr.display_name
     }
 
 </script>
