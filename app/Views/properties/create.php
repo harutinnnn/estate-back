@@ -168,7 +168,7 @@ use App\Models\CategoryModel;
                                 <input type="number" class="form-input" id="postal-code">
                             </div>
 
-                            <div class="form-input-row relative">
+                            <div class="form-input-row relative" id="autocomplete-container">
                                 <label for="address"><?= translate('address') ?></label>
                                 <input type="text" class="form-input" id="address" autocomplete="off">
 
@@ -184,6 +184,8 @@ use App\Models\CategoryModel;
 
                     <div class="form-input-row">
                         <div id="property-map" style="width: 100%;height: 360px"></div>
+                        <input type="hidden" name="lat" id="lat">
+                        <input type="hidden" name="lng" id="lng">
                     </div>
                 </div>
             </div>
@@ -451,11 +453,13 @@ use App\Models\CategoryModel;
 
 
     const marker = L.marker([40.206567, 44.506210], {draggable: true}).addTo(map);
+    setLatLngInput(40.206567, 44.506210)
 
     marker.on('dragend', (e) => {
         const pos = e.target.getLatLng();
         console.log('marker moved to:', pos.lat, pos.lng);
         getPointInfo(pos.lat, pos.lng)
+        setLatLngInput(pos.lat, pos.lng)
     });
 
     map.on('click', function (e) {
@@ -463,11 +467,12 @@ use App\Models\CategoryModel;
         const lng = e.latlng.lng;
 
         getPointInfo(lat, lng)
+        setLatLngInput(lat, lng)
         marker.setLatLng([lat, lng]);
     })
 
     const getPointInfo = async (lat, lng) => {
-        const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1&&accept-language=<?= $_lang ?>`;
+        const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1&accept-language=<?= $_lang ?>`;
 
         const res = await fetch(url, {
             headers: {'User-Agent': 'YourAppName'} // required by Nominatim rules
@@ -477,17 +482,27 @@ use App\Models\CategoryModel;
 
         const addr = data.address;
 
-        // console.log("street: ", addr.road);
-        // console.log("city: ", addr.city || addr.town || addr.village);
-        // console.log("state: ", addr.state);
-        // console.log("ZIP: ", addr.postcode);
-        // console.log("country: ", addr.country)
-        console.log(addr)
 
-        console.log(addr.city)
-        // document.getElementById('city').value = addr.city || addr.town || addr.village || ""
+        let addressStr = ''
+        if (addr.road) {
+            addressStr += addr.road + ', ';
+        }
+
+        if (addr.suburb) {
+            addressStr += addr.suburb + ', ';
+        }
+        if (addr.city) {
+            addressStr += addr.city + ', ';
+        }
+        if (addr.postcode) {
+            addressStr += addr.postcode + ', ';
+        }
+        if (addr.country) {
+            addressStr += addr.country + ', ';
+        }
+
+        document.querySelector('#address').value = addressStr.trim()
         document.getElementById('postal-code').value = addr.postcode
-        // document.getElementById('state').value = addr.state || addr.suburb
 
         return {
             street: addr.road,
@@ -506,6 +521,7 @@ use App\Models\CategoryModel;
                 addressdetails: 1,
                 limit: 10,
                 countrycodes: 'am', // Armenia only
+                'accept-language': '<?= $_lang ?>'
             });
 
         const response = await fetch(url, {
@@ -520,6 +536,7 @@ use App\Models\CategoryModel;
     }
 
     let addrTimeout = null;
+
     document.querySelector('#address').addEventListener('input', async (e) => {
 
         document.querySelector('#addr-autocomplete').innerHTML = ''
@@ -539,15 +556,18 @@ use App\Models\CategoryModel;
 
                 results.map(ele => {
 
+                    console.log(ele)
+
                     const addrData = {
                         display_name: ele.display_name,
                         lat: ele.lat,
-                        lng: ele.lon
+                        lng: ele.lon,
+                        postcode: ele.address.postcode || ''
                     }
 
                     const li = document.createElement('li');
                     li.textContent = ele.display_name;
-                    console.log('addrData', addrData)
+                    // console.log('addrData', addrData)
                     li.onclick = () => {
                         useAddress(addrData)
                     }
@@ -555,18 +575,38 @@ use App\Models\CategoryModel;
                     addrList.push(addrData)
                 })
 
-                console.log(addrHtmlList)
+                // console.log(addrHtmlList)
                 document.querySelector('#addr-autocomplete').appendChild(addrHtmlList)
             }
 
             console.log(addrList);
-        }, 2000)
+        }, 1000)
     });
 
     const useAddress = (addr) => {
         console.log(addr)
         document.querySelector('#address').value = addr.display_name
+        document.querySelector('#postal-code').value = addr.postcode
+        marker.setLatLng([addr.lat, addr.lng]);
+        map.setView([addr.lat, addr.lng])
+        setLatLngInput(addr.lat, addr.lng)
+
         document.querySelector('#addr-autocomplete').innerHTML = ''
+    }
+
+    const box = document.getElementById('autocomplete-container');
+    document.addEventListener('click', (e) => {
+
+
+        if (!box.contains(e.target)) {
+            document.querySelector('#addr-autocomplete').innerHTML = ''
+        }
+    });
+
+
+    function setLatLngInput(lat, lng) {
+        document.querySelector('#lat').value = lat;
+        document.querySelector('#lng').value = lng
     }
 
 </script>
