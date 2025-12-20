@@ -521,6 +521,9 @@ use App\Models\CategoryModel;
 
     let addrTimeout = null;
     document.querySelector('#address').addEventListener('input', async (e) => {
+
+        document.querySelector('#addr-autocomplete').innerHTML = ''
+
         if (addrTimeout) {
             clearTimeout(addrTimeout);
         }
@@ -563,6 +566,7 @@ use App\Models\CategoryModel;
     const useAddress = (addr) => {
         console.log(addr)
         document.querySelector('#address').value = addr.display_name
+        document.querySelector('#addr-autocomplete').innerHTML = ''
     }
 
 </script>
