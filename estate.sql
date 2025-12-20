@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : local os 6 mysql 8
+ Source Server         : OSPanel-6-MySql-57
  Source Server Type    : MySQL
  Source Server Version : 50744 (5.7.44)
  Source Host           : 127.127.126.6:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50744 (5.7.44)
  File Encoding         : 65001
 
- Date: 09/12/2025 20:59:33
+ Date: 20/12/2025 11:11:43
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,7 @@ CREATE TABLE `admin_labels`  (
   `key` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `type` enum('content','label') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'label',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 292 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 294 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_labels
@@ -78,6 +78,8 @@ INSERT INTO `admin_labels` VALUES (288, 'date', 'label');
 INSERT INTO `admin_labels` VALUES (289, 'posts', 'label');
 INSERT INTO `admin_labels` VALUES (290, 'state', 'label');
 INSERT INTO `admin_labels` VALUES (291, 'add_city', 'label');
+INSERT INTO `admin_labels` VALUES (292, 'cat_key', 'label');
+INSERT INTO `admin_labels` VALUES (293, 'household_appliances', 'label');
 
 -- ----------------------------
 -- Table structure for admin_labels_ml
@@ -91,7 +93,7 @@ CREATE TABLE `admin_labels_ml`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`parent_id`, `lang`) USING BTREE,
   CONSTRAINT `admin_labels_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `admin_labels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 327 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 329 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_labels_ml
@@ -157,6 +159,8 @@ INSERT INTO `admin_labels_ml` VALUES (323, 288, 'en', 'Date');
 INSERT INTO `admin_labels_ml` VALUES (324, 289, 'en', 'Posts ');
 INSERT INTO `admin_labels_ml` VALUES (325, 290, 'en', 'State');
 INSERT INTO `admin_labels_ml` VALUES (326, 291, 'en', 'Add city');
+INSERT INTO `admin_labels_ml` VALUES (327, 292, 'en', 'Category  key');
+INSERT INTO `admin_labels_ml` VALUES (328, 293, 'en', 'Household appliances');
 
 -- ----------------------------
 -- Table structure for admin_lang
@@ -176,6 +180,216 @@ CREATE TABLE `admin_lang`  (
 -- Records of admin_lang
 -- ----------------------------
 INSERT INTO `admin_lang` VALUES (1, 'en', 'English', 1, 1, 1);
+
+-- ----------------------------
+-- Table structure for amenities
+-- ----------------------------
+DROP TABLE IF EXISTS `amenities`;
+CREATE TABLE `amenities`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `status` int(1) UNSIGNED NOT NULL,
+  `pos` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cat_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('main','kitchen','bedroom','outdoor','additional') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of amenities
+-- ----------------------------
+INSERT INTO `amenities` VALUES (25, 1, 0, 'wi-fi', '2025-12-19 21:03:15', '2025-12-19 21:10:07', '', 'main');
+INSERT INTO `amenities` VALUES (27, 1, 0, 'air-conditioning', '2025-12-19 21:05:20', '2025-12-19 21:10:10', '', 'main');
+INSERT INTO `amenities` VALUES (28, 1, 0, 'heating', '2025-12-19 21:05:31', '2025-12-19 21:10:11', '', 'main');
+INSERT INTO `amenities` VALUES (29, 1, 0, 'hot-water', '2025-12-19 21:05:50', '2025-12-19 21:10:13', '', 'main');
+INSERT INTO `amenities` VALUES (30, 1, 0, 'electricity', '2025-12-19 21:06:03', '2025-12-19 21:10:15', '', 'main');
+INSERT INTO `amenities` VALUES (31, 1, 0, 'natural-gas', '2025-12-19 21:06:28', '2025-12-19 21:10:26', '', 'main');
+INSERT INTO `amenities` VALUES (32, 1, 0, 'tv', '2025-12-19 21:06:40', '2025-12-19 21:10:28', '', 'main');
+INSERT INTO `amenities` VALUES (33, 1, 0, 'cable-satellite-tv', '2025-12-19 21:06:57', '2025-12-19 21:10:29', '', 'main');
+INSERT INTO `amenities` VALUES (34, 1, 0, 'washing-machine', '2025-12-19 21:07:15', '2025-12-19 21:10:31', '', 'main');
+INSERT INTO `amenities` VALUES (35, 1, 0, 'dryer', '2025-12-19 21:07:30', '2025-12-19 21:10:33', '', 'main');
+INSERT INTO `amenities` VALUES (36, 1, 0, 'iron', '2025-12-19 21:07:41', '2025-12-19 21:10:34', '', 'main');
+INSERT INTO `amenities` VALUES (37, 1, 0, 'vacuum-cleaner', '2025-12-19 21:07:52', '2025-12-19 21:10:36', '', 'main');
+INSERT INTO `amenities` VALUES (38, 1, 0, 'kitchen', '2025-12-19 21:15:55', '2025-12-19 21:16:12', '', 'kitchen');
+INSERT INTO `amenities` VALUES (39, 1, 0, 'refrigerator', '2025-12-19 21:16:51', '2025-12-19 21:18:54', '', 'kitchen');
+INSERT INTO `amenities` VALUES (40, 1, 0, 'stove', '2025-12-19 21:17:13', '2025-12-19 21:18:56', '', 'kitchen');
+INSERT INTO `amenities` VALUES (41, 1, 0, 'oven', '2025-12-19 21:17:30', '2025-12-19 21:18:58', '', 'kitchen');
+INSERT INTO `amenities` VALUES (42, 1, 0, 'microwave', '2025-12-19 21:17:46', '2025-12-19 21:19:01', '', 'kitchen');
+INSERT INTO `amenities` VALUES (43, 1, 0, 'dishwasher', '2025-12-19 21:17:59', '2025-12-19 21:19:03', '', 'kitchen');
+INSERT INTO `amenities` VALUES (44, 1, 0, 'electric-kettle', '2025-12-19 21:19:21', '2025-12-19 21:19:21', '', 'kitchen');
+INSERT INTO `amenities` VALUES (45, 1, 0, 'coffee-machine', '2025-12-19 21:19:53', '2025-12-19 21:19:53', '', 'kitchen');
+INSERT INTO `amenities` VALUES (46, 1, 0, 'kitchen-utensils', '2025-12-19 21:20:12', '2025-12-19 21:20:20', '', 'kitchen');
+INSERT INTO `amenities` VALUES (47, 1, 0, 'bed-linen', '2025-12-19 21:21:01', '2025-12-19 21:21:01', '', 'bedroom');
+INSERT INTO `amenities` VALUES (48, 1, 0, 'towels', '2025-12-19 21:21:15', '2025-12-19 21:21:15', '', 'bedroom');
+INSERT INTO `amenities` VALUES (49, 1, 0, 'wardrobe', '2025-12-19 21:21:28', '2025-12-19 21:21:34', '', 'bedroom');
+INSERT INTO `amenities` VALUES (50, 1, 0, 'bathtub', '2025-12-19 21:21:49', '2025-12-19 21:21:49', '', 'bedroom');
+INSERT INTO `amenities` VALUES (51, 1, 0, 'shower', '2025-12-19 21:22:04', '2025-12-19 21:22:04', '', 'bedroom');
+INSERT INTO `amenities` VALUES (52, 1, 0, 'hair-dryer', '2025-12-19 21:22:24', '2025-12-19 21:22:24', '', 'bedroom');
+INSERT INTO `amenities` VALUES (53, 1, 0, 'toiletries', '2025-12-19 21:22:39', '2025-12-19 21:22:39', '', 'bedroom');
+INSERT INTO `amenities` VALUES (54, 1, 0, 'balcony', '2025-12-19 21:23:04', '2025-12-19 21:23:04', '', 'outdoor');
+INSERT INTO `amenities` VALUES (55, 1, 0, 'terrace', '2025-12-19 21:23:17', '2025-12-19 21:23:17', '', 'outdoor');
+INSERT INTO `amenities` VALUES (56, 1, 0, 'parking', '2025-12-19 21:23:33', '2025-12-19 21:23:33', '', 'outdoor');
+INSERT INTO `amenities` VALUES (57, 1, 0, 'elevator', '2025-12-19 21:23:51', '2025-12-19 21:23:51', '', 'outdoor');
+INSERT INTO `amenities` VALUES (58, 1, 0, 'security', '2025-12-19 21:24:03', '2025-12-19 21:24:03', '', 'outdoor');
+INSERT INTO `amenities` VALUES (59, 1, 0, 'intercom', '2025-12-19 21:24:30', '2025-12-19 21:24:30', '', 'outdoor');
+INSERT INTO `amenities` VALUES (60, 1, 0, 'playground', '2025-12-19 21:24:50', '2025-12-19 21:24:50', '', 'outdoor');
+INSERT INTO `amenities` VALUES (61, 1, 0, 'garden', '2025-12-19 21:25:05', '2025-12-19 21:25:05', '', 'outdoor');
+INSERT INTO `amenities` VALUES (62, 1, 0, 'swimming-pool', '2025-12-19 21:25:24', '2025-12-19 21:25:24', '', 'outdoor');
+INSERT INTO `amenities` VALUES (63, 1, 0, 'gym', '2025-12-19 21:25:38', '2025-12-19 21:25:38', '', 'outdoor');
+INSERT INTO `amenities` VALUES (64, 1, 0, 'pet-friendly', '2025-12-19 21:26:03', '2025-12-19 21:26:03', '', 'additional');
+INSERT INTO `amenities` VALUES (65, 1, 0, 'smoking-allowed', '2025-12-19 21:26:23', '2025-12-19 21:26:23', '', 'additional');
+INSERT INTO `amenities` VALUES (66, 1, 0, 'non-smoking', '2025-12-19 21:26:39', '2025-12-19 21:26:39', '', 'additional');
+INSERT INTO `amenities` VALUES (67, 1, 0, 'wheelchair-accessible', '2025-12-19 21:26:58', '2025-12-19 21:26:58', '', 'additional');
+INSERT INTO `amenities` VALUES (68, 1, 0, 'sea-city-mountain-view', '2025-12-19 21:27:17', '2025-12-19 21:27:26', '', 'additional');
+
+-- ----------------------------
+-- Table structure for amenities_ml
+-- ----------------------------
+DROP TABLE IF EXISTS `amenities_ml`;
+CREATE TABLE `amenities_ml`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) UNSIGNED NOT NULL,
+  `lang` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `parent_id`(`parent_id`, `lang`) USING BTREE,
+  CONSTRAINT `amenities_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `amenities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 290 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of amenities_ml
+-- ----------------------------
+INSERT INTO `amenities_ml` VALUES (161, 25, 'en', 'Wi-Fi');
+INSERT INTO `amenities_ml` VALUES (162, 25, 'hy', 'Wi-Fi');
+INSERT INTO `amenities_ml` VALUES (163, 25, 'ru', 'Wi-Fi');
+INSERT INTO `amenities_ml` VALUES (164, 27, 'en', 'Air conditioning');
+INSERT INTO `amenities_ml` VALUES (165, 27, 'hy', 'Օդորակիչ');
+INSERT INTO `amenities_ml` VALUES (166, 27, 'ru', 'Кондиционер');
+INSERT INTO `amenities_ml` VALUES (167, 28, 'en', 'Heating');
+INSERT INTO `amenities_ml` VALUES (168, 28, 'hy', 'Ջեռուցում');
+INSERT INTO `amenities_ml` VALUES (169, 28, 'ru', 'Отопление');
+INSERT INTO `amenities_ml` VALUES (170, 29, 'en', 'Hot water');
+INSERT INTO `amenities_ml` VALUES (171, 29, 'hy', 'Տաք ջուր');
+INSERT INTO `amenities_ml` VALUES (172, 29, 'ru', 'Горячая вода');
+INSERT INTO `amenities_ml` VALUES (173, 30, 'en', 'Electricity');
+INSERT INTO `amenities_ml` VALUES (174, 30, 'hy', 'Էլեկտրաէներգիա');
+INSERT INTO `amenities_ml` VALUES (175, 30, 'ru', 'Электричество');
+INSERT INTO `amenities_ml` VALUES (176, 31, 'en', 'Natural gas');
+INSERT INTO `amenities_ml` VALUES (177, 31, 'hy', 'Բնական գազ');
+INSERT INTO `amenities_ml` VALUES (178, 31, 'ru', 'Природный газ');
+INSERT INTO `amenities_ml` VALUES (179, 32, 'en', 'TV');
+INSERT INTO `amenities_ml` VALUES (180, 32, 'hy', 'Հեռուստացույց');
+INSERT INTO `amenities_ml` VALUES (181, 32, 'ru', 'Телевизор');
+INSERT INTO `amenities_ml` VALUES (182, 33, 'en', 'Cable / Satellite TV');
+INSERT INTO `amenities_ml` VALUES (183, 33, 'hy', 'Մալուխային / Արբանյակային TV');
+INSERT INTO `amenities_ml` VALUES (184, 33, 'ru', 'Кабельное / Спутниковое ТВ');
+INSERT INTO `amenities_ml` VALUES (185, 34, 'en', 'Washing machine');
+INSERT INTO `amenities_ml` VALUES (186, 34, 'hy', 'Լվացքի մեքենա');
+INSERT INTO `amenities_ml` VALUES (187, 34, 'ru', 'Стиральная машина');
+INSERT INTO `amenities_ml` VALUES (188, 35, 'en', 'Dryer');
+INSERT INTO `amenities_ml` VALUES (189, 35, 'hy', 'Չորացնող մեքենա');
+INSERT INTO `amenities_ml` VALUES (190, 35, 'ru', 'Сушильная машина');
+INSERT INTO `amenities_ml` VALUES (191, 36, 'en', 'Iron');
+INSERT INTO `amenities_ml` VALUES (192, 36, 'hy', 'Արդուկ');
+INSERT INTO `amenities_ml` VALUES (193, 36, 'ru', 'Утюг');
+INSERT INTO `amenities_ml` VALUES (194, 37, 'en', 'Vacuum cleaner');
+INSERT INTO `amenities_ml` VALUES (195, 37, 'hy', 'Փոշեկուլ');
+INSERT INTO `amenities_ml` VALUES (196, 37, 'ru', 'Пылесос');
+INSERT INTO `amenities_ml` VALUES (197, 38, 'en', 'Kitchen');
+INSERT INTO `amenities_ml` VALUES (198, 38, 'hy', 'Խոհանոց');
+INSERT INTO `amenities_ml` VALUES (199, 38, 'ru', 'Кухня');
+INSERT INTO `amenities_ml` VALUES (200, 39, 'en', 'Refrigerator');
+INSERT INTO `amenities_ml` VALUES (201, 39, 'hy', 'Սառնարան');
+INSERT INTO `amenities_ml` VALUES (202, 39, 'ru', 'Холодильник');
+INSERT INTO `amenities_ml` VALUES (203, 40, 'en', 'Stove');
+INSERT INTO `amenities_ml` VALUES (204, 40, 'hy', 'Վառարան');
+INSERT INTO `amenities_ml` VALUES (205, 40, 'ru', 'Плита');
+INSERT INTO `amenities_ml` VALUES (206, 41, 'en', 'Oven');
+INSERT INTO `amenities_ml` VALUES (207, 41, 'hy', 'Ջեռոց');
+INSERT INTO `amenities_ml` VALUES (208, 41, 'ru', 'Духовка');
+INSERT INTO `amenities_ml` VALUES (209, 42, 'en', 'Microwave');
+INSERT INTO `amenities_ml` VALUES (210, 42, 'hy', 'Միկրոալիքային վառարան');
+INSERT INTO `amenities_ml` VALUES (211, 42, 'ru', 'Микроволновка');
+INSERT INTO `amenities_ml` VALUES (212, 43, 'en', 'Dishwasher');
+INSERT INTO `amenities_ml` VALUES (213, 43, 'hy', 'Սպասք լվացող մեքենա');
+INSERT INTO `amenities_ml` VALUES (214, 43, 'ru', 'Посудомоечная машина');
+INSERT INTO `amenities_ml` VALUES (215, 44, 'en', 'Electric kettle');
+INSERT INTO `amenities_ml` VALUES (216, 44, 'hy', 'Էլեկտրական թեյնիկ');
+INSERT INTO `amenities_ml` VALUES (217, 44, 'ru', 'Электрочайник');
+INSERT INTO `amenities_ml` VALUES (218, 45, 'en', 'Coffee machine');
+INSERT INTO `amenities_ml` VALUES (219, 45, 'hy', 'Սուրճի մեքենա');
+INSERT INTO `amenities_ml` VALUES (220, 45, 'ru', 'Кофемашина');
+INSERT INTO `amenities_ml` VALUES (221, 46, 'en', 'Kitchen utensils');
+INSERT INTO `amenities_ml` VALUES (222, 46, 'hy', 'Խոհանոցային պարագաներ');
+INSERT INTO `amenities_ml` VALUES (223, 46, 'ru', 'Кухонная утварь');
+INSERT INTO `amenities_ml` VALUES (224, 47, 'en', 'Bed linen');
+INSERT INTO `amenities_ml` VALUES (225, 47, 'hy', 'Անկողնային պարագաներ');
+INSERT INTO `amenities_ml` VALUES (226, 47, 'ru', 'Постельное белье');
+INSERT INTO `amenities_ml` VALUES (227, 48, 'en', 'Towels');
+INSERT INTO `amenities_ml` VALUES (228, 48, 'hy', 'Սրբիչներ');
+INSERT INTO `amenities_ml` VALUES (229, 48, 'ru', 'Полотенца');
+INSERT INTO `amenities_ml` VALUES (230, 49, 'en', 'Wardrobe');
+INSERT INTO `amenities_ml` VALUES (231, 49, 'hy', 'Պահարան');
+INSERT INTO `amenities_ml` VALUES (232, 49, 'ru', 'Шкаф');
+INSERT INTO `amenities_ml` VALUES (233, 50, 'en', 'Bathtub');
+INSERT INTO `amenities_ml` VALUES (234, 50, 'hy', 'Լոգարան');
+INSERT INTO `amenities_ml` VALUES (235, 50, 'ru', 'Ванна');
+INSERT INTO `amenities_ml` VALUES (236, 51, 'en', 'Shower');
+INSERT INTO `amenities_ml` VALUES (237, 51, 'hy', 'Ցնցուղ');
+INSERT INTO `amenities_ml` VALUES (238, 51, 'ru', 'Душ');
+INSERT INTO `amenities_ml` VALUES (239, 52, 'en', 'Hair dryer');
+INSERT INTO `amenities_ml` VALUES (240, 52, 'hy', 'Մազերի չորանոց');
+INSERT INTO `amenities_ml` VALUES (241, 52, 'ru', 'Фен');
+INSERT INTO `amenities_ml` VALUES (242, 53, 'en', 'Toiletries');
+INSERT INTO `amenities_ml` VALUES (243, 53, 'hy', 'Հիգիենայի պարագաներ');
+INSERT INTO `amenities_ml` VALUES (244, 53, 'ru', 'Туалетные принадлежности');
+INSERT INTO `amenities_ml` VALUES (245, 54, 'en', 'Balcony');
+INSERT INTO `amenities_ml` VALUES (246, 54, 'hy', 'Պատշգամբ');
+INSERT INTO `amenities_ml` VALUES (247, 54, 'ru', 'Балкон');
+INSERT INTO `amenities_ml` VALUES (248, 55, 'en', 'Terrace');
+INSERT INTO `amenities_ml` VALUES (249, 55, 'hy', 'Տեռասա');
+INSERT INTO `amenities_ml` VALUES (250, 55, 'ru', 'Терраса');
+INSERT INTO `amenities_ml` VALUES (251, 56, 'en', 'Parking');
+INSERT INTO `amenities_ml` VALUES (252, 56, 'hy', 'Ավտոկայանատեղի');
+INSERT INTO `amenities_ml` VALUES (253, 56, 'ru', 'Парковка');
+INSERT INTO `amenities_ml` VALUES (254, 57, 'en', 'Elevator');
+INSERT INTO `amenities_ml` VALUES (255, 57, 'hy', 'Վերելակ');
+INSERT INTO `amenities_ml` VALUES (256, 57, 'ru', 'Лифт');
+INSERT INTO `amenities_ml` VALUES (257, 58, 'en', 'Security');
+INSERT INTO `amenities_ml` VALUES (258, 58, 'hy', 'Անվտանգություն');
+INSERT INTO `amenities_ml` VALUES (259, 58, 'ru', 'Охрана');
+INSERT INTO `amenities_ml` VALUES (260, 59, 'en', 'Intercom');
+INSERT INTO `amenities_ml` VALUES (261, 59, 'hy', 'Դոմոֆոն');
+INSERT INTO `amenities_ml` VALUES (262, 59, 'ru', 'Домофон');
+INSERT INTO `amenities_ml` VALUES (263, 60, 'en', 'Playground');
+INSERT INTO `amenities_ml` VALUES (264, 60, 'hy', 'Խաղահրապարակ');
+INSERT INTO `amenities_ml` VALUES (265, 60, 'ru', 'Детская площадка');
+INSERT INTO `amenities_ml` VALUES (266, 61, 'en', 'Garden');
+INSERT INTO `amenities_ml` VALUES (267, 61, 'hy', 'Այգի');
+INSERT INTO `amenities_ml` VALUES (268, 61, 'ru', 'Сад');
+INSERT INTO `amenities_ml` VALUES (269, 62, 'en', 'Swimming pool');
+INSERT INTO `amenities_ml` VALUES (270, 62, 'hy', 'Լողավազան');
+INSERT INTO `amenities_ml` VALUES (271, 62, 'ru', 'Бассейн');
+INSERT INTO `amenities_ml` VALUES (272, 63, 'en', 'Gym');
+INSERT INTO `amenities_ml` VALUES (273, 63, 'hy', 'Մարզասրահ');
+INSERT INTO `amenities_ml` VALUES (274, 63, 'ru', 'Тренажёрный зал');
+INSERT INTO `amenities_ml` VALUES (275, 64, 'en', 'Pet friendly');
+INSERT INTO `amenities_ml` VALUES (276, 64, 'hy', 'Թույլատրվում են կենդանիներ');
+INSERT INTO `amenities_ml` VALUES (277, 64, 'ru', 'Можно с животными');
+INSERT INTO `amenities_ml` VALUES (278, 65, 'en', 'Smoking allowed');
+INSERT INTO `amenities_ml` VALUES (279, 65, 'hy', 'Ծխելը թույլատրվում է');
+INSERT INTO `amenities_ml` VALUES (280, 65, 'ru', 'Разрешено курение');
+INSERT INTO `amenities_ml` VALUES (281, 66, 'en', 'Non-smoking');
+INSERT INTO `amenities_ml` VALUES (282, 66, 'hy', 'Չծխողների համար');
+INSERT INTO `amenities_ml` VALUES (283, 66, 'ru', 'Для некурящих');
+INSERT INTO `amenities_ml` VALUES (284, 67, 'en', 'Wheelchair accessible');
+INSERT INTO `amenities_ml` VALUES (285, 67, 'hy', 'Հարմար սայլակով մուտքի համար');
+INSERT INTO `amenities_ml` VALUES (286, 67, 'ru', 'Доступно для инвалидных колясок');
+INSERT INTO `amenities_ml` VALUES (287, 68, 'en', 'Sea / City / Mountain view');
+INSERT INTO `amenities_ml` VALUES (288, 68, 'hy', 'Ծովի / Քաղաքի / Լեռների տեսարան');
+INSERT INTO `amenities_ml` VALUES (289, 68, 'ru', 'Вид на море / город / горы');
 
 -- ----------------------------
 -- Table structure for articles
@@ -206,20 +420,21 @@ CREATE TABLE `categories`  (
   `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cat_key` enum('apartment','houses','rooms','land_plot','commercial_real_estate','garages_and_parking','booths_and_kiosks','event_venue_rental') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of categories
 -- ----------------------------
-INSERT INTO `categories` VALUES (11, 1, 1, 'apartment', '2025-11-30 12:18:48', '2025-11-30 12:19:43');
-INSERT INTO `categories` VALUES (12, 1, 2, 'houses', '2025-11-30 12:20:32', '2025-11-30 12:20:32');
-INSERT INTO `categories` VALUES (13, 1, 3, 'rooms', '2025-11-30 12:21:01', '2025-11-30 12:21:01');
-INSERT INTO `categories` VALUES (14, 1, 4, 'commercial-real-estate', '2025-11-30 12:21:40', '2025-11-30 12:21:40');
-INSERT INTO `categories` VALUES (15, 1, 5, 'land-plot', '2025-11-30 12:22:23', '2025-11-30 12:22:23');
-INSERT INTO `categories` VALUES (16, 1, 6, 'garages-and-parking', '2025-11-30 12:22:53', '2025-11-30 12:22:53');
-INSERT INTO `categories` VALUES (17, 1, 7, 'booths-and-kiosks', '2025-11-30 12:23:21', '2025-11-30 12:23:21');
-INSERT INTO `categories` VALUES (18, 1, 8, 'event-venue-rental', '2025-11-30 12:23:53', '2025-11-30 12:23:53');
+INSERT INTO `categories` VALUES (11, 1, 1, 'apartment', '2025-11-30 12:18:48', '2025-12-19 20:46:51', 'apartment');
+INSERT INTO `categories` VALUES (12, 1, 2, 'houses', '2025-11-30 12:20:32', '2025-12-19 20:46:56', 'houses');
+INSERT INTO `categories` VALUES (13, 1, 3, 'rooms', '2025-11-30 12:21:01', '2025-12-19 20:47:00', 'rooms');
+INSERT INTO `categories` VALUES (14, 1, 4, 'commercial-real-estate', '2025-11-30 12:21:40', '2025-12-19 20:47:04', 'commercial_real_estate');
+INSERT INTO `categories` VALUES (15, 1, 5, 'land-plot', '2025-11-30 12:22:23', '2025-12-19 20:47:07', 'land_plot');
+INSERT INTO `categories` VALUES (16, 1, 6, 'garages-and-parking', '2025-11-30 12:22:53', '2025-12-19 20:47:10', 'garages_and_parking');
+INSERT INTO `categories` VALUES (17, 1, 7, 'booths-and-kiosks', '2025-11-30 12:23:21', '2025-12-19 20:47:13', 'booths_and_kiosks');
+INSERT INTO `categories` VALUES (18, 1, 8, 'event-venue-rental', '2025-11-30 12:23:53', '2025-12-19 20:47:14', 'event_venue_rental');
 
 -- ----------------------------
 -- Table structure for categories_ml
@@ -232,36 +447,36 @@ CREATE TABLE `categories_ml`  (
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `parent_id`(`parent_id`, `lang`) USING BTREE,
-  CONSTRAINT `categories_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `categories_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 131 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of categories_ml
 -- ----------------------------
-INSERT INTO `categories_ml` VALUES (83, 11, 'en', 'Apartment');
-INSERT INTO `categories_ml` VALUES (84, 11, 'hy', 'Բնակարան');
-INSERT INTO `categories_ml` VALUES (85, 11, 'ru', 'Квартира');
-INSERT INTO `categories_ml` VALUES (86, 12, 'en', 'Houses');
-INSERT INTO `categories_ml` VALUES (87, 12, 'hy', 'Տներ');
-INSERT INTO `categories_ml` VALUES (88, 12, 'ru', 'Дома');
-INSERT INTO `categories_ml` VALUES (89, 13, 'en', 'Rooms');
-INSERT INTO `categories_ml` VALUES (90, 13, 'hy', 'Սենյակներ');
-INSERT INTO `categories_ml` VALUES (91, 13, 'ru', 'Комнаты');
-INSERT INTO `categories_ml` VALUES (92, 14, 'en', 'Commercial real estate');
-INSERT INTO `categories_ml` VALUES (93, 14, 'hy', 'Կոմերցիոն անշարժ գույք');
-INSERT INTO `categories_ml` VALUES (94, 14, 'ru', 'Коммерческая недвижимость');
-INSERT INTO `categories_ml` VALUES (95, 15, 'en', 'Land plot');
-INSERT INTO `categories_ml` VALUES (96, 15, 'hy', 'Հողատարածք');
-INSERT INTO `categories_ml` VALUES (97, 15, 'ru', 'Земельный участок');
-INSERT INTO `categories_ml` VALUES (98, 16, 'en', 'Garages and parking');
-INSERT INTO `categories_ml` VALUES (99, 16, 'hy', 'Ավտոտնակներ և կայանատեղի');
-INSERT INTO `categories_ml` VALUES (100, 16, 'ru', 'Гаражи и парковка');
-INSERT INTO `categories_ml` VALUES (101, 17, 'en', 'Booths and kiosks');
-INSERT INTO `categories_ml` VALUES (102, 17, 'hy', 'Տնակներ և կրպակներ');
-INSERT INTO `categories_ml` VALUES (103, 17, 'ru', 'Киоски и стенды');
-INSERT INTO `categories_ml` VALUES (104, 18, 'en', 'Event venue rental');
-INSERT INTO `categories_ml` VALUES (105, 18, 'hy', 'Միջոցառումների անցկացման վայրերի վարձակալություն');
-INSERT INTO `categories_ml` VALUES (106, 18, 'ru', 'Аренда места проведения мероприятия');
+INSERT INTO `categories_ml` VALUES (107, 11, 'en', 'Apartment');
+INSERT INTO `categories_ml` VALUES (108, 11, 'hy', 'Բնակարան');
+INSERT INTO `categories_ml` VALUES (109, 11, 'ru', 'Квартира');
+INSERT INTO `categories_ml` VALUES (110, 12, 'en', 'Houses');
+INSERT INTO `categories_ml` VALUES (111, 12, 'hy', 'Տներ');
+INSERT INTO `categories_ml` VALUES (112, 12, 'ru', 'Дома');
+INSERT INTO `categories_ml` VALUES (113, 13, 'en', 'Rooms');
+INSERT INTO `categories_ml` VALUES (114, 13, 'hy', 'Սենյակներ');
+INSERT INTO `categories_ml` VALUES (115, 13, 'ru', 'Комнаты');
+INSERT INTO `categories_ml` VALUES (116, 14, 'en', 'Commercial real estate');
+INSERT INTO `categories_ml` VALUES (117, 14, 'hy', 'Կոմերցիոն անշարժ գույք');
+INSERT INTO `categories_ml` VALUES (118, 14, 'ru', 'Коммерческая недвижимость');
+INSERT INTO `categories_ml` VALUES (119, 15, 'en', 'Land plot');
+INSERT INTO `categories_ml` VALUES (120, 15, 'hy', 'Հողատարածք');
+INSERT INTO `categories_ml` VALUES (121, 15, 'ru', 'Земельный участок');
+INSERT INTO `categories_ml` VALUES (122, 16, 'en', 'Garages and parking');
+INSERT INTO `categories_ml` VALUES (123, 16, 'hy', 'Ավտոտնակներ և կայանատեղի');
+INSERT INTO `categories_ml` VALUES (124, 16, 'ru', 'Гаражи и парковка');
+INSERT INTO `categories_ml` VALUES (125, 17, 'en', 'Booths and kiosks');
+INSERT INTO `categories_ml` VALUES (126, 17, 'hy', 'Տնակներ և կրպակներ');
+INSERT INTO `categories_ml` VALUES (127, 17, 'ru', 'Киоски и стенды');
+INSERT INTO `categories_ml` VALUES (128, 18, 'en', 'Event venue rental');
+INSERT INTO `categories_ml` VALUES (129, 18, 'hy', 'Միջոցառումների անցկացման վայրերի վարձակալություն');
+INSERT INTO `categories_ml` VALUES (130, 18, 'ru', 'Аренда места проведения мероприятия');
 
 -- ----------------------------
 -- Table structure for cities
@@ -4757,6 +4972,123 @@ INSERT INTO `cities_ml_copy2` VALUES (1193, 397, 'hy', 'Զովաբեր');
 INSERT INTO `cities_ml_copy2` VALUES (1194, 397, 'ru', 'Зовабер');
 
 -- ----------------------------
+-- Table structure for communications
+-- ----------------------------
+DROP TABLE IF EXISTS `communications`;
+CREATE TABLE `communications`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `status` int(1) UNSIGNED NOT NULL,
+  `pos` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cat_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of communications
+-- ----------------------------
+INSERT INTO `communications` VALUES (24, 1, 0, 'refrigerator', '2025-12-19 21:01:14', '2025-12-20 10:20:03', '');
+INSERT INTO `communications` VALUES (27, 1, 0, 'coffee-maker', '2025-12-19 21:01:42', '2025-12-20 10:20:38', '');
+INSERT INTO `communications` VALUES (28, 1, 0, 'freezer', '2025-12-20 10:19:43', '2025-12-20 10:19:43', '');
+INSERT INTO `communications` VALUES (29, 1, 0, 'oven', '2025-12-20 10:21:01', '2025-12-20 10:21:01', '');
+INSERT INTO `communications` VALUES (30, 1, 0, 'stove-cooker', '2025-12-20 10:21:48', '2025-12-20 10:21:48', '');
+INSERT INTO `communications` VALUES (31, 1, 0, 'microwave', '2025-12-20 10:22:41', '2025-12-20 10:22:41', '');
+INSERT INTO `communications` VALUES (32, 1, 0, 'dishwasher', '2025-12-20 10:23:15', '2025-12-20 10:23:15', '');
+INSERT INTO `communications` VALUES (33, 1, 0, 'washing-machine', '2025-12-20 10:23:32', '2025-12-20 10:23:32', '');
+INSERT INTO `communications` VALUES (34, 1, 0, 'dryer', '2025-12-20 10:23:51', '2025-12-20 10:23:51', '');
+INSERT INTO `communications` VALUES (35, 1, 0, 'vacuum-cleaner', '2025-12-20 10:24:18', '2025-12-20 10:24:18', '');
+INSERT INTO `communications` VALUES (36, 1, 0, 'air-conditioner', '2025-12-20 10:24:40', '2025-12-20 10:24:40', '');
+INSERT INTO `communications` VALUES (37, 1, 0, 'heater', '2025-12-20 10:24:52', '2025-12-20 10:24:52', '');
+INSERT INTO `communications` VALUES (38, 1, 0, 'water-heater', '2025-12-20 10:25:25', '2025-12-20 10:25:25', '');
+INSERT INTO `communications` VALUES (39, 1, 0, 'toaster', '2025-12-20 10:25:36', '2025-12-20 10:25:36', '');
+INSERT INTO `communications` VALUES (40, 1, 0, 'blender', '2025-12-20 10:25:58', '2025-12-20 10:25:58', '');
+INSERT INTO `communications` VALUES (41, 1, 0, 'electric-kettle', '2025-12-20 10:26:18', '2025-12-20 10:26:18', '');
+INSERT INTO `communications` VALUES (42, 1, 0, 'electric-grill', '2025-12-20 10:26:59', '2025-12-20 10:26:59', '');
+INSERT INTO `communications` VALUES (43, 1, 0, 'humidifier', '2025-12-20 10:27:37', '2025-12-20 10:27:37', '');
+INSERT INTO `communications` VALUES (44, 1, 0, 'iron', '2025-12-20 10:27:56', '2025-12-20 10:27:56', '');
+INSERT INTO `communications` VALUES (45, 1, 0, 'hair-dryer', '2025-12-20 10:29:05', '2025-12-20 10:29:05', '');
+
+-- ----------------------------
+-- Table structure for communications_ml
+-- ----------------------------
+DROP TABLE IF EXISTS `communications_ml`;
+CREATE TABLE `communications_ml`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) UNSIGNED NOT NULL,
+  `lang` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `parent_id`(`parent_id`, `lang`) USING BTREE,
+  CONSTRAINT `communications_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `communications` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 224 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of communications_ml
+-- ----------------------------
+INSERT INTO `communications_ml` VALUES (164, 28, 'en', 'Freezer');
+INSERT INTO `communications_ml` VALUES (165, 28, 'hy', 'Սառցարան');
+INSERT INTO `communications_ml` VALUES (166, 28, 'ru', 'Морозильник');
+INSERT INTO `communications_ml` VALUES (167, 24, 'en', 'Refrigerator');
+INSERT INTO `communications_ml` VALUES (168, 24, 'hy', 'Սառնարան');
+INSERT INTO `communications_ml` VALUES (169, 24, 'ru', 'Холодильник');
+INSERT INTO `communications_ml` VALUES (170, 27, 'en', 'Coffee Maker');
+INSERT INTO `communications_ml` VALUES (171, 27, 'hy', 'Սրճեփ');
+INSERT INTO `communications_ml` VALUES (172, 27, 'ru', 'Кофеварка');
+INSERT INTO `communications_ml` VALUES (173, 29, 'en', 'Oven');
+INSERT INTO `communications_ml` VALUES (174, 29, 'hy', 'Խոհանոցային վառարան');
+INSERT INTO `communications_ml` VALUES (175, 29, 'ru', 'Духовка');
+INSERT INTO `communications_ml` VALUES (176, 30, 'en', 'Stove / Cooker');
+INSERT INTO `communications_ml` VALUES (177, 30, 'hy', 'Վառարան');
+INSERT INTO `communications_ml` VALUES (178, 30, 'ru', 'Плита');
+INSERT INTO `communications_ml` VALUES (179, 31, 'en', 'Microwave');
+INSERT INTO `communications_ml` VALUES (180, 31, 'hy', 'Մայկրոալիքային վառարան');
+INSERT INTO `communications_ml` VALUES (181, 31, 'ru', 'Микроволновка');
+INSERT INTO `communications_ml` VALUES (182, 32, 'en', 'Dishwasher');
+INSERT INTO `communications_ml` VALUES (183, 32, 'hy', 'Սպասք լվացող մեքենա');
+INSERT INTO `communications_ml` VALUES (184, 32, 'ru', 'Посудомоечная машина');
+INSERT INTO `communications_ml` VALUES (185, 33, 'en', 'Washing Machine');
+INSERT INTO `communications_ml` VALUES (186, 33, 'hy', 'Լվացքի մեքենա');
+INSERT INTO `communications_ml` VALUES (187, 33, 'ru', 'Стиральная машина');
+INSERT INTO `communications_ml` VALUES (188, 34, 'en', 'Dryer');
+INSERT INTO `communications_ml` VALUES (189, 34, 'hy', 'Չորանոց');
+INSERT INTO `communications_ml` VALUES (190, 34, 'ru', 'Сушилка');
+INSERT INTO `communications_ml` VALUES (191, 35, 'en', 'Vacuum Cleaner');
+INSERT INTO `communications_ml` VALUES (192, 35, 'hy', 'Փոշեկուլ');
+INSERT INTO `communications_ml` VALUES (193, 35, 'ru', 'Пылесос');
+INSERT INTO `communications_ml` VALUES (194, 36, 'en', 'Air Conditioner');
+INSERT INTO `communications_ml` VALUES (195, 36, 'hy', 'Օդորակիչ');
+INSERT INTO `communications_ml` VALUES (196, 36, 'ru', 'Кондиционер');
+INSERT INTO `communications_ml` VALUES (197, 37, 'en', 'Heater');
+INSERT INTO `communications_ml` VALUES (198, 37, 'hy', 'Ջեռուցիչ');
+INSERT INTO `communications_ml` VALUES (199, 37, 'ru', 'Обогреватель');
+INSERT INTO `communications_ml` VALUES (200, 38, 'en', 'Water Heater');
+INSERT INTO `communications_ml` VALUES (201, 38, 'hy', 'Ջրատաքացուցիչ');
+INSERT INTO `communications_ml` VALUES (202, 38, 'ru', 'Водонагреватель');
+INSERT INTO `communications_ml` VALUES (203, 39, 'en', 'Toaster');
+INSERT INTO `communications_ml` VALUES (204, 39, 'hy', 'Թոստեր');
+INSERT INTO `communications_ml` VALUES (205, 39, 'ru', 'Тостер');
+INSERT INTO `communications_ml` VALUES (206, 40, 'en', 'Blender');
+INSERT INTO `communications_ml` VALUES (207, 40, 'hy', 'Բլենդեր');
+INSERT INTO `communications_ml` VALUES (208, 40, 'ru', 'Блендер');
+INSERT INTO `communications_ml` VALUES (209, 41, 'en', 'Electric Kettle');
+INSERT INTO `communications_ml` VALUES (210, 41, 'hy', 'Էլեկտրական թեյնիկ');
+INSERT INTO `communications_ml` VALUES (211, 41, 'ru', 'Электрический чайник');
+INSERT INTO `communications_ml` VALUES (212, 42, 'en', 'Electric Grill');
+INSERT INTO `communications_ml` VALUES (213, 42, 'hy', 'Էլեկտրական գրիլ');
+INSERT INTO `communications_ml` VALUES (214, 42, 'ru', 'Электрический гриль');
+INSERT INTO `communications_ml` VALUES (215, 43, 'en', 'Humidifier');
+INSERT INTO `communications_ml` VALUES (216, 43, 'hy', 'Խոնավացուցիչ');
+INSERT INTO `communications_ml` VALUES (217, 43, 'ru', 'Увлажнитель');
+INSERT INTO `communications_ml` VALUES (218, 44, 'en', 'Iron');
+INSERT INTO `communications_ml` VALUES (219, 44, 'hy', 'Արդուկ');
+INSERT INTO `communications_ml` VALUES (220, 44, 'ru', 'Утюг');
+INSERT INTO `communications_ml` VALUES (221, 45, 'en', 'Hair dryer');
+INSERT INTO `communications_ml` VALUES (222, 45, 'hy', 'Ֆեն');
+INSERT INTO `communications_ml` VALUES (223, 45, 'ru', 'Фен');
+
+-- ----------------------------
 -- Table structure for content
 -- ----------------------------
 DROP TABLE IF EXISTS `content`;
@@ -4875,6 +5207,123 @@ INSERT INTO `frontend_labels_ml` VALUES (291, 253, 'ru', 'Home page');
 INSERT INTO `frontend_labels_ml` VALUES (292, 254, 'en', '<h2 style=\"margin: 0px 0px 10px; padding: 0px; font-weight: 400; font-family: DauphinPlain; font-size: 24px; line-height: 24px;\">What is Lorem Ipsum?</h2>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\"><strong style=\"margin: 0px; padding: 0px;\">Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>');
 INSERT INTO `frontend_labels_ml` VALUES (293, 254, 'hy', '<h2 style=\"margin: 0px 0px 10px; padding: 0px; font-weight: 400; font-family: DauphinPlain; font-size: 24px; line-height: 24px;\">Ի՞նչ է Lorem Ipsum-ը</h2>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\"><strong style=\"margin: 0px; padding: 0px;\">Lorem Ipsum</strong>-ը տպագրության և տպագրական արդյունաբերության համար նախատեսված մոդելային տեքստ է: Սկսած 1500-ականներից` Lorem Ipsum-ը հանդիսացել է տպագրական արդյունաբերության ստանդարտ մոդելային տեքստ, ինչը մի անհայտ տպագրիչի կողմից տարբեր տառատեսակների օրինակների գիրք ստեղծելու ջանքերի արդյունք է: Այս տեքստը ոչ միայն կարողացել է գոյատևել հինգ դարաշրջան, այլև ներառվել է էլեկտրոնային տպագրության մեջ` մնալով էապես անփոփոխ: Այն հայտնի է դարձել 1960-ականներին Lorem Ipsum բովանդակող Letraset էջերի թողարկման արդյունքում, իսկ ավելի ուշ համակարգչային տպագրության այնպիսի ծրագրերի թողարկման հետևանքով, ինչպիսին է Aldus PageMaker-ը, որը ներառում է Lorem Ipsum-ի տարատեսակներ:</p>');
 INSERT INTO `frontend_labels_ml` VALUES (294, 254, 'ru', '<h2 style=\"margin: 0px 0px 10px; padding: 0px; font-weight: 400; font-family: DauphinPlain; font-size: 24px; line-height: 24px;\">Что такое Lorem Ipsum?</h2>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\"><strong style=\"margin: 0px; padding: 0px;\">Lorem Ipsum</strong>&nbsp;- это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>');
+
+-- ----------------------------
+-- Table structure for household_appliances
+-- ----------------------------
+DROP TABLE IF EXISTS `household_appliances`;
+CREATE TABLE `household_appliances`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `status` int(1) UNSIGNED NOT NULL,
+  `pos` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cat_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of household_appliances
+-- ----------------------------
+INSERT INTO `household_appliances` VALUES (24, 1, 0, 'refrigerator', '2025-12-19 21:01:14', '2025-12-20 10:20:03', '');
+INSERT INTO `household_appliances` VALUES (27, 1, 0, 'coffee-maker', '2025-12-19 21:01:42', '2025-12-20 10:20:38', '');
+INSERT INTO `household_appliances` VALUES (28, 1, 0, 'freezer', '2025-12-20 10:19:43', '2025-12-20 10:19:43', '');
+INSERT INTO `household_appliances` VALUES (29, 1, 0, 'oven', '2025-12-20 10:21:01', '2025-12-20 10:21:01', '');
+INSERT INTO `household_appliances` VALUES (30, 1, 0, 'stove-cooker', '2025-12-20 10:21:48', '2025-12-20 10:21:48', '');
+INSERT INTO `household_appliances` VALUES (31, 1, 0, 'microwave', '2025-12-20 10:22:41', '2025-12-20 10:22:41', '');
+INSERT INTO `household_appliances` VALUES (32, 1, 0, 'dishwasher', '2025-12-20 10:23:15', '2025-12-20 10:23:15', '');
+INSERT INTO `household_appliances` VALUES (33, 1, 0, 'washing-machine', '2025-12-20 10:23:32', '2025-12-20 10:23:32', '');
+INSERT INTO `household_appliances` VALUES (34, 1, 0, 'dryer', '2025-12-20 10:23:51', '2025-12-20 10:23:51', '');
+INSERT INTO `household_appliances` VALUES (35, 1, 0, 'vacuum-cleaner', '2025-12-20 10:24:18', '2025-12-20 10:24:18', '');
+INSERT INTO `household_appliances` VALUES (36, 1, 0, 'air-conditioner', '2025-12-20 10:24:40', '2025-12-20 10:24:40', '');
+INSERT INTO `household_appliances` VALUES (37, 1, 0, 'heater', '2025-12-20 10:24:52', '2025-12-20 10:24:52', '');
+INSERT INTO `household_appliances` VALUES (38, 1, 0, 'water-heater', '2025-12-20 10:25:25', '2025-12-20 10:25:25', '');
+INSERT INTO `household_appliances` VALUES (39, 1, 0, 'toaster', '2025-12-20 10:25:36', '2025-12-20 10:25:36', '');
+INSERT INTO `household_appliances` VALUES (40, 1, 0, 'blender', '2025-12-20 10:25:58', '2025-12-20 10:25:58', '');
+INSERT INTO `household_appliances` VALUES (41, 1, 0, 'electric-kettle', '2025-12-20 10:26:18', '2025-12-20 10:26:18', '');
+INSERT INTO `household_appliances` VALUES (42, 1, 0, 'electric-grill', '2025-12-20 10:26:59', '2025-12-20 10:26:59', '');
+INSERT INTO `household_appliances` VALUES (43, 1, 0, 'humidifier', '2025-12-20 10:27:37', '2025-12-20 10:27:37', '');
+INSERT INTO `household_appliances` VALUES (44, 1, 0, 'iron', '2025-12-20 10:27:56', '2025-12-20 10:27:56', '');
+INSERT INTO `household_appliances` VALUES (45, 1, 0, 'hair-dryer', '2025-12-20 10:29:05', '2025-12-20 10:29:05', '');
+
+-- ----------------------------
+-- Table structure for household_appliances_ml
+-- ----------------------------
+DROP TABLE IF EXISTS `household_appliances_ml`;
+CREATE TABLE `household_appliances_ml`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) UNSIGNED NOT NULL,
+  `lang` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `parent_id`(`parent_id`, `lang`) USING BTREE,
+  CONSTRAINT `household_appliances_ml_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `household_appliances` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 224 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of household_appliances_ml
+-- ----------------------------
+INSERT INTO `household_appliances_ml` VALUES (164, 28, 'en', 'Freezer');
+INSERT INTO `household_appliances_ml` VALUES (165, 28, 'hy', 'Սառցարան');
+INSERT INTO `household_appliances_ml` VALUES (166, 28, 'ru', 'Морозильник');
+INSERT INTO `household_appliances_ml` VALUES (167, 24, 'en', 'Refrigerator');
+INSERT INTO `household_appliances_ml` VALUES (168, 24, 'hy', 'Սառնարան');
+INSERT INTO `household_appliances_ml` VALUES (169, 24, 'ru', 'Холодильник');
+INSERT INTO `household_appliances_ml` VALUES (170, 27, 'en', 'Coffee Maker');
+INSERT INTO `household_appliances_ml` VALUES (171, 27, 'hy', 'Սրճեփ');
+INSERT INTO `household_appliances_ml` VALUES (172, 27, 'ru', 'Кофеварка');
+INSERT INTO `household_appliances_ml` VALUES (173, 29, 'en', 'Oven');
+INSERT INTO `household_appliances_ml` VALUES (174, 29, 'hy', 'Խոհանոցային վառարան');
+INSERT INTO `household_appliances_ml` VALUES (175, 29, 'ru', 'Духовка');
+INSERT INTO `household_appliances_ml` VALUES (176, 30, 'en', 'Stove / Cooker');
+INSERT INTO `household_appliances_ml` VALUES (177, 30, 'hy', 'Վառարան');
+INSERT INTO `household_appliances_ml` VALUES (178, 30, 'ru', 'Плита');
+INSERT INTO `household_appliances_ml` VALUES (179, 31, 'en', 'Microwave');
+INSERT INTO `household_appliances_ml` VALUES (180, 31, 'hy', 'Մայկրոալիքային վառարան');
+INSERT INTO `household_appliances_ml` VALUES (181, 31, 'ru', 'Микроволновка');
+INSERT INTO `household_appliances_ml` VALUES (182, 32, 'en', 'Dishwasher');
+INSERT INTO `household_appliances_ml` VALUES (183, 32, 'hy', 'Սպասք լվացող մեքենա');
+INSERT INTO `household_appliances_ml` VALUES (184, 32, 'ru', 'Посудомоечная машина');
+INSERT INTO `household_appliances_ml` VALUES (185, 33, 'en', 'Washing Machine');
+INSERT INTO `household_appliances_ml` VALUES (186, 33, 'hy', 'Լվացքի մեքենա');
+INSERT INTO `household_appliances_ml` VALUES (187, 33, 'ru', 'Стиральная машина');
+INSERT INTO `household_appliances_ml` VALUES (188, 34, 'en', 'Dryer');
+INSERT INTO `household_appliances_ml` VALUES (189, 34, 'hy', 'Չորանոց');
+INSERT INTO `household_appliances_ml` VALUES (190, 34, 'ru', 'Сушилка');
+INSERT INTO `household_appliances_ml` VALUES (191, 35, 'en', 'Vacuum Cleaner');
+INSERT INTO `household_appliances_ml` VALUES (192, 35, 'hy', 'Փոշեկուլ');
+INSERT INTO `household_appliances_ml` VALUES (193, 35, 'ru', 'Пылесос');
+INSERT INTO `household_appliances_ml` VALUES (194, 36, 'en', 'Air Conditioner');
+INSERT INTO `household_appliances_ml` VALUES (195, 36, 'hy', 'Օդորակիչ');
+INSERT INTO `household_appliances_ml` VALUES (196, 36, 'ru', 'Кондиционер');
+INSERT INTO `household_appliances_ml` VALUES (197, 37, 'en', 'Heater');
+INSERT INTO `household_appliances_ml` VALUES (198, 37, 'hy', 'Ջեռուցիչ');
+INSERT INTO `household_appliances_ml` VALUES (199, 37, 'ru', 'Обогреватель');
+INSERT INTO `household_appliances_ml` VALUES (200, 38, 'en', 'Water Heater');
+INSERT INTO `household_appliances_ml` VALUES (201, 38, 'hy', 'Ջրատաքացուցիչ');
+INSERT INTO `household_appliances_ml` VALUES (202, 38, 'ru', 'Водонагреватель');
+INSERT INTO `household_appliances_ml` VALUES (203, 39, 'en', 'Toaster');
+INSERT INTO `household_appliances_ml` VALUES (204, 39, 'hy', 'Թոստեր');
+INSERT INTO `household_appliances_ml` VALUES (205, 39, 'ru', 'Тостер');
+INSERT INTO `household_appliances_ml` VALUES (206, 40, 'en', 'Blender');
+INSERT INTO `household_appliances_ml` VALUES (207, 40, 'hy', 'Բլենդեր');
+INSERT INTO `household_appliances_ml` VALUES (208, 40, 'ru', 'Блендер');
+INSERT INTO `household_appliances_ml` VALUES (209, 41, 'en', 'Electric Kettle');
+INSERT INTO `household_appliances_ml` VALUES (210, 41, 'hy', 'Էլեկտրական թեյնիկ');
+INSERT INTO `household_appliances_ml` VALUES (211, 41, 'ru', 'Электрический чайник');
+INSERT INTO `household_appliances_ml` VALUES (212, 42, 'en', 'Electric Grill');
+INSERT INTO `household_appliances_ml` VALUES (213, 42, 'hy', 'Էլեկտրական գրիլ');
+INSERT INTO `household_appliances_ml` VALUES (214, 42, 'ru', 'Электрический гриль');
+INSERT INTO `household_appliances_ml` VALUES (215, 43, 'en', 'Humidifier');
+INSERT INTO `household_appliances_ml` VALUES (216, 43, 'hy', 'Խոնավացուցիչ');
+INSERT INTO `household_appliances_ml` VALUES (217, 43, 'ru', 'Увлажнитель');
+INSERT INTO `household_appliances_ml` VALUES (218, 44, 'en', 'Iron');
+INSERT INTO `household_appliances_ml` VALUES (219, 44, 'hy', 'Արդուկ');
+INSERT INTO `household_appliances_ml` VALUES (220, 44, 'ru', 'Утюг');
+INSERT INTO `household_appliances_ml` VALUES (221, 45, 'en', 'Hair dryer');
+INSERT INTO `household_appliances_ml` VALUES (222, 45, 'hy', 'Ֆեն');
+INSERT INTO `household_appliances_ml` VALUES (223, 45, 'ru', 'Фен');
 
 -- ----------------------------
 -- Table structure for lang
@@ -5632,7 +6081,7 @@ CREATE TABLE `siteUsers`  (
 -- Records of siteUsers
 -- ----------------------------
 INSERT INTO `siteUsers` VALUES (138, 'Harut', 'user@user.com', '$2y$10$H4d/A78CbVtJQfoqJtSY8eTHvQDpiSjA3PBbSSn.640OwQBgHtwDC', '', NULL, 'user', 'dda384ff1784c0a412bde83ace886ba7', '2025-10-02 16:11:23', '2025-11-28 20:38:51');
-INSERT INTO `siteUsers` VALUES (140, 'Harutyun Sargsyan', 'harutinnnn@gmail.com', '$2y$10$XTBXUg9CPixAxYdgFef.yOBUZsacCtYsIp7vi/t1mEwM7gPTM6EVG', '(055) 80-84-96', NULL, 'user', NULL, '2025-11-29 14:36:44', '2025-11-29 14:36:44');
+INSERT INTO `siteUsers` VALUES (140, 'Harutyun Sargsyan', 'harutinnnn@gmail.com', '$2y$10$XTBXUg9CPixAxYdgFef.yOBUZsacCtYsIp7vi/t1mEwM7gPTM6EVG', '(055) 80-84-96', NULL, 'user', '8510bc53b60afed32bccf3a35088d0d1', '2025-11-29 14:36:44', '2025-12-10 19:41:30');
 
 -- ----------------------------
 -- Table structure for states

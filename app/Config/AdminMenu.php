@@ -51,6 +51,24 @@ class AdminMenu extends BaseConfig
             'nodes' => null
         ],
         [
+            'link' => '/household_appliances',
+            'title' => 'Household appliances',
+            'icon' => 'fas fa-blender-phone',
+            'nodes' => null
+        ],
+        [
+            'link' => '/communications',
+            'title' => 'Communications',
+            'icon' => 'fas fa-satellite-dish',
+            'nodes' => null
+        ],
+        [
+            'link' => '/amenities',
+            'title' => 'Amenities',
+            'icon' => 'fas fa-tv',
+            'nodes' => null
+        ],
+        [
             'link' => null,
             'title' => 'News',
             'icon' => 'nav-icon fas fa-newspaper',

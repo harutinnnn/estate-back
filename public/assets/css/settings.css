@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Nunito";
     color: var(--primary-link-color);
 }
 
@@ -169,6 +168,10 @@ a:hover {
 
 .mb-30 {
     margin-bottom: 30px;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
 }
 
 .ml-auto {
@@ -641,6 +644,11 @@ ul.breadcrumb li:not(:first-child):before {
     margin: 5px 0;
 }
 
+
+.gray-line{
+    width: 100%;
+    border-bottom: solid 1px var(--text-thm7);
+}
 @media only screen and (max-width: 700px) {
     .flex-column-on-mobile {
         flex-direction: column;

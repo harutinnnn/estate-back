@@ -8,39 +8,39 @@ use App\Models\CategoryModel;
     <section class="properties-header">
 
         <div class="properties-title-container">
-            <h1 class="">Add New Property</h1>
+            <h1 class=""><?= translate('add_new_property') ?></h1>
         </div>
     </section>
 
     <section class="admin-section">
         <form method="post">
             <div class="admin-section-block mb-30">
-                <h2 class="mb-30 flex flex-align-items-center gap-5">Create Listing <i
+                <h2 class="mb-30 flex flex-align-items-center gap-5"><?= translate('create_item') ?> <i
                             class="fa-solid fa-caret-right fs-16"></i> <?= $categories[$propertyType] ?></h2>
 
 
                 <?= form_hidden('property-type', $propertyType) ?>
 
                 <div class="form-input-row">
-                    <label for="property-title">Property Title</label>
+                    <label for="property-title"><?= translate('property_name') ?></label>
                     <input type="text" class="form-input" id="property-title">
                 </div>
 
                 <div class="form-input-row">
-                    <label for="description">Նկարագիր</label>
+                    <label for="description"><?= translate('description') ?></label>
                     <textarea class="form-input" id="description" name="description"></textarea>
                 </div>
 
                 <div class="col-3-grid">
                     <div class="form-input-row">
-                        <label for="price">Price</label>
+                        <label for="price"><?= translate('price') ?></label>
                         <input type="number" class="form-input" id="price" name="price">
                     </div>
 
 
                     <!--TODO only for rent--->
                     <div class="form-input-row">
-                        <label for="rooms">Կանխավճար</label>
+                        <label for="rooms"><?= translate('prepayment') ?></label>
                         <select name="rooms" id="rooms" class="form-input">
                             <option value="">Առանց կանխավճարի</option>
                             <option value="">Համաձայնությամբ</option>
@@ -51,21 +51,11 @@ use App\Models\CategoryModel;
                         </select>
                     </div>
 
-                    <div class="form-input-row">
-                        <label for="area">Area</label>
-                        <input type="number" step="0.1" class="form-input" id="area" name="area">
-                    </div>
 
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES])): ?>
-                        <div class="form-input-row">
-                            <label for="area">Հողատարածքի մակերես</label>
-                            <input type="number" step="0.1" class="form-input" id="area" name="area">
-                        </div>
-                    <?php endif; ?>
 
 
                     <div class="form-input-row">
-                        <label for="rooms">Rooms</label>
+                        <label for="rooms"><?= translate('rooms') ?></label>
                         <select name="rooms" id="rooms" class="form-input">
                             <option value="">1</option>
                             <option value="">2</option>
@@ -76,7 +66,7 @@ use App\Models\CategoryModel;
 
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])): ?>
                         <div class="form-input-row">
-                            <label for="ceiling_height">Առաստաղի բարձրություն</label>
+                            <label for="ceiling_height"><?= translate('ceiling_height') ?></label>
                             <input type="number" step="0.1" class="form-input" id="ceiling_height"
                                    name="ceiling_height">
                         </div>
@@ -84,7 +74,7 @@ use App\Models\CategoryModel;
 
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS])): ?>
                         <div class="form-input-row">
-                            <label for="floor">Հարկ</label>
+                            <label for="floor"><?= translate('floor') ?></label>
                             <select name="floor" id="floor" class="form-input">
                                 <option value="">1</option>
                                 <option value="">2</option>
@@ -95,7 +85,7 @@ use App\Models\CategoryModel;
 
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT])): ?>
                         <div class="form-input-row">
-                            <label for="balcony">Պատշգամբ</label>
+                            <label for="balcony"><?= translate('balcony') ?></label>
                             <select name="balcony" id="balcony" class="form-input">
                                 <option value="">Առանց պատշգամբ</option>
                                 <option value="">Բաց պատշգամբ</option>
@@ -109,7 +99,7 @@ use App\Models\CategoryModel;
 
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])): ?>
                         <div class="form-input-row">
-                            <label for="balcony">Կոմունալ վճարումներ</label>
+                            <label for="balcony"><?= translate('utility_payments') ?></label>
                             <select name="balcony" id="balcony" class="form-input">
                                 <option value="">Ներառված</option>
                                 <option value="">Չներառված</option>
@@ -121,7 +111,7 @@ use App\Models\CategoryModel;
 
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
                         <div class="form-input-row">
-                            <label for="furniture">Կահույք</label>
+                            <label for="furniture"><?= translate('furniture') ?></label>
                             <select name="furniture" id="furniture" class="form-input">
                                 <option value="">Կահույքով</option>
                                 <option value="">Առանց կահույք</option>
@@ -132,7 +122,7 @@ use App\Models\CategoryModel;
                     <?php endif; ?>
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
                         <div class="form-input-row">
-                            <label for="furniture">Տեսարաններ պատուհաններից</label>
+                            <label for="furniture"><?= translate('views_from_windows') ?></label>
                             <select name="furniture" id="furniture" class="form-input">
                                 <option value="">Տեսարան դեպի բակ</option>
                                 <option value="">Տեսարան դեպի փողոց</option>
@@ -144,83 +134,12 @@ use App\Models\CategoryModel;
                         </div>
                     <?php endif; ?>
 
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])): ?>
-                        <div class="form-input-row">
-                            <label for="appliances">Կենցաղային տեխնիկա</label>
-                            <ul>
-                                <li>
-                                    <label for="amenities-air">
-                                        <input type="checkbox" name="amenities" value="air" id="amenities-air"/>
-                                        Սառնարան
-                                    </label>
-                                </li>
-                                <li>
-
-                                    <label for="amenities-barbeque">
-                                        <input type="checkbox" name="amenities" value="air" id="amenities-barbeque"/>
-                                        Սալօջախ
-                                    </label>
-                                </li>
-                                <li>
-
-                                    <label for="amenities-dryer">
-                                        <input type="checkbox" name="amenities" value="air" id="amenities-dryer"/>
-                                        Միկրոալիքային վառարան
-                                    </label>
-                                </li>
-                                <li>
-
-                                    <label for="amenities-dryer">
-                                        <input type="checkbox" name="amenities" value="air" id="amenities-dryer"/>
-                                        Սրճեփ
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE, CategoryModel::TYPE_LAND_PLOT, CategoryModel::TYPE_BOOTHS_AND_KIOSKS])): ?>
-                        <div class="form-input-row">
-                            <label for="appliances">Կոմունիկացիաներ</label>
-                            <ul>
-
-                                <li>
-                                    <label for="amenities-air">
-                                        <input type="checkbox" name="amenities" value="air" id="amenities-air"/>
-                                        Էլեկտրականություն
-                                    </label>
-                                </li>
-                                <li>
-
-                                    <label for="amenities-barbeque">
-                                        <input type="checkbox" name="amenities" value="air" id="amenities-barbeque"/>
-                                        Ջրամատակարարում
-                                    </label>
-                                </li>
-                                <li>
-
-                                    <label for="amenities-dryer">
-                                        <input type="checkbox" name="amenities" value="air" id="amenities-dryer"/>
-                                        Գազ
-                                    </label>
-                                </li>
-                                <li>
-
-                                    <label for="amenities-dryer">
-                                        <input type="checkbox" name="amenities" value="air" id="amenities-dryer"/>
-                                        Կոյուղի
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
-
                 </div>
 
             </div>
 
             <div class="admin-section-block mb-30">
-                <h2 class="mb-30">Location</h2>
+                <h2 class="mb-30"><?= translate('location') ?></h2>
 
 
                 <div class="col-2-grid">
@@ -228,7 +147,7 @@ use App\Models\CategoryModel;
 
                     <div class=" ">
                         <div class="form-input-row">
-                            <label for="state">State</label>
+                            <label for="state"><?= translate('state') ?></label>
 
                             <?= form_dropdown(
                                 [
@@ -241,19 +160,21 @@ use App\Models\CategoryModel;
                         </div>
 
                         <div class="form-input-row">
-                            <label for="city">City</label>
+                            <label for="city"><?= translate('city') ?></label>
                             <select name="city" id="city" class="form-input"></select>
                         </div>
 
-                        <div class="form-input-row">
-                            <label for="postal-code">Postal code</label>
-                            <input type="number" class="form-input" id="postal-code">
-                        </div>
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+                            <div class="form-input-row">
+                                <label for="postal-code"><?= translate('postal_code') ?></label>
+                                <input type="number" class="form-input" id="postal-code">
+                            </div>
 
-                        <div class="form-input-row">
-                            <label for="address">Address</label>
-                            <input type="text" class="form-input" id="address">
-                        </div>
+                            <div class="form-input-row">
+                                <label for="address"><?= translate('address') ?></label>
+                                <input type="text" class="form-input" id="address">
+                            </div>
+                        <?php endif; ?>
 
                     </div>
 
@@ -264,272 +185,237 @@ use App\Models\CategoryModel;
             </div>
 
             <div class="admin-section-block">
-                <h2 class="mb-30">Detailed Information</h2>
+                <h2 class="mb-30"><?= translate('detailed_Information') ?></h2>
+                <div class="gray-box-group mb-30">
+                    <div class="col-4-grid-4-1">
 
-                <div class="col-3-grid">
-                    <div class="form-input-row">
-                        <label for="property-id">Property ID</label>
-                        <input type="text" class="form-input" id="property-id" name="property-id">
-                    </div>
-
-                    <div class="form-input-row">
-                        <label for="area-size">Area Size</label>
-                        <input type="text" class="form-input" id="area-size" name="area-size">
-                    </div>
-
-                    <div class="form-input-row">
-                        <label for="size-prefix">Size Prefix</label>
-                        <select name="size-prefix" id="size-prefix" class="form-input">
-                            <option value="">Մք</option>
-                            <option value="">Կմք</option>
-                            <option value="">Հա</option>
-                        </select>
-
-                    </div>
-
-                </div>
-
-                <div class="col-3-grid">
-
-                    <div class="form-input-row">
-                        <label for="bedrooms">Bedrooms</label>
-                        <select name="bedrooms" id="bedrooms" class="form-input">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-
-
-                    </div>
-
-                    <div class="form-input-row">
-                        <label for="Bathrooms">Bathrooms</label>
-                        <select name="Bathrooms" id="Bathrooms" class="form-input">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                    </div>
-
-                    <div class="form-input-row">
-                        <label for="Garages">Garages</label>
-                        <select name="Garages" id="Garages" class="form-input">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-3-grid">
-
-                    <div class="form-input-row">
-                        <label for=" Year Built"> Year Built</label>
-                        <select name=" Year Built" id=" Year Built" class="form-input">
-                            <option value="">2025</option>
-                            <option value="">2024</option>
-                            <option value="">2023</option>
-                            <option value="">2022</option>
-                            <option value="">2021</option>
-                            <option value="">2020</option>
-                            <option value="">2019</option>
-                            <option value="">2018</option>
-                            <option value="">2001</option>
-                        </select>
-                    </div>
-
-
-                    <?php if ($propertyCategory->cat_key == CategoryModel::TYPE_APARTMENT): ?>
                         <div class="form-input-row">
-                            <label for="new_building">New building</label>
-                            <select name="new_building" id="new_building" class="form-input">
+                            <label for="area_size"><?= translate('area_size') ?></label>
+                            <input type="text" class="form-input" id="area_size" name="area_size">
+                        </div>
 
-                                <option value="1">Yes</option>
-                                <option value="2">No</option>
+                        <div class="form-input-row">
+                            <label for="area_size_prefix"><?= translate('size_prefix') ?></label>
+                            <select name="area_size_prefix" id="area_size_prefix" class="form-input">
+                                <option value="">Մք</option>
+                                <option value="">Կմք</option>
+                                <option value="">Հա</option>
                             </select>
                         </div>
-                    <?php endif; ?>
 
-                    <!--TODO if prooperty on rent-->
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])): ?>
-                        <div class="form-input-row">
-                            <label for="new_building">
-                                Թույլատրվում են ընտանի կենդանիներ Գործարքի
-                            </label>
-                            <select name="new_building" id="new_building" class="form-input">
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES])): ?>
+                            <div class="form-input-row">
+                                <label for="land_area"><?= translate('land_area') ?></label>
+                                <input type="number" step="0.1" class="form-input" id="land_area" name="land_area">
+                            </div>
 
-                                <option value="1">Yes</option>
-                                <option value="2">No</option>
-                            </select>
-                        </div>
-                    <?php endif; ?>
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+                            <div class="form-input-row">
+                                <label for="land_area_size_prefix"><?= translate('size_prefix') ?></label>
+                                <select name="land_area_size_prefix" id="land_area_size_prefix" class="form-input">
+                                    <option value="">Մք</option>
+                                    <option value="">Կմք</option>
+                                    <option value="">Հա</option>
+                                </select>
+                            </div>
+                        <?php endif; ?>
 
-                        <div class="form-input-row">
-                            <label for="elevator">Elevator</label>
-                            <select name="elevator" id="elevator" class="form-input">
+                    </div>
 
-                                <option value="1">Yes</option>
-                                <option value="2">No</option>
-                            </select>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+                    <div class="col-3-grid">
 
                         <div class="form-input-row">
-                            <label for="elevator">Հարկերի քանակ</label>
-                            <select name="number_of_floors" id="number_of_floors" class="form-input">
+                            <label for="bedrooms"><?= translate('bedrooms') ?></label>
+                            <select name="bedrooms" id="bedrooms" class="form-input">
                                 <option value="">1</option>
                                 <option value="">2</option>
                                 <option value="">3</option>
-                                <option value="">4</option>
-                                <option value="">5</option>
-                                <option value="">6</option>
-                                <option value="">7</option>
-                                <option value="">8</option>
-                                <option value="">9</option>
-                                <option value="">10</option>
                             </select>
-                        </div>
-                    <?php endif; ?>
 
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+
+                        </div>
 
                         <div class="form-input-row">
-                            <label for="number_of_bathrooms">Շինության տիպ</label>
-                            <select name="number_of_floors" id="number_of_floors" class="form-input">
-                                <option value="">Քարե</option>
-                                <option value="">Պանելային</option>
-                                <option value="">Մոնոլիտ</option>
-                                <option value="">Աղյուսե</option>
-                                <option value="">Կասետային</option>
-                                <option value="">Փայտե</option>
-
-                            </select>
-                        </div>
-                    <?php endif; ?>
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])): ?>
-
-                        <div class="form-input-row">
-                            <label for="number_of_bathrooms">Սենյակների քանակ</label>
-                            <select name="number_of_bathrooms" id="number_of_bathrooms" class="form-input">
+                            <label for="Bathrooms"><?= translate('bathrooms') ?></label>
+                            <select name="Bathrooms" id="Bathrooms" class="form-input">
                                 <option value="">1</option>
                                 <option value="">2</option>
-                                <option value="">3+</option>
+                                <option value="">3</option>
                             </select>
                         </div>
-                    <?php endif; ?>
-
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
 
                         <div class="form-input-row">
-                            <label for="parking">Կայանատեղի</label>
-                            <select name="parking" id="parking" class="form-input">
-
-                                <option value="1">Բացօթյա կայանատեղի</option>
-                                <option value="2">Ծածկապատ կայանատեղի</option>
-                                <option value="2">Ավտոտնակ</option>
+                            <label for="Garages"><?= translate('garages') ?></label>
+                            <select name="Garages" id="Garages" class="form-input">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
                             </select>
                         </div>
-                    <?php endif; ?>
+                    </div>
 
+                    <div class="col-3-grid">
+
+                        <div class="form-input-row">
+                            <label for=" Year Built"><?= translate('year_built') ?></label>
+                            <select name=" Year Built" id=" Year Built" class="form-input">
+                                <option value="">2025</option>
+                                <option value="">2024</option>
+                                <option value="">2023</option>
+                                <option value="">2022</option>
+                                <option value="">2021</option>
+                                <option value="">2020</option>
+                                <option value="">2019</option>
+                                <option value="">2018</option>
+                                <option value="">2001</option>
+                            </select>
+                        </div>
+
+
+                        <?php if ($propertyCategory->cat_key == CategoryModel::TYPE_APARTMENT): ?>
+                            <div class="form-input-row">
+                                <label for="new_building"><?= translate('new_building') ?></label>
+                                <select name="new_building" id="new_building" class="form-input">
+
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                </select>
+                            </div>
+                        <?php endif; ?>
+
+
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+
+                            <div class="form-input-row">
+                                <label for="elevator"><?= translate('number_of_floors') ?></label>
+                                <select name="number_of_floors" id="number_of_floors" class="form-input">
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                    <option value="">4</option>
+                                    <option value="">5</option>
+                                    <option value="">6</option>
+                                    <option value="">7</option>
+                                    <option value="">8</option>
+                                    <option value="">9</option>
+                                    <option value="">10</option>
+                                </select>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+
+                            <div class="form-input-row">
+                                <label for="number_of_bathrooms"><?= translate('building_type') ?></label>
+                                <select name="number_of_floors" id="number_of_floors" class="form-input">
+                                    <option value="">Քարե</option>
+                                    <option value="">Պանելային</option>
+                                    <option value="">Մոնոլիտ</option>
+                                    <option value="">Աղյուսե</option>
+                                    <option value="">Կասետային</option>
+                                    <option value="">Փայտե</option>
+
+                                </select>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])): ?>
+
+                            <div class="form-input-row">
+                                <label for="number_of_bathrooms"><?= translate('number_of_rooms') ?></label>
+                                <select name="number_of_bathrooms" id="number_of_bathrooms" class="form-input">
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3+</option>
+                                </select>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+
+                            <div class="form-input-row">
+                                <label for="parking"><?= translate('parking') ?></label>
+                                <select name="parking" id="parking" class="form-input">
+
+                                    <option value="1">Բացօթյա կայանատեղի</option>
+                                    <option value="2">Ծածկապատ կայանատեղի</option>
+                                    <option value="2">Ավտոտնակ</option>
+                                </select>
+                            </div>
+                        <?php endif; ?>
+
+                    </div>
                 </div>
 
-                <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_GARAGES_AND_PARKING])): ?>
-                    <div class="create-amenities">
-                        <h3 class="mb-10">Amenities</h3>
+                <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])): ?>
+                    <div class="create-amenities gray-box-group mb-30">
+                        <h3 class="mb-20"><?= translate('household_appliances') ?></h3>
+
                         <ul>
-                            <li>
-                                <label for="amenities-air">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-air"/>
-                                    Air conditionoing
-                                </label>
-                            </li>
-                            <li>
+                            <?php if (isset($householdAppliances) && !empty($householdAppliances)): ?>
+                                <?php foreach ($householdAppliances as $id => $title): ?>
+                                    <li>
+                                        <label for="household_appliances-<?= $id ?>">
+                                            <input type="checkbox" name="household_appliances" value="<?= $id ?>"
+                                                   id="household_appliances-<?= $id ?>"/>
+                                            <?= $title ?>
+                                        </label>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
 
-                                <label for="amenities-barbeque">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-barbeque"/>
-                                    Barbeque
-                                </label>
-                            </li>
-                            <li>
 
-                                <label for="amenities-dryer">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-dryer"/>
-                                    Dryer
-                                </label>
-                            </li>
-                            <li>
+                <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_GARAGES_AND_PARKING])): ?>
 
-                                <label for="amenities-gym">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-gym"/>
-                                    Gym
-                                </label>
-                            </li>
-                            <li>
-                                <label for="amenities-laundry">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-laundry"/>
-                                    Laundry
-                                </label>
-                            </li>
-                            <li>
-                                <label for="amenities-lawn">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-lawn"/>
-                                    Lawn
-                                </label>
-                            </li>
-                            <li>
+                    <div class="create-amenities gray-box-group mb-30">
+                        <h3><?= translate('amenities') ?></h3>
 
-                                <label for="amenities-microwave">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-microwave"/>
-                                    Microwave
-                                </label>
-                            </li>
-                            <li>
+                        <?php if (isset($amenities) && !empty($amenities)): ?>
+                            <?php foreach ($amenities as $amenityType => $amenityList): ?>
+                                <div class="gray-line mt-30"></div>
+                                <?php if (!empty($amenityList)): ?>
+                                    <h4 class="mt-30 mb-10"><?= translate($amenityType) ?></h4>
+                                    <ul>
+                                        <?php foreach ($amenityList as $amenityId => $amenityTitle): ?>
+                                            <li>
+                                                <label for="amenities-<?= $amenityId ?>">
+                                                    <input type="checkbox" name="amenities" value="<?= $amenityId ?>"
+                                                           id="amenities-<?= $amenityId ?>"/>
+                                                    <?= $amenityTitle ?>
+                                                </label>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
 
-                                <label for="amenities-refrigerator">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-refrigerator"/>
-                                    Refrigerator
-                                </label>
-                            </li>
-                            <li>
 
-                                <label for="amenities-sauna">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-sauna"/>
-                                    Sauna
-                                </label>
-                            </li>
-                            <li>
-                                <label for="amenities-swimming-pool">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-swimming-pool"/>
-                                    Swimming Pool
-                                </label>
-                            </li>
-                            <li>
-                                <label for="amenities-wifi">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-tv-cable"/>
-                                    TV Cable
-                                </label>
-                            </li>
-                            <li>
-                                <label for="amenities-wifi">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-wifi"/>
-                                    WIFI
-                                </label>
-                            </li>
-                            <li>
-                                <label for="amenities-wifi">
-                                    <input type="checkbox" name="amenities" value="air" id="amenities-washer"/>
-                                    Washer
-                                </label>
-                            <li>
-                                <label for="amenities-wifi">
-                                    <input type="checkbox" name="amenities" value="air"
-                                           id="amenities-window-coverings"/>
-                                    Window Coverings
-                                </label>
-                            </li>
+
+
+                            <?php endforeach; ?>
+
+                        <?php endif; ?>
+
+                    </div>
+                <?php endif; ?>
+
+                <?php if (1 || in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE, CategoryModel::TYPE_LAND_PLOT, CategoryModel::TYPE_BOOTHS_AND_KIOSKS])): ?>
+                    <div class="create-amenities gray-box-group mb-30">
+                        <h3 class="mb-20"><?= translate('communications') ?></h3>
+
+                        <ul>
+                            <?php if (isset($communications) && !empty($communications)): ?>
+                                <?php foreach ($communications as $id => $title): ?>
+                                    <li>
+                                        <label for="communications-<?= $id ?>">
+                                            <input type="checkbox" name="communications" value="<?= $id ?>"
+                                                   id="communications-<?= $id ?>"/>
+                                            <?= $title ?>
+                                        </label>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+
                         </ul>
                     </div>
                 <?php endif; ?>
@@ -537,9 +423,10 @@ use App\Models\CategoryModel;
                 <div class="form-input-row mt-20 flex gap-10">
 
                     <a href="/<?= $_lang ?>/user/create">
-                        <button class="btn btn-gray" name="submit" type="button" value="1">Back</button>
+                        <button class="btn btn-gray" name="submit" type="button"
+                                value="1"><?= translate('back') ?></button>
                     </a>
-                    <button class="btn" name="submit" value="1">Save</button>
+                    <button class="btn" name="submit" value="1"><?= translate('save') ?></button>
                 </div>
 
             </div>

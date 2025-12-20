@@ -1,0 +1,29 @@
+| **English**            | **Armenian (Հայերեն)**                                   | **Russian (Русский)**                          |
+| ---------------------- | -------------------------------------------------------- | ---------------------------------------------- |
+| Refrigerator           | Սառնարան (Sarrnaṛan)                                    | Холодильник (Kholodilʹnik)                     |
+| Freezer                | Մռայլիչ (Mraylich) / Ֆրիիզեր                             | Морозильник (Morozilʹnik)                      |
+| Oven                   | Խոհանոցային վառարան (Khohanocayin vararan)               | Духовка (Dukhovka)                             |
+| Stove / Cooker         | Եզրափակ (Yezrapak) / Վառարան                             | Плита (Plita)                                  |
+| Microwave Oven         | Մայկրոալիքային փուռ (Maykroaliquayin p’urr)              | Микроволновка (Mikrovolnovka)                  |
+| Dishwasher             | Արտաք lavagemամեքենա (Artak lavagemekena)                | Посудомоечная машина (Posudomoechnaya mashina) |
+| Washing Machine        | Լվացքի մեքենա (Lvac’qi mekhena)                          | Стиральная машина (Stiralʹnaya mashina)        |
+| Dryer                  | Կոր հարց (Kor harenst) / Ապխտիչ                          | Сушилка (Sushilka)                             |
+| Vacuum Cleaner         | Վակուում մաքսող (Vacuum mak’sogh)                        | Пылесос (Pylesos)                              |
+| Air Conditioner        | Օդ кондиционер (Od konditsioner)                         | Кондиционер (Konditsioner)                     |
+| Heater                 | Ջեռուցիչ (Jerruc’ich)                                    | Обогреватель (Obogrevatelʹ)                    |
+| Water Heater           | Ջրի տաքացուցիչ (Jri takats’ich)                          | Водонагреватель (Vodonagrevatelʹ)              |
+| Toaster                | Թոստեր (Toster)                                          | Тостер (Toster)                                |
+| Blender                | Խառիչ (Kharrich)                                         | Блендер (Blender)                              |
+| Coffee Maker           | Խորհրդակցող սուրճի մեքենա (Khorhrdatsogh surchi mekhena) | Кофеварка (Kofevarka)                          |
+| Electric Kettle        | Էլեկտրական թեյնիկ (Elektrakan teynik)                    | Электрический чайник (Elektricheskiy chaynik)  |
+| Rice Cooker            | Բրինջապուխտացուցիչ (Brinjapukhtats’ich)                  | Рисоварка (Risovarka)                          |
+| Slow Cooker / Crockpot | Զերծ խոհարարող (Zerts khohararogh)                       | Медленноварка (Medlennovarka)                  |
+| Food Processor         | Ամանորյան պրոցեսոր (Amanoryan protsesor)                 | Кухонный комбайн (Kukhonnyy kombayn)           |
+| Garbage Disposal       | Վարկածող (Varkats’ogh)                                   | Измельчитель отходов (Izmelʹchitelʹ othodov)   |
+| Ice Maker              | սառույց սարք (sarruyts sark)                             | Льдогенератор (Lʹdogenarator)                  |
+| Electric Grill         | Էլեկտրական գրիլ (Elektrakan gril)                        | Электрический гриль (Elektricheskiy gril)      |
+| Deep Fryer             | Սուզվող յուղատախտակ (Suzvogh ẏught’akhtak)              | Фритюрница (Fritjurnitsa)                      |
+| Humidifier             | Տիգրանիչ (Tigranich)                                     | Увлажнитель (Uvlažnitelʹ)                      |
+| Dehumidifier           | Չորացման սարք (Chorats’man sark)                         | Осушитель (Osushitelʹ)                         |
+| Iron                   | Startանիչ (Startanich)                                   | Утюг (Utyug)                                   |
+| Sewing Machine         | Մեքենա կարելու (Mekhena karelu)                          | Швейная машина (Shveynaya mashina)             |

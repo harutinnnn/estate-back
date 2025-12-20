@@ -79,6 +79,28 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($rou
     $routes->get('categories/(:segment)', 'Categories::$1');
 
 
+    $routes->get('household_appliances', 'Household_appliances::index');
+    $routes->post('household_appliances/edit/(:segment)/(:segment)', 'Household_appliances::edit/$1/$2');
+    $routes->post('household_appliances/edit/(:segment)', 'Household_appliances::edit/$1');
+    $routes->get('household_appliances/(:segment)/(:segment)/(:segment)', 'Household_appliances::$1/$2/$3');
+    $routes->get('household_appliances/(:segment)/(:segment)', 'Household_appliances::$1/$2');
+    $routes->get('household_appliances/(:segment)', 'Household_appliances::$1');
+
+    $routes->get('amenities', 'Amenities::index');
+    $routes->post('amenities/edit/(:segment)/(:segment)', 'Amenities::edit/$1/$2');
+    $routes->post('amenities/edit/(:segment)', 'Amenities::edit/$1');
+    $routes->get('amenities/(:segment)/(:segment)/(:segment)', 'Amenities::$1/$2/$3');
+    $routes->get('amenities/(:segment)/(:segment)', 'Amenities::$1/$2');
+    $routes->get('amenities/(:segment)', 'Amenities::$1');
+
+    $routes->get('communications', 'Communications::index');
+    $routes->post('communications/edit/(:segment)/(:segment)', 'Communications::edit/$1/$2');
+    $routes->post('communications/edit/(:segment)', 'Communications::edit/$1');
+    $routes->get('communications/(:segment)/(:segment)/(:segment)', 'Communications::$1/$2/$3');
+    $routes->get('communications/(:segment)/(:segment)', 'Communications::$1/$2');
+    $routes->get('communications/(:segment)', 'Communications::$1');
+
+
     $routes->get('states', 'States::index');
     $routes->post('states/edit/(:segment)/(:segment)', 'States::edit/$1/$2');
     $routes->post('states/edit/(:segment)', 'States::edit/$1');

@@ -2,9 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Models\AmenitiesModel;
 use App\Models\CategoryMLModel;
 use App\Models\CategoryModel;
 use App\Models\CityModel;
+use App\Models\CommunicationsModel;
+use App\Models\HouseholdAppliancesModel;
 use App\Models\SiteUserModel;
 use App\Models\StatesModel;
 
@@ -64,6 +67,30 @@ class Properties extends MainController
             $this->pageData['propertyType'] = session()->get('property-type');
         }
 
+        $amenitiesModel = new AmenitiesModel();
+        $amenities = [];
+        $amenitiesTmp = $amenitiesModel->getAllItems($this->_lang, 0, [], ['col' => 'id', 'sort' => 'ASC']);
+
+        foreach ($amenitiesTmp as $amenity) {
+
+            if (!isset($amenities[$amenity->type])) {
+                $amenities[$amenity->type] = [];
+            }
+
+            $amenities[$amenity->type][$amenity->id] = $amenity->title;
+        }
+
+        $this->pageData['amenities'] = $amenities;
+
+
+        $householdAppliancesModel = new HouseholdAppliancesModel();
+        $householdAppliances = $householdAppliancesModel->getAllItems($this->_lang,0,[], ['col' => 'id', 'sort' => 'ASC']);
+        $this->pageData['householdAppliances'] = array_column($householdAppliances, 'title', 'id');
+
+        $communicationsModel = new CommunicationsModel();
+        $communications = $communicationsModel->getAllItems($this->_lang,0,[], ['col' => 'id', 'sort' => 'ASC']);
+        $this->pageData['communications'] = array_column($communications, 'title', 'id');
+
 
         $categoriesModel = new CategoryModel();
         $categories = $categoriesModel->getAllItems($this->_lang, 0, [], ['col' => 'pos', 'sort' => 'ASC']);
@@ -76,8 +103,7 @@ class Properties extends MainController
 
         $this->pageData['activeMenu'] = 'create';
 
-        $this->pageData['propertyCategory'] = $categoriesModel->find( $this->pageData['propertyType']);
-
+        $this->pageData['propertyCategory'] = $categoriesModel->find($this->pageData['propertyType']);
 
 
         $this->currentView = 'properties/create';
