@@ -4,7 +4,7 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="/index.php">Home</a>
+                <a href="/<?= $_lang ?>">Home</a>
             </li>
             <li>
                 <span>Properties</span>

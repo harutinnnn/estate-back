@@ -1,7 +1,7 @@
 <div class="admin-nav">
 
     <div class="sidebar-head">
-        <a href="/index.php" class="fw-700 flex flex-align-items-center">
+        <a href="/<?= $_lang ?>" class="fw-700 flex flex-align-items-center">
             <img src="/assets/images/logo.png" alt="FindHouse">
             <span class="fs-28 mt-5">FindHouse</span>
         </a>
