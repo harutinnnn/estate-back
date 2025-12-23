@@ -42,19 +42,21 @@ use App\Models\CategoryModel;
                     </div>
 
 
-                    <!--TODO only for rent--->
-                    <div class="form-input-row">
-                        <label for="prepayment"><?= translate('prepayment') ?></label>
-                        <?= form_dropdown(
-                            [
-                                'class' => 'form-input',
-                                'name' => 'prepayment',
-                                'id' => 'prepayment',
-                            ],
-                            PropertyParameters::getPrepaymentParameters(),
-                        ) ?>
+                    <?php if ($propertyRentType !== \App\Models\ArticleModel::TYPE_RENT): ?>
+                        <!--TODO only for rent--->
+                        <div class="form-input-row">
+                            <label for="prepayment"><?= translate('prepayment') ?></label>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'prepayment',
+                                    'id' => 'prepayment',
+                                ],
+                                PropertyParameters::getPrepaymentParameters(),
+                            ) ?>
 
-                    </div>
+                        </div>
+                    <?php endif; ?>
 
 
                     <div class="form-input-row">
@@ -109,19 +111,21 @@ use App\Models\CategoryModel;
                     <?php endif; ?>
 
 
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])): ?>
-                        <div class="form-input-row">
-                            <label for="balcony"><?= translate('utility_payments') ?></label>
-                            <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'utility_payments',
-                                    'id' => 'utility_payments',
-                                ],
-                                PropertyParameters::getUtilityPayments(),
-                            ) ?>
+                    <?php if ($propertyRentType !== \App\Models\ArticleModel::TYPE_RENT): ?>
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])): ?>
+                            <div class="form-input-row">
+                                <label for="balcony"><?= translate('utility_payments') ?></label>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'utility_payments',
+                                        'id' => 'utility_payments',
+                                    ],
+                                    PropertyParameters::getUtilityPayments(),
+                                ) ?>
 
-                        </div>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
 
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
@@ -173,7 +177,7 @@ use App\Models\CategoryModel;
                                     'name' => 'state',
                                     'id' => 'state',
                                 ],
-                                $states
+                                $states ?? []
                             ) ?>
                         </div>
 
@@ -395,59 +399,64 @@ use App\Models\CategoryModel;
                     </div>
                 </div>
 
-                <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])): ?>
-                    <div class="create-amenities gray-box-group mb-30">
-                        <h3 class="mb-20"><?= translate('household_appliances') ?></h3>
+                <?php if ($propertyRentType !== \App\Models\ArticleModel::TYPE_RENT): ?>
+                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])): ?>
+                        <div class="create-amenities gray-box-group mb-30">
+                            <h3 class="mb-20"><?= translate('household_appliances') ?></h3>
 
-                        <ul>
-                            <?php if (isset($householdAppliances) && !empty($householdAppliances)): ?>
-                                <?php foreach ($householdAppliances as $id => $title): ?>
-                                    <li>
-                                        <label for="household_appliances-<?= $id ?>">
-                                            <input type="checkbox" name="household_appliances" value="<?= $id ?>"
-                                                   id="household_appliances-<?= $id ?>"/>
-                                            <?= $title ?>
-                                        </label>
-                                    </li>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
-
-
-                <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_GARAGES_AND_PARKING])): ?>
-
-                    <div class="create-amenities gray-box-group mb-30">
-                        <h3><?= translate('amenities') ?></h3>
-
-                        <?php if (isset($amenities) && !empty($amenities)): ?>
-                            <?php foreach ($amenities as $amenityType => $amenityList): ?>
-                                <div class="gray-line mt-30"></div>
-                                <?php if (!empty($amenityList)): ?>
-                                    <h4 class="mt-30 mb-10"><?= translate($amenityType) ?></h4>
-                                    <ul>
-                                        <?php foreach ($amenityList as $amenityId => $amenityTitle): ?>
-                                            <li>
-                                                <label for="amenities-<?= $amenityId ?>">
-                                                    <input type="checkbox" name="amenities" value="<?= $amenityId ?>"
-                                                           id="amenities-<?= $amenityId ?>"/>
-                                                    <?= $amenityTitle ?>
-                                                </label>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
+                            <ul>
+                                <?php if (isset($householdAppliances) && !empty($householdAppliances)): ?>
+                                    <?php foreach ($householdAppliances as $id => $title): ?>
+                                        <li>
+                                            <label for="household_appliances-<?= $id ?>">
+                                                <input type="checkbox" name="household_appliances" value="<?= $id ?>"
+                                                       id="household_appliances-<?= $id ?>"/>
+                                                <?= $title ?>
+                                            </label>
+                                        </li>
+                                    <?php endforeach; ?>
                                 <?php endif; ?>
-
-
-                            <?php endforeach; ?>
-
-                        <?php endif; ?>
-
-                    </div>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
 
-                <?php if (1 || in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE, CategoryModel::TYPE_LAND_PLOT, CategoryModel::TYPE_BOOTHS_AND_KIOSKS])): ?>
+
+                <?php if ($propertyRentType !== \App\Models\ArticleModel::TYPE_RENT): ?>
+                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_GARAGES_AND_PARKING])): ?>
+
+                        <div class="create-amenities gray-box-group mb-30">
+                            <h3><?= translate('amenities') ?></h3>
+
+                            <?php if (isset($amenities) && !empty($amenities)): ?>
+                                <?php foreach ($amenities as $amenityType => $amenityList): ?>
+                                    <div class="gray-line mt-30"></div>
+                                    <?php if (!empty($amenityList)): ?>
+                                        <h4 class="mt-30 mb-10"><?= translate($amenityType) ?></h4>
+                                        <ul>
+                                            <?php foreach ($amenityList as $amenityId => $amenityTitle): ?>
+                                                <li>
+                                                    <label for="amenities-<?= $amenityId ?>">
+                                                        <input type="checkbox" name="amenities"
+                                                               value="<?= $amenityId ?>"
+                                                               id="amenities-<?= $amenityId ?>"/>
+                                                        <?= $amenityTitle ?>
+                                                    </label>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+
+
+                                <?php endforeach; ?>
+
+                            <?php endif; ?>
+
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+
+                <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE, CategoryModel::TYPE_LAND_PLOT, CategoryModel::TYPE_BOOTHS_AND_KIOSKS])): ?>
                     <div class="create-amenities gray-box-group mb-30">
                         <h3 class="mb-20"><?= translate('communications') ?></h3>
 
