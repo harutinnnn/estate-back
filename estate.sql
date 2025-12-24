@@ -11,7 +11,7 @@
  Target Server Version : 50744 (5.7.44)
  File Encoding         : 65001
 
- Date: 22/12/2025 21:02:28
+ Date: 24/12/2025 21:27:39
 */
 
 SET NAMES utf8mb4;
@@ -245,6 +245,20 @@ INSERT INTO `amenities` VALUES (67, 1, 0, 'wheelchair-accessible', '2025-12-19 2
 INSERT INTO `amenities` VALUES (68, 1, 0, 'sea-city-mountain-view', '2025-12-19 21:27:17', '2025-12-19 21:27:26', '', 'additional');
 
 -- ----------------------------
+-- Table structure for amenities_lcp
+-- ----------------------------
+DROP TABLE IF EXISTS `amenities_lcp`;
+CREATE TABLE `amenities_lcp`  (
+  `article_id` int(11) NOT NULL,
+  `amenity_id` int(11) NOT NULL,
+  UNIQUE INDEX `article_id`(`article_id`, `amenity_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of amenities_lcp
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for amenities_ml
 -- ----------------------------
 DROP TABLE IF EXISTS `amenities_ml`;
@@ -402,6 +416,35 @@ CREATE TABLE `articles`  (
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NULL DEFAULT NULL,
   `updated_at` datetime NULL DEFAULT NULL,
+  `property_rent_type` enum('rent','sale') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `price` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `prepayment` enum('without_prepayment','by_prepayment_agreement','two_weeks','three_weeks','one_month','two_month','three_month','six_month') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `rooms` int(1) UNSIGNED NOT NULL DEFAULT 0,
+  `ceiling_height` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `floor` int(2) UNSIGNED NOT NULL DEFAULT 0,
+  `balcony` enum('without_balcony','open_balcony','enclosed_balcony','several_balconies') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `utility_payments` enum('utility_payments_included','utility_payments_no_included','utility_payments_by_agreement') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `furniture` enum('with_furniture','without_furniture','partial_furniture','with_agreement_furniture') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `views_from_windows` enum('view_to_the_courtyard','street_view','city_view','garden_view') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `state` int(11) UNSIGNED NOT NULL,
+  `city` int(11) UNSIGNED NOT NULL,
+  `postal_code` int(5) UNSIGNED NOT NULL DEFAULT 0,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lat` double NULL DEFAULT NULL,
+  `lng` double NULL DEFAULT NULL,
+  `area_size` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `size_prefix` enum('unit_sqm','unit_kmq','unit_heq') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `land_area` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `land_area_size_prefix` enum('unit_sqm','unit_kmq','unit_heq') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `bedrooms` int(1) UNSIGNED NOT NULL DEFAULT 0,
+  `bathrooms` int(1) UNSIGNED NOT NULL DEFAULT 0,
+  `garages` enum('garage_not_available','garage_one_place','garage_two_place','garage_three_or_more_places') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `year_built` int(4) UNSIGNED NOT NULL DEFAULT 0,
+  `new_building` enum('yes','no') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `number_of_floors` int(2) UNSIGNED NOT NULL DEFAULT 0,
+  `building_type` enum('building_type_stone','building_type_panel','building_type_monolith','building_type_brick','building_type_cassette','building_type_wooden') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `parking` enum('outdoor_parking','covered_parking','garage_parking') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -4995,6 +5038,20 @@ INSERT INTO `communications` VALUES (48, 1, 0, 'natural-gas', '2025-12-20 11:13:
 INSERT INTO `communications` VALUES (49, 1, 0, 'sewer', '2025-12-20 11:14:20', '2025-12-20 11:14:20', '');
 
 -- ----------------------------
+-- Table structure for communications_lcp
+-- ----------------------------
+DROP TABLE IF EXISTS `communications_lcp`;
+CREATE TABLE `communications_lcp`  (
+  `article_id` int(11) NOT NULL,
+  `communication_id` int(11) NOT NULL,
+  UNIQUE INDEX `article_id`(`article_id`, `communication_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of communications_lcp
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for communications_ml
 -- ----------------------------
 DROP TABLE IF EXISTS `communications_ml`;
@@ -5510,6 +5567,20 @@ INSERT INTO `household_appliances` VALUES (42, 1, 0, 'electric-grill', '2025-12-
 INSERT INTO `household_appliances` VALUES (43, 1, 0, 'humidifier', '2025-12-20 10:27:37', '2025-12-20 10:27:37', '');
 INSERT INTO `household_appliances` VALUES (44, 1, 0, 'iron', '2025-12-20 10:27:56', '2025-12-20 10:27:56', '');
 INSERT INTO `household_appliances` VALUES (45, 1, 0, 'hair-dryer', '2025-12-20 10:29:05', '2025-12-20 10:29:05', '');
+
+-- ----------------------------
+-- Table structure for household_appliances_lcp
+-- ----------------------------
+DROP TABLE IF EXISTS `household_appliances_lcp`;
+CREATE TABLE `household_appliances_lcp`  (
+  `article_id` int(11) NOT NULL,
+  `household_appliance_id` int(11) NOT NULL,
+  UNIQUE INDEX `article_id`(`article_id`, `household_appliance_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of household_appliances_lcp
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for household_appliances_ml
