@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Libraries\PropertyParameters;
+
 class ArticleModel extends MainModel
 {
 
@@ -12,6 +14,9 @@ class ArticleModel extends MainModel
     protected $primaryKey = "id";
     protected $allowedFields = [
         "status",
+        "category",
+        "property_rent_type",
+        "title",
         "created_at",
         "updated_at",
     ];
@@ -68,6 +73,268 @@ class ArticleModel extends MainModel
             self::TYPE_SALE => translate(self::TYPE_SALE),
         ];
 
+    }
+
+    public static function rules($category, $rentType, $lang = 'en')
+    {
+
+        $rules = [
+            'property_rent_type' => [
+                'rules' => 'required|numeric',
+                'label' => translate('property_deal_type')
+            ],
+            'category' => [
+                'rules' => 'required|numeric',
+                'label' => translate('property_type')
+            ],
+            'title' => [
+                'rules' => 'required',
+                'label' => translate('property_name')
+            ],
+            'description' => [
+                'rules' => 'required',
+                'label' => translate('description')
+            ],
+            'price' => [
+                'rules' => 'required|numeric',
+                'label' => translate('price')
+            ],
+        ];
+
+        if ($rentType == \App\Models\ArticleModel::TYPE_RENT) {
+            $rules[] = [
+                'prepayment' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getPrepaymentParameters()) . ']',
+                    'label' => translate('prepayment')
+                ]
+            ];
+
+
+            if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])) {
+
+                $rules[] = [
+                    'utility_payments' => [
+                        'rules' => 'required|in_list[' . implode(',', PropertyParameters::getUtilityPayments()) . ']',
+                        'label' => translate('utility_payments')
+                    ]
+                ];
+            }
+
+        }
+
+        if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])) {
+
+            $rules[] = [
+                'rooms' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getRooms()) . ']',
+                    'label' => translate('rooms')
+                ]
+            ];
+
+            $rules[] = [
+                'balcony' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBalcony()) . ']',
+                    'label' => translate('balcony')
+                ]
+            ];
+        }
+
+        if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_EVENT_VENUE_RENTAL])) {
+
+            $rules[] = [
+                'ceiling_height' => [
+                    'rules' => 'required|numeric',
+                    'label' => translate('ceiling_height')
+                ]
+            ];
+
+        }
+
+        if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS])) {
+            $rules[] = [
+                'floor' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getPropertyFloor()) . ']',
+                    'label' => translate('floor')
+                ]
+            ];
+        }
+
+        if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])) {
+
+            $rules[] = [
+                'furniture' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getFurniture()) . ']',
+                    'label' => translate('furniture')
+                ]
+            ];
+
+            $rules[] = [
+                'views_from_windows' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getViewsFromWindows()) . ']',
+                    'label' => translate('views_from_windows')
+                ]
+            ];
+
+        }
+
+
+        $rules[] = [
+            'state' => [
+                'rules' => 'required|numeric',
+                'label' => translate('state')
+            ]
+        ];
+
+        $rules[] = [
+            'city' => [
+                'rules' => 'required|numeric',
+                'label' => translate('city')
+            ]
+        ];
+
+        if (in_array($category, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])) {
+            $rules[] = [
+                'postal_code' => [
+                    'rules' => 'required|numeric',
+                    'label' => translate('postal_code')
+                ]
+            ];
+
+            $rules[] = [
+                'address' => [
+                    'rules' => 'required',
+                    'label' => translate('address')
+                ]
+            ];
+
+            $rules[] = [
+                'parking' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getParkingParams()) . ']',
+                    'label' => translate('parking')
+                ]
+            ];
+
+        }
+
+
+        $rules[] = [
+            'address' => [
+                'rules' => 'required',
+                'label' => translate('address')
+            ]
+        ];
+
+
+        $rules[] = [
+            'lat' => [
+                'rules' => 'required|numeric',
+                'label' => translate('lat')
+            ]
+        ];
+
+        $rules[] = [
+            'lng' => [
+                'rules' => 'required|numeric',
+                'label' => translate('lng')
+            ]
+        ];
+
+
+        $rules[] = [
+            'area_size' => [
+                'rules' => 'required|numeric',
+                'label' => translate('area_size')
+            ]
+        ];
+
+
+        $rules[] = [
+            'size_prefix' => [
+                'rules' => 'required|in_list[' . implode(',', PropertyParameters::getAreaUnits()) . ']',
+                'label' => translate('size_prefix')
+            ]
+        ];
+
+        if (in_array($category, [CategoryModel::TYPE_HOUSES])) {
+            $rules[] = [
+                'land_area' => [
+                    'rules' => 'required|numeric',
+                    'label' => translate('land_area')
+                ]
+            ];
+
+            $rules[] = [
+                'land_area_size_prefix' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getAreaUnits()) . ']',
+                    'label' => translate('land_area_size_prefix')
+                ]
+            ];
+
+        }
+
+
+        if (in_array($category, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT])) {
+
+            $rules[] = [
+                'bedrooms' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBadRooms()) . ']',
+                    'label' => translate('bedrooms')
+                ]
+            ];
+
+            $rules[] = [
+                'garages' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getGarages()) . ']',
+                    'label' => translate('garages')
+                ]
+            ];
+
+            $rules[] = [
+                'year_built' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBuildYears()) . ']',
+                    'label' => translate('year_built')
+                ]
+            ];
+
+
+            $rules[] = [
+                'building_type' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBuildingType()) . ']',
+                    'label' => translate('building_type')
+                ]
+            ];
+
+            $rules[] = [
+                'number_of_rooms' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBadRooms()) . ']',
+                    'label' => translate('number_of_rooms')
+                ]
+            ];
+
+        }
+
+        if ($category == CategoryModel::TYPE_APARTMENT) {
+
+            $rules[] = [
+                'new_building' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getYesNo()) . ']',
+                    'label' => translate('new_building')
+                ]
+            ];
+        }
+
+        if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])) {
+
+            $rules[] = [
+                'number_of_floors' => [
+                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getPropertyFloor()) . ']',
+                    'label' => translate('number_of_floors')
+                ]
+            ];
+        }
+        dd($rules);
+
+        return $rules;
     }
 
 }

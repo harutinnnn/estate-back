@@ -22,12 +22,15 @@ use App\Models\CategoryModel;
                             class="fa-solid fa-caret-right fs-16"></i> <?= translate($propertyRentType) ?>
                 </h2>
 
-                <?= form_hidden('property-type', $propertyType) ?>
+                <?= form_hidden('property_type', $propertyType) ?>
                 <?= form_hidden('property-rent-type', $propertyRentType) ?>
 
                 <div class="form-input-row">
-                    <label for="property-title"><?= translate('property_name') ?></label>
-                    <input type="text" class="form-input" id="property-title">
+                    <label for="title"><?= translate('property_name') ?></label>
+                    <input type="text" class="form-input" name="title" id="title">
+                    <div class="error-msg mb-3">
+                        <?= show_error("cat_key", $validation); ?>
+                    </div>
                 </div>
 
                 <div class="form-input-row">
@@ -42,7 +45,7 @@ use App\Models\CategoryModel;
                     </div>
 
 
-                    <?php if ($propertyRentType !== \App\Models\ArticleModel::TYPE_RENT): ?>
+                    <?php if ($propertyRentType == \App\Models\ArticleModel::TYPE_RENT): ?>
                         <!--TODO only for rent--->
                         <div class="form-input-row">
                             <label for="prepayment"><?= translate('prepayment') ?></label>
@@ -59,27 +62,31 @@ use App\Models\CategoryModel;
                     <?php endif; ?>
 
 
-                    <div class="form-input-row">
-                        <label for="rooms"><?= translate('rooms') ?></label>
-                        <?= form_dropdown(
-                            [
-                                'class' => 'form-input',
-                                'name' => 'rooms',
-                                'id' => 'rooms',
-                            ],
-                            PropertyParameters::getRooms(),
-                        ) ?>
+                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])): ?>
 
-                    </div>
+                        <div class="form-input-row">
+                            <label for="rooms"><?= translate('rooms') ?></label>
+                            <?= form_dropdown(
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'rooms',
+                                    'id' => 'rooms',
+                                ],
+                                PropertyParameters::getRooms(),
+                            ) ?>
+
+                        </div>
+                    <?php endif; ?>
 
 
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])): ?>
+                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_EVENT_VENUE_RENTAL])): ?>
                         <div class="form-input-row">
                             <label for="ceiling_height"><?= translate('ceiling_height') ?></label>
                             <input type="number" step="0.1" class="form-input" id="ceiling_height"
                                    name="ceiling_height">
                         </div>
                     <?php endif; ?>
+
 
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS])): ?>
                         <div class="form-input-row">
@@ -95,7 +102,8 @@ use App\Models\CategoryModel;
                         </div>
                     <?php endif; ?>
 
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT])): ?>
+
+                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])): ?>
                         <div class="form-input-row">
                             <label for="balcony"><?= translate('balcony') ?></label>
                             <?= form_dropdown(
@@ -114,7 +122,7 @@ use App\Models\CategoryModel;
                     <?php if ($propertyRentType !== \App\Models\ArticleModel::TYPE_RENT): ?>
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])): ?>
                             <div class="form-input-row">
-                                <label for="balcony"><?= translate('utility_payments') ?></label>
+                                <label for="utility_payments"><?= translate('utility_payments') ?></label>
                                 <?= form_dropdown(
                                     [
                                         'class' => 'form-input',
@@ -128,7 +136,7 @@ use App\Models\CategoryModel;
                         <?php endif; ?>
                     <?php endif; ?>
 
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])): ?>
                         <div class="form-input-row">
                             <label for="furniture"><?= translate('furniture') ?></label>
                             <?= form_dropdown(
@@ -142,7 +150,8 @@ use App\Models\CategoryModel;
 
                         </div>
                     <?php endif; ?>
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+
+                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])): ?>
                         <div class="form-input-row">
                             <label for="furniture"><?= translate('views_from_windows') ?></label>
                             <?= form_dropdown(
@@ -188,13 +197,13 @@ use App\Models\CategoryModel;
 
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
                             <div class="form-input-row">
-                                <label for="postal-code"><?= translate('postal_code') ?></label>
-                                <input type="number" class="form-input" id="postal-code">
+                                <label for="postal_code"><?= translate('postal_code') ?></label>
+                                <input type="number" class="form-input" id="postal_code" name="postal_code">
                             </div>
 
                             <div class="form-input-row relative" id="autocomplete-container">
                                 <label for="address"><?= translate('address') ?></label>
-                                <input type="text" class="form-input" id="address" autocomplete="off">
+                                <input type="text" class="form-input" name="address" id="address" autocomplete="off">
 
                                 <div class="addr-autocomplete" id="addr-autocomplete">
 
@@ -219,10 +228,12 @@ use App\Models\CategoryModel;
                 <div class="gray-box-group mb-30">
                     <div class="col-4-grid-4-1">
 
+
                         <div class="form-input-row">
                             <label for="area_size"><?= translate('area_size') ?></label>
                             <input type="text" class="form-input" id="area_size" name="area_size">
                         </div>
+
 
                         <div class="form-input-row">
                             <label for="area_size_prefix"><?= translate('size_prefix') ?></label>
@@ -237,10 +248,12 @@ use App\Models\CategoryModel;
                         </div>
 
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES])): ?>
+
                             <div class="form-input-row">
                                 <label for="land_area"><?= translate('land_area') ?></label>
                                 <input type="number" step="0.1" class="form-input" id="land_area" name="land_area">
                             </div>
+
 
                             <div class="form-input-row">
                                 <label for="land_area_size_prefix"><?= translate('size_prefix') ?></label>
@@ -254,70 +267,65 @@ use App\Models\CategoryModel;
                                 ) ?>
 
                             </div>
+
                         <?php endif; ?>
 
                     </div>
 
                     <div class="col-3-grid">
 
-                        <div class="form-input-row">
-                            <label for="bedrooms"><?= translate('bedrooms') ?></label>
-                            <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'bedrooms',
-                                    'id' => 'bedrooms',
-                                ],
-                                PropertyParameters::getBadRooms()
-                            ) ?>
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT])): ?>
+                            <div class="form-input-row">
+                                <label for="bedrooms"><?= translate('bedrooms') ?></label>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'bedrooms',
+                                        'id' => 'bedrooms',
+                                    ],
+                                    PropertyParameters::getBadRooms()
+                                ) ?>
 
 
-                        </div>
+                            </div>
+                        <?php endif; ?>
 
-                        <div class="form-input-row">
-                            <label for="bathrooms"><?= translate('bathrooms') ?></label>
-                            <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'bathrooms',
-                                    'id' => 'bathrooms',
-                                ],
-                                PropertyParameters::getBathRooms()
-                            ) ?>
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT])): ?>
+                            <div class="form-input-row">
+                                <label for="garages"><?= translate('garages') ?></label>
 
-                        </div>
-
-                        <div class="form-input-row">
-                            <label for="garages"><?= translate('garages') ?></label>
-
-                            <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'garages',
-                                    'id' => 'garages',
-                                ],
-                                PropertyParameters::getGarages()
-                            ) ?>
-                        </div>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'garages',
+                                        'id' => 'garages',
+                                    ],
+                                    PropertyParameters::getGarages()
+                                ) ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="col-3-grid">
 
-                        <div class="form-input-row">
-                            <label for=" Year Built"><?= translate('year_built') ?></label>
-                            <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'year_built',
-                                    'id' => 'year_built',
-                                ],
-                                PropertyParameters::getBuildYears()
-                            ) ?>
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT])): ?>
+                            <div class="form-input-row">
+                                <label for=" Year Built"><?= translate('year_built') ?></label>
+                                <?= form_dropdown(
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'year_built',
+                                        'id' => 'year_built',
+                                    ],
+                                    PropertyParameters::getBuildYears()
+                                ) ?>
 
-                        </div>
+                            </div>
+                        <?php endif; ?>
 
 
                         <?php if ($propertyCategory->cat_key == CategoryModel::TYPE_APARTMENT): ?>
+
                             <div class="form-input-row">
                                 <label for="new_building"><?= translate('new_building') ?></label>
 
@@ -330,6 +338,7 @@ use App\Models\CategoryModel;
                                     PropertyParameters::getYesNo()
                                 ) ?>
                             </div>
+
                         <?php endif; ?>
 
 
@@ -349,7 +358,7 @@ use App\Models\CategoryModel;
                             </div>
                         <?php endif; ?>
 
-                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+                        <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])): ?>
 
                             <div class="form-input-row">
                                 <label for="building_type"><?= translate('building_type') ?></label>
@@ -368,12 +377,12 @@ use App\Models\CategoryModel;
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])): ?>
 
                             <div class="form-input-row">
-                                <label for="number_of_bathrooms"><?= translate('number_of_rooms') ?></label>
+                                <label for="bathrooms"><?= translate('number_of_rooms') ?></label>
                                 <?= form_dropdown(
                                     [
                                         'class' => 'form-input',
-                                        'name' => 'number_of_bathrooms',
-                                        'id' => 'number_of_bathrooms',
+                                        'name' => 'bathrooms',
+                                        'id' => 'bathrooms',
                                     ],
                                     PropertyParameters::getBadRooms(),
                                 ) ?>
@@ -399,7 +408,7 @@ use App\Models\CategoryModel;
                     </div>
                 </div>
 
-                <?php if ($propertyRentType !== \App\Models\ArticleModel::TYPE_RENT): ?>
+                <?php if ($propertyRentType == \App\Models\ArticleModel::TYPE_RENT): ?>
                     <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])): ?>
                         <div class="create-amenities gray-box-group mb-30">
                             <h3 class="mb-20"><?= translate('household_appliances') ?></h3>
@@ -409,7 +418,7 @@ use App\Models\CategoryModel;
                                     <?php foreach ($householdAppliances as $id => $title): ?>
                                         <li>
                                             <label for="household_appliances-<?= $id ?>">
-                                                <input type="checkbox" name="household_appliances" value="<?= $id ?>"
+                                                <input type="checkbox" name="household_appliances[]" value="<?= $id ?>"
                                                        id="household_appliances-<?= $id ?>"/>
                                                 <?= $title ?>
                                             </label>
@@ -422,8 +431,8 @@ use App\Models\CategoryModel;
                 <?php endif; ?>
 
 
-                <?php if ($propertyRentType !== \App\Models\ArticleModel::TYPE_RENT): ?>
-                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_GARAGES_AND_PARKING])): ?>
+                <?php if ($propertyRentType == \App\Models\ArticleModel::TYPE_RENT): ?>
+                    <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])): ?>
 
                         <div class="create-amenities gray-box-group mb-30">
                             <h3><?= translate('amenities') ?></h3>
@@ -437,7 +446,7 @@ use App\Models\CategoryModel;
                                             <?php foreach ($amenityList as $amenityId => $amenityTitle): ?>
                                                 <li>
                                                     <label for="amenities-<?= $amenityId ?>">
-                                                        <input type="checkbox" name="amenities"
+                                                        <input type="checkbox" name="amenities[]"
                                                                value="<?= $amenityId ?>"
                                                                id="amenities-<?= $amenityId ?>"/>
                                                         <?= $amenityTitle ?>
@@ -465,7 +474,7 @@ use App\Models\CategoryModel;
                                 <?php foreach ($communications as $id => $title): ?>
                                     <li>
                                         <label for="communications-<?= $id ?>">
-                                            <input type="checkbox" name="communications" value="<?= $id ?>"
+                                            <input type="checkbox" name="communications[]" value="<?= $id ?>"
                                                    id="communications-<?= $id ?>"/>
                                             <?= $title ?>
                                         </label>

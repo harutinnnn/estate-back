@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AmenitiesModel;
+use App\Models\ArticleModel;
 use App\Models\CategoryMLModel;
 use App\Models\CategoryModel;
 use App\Models\CityModel;
@@ -73,6 +74,15 @@ class Properties extends MainController
             $this->pageData['propertyType'] = session()->get('property-type');
             $this->pageData['propertyRentType'] = session()->get('property-rent-type');
         }
+
+
+        if ($this->validate(ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang))) {
+
+
+        }else{
+            $this->pageData['validation'] = $this->validator;
+        }
+
 
         $amenitiesModel = new AmenitiesModel();
         $amenities = [];
