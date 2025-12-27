@@ -4,12 +4,9 @@ namespace App\Controllers;
 
 use App\Models\AmenitiesModel;
 use App\Models\ArticleModel;
-use App\Models\CategoryMLModel;
 use App\Models\CategoryModel;
-use App\Models\CityModel;
 use App\Models\CommunicationsModel;
 use App\Models\HouseholdAppliancesModel;
-use App\Models\SiteUserModel;
 use App\Models\StatesModel;
 
 class Properties extends MainController
@@ -79,7 +76,7 @@ class Properties extends MainController
         if ($this->validate(ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang))) {
 
 
-        }else{
+        } else {
             $this->pageData['validation'] = $this->validator;
         }
 

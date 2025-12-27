@@ -42,6 +42,7 @@ class MainController extends BaseController
         $config = new App();
         $this->_lang = $config->defaultLocale;
 
+        $this->pageData['validation'] = null;
 
         AuthUtils::checkRememberMeFront();
 
@@ -127,8 +128,6 @@ class MainController extends BaseController
 
 
         $renderer->setData($rendererPageData);
-
-        $this->pageData['validation'] = null;
 
     }
 

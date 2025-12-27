@@ -29,19 +29,25 @@ use App\Models\CategoryModel;
                     <label for="title"><?= translate('property_name') ?></label>
                     <input type="text" class="form-input" name="title" id="title">
                     <div class="error-msg mb-3">
-                        <?= show_error("cat_key", $validation); ?>
+                        <?= show_error("title", $validation); ?>
                     </div>
                 </div>
 
                 <div class="form-input-row">
                     <label for="description"><?= translate('description') ?></label>
                     <textarea class="form-input" id="description" name="description"></textarea>
+                    <div class="error-msg mb-3">
+                        <?= show_error("description", $validation); ?>
+                    </div>
                 </div>
 
                 <div class="col-3-grid">
                     <div class="form-input-row">
                         <label for="price"><?= translate('price') ?></label>
                         <input type="number" class="form-input" id="price" name="price">
+                        <div class="error-msg mb-3">
+                            <?= show_error("price", $validation); ?>
+                        </div>
                     </div>
 
 
@@ -57,6 +63,10 @@ use App\Models\CategoryModel;
                                 ],
                                 PropertyParameters::getPrepaymentParameters(),
                             ) ?>
+
+                            <div class="error-msg mb-3">
+                                <?= show_error("prepayment", $validation); ?>
+                            </div>
 
                         </div>
                     <?php endif; ?>
@@ -75,6 +85,10 @@ use App\Models\CategoryModel;
                                 PropertyParameters::getRooms(),
                             ) ?>
 
+                            <div class="error-msg mb-3">
+                                <?= show_error("rooms", $validation); ?>
+                            </div>
+
                         </div>
                     <?php endif; ?>
 
@@ -84,6 +98,10 @@ use App\Models\CategoryModel;
                             <label for="ceiling_height"><?= translate('ceiling_height') ?></label>
                             <input type="number" step="0.1" class="form-input" id="ceiling_height"
                                    name="ceiling_height">
+
+                            <div class="error-msg mb-3">
+                                <?= show_error("ceiling_height", $validation); ?>
+                            </div>
                         </div>
                     <?php endif; ?>
 
@@ -99,6 +117,10 @@ use App\Models\CategoryModel;
                                 ],
                                 PropertyParameters::getPropertyFloor(),
                             ) ?>
+
+                            <div class="error-msg mb-3">
+                                <?= show_error("floor", $validation); ?>
+                            </div>
                         </div>
                     <?php endif; ?>
 
@@ -114,6 +136,9 @@ use App\Models\CategoryModel;
                                 ],
                                 PropertyParameters::getBalcony(),
                             ) ?>
+                            <div class="error-msg mb-3">
+                                <?= show_error("balcony", $validation); ?>
+                            </div>
 
                         </div>
                     <?php endif; ?>
@@ -131,6 +156,9 @@ use App\Models\CategoryModel;
                                     ],
                                     PropertyParameters::getUtilityPayments(),
                                 ) ?>
+                                <div class="error-msg mb-3">
+                                    <?= show_error("utility_payments", $validation); ?>
+                                </div>
 
                             </div>
                         <?php endif; ?>
@@ -148,6 +176,10 @@ use App\Models\CategoryModel;
                                 PropertyParameters::getFurniture(),
                             ) ?>
 
+                            <div class="error-msg mb-3">
+                                <?= show_error("furniture", $validation); ?>
+                            </div>
+
                         </div>
                     <?php endif; ?>
 
@@ -162,6 +194,10 @@ use App\Models\CategoryModel;
                                 ],
                                 PropertyParameters::getViewsFromWindows(),
                             ) ?>
+
+                            <div class="error-msg mb-3">
+                                <?= show_error("views_from_windows", $validation); ?>
+                            </div>
                         </div>
                     <?php endif; ?>
 
@@ -188,22 +224,39 @@ use App\Models\CategoryModel;
                                 ],
                                 $states ?? []
                             ) ?>
+
+                            <div class="error-msg mb-3">
+                                <?= show_error("state", $validation); ?>
+                            </div>
                         </div>
 
                         <div class="form-input-row">
                             <label for="city"><?= translate('city') ?></label>
                             <select name="city" id="city" class="form-input"></select>
+
+                            <div class="error-msg mb-3">
+                                <?= show_error("city", $validation); ?>
+                            </div>
                         </div>
 
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
                             <div class="form-input-row">
                                 <label for="postal_code"><?= translate('postal_code') ?></label>
                                 <input type="number" class="form-input" id="postal_code" name="postal_code">
+
+                                <div class="error-msg mb-3">
+                                    <?= show_error("postal_code", $validation); ?>
+                                </div>
+
                             </div>
 
                             <div class="form-input-row relative" id="autocomplete-container">
                                 <label for="address"><?= translate('address') ?></label>
                                 <input type="text" class="form-input" name="address" id="address" autocomplete="off">
+
+                                <div class="error-msg mb-3">
+                                    <?= show_error("address", $validation); ?>
+                                </div>
 
                                 <div class="addr-autocomplete" id="addr-autocomplete">
 
@@ -220,6 +273,11 @@ use App\Models\CategoryModel;
                         <input type="hidden" name="lat" id="lat">
                         <input type="hidden" name="lng" id="lng">
                     </div>
+
+                    <div class="error-msg mb-3">
+                        <?= show_error("lat", $validation); ?>
+                        <?= show_error("lng", $validation); ?>
+                    </div>
                 </div>
             </div>
 
@@ -232,6 +290,9 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="area_size"><?= translate('area_size') ?></label>
                             <input type="text" class="form-input" id="area_size" name="area_size">
+                            <div class="error-msg mb-3">
+                                <?= show_error("area_size", $validation); ?>
+                            </div>
                         </div>
 
 
@@ -245,6 +306,9 @@ use App\Models\CategoryModel;
                                 ],
                                 PropertyParameters::getAreaUnits()
                             ) ?>
+                            <div class="error-msg mb-3">
+                                <?= show_error("size_prefix", $validation); ?>
+                            </div>
                         </div>
 
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES])): ?>
@@ -252,6 +316,9 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="land_area"><?= translate('land_area') ?></label>
                                 <input type="number" step="0.1" class="form-input" id="land_area" name="land_area">
+                            </div>
+                            <div class="error-msg mb-3">
+                                <?= show_error("land_area", $validation); ?>
                             </div>
 
 
@@ -265,6 +332,9 @@ use App\Models\CategoryModel;
                                     ],
                                     PropertyParameters::getAreaUnits()
                                 ) ?>
+                                <div class="error-msg mb-3">
+                                    <?= show_error("land_area_size_prefix", $validation); ?>
+                                </div>
 
                             </div>
 
@@ -286,6 +356,10 @@ use App\Models\CategoryModel;
                                     PropertyParameters::getBadRooms()
                                 ) ?>
 
+                                <div class="error-msg mb-3">
+                                    <?= show_error("bedrooms", $validation); ?>
+                                </div>
+
 
                             </div>
                         <?php endif; ?>
@@ -302,6 +376,11 @@ use App\Models\CategoryModel;
                                     ],
                                     PropertyParameters::getGarages()
                                 ) ?>
+
+
+                                <div class="error-msg mb-3">
+                                    <?= show_error("garages", $validation); ?>
+                                </div>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -320,6 +399,10 @@ use App\Models\CategoryModel;
                                     PropertyParameters::getBuildYears()
                                 ) ?>
 
+                                <div class="error-msg mb-3">
+                                    <?= show_error("year_built", $validation); ?>
+                                </div>
+
                             </div>
                         <?php endif; ?>
 
@@ -337,6 +420,10 @@ use App\Models\CategoryModel;
                                     ],
                                     PropertyParameters::getYesNo()
                                 ) ?>
+
+                                <div class="error-msg mb-3">
+                                    <?= show_error("new_building", $validation); ?>
+                                </div>
                             </div>
 
                         <?php endif; ?>
@@ -355,6 +442,10 @@ use App\Models\CategoryModel;
                                     PropertyParameters::getPropertyFloor(),
                                 ) ?>
 
+                                <div class="error-msg mb-3">
+                                    <?= show_error("number_of_floors", $validation); ?>
+                                </div>
+
                             </div>
                         <?php endif; ?>
 
@@ -371,6 +462,10 @@ use App\Models\CategoryModel;
                                     ],
                                     PropertyParameters::getBuildingType(),
                                 ) ?>
+
+                                <div class="error-msg mb-3">
+                                    <?= show_error("building_type", $validation); ?>
+                                </div>
                             </div>
                         <?php endif; ?>
 
@@ -386,6 +481,10 @@ use App\Models\CategoryModel;
                                     ],
                                     PropertyParameters::getBadRooms(),
                                 ) ?>
+
+                                <div class="error-msg mb-3">
+                                    <?= show_error("bathrooms", $validation); ?>
+                                </div>
                             </div>
                         <?php endif; ?>
 
@@ -402,6 +501,10 @@ use App\Models\CategoryModel;
                                     ],
                                     PropertyParameters::getParkingParams(),
                                 ) ?>
+
+                                <div class="error-msg mb-3">
+                                    <?= show_error("parking", $validation); ?>
+                                </div>
                             </div>
                         <?php endif; ?>
 

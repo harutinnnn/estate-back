@@ -102,21 +102,17 @@ class ArticleModel extends MainModel
         ];
 
         if ($rentType == \App\Models\ArticleModel::TYPE_RENT) {
-            $rules[] = [
-                'prepayment' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getPrepaymentParameters()) . ']',
-                    'label' => translate('prepayment')
-                ]
+            $rules['prepayment'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getPrepaymentParameters())) . ']',
+                'label' => translate('prepayment')
             ];
 
 
             if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES])) {
 
-                $rules[] = [
-                    'utility_payments' => [
-                        'rules' => 'required|in_list[' . implode(',', PropertyParameters::getUtilityPayments()) . ']',
-                        'label' => translate('utility_payments')
-                    ]
+                $rules['utility_payments'] = [
+                    'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getUtilityPayments())) . ']',
+                    'label' => translate('utility_payments')
                 ];
             }
 
@@ -124,150 +120,110 @@ class ArticleModel extends MainModel
 
         if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])) {
 
-            $rules[] = [
-                'rooms' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getRooms()) . ']',
-                    'label' => translate('rooms')
-                ]
+            $rules['rooms'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getRooms())) . ']',
+                'label' => translate('rooms')
             ];
 
-            $rules[] = [
-                'balcony' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBalcony()) . ']',
-                    'label' => translate('balcony')
-                ]
+            $rules['balcony'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getBalcony())) . ']',
+                'label' => translate('balcony')
             ];
         }
 
         if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_EVENT_VENUE_RENTAL])) {
 
-            $rules[] = [
-                'ceiling_height' => [
-                    'rules' => 'required|numeric',
-                    'label' => translate('ceiling_height')
-                ]
+            $rules['ceiling_height'] = [
+                'rules' => 'required|numeric',
+                'label' => translate('ceiling_height')
             ];
 
         }
 
         if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS])) {
-            $rules[] = [
-                'floor' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getPropertyFloor()) . ']',
-                    'label' => translate('floor')
-                ]
+            $rules['floor'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getPropertyFloor())) . ']',
+                'label' => translate('floor')
             ];
         }
 
         if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS])) {
 
-            $rules[] = [
-                'furniture' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getFurniture()) . ']',
-                    'label' => translate('furniture')
-                ]
+            $rules['furniture'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getFurniture())) . ']',
+                'label' => translate('furniture')
             ];
 
-            $rules[] = [
-                'views_from_windows' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getViewsFromWindows()) . ']',
-                    'label' => translate('views_from_windows')
-                ]
+            $rules['views_from_windows'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getViewsFromWindows())) . ']',
+                'label' => translate('views_from_windows')
             ];
 
         }
 
 
-        $rules[] = [
-            'state' => [
-                'rules' => 'required|numeric',
-                'label' => translate('state')
-            ]
+        $rules['state'] = [
+            'rules' => 'required|numeric',
+            'label' => translate('state')
         ];
 
-        $rules[] = [
-            'city' => [
-                'rules' => 'required|numeric',
-                'label' => translate('city')
-            ]
+        $rules['city'] = [
+            'rules' => 'required|numeric',
+            'label' => translate('city')
         ];
 
         if (in_array($category, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])) {
-            $rules[] = [
-                'postal_code' => [
-                    'rules' => 'required|numeric',
-                    'label' => translate('postal_code')
-                ]
+            $rules['postal_code'] = [
+                'rules' => 'required|numeric',
+                'label' => translate('postal_code')
             ];
 
-            $rules[] = [
-                'address' => [
-                    'rules' => 'required',
-                    'label' => translate('address')
-                ]
+            $rules['address'] = [
+                'rules' => 'required',
+                'label' => translate('address')
             ];
 
-            $rules[] = [
-                'parking' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getParkingParams()) . ']',
-                    'label' => translate('parking')
-                ]
+            $rules['parking'] = [
+                'rules' => 'required|in_list[' . implode(',', array(PropertyParameters::getParkingParams())) . ']',
+                'label' => translate('parking')
             ];
 
         }
 
 
-        $rules[] = [
-            'address' => [
-                'rules' => 'required',
-                'label' => translate('address')
-            ]
+
+
+        $rules['lat'] = [
+            'rules' => 'required|numeric',
+            'label' => translate('lat')
+        ];
+
+        $rules['lng'] = [
+            'rules' => 'required|numeric',
+            'label' => translate('lng')
         ];
 
 
-        $rules[] = [
-            'lat' => [
-                'rules' => 'required|numeric',
-                'label' => translate('lat')
-            ]
-        ];
-
-        $rules[] = [
-            'lng' => [
-                'rules' => 'required|numeric',
-                'label' => translate('lng')
-            ]
+        $rules['area_size'] = [
+            'rules' => 'required|numeric',
+            'label' => translate('area_size')
         ];
 
 
-        $rules[] = [
-            'area_size' => [
-                'rules' => 'required|numeric',
-                'label' => translate('area_size')
-            ]
-        ];
-
-
-        $rules[] = [
-            'size_prefix' => [
-                'rules' => 'required|in_list[' . implode(',', PropertyParameters::getAreaUnits()) . ']',
-                'label' => translate('size_prefix')
-            ]
+        $rules['size_prefix'] = [
+            'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getAreaUnits())) . ']',
+            'label' => translate('size_prefix')
         ];
 
         if (in_array($category, [CategoryModel::TYPE_HOUSES])) {
-            $rules[] = [
-                'land_area' => [
-                    'rules' => 'required|numeric',
-                    'label' => translate('land_area')
-                ]
+            $rules['land_area'] = [
+                'rules' => 'required|numeric',
+                'label' => translate('land_area')
             ];
 
-            $rules[] = [
-                'land_area_size_prefix' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getAreaUnits()) . ']',
-                    'label' => translate('land_area_size_prefix')
-                ]
+            $rules['land_area_size_prefix'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getAreaUnits())) . ']',
+                'label' => translate('land_area_size_prefix')
             ];
 
         }
@@ -275,64 +231,50 @@ class ArticleModel extends MainModel
 
         if (in_array($category, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT])) {
 
-            $rules[] = [
-                'bedrooms' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBadRooms()) . ']',
-                    'label' => translate('bedrooms')
-                ]
+            $rules['bedrooms'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getBadRooms())) . ']',
+                'label' => translate('bedrooms')
             ];
 
-            $rules[] = [
-                'garages' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getGarages()) . ']',
-                    'label' => translate('garages')
-                ]
+            $rules['garages'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getGarages())) . ']',
+                'label' => translate('garages')
             ];
 
-            $rules[] = [
-                'year_built' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBuildYears()) . ']',
-                    'label' => translate('year_built')
-                ]
+            $rules['year_built'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getBuildYears())) . ']',
+                'label' => translate('year_built')
             ];
 
 
-            $rules[] = [
-                'building_type' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBuildingType()) . ']',
-                    'label' => translate('building_type')
-                ]
+            $rules['building_type'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getBuildingType())) . ']',
+                'label' => translate('building_type')
             ];
 
-            $rules[] = [
-                'number_of_rooms' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getBadRooms()) . ']',
-                    'label' => translate('number_of_rooms')
-                ]
+            $rules['number_of_rooms'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getBadRooms())) . ']',
+                'label' => translate('number_of_rooms')
             ];
 
         }
 
         if ($category == CategoryModel::TYPE_APARTMENT) {
 
-            $rules[] = [
-                'new_building' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getYesNo()) . ']',
-                    'label' => translate('new_building')
-                ]
+            $rules['new_building'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getYesNo())) . ']',
+                'label' => translate('new_building')
             ];
         }
 
         if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])) {
 
-            $rules[] = [
-                'number_of_floors' => [
-                    'rules' => 'required|in_list[' . implode(',', PropertyParameters::getPropertyFloor()) . ']',
-                    'label' => translate('number_of_floors')
-                ]
+            $rules['number_of_floors'] = [
+                'rules' => 'required|in_list[' . implode(',', array_keys(PropertyParameters::getPropertyFloor())) . ']',
+                'label' => translate('number_of_floors')
             ];
         }
-        dd($rules);
+
 
         return $rules;
     }
