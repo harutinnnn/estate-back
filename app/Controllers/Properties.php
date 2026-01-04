@@ -76,6 +76,8 @@ class Properties extends MainController
             if ($this->validate(ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang))) {
 
 
+
+
             } else {
                 $this->pageData['validation'] = $this->validator;
             }
