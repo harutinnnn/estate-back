@@ -81,8 +81,43 @@ class ArticleModel extends MainModel
 
         $obj = null;
 
+        $propertyType = session()->get('property-type');
         try {
 
+
+            $data = [];
+            switch ($propertyType) {
+                case CategoryModel::TYPE_APARTMENT;
+
+
+
+
+                    break;
+                case CategoryModel::TYPE_HOUSES;
+
+                    break;
+                case CategoryModel::TYPE_ROOMS;
+
+                    break;
+                case CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE;
+
+                    break;
+
+                case CategoryModel::TYPE_LAND_PLOT;
+
+                    break;
+
+                case CategoryModel::TYPE_GARAGES_AND_PARKING;
+
+                    break;
+                case CategoryModel::TYPE_BOOTHS_AND_KIOSKS;
+
+
+                    break;
+                case CategoryModel::TYPE_EVENT_VENUE_RENTAL;
+
+                    break;
+            }
 
 
         } catch (Exception $e) {
