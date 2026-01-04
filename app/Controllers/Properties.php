@@ -72,12 +72,13 @@ class Properties extends MainController
             $this->pageData['propertyRentType'] = session()->get('property-rent-type');
         }
 
+        if ($this->request->getPost('submit')) {
+            if ($this->validate(ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang))) {
 
-        if ($this->validate(ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang))) {
 
-
-        } else {
-            $this->pageData['validation'] = $this->validator;
+            } else {
+                $this->pageData['validation'] = $this->validator;
+            }
         }
 
 
