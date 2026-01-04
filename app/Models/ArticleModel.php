@@ -82,14 +82,16 @@ class ArticleModel extends MainModel
         $obj = null;
 
         $propertyType = session()->get('property-type');
+
         try {
 
+            $categoryModel = new CategoryModel();
+            $category = $categoryModel->where('id', intval($propertyType))->first();
 
             $data = [];
-            switch ($propertyType) {
+            switch ($category->cat_key) {
+
                 case CategoryModel::TYPE_APARTMENT;
-
-
 
 
                     break;
