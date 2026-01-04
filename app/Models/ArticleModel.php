@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Libraries\PropertyParameters;
+use PHPUnit\Exception;
 
 class ArticleModel extends MainModel
 {
@@ -72,6 +73,23 @@ class ArticleModel extends MainModel
             self::TYPE_RENT => translate(self::TYPE_RENT),
             self::TYPE_SALE => translate(self::TYPE_SALE),
         ];
+
+    }
+
+    public static function saveArticle()
+    {
+
+        $obj = null;
+
+        try {
+
+
+
+        } catch (Exception $e) {
+
+        }
+
+        return $obj;
 
     }
 
@@ -189,8 +207,6 @@ class ArticleModel extends MainModel
             ];
 
         }
-
-
 
 
         $rules['lat'] = [
