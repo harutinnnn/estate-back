@@ -22,7 +22,7 @@ use App\Models\CategoryModel;
                             class="fa-solid fa-caret-right fs-16"></i> <?= translate($propertyRentType) ?>
                 </h2>
 
-                <?= form_hidden('property_type', $propertyType) ?>
+                <?= form_hidden('property-type', $propertyType) ?>
                 <?= form_hidden('property-rent-type', $propertyRentType) ?>
 
                 <div class="form-input-row">

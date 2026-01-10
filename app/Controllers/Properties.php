@@ -75,7 +75,7 @@ class Properties extends MainController
         if ($this->request->getPost('submit')) {
             if ($this->validate(ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang))) {
 
-                if (ArticleModel::saveArticle()) {
+                if (ArticleModel::saveArticle($this->request)) {
 
                 }
 

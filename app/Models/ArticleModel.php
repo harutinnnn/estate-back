@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Libraries\PropertyParameters;
+use CodeIgniter\HTTP\CLIRequest;
 use PHPUnit\Exception;
 
 class ArticleModel extends MainModel
@@ -76,7 +77,7 @@ class ArticleModel extends MainModel
 
     }
 
-    public static function saveArticle()
+    public static function saveArticle(CLIRequest $request)
     {
 
         $obj = null;
@@ -85,23 +86,104 @@ class ArticleModel extends MainModel
 
         try {
 
+            $model = new ArticleModel();
+
             $categoryModel = new CategoryModel();
             $category = $categoryModel->where('id', intval($propertyType))->first();
 
-            $data = [];
+            $data = [
+                'category' => $request->getPost('property-type'),
+                'property_rent_type' => $request->getPost('property-rent-type'),
+                'title' => $request->getPost('title'),
+                'description' => $request->getPost('description'),
+                'price' => intval($request->getPost('price')),
+                'state' => intval($request->getPost('state')),
+                'city' => intval($request->getPost('city')),
+                'lat' => ($request->getPost('lat')),
+                'lng' => ($request->getPost('lng')),
+                'area_size' => ($request->getPost('area_size')),
+                'size_prefix' => ($request->getPost('size_prefix')),
+            ];
+
+
+            if ($request->getPost('property-rent-type') == self::TYPE_RENT) {
+                $data['prepayment'] = $request->getPost('prepayment');
+            }
+
+
             switch ($category->cat_key) {
 
                 case CategoryModel::TYPE_APARTMENT;
+
+                    $data['rooms'] = $request->getPost('rooms');
+                    $data['ceiling_height'] = $request->getPost('ceiling_height');
+                    $data['floor'] = $request->getPost('floor');
+                    $data['balcony'] = $request->getPost('balcony');
+                    $data['furniture'] = $request->getPost('furniture');
+                    $data['views_from_windows'] = $request->getPost('views_from_windows');
+                    $data['postal_code'] = $request->getPost('postal_code');
+                    $data['address'] = $request->getPost('address');
+                    $data['bedrooms'] = $request->getPost('bedrooms');
+                    $data['garages'] = $request->getPost('garages');
+                    $data['year_built'] = $request->getPost('year_built');
+                    $data['new_building'] = $request->getPost('new_building');
+                    $data['number_of_floors'] = $request->getPost('number_of_floors');
+                    $data['building_type'] = $request->getPost('building_type');
+                    $data['bathrooms'] = $request->getPost('bathrooms');
+                    $data['parking'] = $request->getPost('parking');
+
+                    if ($request->getPost('property-rent-type') == self::TYPE_RENT) {
+                        $data['utility_payments'] = $request->getPost('utility_payments');
+                    }
 
 
                     break;
                 case CategoryModel::TYPE_HOUSES;
 
+                    $data['rooms'] = $request->getPost('rooms');
+                    $data['ceiling_height'] = $request->getPost('ceiling_height');
+                    $data['balcony'] = $request->getPost('balcony');
+                    $data['furniture'] = $request->getPost('furniture');
+                    $data['views_from_windows'] = $request->getPost('views_from_windows');
+                    $data['postal_code'] = $request->getPost('postal_code');
+                    $data['address'] = $request->getPost('address');
+
+                    $data['land_area'] = $request->getPost('land_area');
+                    $data['land_area_size_prefix'] = $request->getPost('land_area_size_prefix');
+
+                    $data['bedrooms'] = $request->getPost('bedrooms');
+                    $data['garages'] = $request->getPost('garages');
+                    $data['year_built'] = $request->getPost('year_built');
+                    $data['number_of_floors'] = $request->getPost('number_of_floors');
+                    $data['building_type'] = $request->getPost('building_type');
+                    $data['bathrooms'] = $request->getPost('bathrooms');
+                    $data['parking'] = $request->getPost('parking');
+
+                    if ($request->getPost('property-rent-type') == self::TYPE_RENT) {
+                        $data['utility_payments'] = $request->getPost('utility_payments');
+                    }
+
                     break;
                 case CategoryModel::TYPE_ROOMS;
 
+                    $data['ceiling_height'] = $request->getPost('ceiling_height');
+                    $data['floor'] = $request->getPost('floor');
+                    $data['furniture'] = $request->getPost('furniture');
+                    $data['views_from_windows'] = $request->getPost('views_from_windows');
+                    $data['postal_code'] = $request->getPost('postal_code');
+                    $data['address'] = $request->getPost('address');
+                    $data['number_of_floors'] = $request->getPost('number_of_floors');
+                    $data['parking'] = $request->getPost('parking');
+
+                    if ($request->getPost('property-rent-type') == self::TYPE_RENT) {
+                        $data['utility_payments'] = $request->getPost('utility_payments');
+                    }
+
                     break;
                 case CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE;
+                    $data['postal_code'] = $request->getPost('postal_code');
+                    $data['address'] = $request->getPost('address');
+                    $data['number_of_floors'] = $request->getPost('number_of_floors');
 
                     break;
 
@@ -118,7 +200,24 @@ class ArticleModel extends MainModel
                     break;
                 case CategoryModel::TYPE_EVENT_VENUE_RENTAL;
 
+                    $data['ceiling_height'] = $request->getPost('ceiling_height');
+                    $data['postal_code'] = $request->getPost('postal_code');
+                    $data['parking'] = $request->getPost('parking');
                     break;
+            }
+
+
+            $lid = $model->insert($data);
+
+            if ($lid) {
+
+
+                //TODO household_appliances
+                //TODO amenities
+                //TODO communications
+
+
+
             }
 
 
