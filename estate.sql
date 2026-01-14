@@ -11,7 +11,7 @@
  Target Server Version : 50744 (5.7.44)
  File Encoding         : 65001
 
- Date: 24/12/2025 21:27:39
+ Date: 14/01/2026 20:52:11
 */
 
 SET NAMES utf8mb4;
@@ -257,6 +257,11 @@ CREATE TABLE `amenities_lcp`  (
 -- ----------------------------
 -- Records of amenities_lcp
 -- ----------------------------
+INSERT INTO `amenities_lcp` VALUES (2, 47);
+INSERT INTO `amenities_lcp` VALUES (2, 51);
+INSERT INTO `amenities_lcp` VALUES (3, 25);
+INSERT INTO `amenities_lcp` VALUES (3, 30);
+INSERT INTO `amenities_lcp` VALUES (3, 62);
 
 -- ----------------------------
 -- Table structure for amenities_ml
@@ -410,7 +415,7 @@ INSERT INTO `amenities_ml` VALUES (289, 68, 'ru', 'Вид на море / гор
 -- ----------------------------
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `category` int(11) UNSIGNED NOT NULL,
   `status` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -446,11 +451,14 @@ CREATE TABLE `articles`  (
   `building_type` enum('building_type_stone','building_type_panel','building_type_monolith','building_type_brick','building_type_cassette','building_type_wooden') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `parking` enum('outdoor_parking','covered_parking','garage_parking') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of articles
 -- ----------------------------
+INSERT INTO `articles` VALUES (1, 11, 1, 'asdsad', NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, '', NULL, NULL, 0, NULL, 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL);
+INSERT INTO `articles` VALUES (2, 11, 1, 'asdsad', NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, '', NULL, NULL, 0, NULL, 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL);
+INSERT INTO `articles` VALUES (3, 12, 1, 'asdsd', NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, '', NULL, NULL, 0, NULL, 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for categories
@@ -5050,6 +5058,8 @@ CREATE TABLE `communications_lcp`  (
 -- ----------------------------
 -- Records of communications_lcp
 -- ----------------------------
+INSERT INTO `communications_lcp` VALUES (3, 47);
+INSERT INTO `communications_lcp` VALUES (3, 48);
 
 -- ----------------------------
 -- Table structure for communications_ml
@@ -5581,6 +5591,11 @@ CREATE TABLE `household_appliances_lcp`  (
 -- ----------------------------
 -- Records of household_appliances_lcp
 -- ----------------------------
+INSERT INTO `household_appliances_lcp` VALUES (2, 38);
+INSERT INTO `household_appliances_lcp` VALUES (2, 42);
+INSERT INTO `household_appliances_lcp` VALUES (3, 35);
+INSERT INTO `household_appliances_lcp` VALUES (3, 38);
+INSERT INTO `household_appliances_lcp` VALUES (3, 42);
 
 -- ----------------------------
 -- Table structure for household_appliances_ml
@@ -6416,7 +6431,7 @@ CREATE TABLE `siteUsers`  (
 -- Records of siteUsers
 -- ----------------------------
 INSERT INTO `siteUsers` VALUES (138, 'Harut', 'user@user.com', '$2y$10$H4d/A78CbVtJQfoqJtSY8eTHvQDpiSjA3PBbSSn.640OwQBgHtwDC', '', NULL, 'user', 'dda384ff1784c0a412bde83ace886ba7', '2025-10-02 16:11:23', '2025-11-28 20:38:51');
-INSERT INTO `siteUsers` VALUES (140, 'Harutyun Sargsyan', 'harutinnnn@gmail.com', '$2y$10$XTBXUg9CPixAxYdgFef.yOBUZsacCtYsIp7vi/t1mEwM7gPTM6EVG', '(055) 80-84-96', NULL, 'user', '8510bc53b60afed32bccf3a35088d0d1', '2025-11-29 14:36:44', '2025-12-10 19:41:30');
+INSERT INTO `siteUsers` VALUES (140, 'Harutyun Sargsyan', 'harutinnnn@gmail.com', '$2y$10$XTBXUg9CPixAxYdgFef.yOBUZsacCtYsIp7vi/t1mEwM7gPTM6EVG', '(055) 80-84-96', NULL, 'user', '7eabeb870d95fb2a7b4b2fb24bc960a3', '2025-11-29 14:36:44', '2026-01-11 12:39:34');
 
 -- ----------------------------
 -- Table structure for states
