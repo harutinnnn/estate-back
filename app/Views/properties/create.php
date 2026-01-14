@@ -22,12 +22,12 @@ use App\Models\CategoryModel;
                             class="fa-solid fa-caret-right fs-16"></i> <?= translate($propertyRentType) ?>
                 </h2>
 
-                <?= form_hidden('property-type', $propertyType) ?>
-                <?= form_hidden('property-rent-type', $propertyRentType) ?>
+                <?= form_hidden('category', $propertyType) ?>
+                <?= form_hidden('property_rent_type', $propertyRentType) ?>
 
                 <div class="form-input-row">
                     <label for="title"><?= translate('property_name') ?></label>
-                    <input type="text" class="form-input" name="title" id="title">
+                    <input type="text" class="form-input" name="title" id="title" value="<?= set_value('title') ?>">
                     <div class="error-msg mb-3">
                         <?= show_error("title", $validation); ?>
                     </div>
@@ -35,7 +35,7 @@ use App\Models\CategoryModel;
 
                 <div class="form-input-row">
                     <label for="description"><?= translate('description') ?></label>
-                    <textarea class="form-input" id="description" name="description"></textarea>
+                    <textarea class="form-input" id="description" name="description"><?= set_value('description') ?></textarea>
                     <div class="error-msg mb-3">
                         <?= show_error("description", $validation); ?>
                     </div>
@@ -44,7 +44,7 @@ use App\Models\CategoryModel;
                 <div class="col-3-grid">
                     <div class="form-input-row">
                         <label for="price"><?= translate('price') ?></label>
-                        <input type="number" class="form-input" id="price" name="price">
+                        <input type="number" class="form-input" id="price" name="price" value="<?= set_value('price') ?>">
                         <div class="error-msg mb-3">
                             <?= show_error("price", $validation); ?>
                         </div>
@@ -242,7 +242,7 @@ use App\Models\CategoryModel;
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
                             <div class="form-input-row">
                                 <label for="postal_code"><?= translate('postal_code') ?></label>
-                                <input type="number" class="form-input" id="postal_code" name="postal_code">
+                                <input type="number" class="form-input" id="postal_code" name="postal_code" value="<?= set_value('postal_code') ?>">
 
                                 <div class="error-msg mb-3">
                                     <?= show_error("postal_code", $validation); ?>
@@ -252,7 +252,7 @@ use App\Models\CategoryModel;
 
                             <div class="form-input-row relative" id="autocomplete-container">
                                 <label for="address"><?= translate('address') ?></label>
-                                <input type="text" class="form-input" name="address" id="address" autocomplete="off">
+                                <input type="text" class="form-input" name="address" id="address" autocomplete="off" value="<?= set_value('address') ?>">
 
                                 <div class="error-msg mb-3">
                                     <?= show_error("address", $validation); ?>
@@ -270,8 +270,8 @@ use App\Models\CategoryModel;
 
                     <div class="form-input-row">
                         <div id="property-map" style="width: 100%;height: 360px"></div>
-                        <input type="hidden" name="lat" id="lat">
-                        <input type="hidden" name="lng" id="lng">
+                        <input type="hidden" name="lat" id="lat"   value="<?= set_value('lat') ?>">
+                        <input type="hidden" name="lng" id="lng" value="<?= set_value('lng') ?>">
                     </div>
 
                     <div class="error-msg mb-3">
@@ -289,7 +289,7 @@ use App\Models\CategoryModel;
 
                         <div class="form-input-row">
                             <label for="area_size"><?= translate('area_size') ?></label>
-                            <input type="text" class="form-input" id="area_size" name="area_size">
+                            <input type="text" class="form-input" id="area_size" name="area_size" value="<?= set_value('area_size') ?>">
                             <div class="error-msg mb-3">
                                 <?= show_error("area_size", $validation); ?>
                             </div>

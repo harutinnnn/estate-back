@@ -73,14 +73,18 @@ class Properties extends MainController
         }
 
         if ($this->request->getPost('submit')) {
+
             if ($this->validate(ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang))) {
 
                 if (ArticleModel::saveArticle($this->request)) {
+                    dd(1);
 
                 }
 
 
             } else {
+//                $validation = \Config\Services::validation();
+//                dd($validation->getErrors());
                 $this->pageData['validation'] = $this->validator;
             }
         }

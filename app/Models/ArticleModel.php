@@ -77,7 +77,7 @@ class ArticleModel extends MainModel
 
     }
 
-    public static function saveArticle(CLIRequest $request)
+    public static function saveArticle($request)
     {
 
         $obj = null;
@@ -92,7 +92,7 @@ class ArticleModel extends MainModel
             $category = $categoryModel->where('id', intval($propertyType))->first();
 
             $data = [
-                'category' => $request->getPost('property-type'),
+                'category' => $request->getPost('category'),
                 'property_rent_type' => $request->getPost('property-rent-type'),
                 'title' => $request->getPost('title'),
                 'description' => $request->getPost('description'),
@@ -207,15 +207,51 @@ class ArticleModel extends MainModel
             }
 
 
+
+
             $lid = $model->insert($data);
 
             if ($lid) {
 
 
-                //TODO household_appliances
-                //TODO amenities
-                //TODO communications
 
+
+                //TODO household_appliances_lcp
+                $household_appliances_lcp_model = new HouseholdAppliancesLcpModel();
+
+                if(!empty($request->getPost('household_appliances'))){
+                    foreach ($request->getPost('household_appliances') as $key => $value) {
+                        $household_appliances_lcp_model->insert([
+                            'article_id' => $lid,
+                            'household_appliance_id' => $value
+                        ]);
+                    }
+                }
+
+                //TODO amenities_lcp
+                $amenities_lcp_model = new AmenitiesLcpModel();
+
+                if(!empty($request->getPost('amenities'))){
+                    foreach ($request->getPost('amenities') as $key => $value) {
+                        $amenities_lcp_model->insert([
+                            'article_id' => $lid,
+                            'amenity_id' => $value
+                        ]);
+                    }
+                }
+
+
+                //TODO communications_lcp
+                $communications_lcp_model = new CommunicationsLcpModel();
+
+                if(!empty($request->getPost('communications'))){
+                    foreach ($request->getPost('communications') as $key => $value) {
+                        $communications_lcp_model->insert([
+                            'article_id' => $lid,
+                            'communication_id' => $value
+                        ]);
+                    }
+                }
 
 
             }
@@ -234,7 +270,7 @@ class ArticleModel extends MainModel
 
         $rules = [
             'property_rent_type' => [
-                'rules' => 'required|numeric',
+                'rules' => 'required',
                 'label' => translate('property_deal_type')
             ],
             'category' => [
