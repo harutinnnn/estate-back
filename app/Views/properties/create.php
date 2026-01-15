@@ -850,7 +850,7 @@ use App\Models\CategoryModel;
                     removeImgEl.addEventListener('click', () => {
                         if (confirm('<?= translate('are_you_sure') ?>')) {
                             imgItem.remove()
-                            imagesCount++;
+                            ++imagesCount;
                             imageCountEle.innerHTML = imagesCount
                         }
                     })
@@ -860,8 +860,7 @@ use App\Models\CategoryModel;
                     preview.prepend(imgItem);
 
 
-                    imagesCount--;
-
+                    --imagesCount;
                     imageCountEle.innerHTML = imagesCount
 
                 } else {
