@@ -35,7 +35,8 @@ use App\Models\CategoryModel;
 
                 <div class="form-input-row">
                     <label for="description"><?= translate('description') ?></label>
-                    <textarea class="form-input" id="description" name="description"><?= set_value('description') ?></textarea>
+                    <textarea class="form-input" id="description"
+                              name="description"><?= set_value('description') ?></textarea>
                     <div class="error-msg mb-3">
                         <?= show_error("description", $validation); ?>
                     </div>
@@ -44,7 +45,8 @@ use App\Models\CategoryModel;
                 <div class="col-3-grid">
                     <div class="form-input-row">
                         <label for="price"><?= translate('price') ?></label>
-                        <input type="number" class="form-input" id="price" name="price" value="<?= set_value('price') ?>">
+                        <input type="number" class="form-input" id="price" name="price"
+                               value="<?= set_value('price') ?>">
                         <div class="error-msg mb-3">
                             <?= show_error("price", $validation); ?>
                         </div>
@@ -56,12 +58,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="prepayment"><?= translate('prepayment') ?></label>
                             <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'prepayment',
-                                    'id' => 'prepayment',
-                                ],
-                                PropertyParameters::getPrepaymentParameters(),
+                                    [
+                                            'class' => 'form-input',
+                                            'name' => 'prepayment',
+                                            'id' => 'prepayment',
+                                    ],
+                                    PropertyParameters::getPrepaymentParameters(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -77,12 +79,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="rooms"><?= translate('rooms') ?></label>
                             <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'rooms',
-                                    'id' => 'rooms',
-                                ],
-                                PropertyParameters::getRooms(),
+                                    [
+                                            'class' => 'form-input',
+                                            'name' => 'rooms',
+                                            'id' => 'rooms',
+                                    ],
+                                    PropertyParameters::getRooms(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -110,12 +112,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="floor"><?= translate('floor') ?></label>
                             <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'floor',
-                                    'id' => 'floor',
-                                ],
-                                PropertyParameters::getPropertyFloor(),
+                                    [
+                                            'class' => 'form-input',
+                                            'name' => 'floor',
+                                            'id' => 'floor',
+                                    ],
+                                    PropertyParameters::getPropertyFloor(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -129,12 +131,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="balcony"><?= translate('balcony') ?></label>
                             <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'balcony',
-                                    'id' => 'balcony',
-                                ],
-                                PropertyParameters::getBalcony(),
+                                    [
+                                            'class' => 'form-input',
+                                            'name' => 'balcony',
+                                            'id' => 'balcony',
+                                    ],
+                                    PropertyParameters::getBalcony(),
                             ) ?>
                             <div class="error-msg mb-3">
                                 <?= show_error("balcony", $validation); ?>
@@ -149,12 +151,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="utility_payments"><?= translate('utility_payments') ?></label>
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'utility_payments',
-                                        'id' => 'utility_payments',
-                                    ],
-                                    PropertyParameters::getUtilityPayments(),
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'utility_payments',
+                                                'id' => 'utility_payments',
+                                        ],
+                                        PropertyParameters::getUtilityPayments(),
                                 ) ?>
                                 <div class="error-msg mb-3">
                                     <?= show_error("utility_payments", $validation); ?>
@@ -168,12 +170,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="furniture"><?= translate('furniture') ?></label>
                             <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'furniture',
-                                    'id' => 'furniture',
-                                ],
-                                PropertyParameters::getFurniture(),
+                                    [
+                                            'class' => 'form-input',
+                                            'name' => 'furniture',
+                                            'id' => 'furniture',
+                                    ],
+                                    PropertyParameters::getFurniture(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -187,12 +189,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="furniture"><?= translate('views_from_windows') ?></label>
                             <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'views_from_windows',
-                                    'id' => 'views_from_windows',
-                                ],
-                                PropertyParameters::getViewsFromWindows(),
+                                    [
+                                            'class' => 'form-input',
+                                            'name' => 'views_from_windows',
+                                            'id' => 'views_from_windows',
+                                    ],
+                                    PropertyParameters::getViewsFromWindows(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -217,12 +219,12 @@ use App\Models\CategoryModel;
                             <label for="state"><?= translate('state') ?></label>
 
                             <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'state',
-                                    'id' => 'state',
-                                ],
-                                $states ?? []
+                                    [
+                                            'class' => 'form-input',
+                                            'name' => 'state',
+                                            'id' => 'state',
+                                    ],
+                                    $states ?? []
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -242,7 +244,8 @@ use App\Models\CategoryModel;
                         <?php if (in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
                             <div class="form-input-row">
                                 <label for="postal_code"><?= translate('postal_code') ?></label>
-                                <input type="number" class="form-input" id="postal_code" name="postal_code" value="<?= set_value('postal_code') ?>">
+                                <input type="number" class="form-input" id="postal_code" name="postal_code"
+                                       value="<?= set_value('postal_code') ?>">
 
                                 <div class="error-msg mb-3">
                                     <?= show_error("postal_code", $validation); ?>
@@ -252,7 +255,8 @@ use App\Models\CategoryModel;
 
                             <div class="form-input-row relative" id="autocomplete-container">
                                 <label for="address"><?= translate('address') ?></label>
-                                <input type="text" class="form-input" name="address" id="address" autocomplete="off" value="<?= set_value('address') ?>">
+                                <input type="text" class="form-input" name="address" id="address" autocomplete="off"
+                                       value="<?= set_value('address') ?>">
 
                                 <div class="error-msg mb-3">
                                     <?= show_error("address", $validation); ?>
@@ -270,7 +274,7 @@ use App\Models\CategoryModel;
 
                     <div class="form-input-row">
                         <div id="property-map" style="width: 100%;height: 360px"></div>
-                        <input type="hidden" name="lat" id="lat"   value="<?= set_value('lat') ?>">
+                        <input type="hidden" name="lat" id="lat" value="<?= set_value('lat') ?>">
                         <input type="hidden" name="lng" id="lng" value="<?= set_value('lng') ?>">
                     </div>
 
@@ -289,7 +293,8 @@ use App\Models\CategoryModel;
 
                         <div class="form-input-row">
                             <label for="area_size"><?= translate('area_size') ?></label>
-                            <input type="text" class="form-input" id="area_size" name="area_size" value="<?= set_value('area_size') ?>">
+                            <input type="text" class="form-input" id="area_size" name="area_size"
+                                   value="<?= set_value('area_size') ?>">
                             <div class="error-msg mb-3">
                                 <?= show_error("area_size", $validation); ?>
                             </div>
@@ -299,12 +304,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="area_size_prefix"><?= translate('size_prefix') ?></label>
                             <?= form_dropdown(
-                                [
-                                    'class' => 'form-input',
-                                    'name' => 'size_prefix',
-                                    'id' => 'size_prefix',
-                                ],
-                                PropertyParameters::getAreaUnits()
+                                    [
+                                            'class' => 'form-input',
+                                            'name' => 'size_prefix',
+                                            'id' => 'size_prefix',
+                                    ],
+                                    PropertyParameters::getAreaUnits()
                             ) ?>
                             <div class="error-msg mb-3">
                                 <?= show_error("size_prefix", $validation); ?>
@@ -325,12 +330,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="land_area_size_prefix"><?= translate('size_prefix') ?></label>
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'land_area_size_prefix',
-                                        'id' => 'land_area_size_prefix',
-                                    ],
-                                    PropertyParameters::getAreaUnits()
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'land_area_size_prefix',
+                                                'id' => 'land_area_size_prefix',
+                                        ],
+                                        PropertyParameters::getAreaUnits()
                                 ) ?>
                                 <div class="error-msg mb-3">
                                     <?= show_error("land_area_size_prefix", $validation); ?>
@@ -348,12 +353,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="bedrooms"><?= translate('bedrooms') ?></label>
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'bedrooms',
-                                        'id' => 'bedrooms',
-                                    ],
-                                    PropertyParameters::getBadRooms()
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'bedrooms',
+                                                'id' => 'bedrooms',
+                                        ],
+                                        PropertyParameters::getBadRooms()
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -369,12 +374,12 @@ use App\Models\CategoryModel;
                                 <label for="garages"><?= translate('garages') ?></label>
 
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'garages',
-                                        'id' => 'garages',
-                                    ],
-                                    PropertyParameters::getGarages()
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'garages',
+                                                'id' => 'garages',
+                                        ],
+                                        PropertyParameters::getGarages()
                                 ) ?>
 
 
@@ -391,12 +396,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for=" Year Built"><?= translate('year_built') ?></label>
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'year_built',
-                                        'id' => 'year_built',
-                                    ],
-                                    PropertyParameters::getBuildYears()
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'year_built',
+                                                'id' => 'year_built',
+                                        ],
+                                        PropertyParameters::getBuildYears()
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -413,12 +418,12 @@ use App\Models\CategoryModel;
                                 <label for="new_building"><?= translate('new_building') ?></label>
 
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'new_building',
-                                        'id' => 'new_building',
-                                    ],
-                                    PropertyParameters::getYesNo()
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'new_building',
+                                                'id' => 'new_building',
+                                        ],
+                                        PropertyParameters::getYesNo()
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -434,12 +439,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="number_of_floors"><?= translate('number_of_floors') ?></label>
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'number_of_floors',
-                                        'id' => 'number_of_floors',
-                                    ],
-                                    PropertyParameters::getPropertyFloor(),
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'number_of_floors',
+                                                'id' => 'number_of_floors',
+                                        ],
+                                        PropertyParameters::getPropertyFloor(),
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -455,12 +460,12 @@ use App\Models\CategoryModel;
                                 <label for="building_type"><?= translate('building_type') ?></label>
 
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'building_type',
-                                        'id' => 'building_type',
-                                    ],
-                                    PropertyParameters::getBuildingType(),
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'building_type',
+                                                'id' => 'building_type',
+                                        ],
+                                        PropertyParameters::getBuildingType(),
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -474,12 +479,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="bathrooms"><?= translate('number_of_rooms') ?></label>
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'bathrooms',
-                                        'id' => 'bathrooms',
-                                    ],
-                                    PropertyParameters::getBadRooms(),
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'bathrooms',
+                                                'id' => 'bathrooms',
+                                        ],
+                                        PropertyParameters::getBadRooms(),
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -494,12 +499,12 @@ use App\Models\CategoryModel;
                                 <label for="parking"><?= translate('parking') ?></label>
 
                                 <?= form_dropdown(
-                                    [
-                                        'class' => 'form-input',
-                                        'name' => 'parking',
-                                        'id' => 'parking',
-                                    ],
-                                    PropertyParameters::getParkingParams(),
+                                        [
+                                                'class' => 'form-input',
+                                                'name' => 'parking',
+                                                'id' => 'parking',
+                                        ],
+                                        PropertyParameters::getParkingParams(),
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -589,6 +594,18 @@ use App\Models\CategoryModel;
                     </div>
                 <?php endif; ?>
 
+                <div class="gray-box-group mb-30">
+                    <h3 class="mb-20"><?= translate('images') ?> (<span id="image-count">10</span>)</h3>
+                    <div class="create-art-images-container" id="create-art-images-container">
+
+                        <label class="create-art-add-image">
+                            <input type="file" class="apartment-image" id="apartment-image" multiple accept="image/*">
+                        </label>
+
+                    </div>
+                    <div id="image-errors"></div>
+                </div>
+
                 <div class="form-input-row mt-20 flex gap-10">
 
                     <a href="/<?= $_lang ?>/user/create">
@@ -599,6 +616,7 @@ use App\Models\CategoryModel;
                 </div>
 
             </div>
+
 
         </form>
     </section>
@@ -773,5 +791,91 @@ use App\Models\CategoryModel;
         document.querySelector('#lat').value = lat;
         document.querySelector('#lng').value = lng
     }
+
+
+    let imagesCount = 10;
+    const maxFileSizeAllow = 1024 * 1024 * 2
+    const imagesInput = document.getElementById('apartment-image');
+    const imageCountEle = document.getElementById('image-count');
+
+    imageCountEle.innerHTML = imagesCount
+
+    imagesInput.addEventListener('change', function () {
+
+
+        if (imagesCount <= 0) {
+            return
+        }
+
+        const files = this.files; // FileList
+
+        console.log(files); // all selected images
+
+
+        const preview = document.getElementById('create-art-images-container');
+        const imageErrors = document.getElementById('image-errors');
+        imageErrors.innerHTML = '';
+        Array.from(this.files).forEach(file => {
+
+            if (imagesCount > 0) {
+
+
+                if (file.size <= maxFileSizeAllow) {
+
+                    const imgItem = document.createElement('div');
+                    imgItem.classList.add('art-image-item')
+
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    img.onload = () => URL.revokeObjectURL(img.src);
+                    imgItem.appendChild(img)
+
+
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'images[]';
+                        hiddenInput.value = e.target.result; // BASE64 STRING
+
+                        imgItem.appendChild(hiddenInput);
+                    };
+                    reader.readAsDataURL(file);
+
+
+                    const removeImgEl = document.createElement('i');
+                    removeImgEl.classList.add('fa-solid')
+                    removeImgEl.classList.add('fa-circle-xmark')
+                    removeImgEl.classList.add('remove-img-item')
+                    removeImgEl.addEventListener('click', () => {
+                        if (confirm('<?= translate('are_you_sure') ?>')) {
+                            imgItem.remove()
+                            imagesCount++;
+                            imageCountEle.innerHTML = imagesCount
+                        }
+                    })
+
+                    imgItem.appendChild(removeImgEl)
+
+                    preview.prepend(imgItem);
+
+
+                    imagesCount--;
+
+                    imageCountEle.innerHTML = imagesCount
+
+                } else {
+
+                    const errorMsgEle = document.createElement('div')
+                    errorMsgEle.classList.add('error-msg')
+                    errorMsgEle.innerHTML = 'Image ' + file.name + ' size more than 2Mb!'
+
+                    imageErrors.appendChild(errorMsgEle)
+
+
+                }
+            }
+        });
+    });
 
 </script>

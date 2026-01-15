@@ -616,6 +616,72 @@ footer,
     background-color: var(--text-thm6);
 }
 
+
+.create-art-images-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.create-art-images-container .create-art-add-image {
+    display: block;
+    padding: 20px;
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("/assets/images/image-icon.png");
+
+    border: dashed 1px var(--text-thm7);
+    border-radius: 15px;
+    background-color: var(--white-color);
+    cursor: pointer;
+    transition: background-color .2s;
+
+    &:hover {
+        background-color: var(--link-hover-color1);
+    }
+
+}
+
+.create-art-images-container .art-image-item {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border: dashed 1px var(--text-thm7);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--white-color);
+    padding: 5px;
+    position: relative;
+}
+
+.create-art-images-container .art-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.create-art-images-container .art-image-item .remove-img-item {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+
+    &:hover {
+        color: var(--link-hover-color);
+    }
+}
+
+
+.create-art-images-container .create-art-add-image input[type='file'] {
+    display: none;
+}
+
+
 @media only screen and (max-width: 1200px) {
 
     .col-4-grid-4-1 {
@@ -662,10 +728,12 @@ footer,
         margin: 0 auto;
         max-width: 100%;
     }
-    footer{
+
+    footer {
         margin-left: 60px !important;
         width: calc(100% - 60px);
     }
+
     footer,
     .footer-end {
         margin: 0 auto;

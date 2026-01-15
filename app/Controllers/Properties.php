@@ -57,7 +57,6 @@ class Properties extends MainController
         return $this->render('admin');
     }
 
-
     public function create_step_2(): string|\CodeIgniter\HTTP\RedirectResponse
     {
 
@@ -132,7 +131,6 @@ class Properties extends MainController
         $this->currentView = 'properties/create';
         return $this->render('admin');
     }
-
 
     public function properties(): string|\CodeIgniter\HTTP\RedirectResponse
     {
