@@ -625,6 +625,8 @@ footer,
 }
 
 .create-art-images-container .create-art-add-image {
+    background-size: 50px;
+    position: relative;
     display: block;
     padding: 20px;
     width: 150px;
@@ -640,9 +642,13 @@ footer,
     transition: background-color .2s;
 
     &:hover {
-        background-color: var(--link-hover-color1);
+        /*background-color: var(--link-hover-color1);*/
+        background-color: var(--lightest-blue);
     }
 
+}
+.create-art-images-container .create-art-add-image.hover {
+    border-width: 3px;
 }
 
 .create-art-images-container .art-image-item {
@@ -679,6 +685,17 @@ footer,
 
 .create-art-images-container .create-art-add-image input[type='file'] {
     display: none;
+}
+
+.create-art-images-container .create-art-add-image span {
+    font-size: 14px;
+    color: var(--light-blue);
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 0;
 }
 
 

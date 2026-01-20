@@ -598,8 +598,10 @@ use App\Models\CategoryModel;
                     <h3 class="mb-20"><?= translate('images') ?> (<span id="image-count">10</span>)</h3>
                     <div class="create-art-images-container" id="create-art-images-container">
 
-                        <label class="create-art-add-image">
-                            <input type="file" class="apartment-image" id="apartment-image" multiple accept="image/*">
+                        <label class="create-art-add-image" id="create-art-add-image">
+                            <input type="file" class="apartment-image" id="apartment-image" multiple
+                                   accept="image/jpeg, image/png, image/webp">
+                            <span>Select upload <br> images or drop</span>
                         </label>
 
                     </div>
@@ -800,6 +802,7 @@ use App\Models\CategoryModel;
 
     imageCountEle.innerHTML = imagesCount
 
+
     imagesInput.addEventListener('change', function () {
 
 
@@ -809,18 +812,45 @@ use App\Models\CategoryModel;
 
         const files = this.files; // FileList
 
-        console.log(files); // all selected images
+        uploadFiles(files)
 
+    });
 
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+
+    function uploadFiles(files) {
         const preview = document.getElementById('create-art-images-container');
         const imageErrors = document.getElementById('image-errors');
         imageErrors.innerHTML = '';
-        Array.from(this.files).forEach(file => {
+
+        Array.from(files).forEach(file => {
 
             if (imagesCount > 0) {
 
 
-                if (file.size <= maxFileSizeAllow) {
+                if (!allowedTypes.includes(file.type)) {
+                    const errorMsgEle = document.createElement('div')
+                    errorMsgEle.classList.add('error-msg')
+                    errorMsgEle.classList.add('mime-error')
+                    errorMsgEle.innerHTML = 'Only JPG, JPEG, PNG, and WEBP images are allowed!'
+
+                    Array.from(document.querySelectorAll('.mime-error')).forEach(el => el.remove());
+                    imageErrors.appendChild(errorMsgEle)
+
+                } else if (file.size > maxFileSizeAllow) {
+
+
+                    const errorMsgEle = document.createElement('div')
+                    errorMsgEle.classList.add('error-msg')
+                    errorMsgEle.classList.add('size-error')
+                    errorMsgEle.innerHTML = 'Image ' + file.name + ' size more than 2Mb!'
+
+                    Array.from(document.querySelectorAll('.size-error')).forEach(el => el.remove());
+                    imageErrors.appendChild(errorMsgEle)
+
+
+                } else {
+
 
                     const imgItem = document.createElement('div');
                     imgItem.classList.add('art-image-item')
@@ -863,18 +893,38 @@ use App\Models\CategoryModel;
                     --imagesCount;
                     imageCountEle.innerHTML = imagesCount
 
-                } else {
-
-                    const errorMsgEle = document.createElement('div')
-                    errorMsgEle.classList.add('error-msg')
-                    errorMsgEle.innerHTML = 'Image ' + file.name + ' size more than 2Mb!'
-
-                    imageErrors.appendChild(errorMsgEle)
-
-
                 }
+            } else {
+                const errorMsgEle = document.createElement('div')
+                errorMsgEle.classList.add('error-msg')
+                errorMsgEle.classList.add('count-error')
+                errorMsgEle.innerHTML = 'You can add not max 10 image!'
+
+                Array.from(document.querySelectorAll('.count-error')).forEach(el => el.remove());
+
+                imageErrors.appendChild(errorMsgEle)
             }
         });
+    }
+
+    label = document.querySelector('#create-art-add-image');
+
+    label.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        label.classList.add('hover');
     });
+
+    label.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        label.classList.remove('hover');
+    });
+
+    label.addEventListener('drop', (e) => {
+        e.preventDefault();
+        label.classList.remove('hover');
+        const files = e.dataTransfer.files;
+        uploadFiles(files)
+    });
+
 
 </script>
