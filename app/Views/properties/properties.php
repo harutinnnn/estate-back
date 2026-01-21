@@ -26,230 +26,69 @@
                     </thead>
                     <tbody>
 
-                    <tr>
-                        <td>
-                            <div class="property-img">
-                                <div class="property-type">Rent</div>
-                                <img src="/assets/images/tips/art-tip-1.jpg" alt="">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="property-info">
-                                <h3 class="fs-18">Luxury Family Home</h3>
-                                <div class="prop-addr fs-14">
-                                    <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                                </div>
-                                <div class="prop-price fs-16 color-red">
-                                    $13000/mo
-                                </div>
-                            </div>
+                    <?php if (isset($properties) && !empty($properties)): ?>
+                        <?php foreach ($properties as $property): ?>
+                            <tr>
+                                <td>
+                                    <div class="property-img">
+                                        <div class="property-type"><?= translate($property->property_rent_type) ?></div>
 
-                        </td>
-                        <td>
+                                        <?php if (isset($property->images[0])): ?>
+                                            <img src="<?= $property->images[0]->img ?>" alt="">
+                                        <?php endif; ?>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="property-info">
+                                        <h3 class="fs-18"><?= $property->title ?></h3>
+                                        <div class="prop-addr fs-14">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            <?= $property->address ?>
+                                        </div>
+                                        <div class="prop-price fs-16 color-red">
+                                            <?= $property->price ?>/mo
+                                        </div>
+                                    </div>
 
-                            <div class="prop-date fs-16">
-                                30 December, 2020
-                            </div>
-                        </td>
-                        <td>
+                                </td>
+                                <td>
 
-                            <div class="prop-status flex flex-justify-center flex-align-items-center">
-                                <div class="pending fs-14">
-                                    Pending
-                                </div>
-                            </div>
+                                    <div class="prop-date fs-16">
+                                        30 December, 2020
+                                    </div>
+                                </td>
+                                <td>
 
-                        </td>
-                        <td>
+                                    <div class="prop-status flex flex-justify-center flex-align-items-center">
+                                        <div class="<?= $property->status ? 'published' : 'pending' ?> fs-14">
+                                            <?= $property->status ? translate('published') : translate('pending') ?>
+                                        </div>
+                                    </div>
 
-                            <div class="prop-views flex flex-justify-center flex-align-items-center">
-                                <div class="bold">2,518</div>
-                            </div>
+                                </td>
+                                <td>
 
-                        </td>
-                        <td>
+                                    <div class="prop-views flex flex-justify-center flex-align-items-center">
+                                        <div class="bold">2,518</div>
+                                    </div>
 
-                            <div class="prop-actions">
-                                <a href="#" class="prop-edit">
-                                    <i class="fa-solid fa-pencil"></i>
-                                </a>
+                                </td>
+                                <td>
 
-                                <a href="#" class="prop-remove">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </div>
+                                    <div class="prop-actions">
+                                        <a href="#" class="prop-edit">
+                                            <i class="fa-solid fa-pencil"></i>
+                                        </a>
 
-                        </td>
-                    </tr>
+                                        <a href="#" class="prop-remove">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </div>
 
-                    <tr>
-                        <td>
-                            <div class="property-img">
-                                <div class="property-type">Rent</div>
-                                <img src="/assets/images/tips/art-tip-2.jpg" alt="">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="property-info">
-                                <h3 class="fs-18">Renovated Apartment</h3>
-                                <div class="prop-addr fs-14">
-                                    <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                                </div>
-                                <div class="prop-price fs-16 color-red">
-                                    $13000/mo
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>
-
-                            <div class="prop-date fs-16">
-                                30 December, 2020
-                            </div>
-                        </td>
-                        <td>
-
-                            <div class="prop-status flex flex-justify-center flex-align-items-center">
-                                <div class="pending fs-14">
-                                    Pending
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>
-
-                            <div class="prop-views flex flex-justify-center flex-align-items-center">
-                                <div class="bold">2,518</div>
-                            </div>
-
-                        </td>
-                        <td>
-
-                            <div class="prop-actions">
-                                <a href="#" class="prop-edit">
-                                    <i class="fa-solid fa-pencil"></i>
-                                </a>
-
-                                <a href="#" class="prop-remove">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </div>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div class="property-img">
-                                <div class="property-type sale">Sale</div>
-                                <img src="/assets/images/tips/art-tip-4.jpg" alt="">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="property-info">
-                                <h3 class="fs-18">Single Family Home</h3>
-                                <div class="prop-addr fs-14">
-                                    <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                                </div>
-                                <div class="prop-price fs-16 color-red">
-                                    $13000/mo
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>
-
-                            <div class="prop-date fs-16">
-                                30 December, 2020
-                            </div>
-                        </td>
-                        <td>
-
-                            <div class="prop-status flex flex-justify-center flex-align-items-center">
-                                <div class="published fs-14">
-                                    Published
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>
-
-                            <div class="prop-views flex flex-justify-center flex-align-items-center">
-                                <div class="bold">2,518</div>
-                            </div>
-
-                        </td>
-                        <td>
-
-                            <div class="prop-actions">
-                                <a href="#" class="prop-edit">
-                                    <i class="fa-solid fa-pencil"></i>
-                                </a>
-
-                                <a href="#" class="prop-remove">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </div>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div class="property-img">
-                                <div class="property-type">Rent</div>
-                                <img src="/assets/images/tips/art-tip-1.jpg" alt="">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="property-info">
-                                <h3 class="fs-18">Luxury Family Home</h3>
-                                <div class="prop-addr fs-14">
-                                    <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                                </div>
-                                <div class="prop-price fs-16 color-red">
-                                    $13000/mo
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>
-
-                            <div class="prop-date fs-16">
-                                30 December, 2020
-                            </div>
-                        </td>
-                        <td>
-
-                            <div class="prop-status flex flex-justify-center flex-align-items-center">
-                                <div class="published fs-14">
-                                    Published
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>
-
-                            <div class="prop-views flex flex-justify-center flex-align-items-center">
-                                <div class="bold">2,518</div>
-                            </div>
-
-                        </td>
-                        <td>
-
-                            <div class="prop-actions">
-                                <a href="#" class="prop-edit">
-                                    <i class="fa-solid fa-pencil"></i>
-                                </a>
-
-                                <a href="#" class="prop-remove">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </div>
-
-                        </td>
-                    </tr>
-
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
 
                     </tbody>
                 </table>
