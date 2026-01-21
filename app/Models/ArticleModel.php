@@ -16,6 +16,7 @@ class ArticleModel extends MainModel
     protected $primaryKey = "id";
     protected $allowedFields = [
         "status",
+        "user_id",
         "category",
         "property_rent_type",
         "title",
@@ -34,16 +35,14 @@ class ArticleModel extends MainModel
             ->first();
     }
 
-    public function getAllItems($lang, int $pageNum = 0, $where = false, $order = [])
+    public function getAllItems($pageNum = 0, $where = false, $order = [])
     {
 
         $tblMl = $this->table . ML_TABLE;
 
         $pageNum = $pageNum > 0 ? $pageNum - 1 : 0;
 
-        $query = $this->select("{$this->table}.*, {$tblMl}.title, {$tblMl}.lang")
-            ->join($tblMl, "{$tblMl}.parent_id = {$this->table}.id")
-            ->where("{$tblMl}.lang", $lang);
+        $query = $this->select("*");
 
         if ($pageNum) {
             $query->limit(FRONT_PER_PAGE, $pageNum);
@@ -77,10 +76,10 @@ class ArticleModel extends MainModel
 
     }
 
-    public static function saveArticle($request)
+    public static function saveArticle($request,int $userId): int
     {
 
-        $obj = null;
+        $lid = 0;
 
         $propertyType = session()->get('property-type');
 
@@ -92,6 +91,7 @@ class ArticleModel extends MainModel
             $category = $categoryModel->where('id', intval($propertyType))->first();
 
             $data = [
+                'user_id' => $userId,
                 'category' => $request->getPost('category'),
                 'property_rent_type' => $request->getPost('property-rent-type'),
                 'title' => $request->getPost('title'),
@@ -207,19 +207,15 @@ class ArticleModel extends MainModel
             }
 
 
-
-
             $lid = $model->insert($data);
 
             if ($lid) {
 
 
-
-
                 //TODO household_appliances_lcp
                 $household_appliances_lcp_model = new HouseholdAppliancesLcpModel();
 
-                if(!empty($request->getPost('household_appliances'))){
+                if (!empty($request->getPost('household_appliances'))) {
                     foreach ($request->getPost('household_appliances') as $key => $value) {
                         $household_appliances_lcp_model->insert([
                             'article_id' => $lid,
@@ -231,7 +227,7 @@ class ArticleModel extends MainModel
                 //TODO amenities_lcp
                 $amenities_lcp_model = new AmenitiesLcpModel();
 
-                if(!empty($request->getPost('amenities'))){
+                if (!empty($request->getPost('amenities'))) {
                     foreach ($request->getPost('amenities') as $key => $value) {
                         $amenities_lcp_model->insert([
                             'article_id' => $lid,
@@ -244,7 +240,7 @@ class ArticleModel extends MainModel
                 //TODO communications_lcp
                 $communications_lcp_model = new CommunicationsLcpModel();
 
-                if(!empty($request->getPost('communications'))){
+                if (!empty($request->getPost('communications'))) {
                     foreach ($request->getPost('communications') as $key => $value) {
                         $communications_lcp_model->insert([
                             'article_id' => $lid,
@@ -261,7 +257,7 @@ class ArticleModel extends MainModel
 
         }
 
-        return $obj;
+        return $lid;
 
     }
 

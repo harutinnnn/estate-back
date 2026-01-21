@@ -14,7 +14,7 @@ use App\Models\CategoryModel;
     </section>
 
     <section class="admin-section">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="admin-section-block mb-30">
                 <h2 class="mb-30 flex flex-align-items-center gap-5">
                     <?= translate('create_item') ?> <i
@@ -606,6 +606,7 @@ use App\Models\CategoryModel;
 
                     </div>
                     <div id="image-errors"></div>
+                    <?= show_error('images',$validation) ?>
                 </div>
 
                 <div class="form-input-row mt-20 flex gap-10">
@@ -837,7 +838,8 @@ use App\Models\CategoryModel;
                     Array.from(document.querySelectorAll('.mime-error')).forEach(el => el.remove());
                     imageErrors.appendChild(errorMsgEle)
 
-                } else if (file.size > maxFileSizeAllow) {
+                // } else if (file.size > maxFileSizeAllow) {
+                } else if (file.size > 11111111111111111111111) {
 
 
                     const errorMsgEle = document.createElement('div')

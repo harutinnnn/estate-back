@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AmenitiesModel;
+use App\Models\ArticleImages;
 use App\Models\ArticleModel;
 use App\Models\CategoryModel;
 use App\Models\CommunicationsModel;
@@ -75,15 +76,21 @@ class Properties extends MainController
 
             if ($this->validate(ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang))) {
 
-                if (ArticleModel::saveArticle($this->request)) {
-                    dd(1);
+                if ($artId = ArticleModel::saveArticle($this->request, $this->userData->id)) {
+
+                    //Images Base64 save in db and str to img
+                    if ($this->request->getPost('images') && count($this->request->getPost('images')) > 0) {
+                        foreach ($this->request->getPost('images') as $image) {
+                            $artImgId = ArticleImages::saveArticleImage($artId, $image, $this->userData->id);
+                        }
+                    }
 
                 }
 
 
+                return redirect()->to($this->_lang . '/user/properties')->send();
+
             } else {
-//                $validation = \Config\Services::validation();
-//                dd($validation->getErrors());
                 $this->pageData['validation'] = $this->validator;
             }
         }
@@ -138,6 +145,17 @@ class Properties extends MainController
         if (!isset($this->userData->id)) {
             return redirect()->to($this->_lang . '/sign-in')->send();
         }
+
+        $articleModel = new ArticleModel();
+        $properties = $articleModel->getAllItems(0, ['user_id' => $this->userData->id]);
+        $articleImageModel = new ArticleImages();
+        foreach ($properties as $property) {
+
+            $images = $articleImageModel->getList(['article_id' => $property->id]);
+            $property->images = $images;
+
+        }
+        $this->pageData['properties'] = $properties;
 
         $this->pageData['activeMenu'] = 'properties';
         $this->currentView = 'properties/properties';
