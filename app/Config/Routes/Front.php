@@ -46,6 +46,7 @@ $routes->get('/(' . implode('|', $locales) . ')/user/messages', 'User::messages'
 
 
 $routes->get('/(' . implode('|', $locales) . ')/user/properties', 'Properties::properties');
+$routes->get('/(' . implode('|', $locales) . ')/user/remove-property/(:num)', 'Properties::removeProperty/$2');
 
 $routes->get('/(' . implode('|', $locales) . ')/user/favorites', 'Properties::favorites');
 

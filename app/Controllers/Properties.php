@@ -2,11 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\AmenitiesLcpModel;
 use App\Models\AmenitiesModel;
 use App\Models\ArticleImages;
 use App\Models\ArticleModel;
 use App\Models\CategoryModel;
+use App\Models\CommunicationsLcpModel;
 use App\Models\CommunicationsModel;
+use App\Models\HouseholdAppliancesLcpModel;
 use App\Models\HouseholdAppliancesModel;
 use App\Models\StatesModel;
 
@@ -173,6 +176,49 @@ class Properties extends MainController
 
         $this->currentView = 'properties/favorites';
         return $this->render('admin');
+    }
+
+
+    public function removeProperty($id = 0)
+    {
+
+        $propertyModel = new ArticleModel();
+
+        $property = $propertyModel->select('*')->where(['id' => intval($id), 'user_id' => $this->userData->id]);
+
+        if (!empty($property)) {
+            $property->delete();
+
+            $household_appliances_lcp_model = new HouseholdAppliancesLcpModel();
+
+            $household_appliances_lcp_model->where(['article_id' => intval($id)])->delete();
+
+
+            $amenities_lcp_model = new AmenitiesLcpModel();
+            $amenities_lcp_model->where(['article_id' => intval($id)])->delete();
+
+
+            $communications_lcp_model = new CommunicationsLcpModel();
+            $communications_lcp_model->where(['article_id' => intval($id)])->delete();
+
+
+            $articleImageModel = new ArticleImages();
+            $images = $articleImageModel->select('*')->where(['article_id' => intval($id)])->findAll();
+            if (!empty($images)) {
+
+                foreach ($images as $image) {
+                    if (is_file(FCPATH  . $image->img)) {
+                        unlink(FCPATH . $image->img);
+                    }
+                }
+            }
+            $articleImageModel->where(['article_id' => intval($id)])->delete();
+
+        }
+
+        return redirect()->to($this->_lang . '/user/properties')->send();
+
+
     }
 
 }

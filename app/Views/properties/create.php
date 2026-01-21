@@ -757,7 +757,6 @@ use App\Models\CategoryModel;
 
                         const li = document.createElement('li');
                         li.textContent = ele.display_name;
-                        // console.log('addrData', addrData)
                         li.onclick = () => {
                             useAddress(addrData)
                         }

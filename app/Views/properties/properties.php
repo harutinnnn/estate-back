@@ -80,7 +80,8 @@
                                             <i class="fa-solid fa-pencil"></i>
                                         </a>
 
-                                        <a href="#" class="prop-remove">
+                                        <a href="javascript:void(0)" class="prop-remove"
+                                           onclick="removeUserProperty('<?= '/' . $_lang . '/user/remove-property/' . $property->id ?>','<?= translate('are you_sure_to_remove') ?>')">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
                                     </div>

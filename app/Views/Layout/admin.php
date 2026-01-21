@@ -25,5 +25,7 @@
 
 <?= view('partial/footer_media') ?>
 
+<script type="text/javascript" src="/assets/js/user.js"></script>
+
 </body>
 </html>
