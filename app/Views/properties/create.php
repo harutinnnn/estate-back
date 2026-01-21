@@ -606,7 +606,7 @@ use App\Models\CategoryModel;
 
                     </div>
                     <div id="image-errors"></div>
-                    <?= show_error('images',$validation) ?>
+                    <?= show_error('images', $validation) ?>
                 </div>
 
                 <div class="form-input-row mt-20 flex gap-10">
@@ -687,8 +687,10 @@ use App\Models\CategoryModel;
             addressStr += addr.country + ', ';
         }
 
-        document.querySelector('#address').value = addressStr.trim()
-        document.getElementById('postal-code').value = addr.postcode
+        <?php if(in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+            document.querySelector('#address').value = addressStr.trim()
+            document.getElementById('postal-code').value = addr.postcode
+        <?php endif; ?>
 
         return {
             street: addr.road,
@@ -723,71 +725,75 @@ use App\Models\CategoryModel;
 
     let addrTimeout = null;
 
-    document.querySelector('#address').addEventListener('input', async (e) => {
+    <?php if(in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
 
-        document.querySelector('#addr-autocomplete').innerHTML = ''
+        document.querySelector('#address').addEventListener('input', async (e) => {
 
-        if (addrTimeout) {
-            clearTimeout(addrTimeout);
-        }
-        if (e.target.value.length < 3) return;
+            document.querySelector('#addr-autocomplete').innerHTML = ''
 
-        addrTimeout = setTimeout(async () => {
-
-            const addrList = [];
-            const results = await searchAddress(e.target.value);
-            if (results && results.length) {
-
-                let addrHtmlList = document.createElement('ul');
-
-                results.map(ele => {
-
-                    console.log(ele)
-
-                    const addrData = {
-                        display_name: ele.display_name,
-                        lat: ele.lat,
-                        lng: ele.lon,
-                        postcode: ele.address.postcode || ''
-                    }
-
-                    const li = document.createElement('li');
-                    li.textContent = ele.display_name;
-                    // console.log('addrData', addrData)
-                    li.onclick = () => {
-                        useAddress(addrData)
-                    }
-                    addrHtmlList.appendChild(li);
-                    addrList.push(addrData)
-                })
-
-                // console.log(addrHtmlList)
-                document.querySelector('#addr-autocomplete').appendChild(addrHtmlList)
+            if (addrTimeout) {
+                clearTimeout(addrTimeout);
             }
+            if (e.target.value.length < 3) return;
 
-            console.log(addrList);
-        }, 1000)
-    });
+            addrTimeout = setTimeout(async () => {
 
-    const useAddress = (addr) => {
-        console.log(addr)
-        document.querySelector('#address').value = addr.display_name
-        document.querySelector('#postal-code').value = addr.postcode
-        marker.setLatLng([addr.lat, addr.lng]);
-        map.setView([addr.lat, addr.lng])
-        setLatLngInput(addr.lat, addr.lng)
+                const addrList = [];
+                const results = await searchAddress(e.target.value);
+                if (results && results.length) {
 
-        document.querySelector('#addr-autocomplete').innerHTML = ''
-    }
+                    let addrHtmlList = document.createElement('ul');
 
-    const box = document.getElementById('autocomplete-container');
-    document.addEventListener('click', (e) => {
+                    results.map(ele => {
 
+                        console.log(ele)
 
-        if (!box.contains(e.target)) {
+                        const addrData = {
+                            display_name: ele.display_name,
+                            lat: ele.lat,
+                            lng: ele.lon,
+                            postcode: ele.address.postcode || ''
+                        }
+
+                        const li = document.createElement('li');
+                        li.textContent = ele.display_name;
+                        // console.log('addrData', addrData)
+                        li.onclick = () => {
+                            useAddress(addrData)
+                        }
+                        addrHtmlList.appendChild(li);
+                        addrList.push(addrData)
+                    })
+
+                    // console.log(addrHtmlList)
+                    document.querySelector('#addr-autocomplete').appendChild(addrHtmlList)
+                }
+
+                console.log(addrList);
+            }, 1000)
+        });
+
+        const useAddress = (addr) => {
+            console.log(addr)
+            document.querySelector('#address').value = addr.display_name
+            document.querySelector('#postal-code').value = addr.postcode
+            marker.setLatLng([addr.lat, addr.lng]);
+            map.setView([addr.lat, addr.lng])
+            setLatLngInput(addr.lat, addr.lng)
+
             document.querySelector('#addr-autocomplete').innerHTML = ''
         }
-    });
+
+        const box = document.getElementById('autocomplete-container');
+
+        document.addEventListener('click', (e) => {
+
+            if (!box.contains(e.target)) {
+                document.querySelector('#addr-autocomplete').innerHTML = ''
+            }
+        });
+
+    <?php endif; ?>
 
 
     function setLatLngInput(lat, lng) {
@@ -798,14 +804,14 @@ use App\Models\CategoryModel;
 
     let imagesCount = 10;
     const maxFileSizeAllow = 1024 * 1024 * 2
-    const imagesInput = document.getElementById('apartment-image');
+    const imagesInput = document.querySelector('#apartment-image');
     const imageCountEle = document.getElementById('image-count');
 
     imageCountEle.innerHTML = imagesCount
 
-
     imagesInput.addEventListener('change', function () {
 
+        console.log('aaa')
 
         if (imagesCount <= 0) {
             return
@@ -838,7 +844,7 @@ use App\Models\CategoryModel;
                     Array.from(document.querySelectorAll('.mime-error')).forEach(el => el.remove());
                     imageErrors.appendChild(errorMsgEle)
 
-                // } else if (file.size > maxFileSizeAllow) {
+                    // } else if (file.size > maxFileSizeAllow) {
                 } else if (file.size > 11111111111111111111111) {
 
 

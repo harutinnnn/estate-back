@@ -526,7 +526,7 @@ footer,
 }
 
 .user-properties table td .property-img img {
-
+    object-fit: cover;
     width: 200px;
     height: 150px;
     position: absolute;
@@ -647,6 +647,7 @@ footer,
     }
 
 }
+
 .create-art-images-container .create-art-add-image.hover {
     border-width: 3px;
 }

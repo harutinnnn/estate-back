@@ -15,13 +15,14 @@ class ArticleModel extends MainModel
     protected $table = "articles";
     protected $primaryKey = "id";
     protected $allowedFields = [
-        "status",
-        "user_id",
-        "category",
-        "property_rent_type",
-        "title",
-        "created_at",
-        "updated_at",
+        "user_id", "status", "category", "title",
+        "property_rent_type", "description", "price", "prepayment",
+        "rooms", "ceiling_height", "floor", "balcony", "utility_payments",
+        "furniture", "views_from_windows", "state", "city",
+        "postal_code", "address", "lat", "lng", "area_size",
+        "size_prefix", "land_area", "land_area_size_prefix", "bedrooms",
+        "bathrooms", "garages", "year_built", "new_building", "number_of_floors",
+        "building_type", "parking", "parking", "created_at", "updated_at",
     ];
 
     public function getItem($id, $lang)
@@ -76,7 +77,7 @@ class ArticleModel extends MainModel
 
     }
 
-    public static function saveArticle($request,int $userId): int
+    public static function saveArticle($request, int $userId): int
     {
 
         $lid = 0;
@@ -93,7 +94,7 @@ class ArticleModel extends MainModel
             $data = [
                 'user_id' => $userId,
                 'category' => $request->getPost('category'),
-                'property_rent_type' => $request->getPost('property-rent-type'),
+                'property_rent_type' => $request->getPost('property_rent_type'),
                 'title' => $request->getPost('title'),
                 'description' => $request->getPost('description'),
                 'price' => intval($request->getPost('price')),
