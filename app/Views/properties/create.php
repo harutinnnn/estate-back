@@ -838,6 +838,8 @@ use App\Models\CategoryModel;
         [...files].forEach(uploadFile);
     }
 
+
+    //TODO after upload show image
     function uploadFile(file) {
         const formData = new FormData();
         formData.append('image', file);

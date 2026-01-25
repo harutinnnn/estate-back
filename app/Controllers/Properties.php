@@ -262,6 +262,8 @@ class Properties extends MainController
         $name = time() . '_' . $file->getRandomName();
         $file->move('uploads/tmp', $name);
 
+        //TODO save in session the images
+        //TODO after move to final directory and remove from session
         return $this->response->setJSON([
             'success' => true,
             'file' => $name,
