@@ -13,7 +13,7 @@ use App\Models\HouseholdAppliancesLcpModel;
 use App\Models\HouseholdAppliancesModel;
 use App\Models\StatesModel;
 
-class Properties extends MainController
+class PropertiesWithBase64Img extends MainController
 {
 
 
@@ -207,7 +207,7 @@ class Properties extends MainController
             if (!empty($images)) {
 
                 foreach ($images as $image) {
-                    if (is_file(FCPATH . $image->img)) {
+                    if (is_file(FCPATH  . $image->img)) {
                         unlink(FCPATH . $image->img);
                     }
                 }
@@ -221,64 +221,4 @@ class Properties extends MainController
 
     }
 
-    public function uploadImg()
-    {
-
-        $file = $this->request->getFile('image');
-
-        if (!$file || !$file->isValid()) {
-            return $this->fail('Invalid file');
-        }
-
-        // allowed types
-        $allowed = ['image/jpeg', 'image/png', 'image/webp'];
-
-        if (!in_array($file->getMimeType(), $allowed)) {
-            return $this->fail('Invalid image type');
-        }
-
-        $newName = $file->getRandomName();
-        $file->move(WRITEPATH . 'uploads', $newName);
-
-        return $this->respond([
-            'success' => true,
-            'file' => $newName
-        ]);
-
-    }
-
-
-    public function imageUpload()
-    {
-        $file = $this->request->getFile('image');
-
-        if (!$file || !$file->isValid()) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'No file'
-            ]);
-        }
-
-        $name = time() . '_' . $file->getRandomName();
-        $file->move('uploads/tmp', $name);
-
-        return $this->response->setJSON([
-            'success' => true,
-            'file' => $name,
-            'path' => '/uploads/tmp/' . $name,
-            'expires_at' => time() + 3600 // 1 hour
-        ]);
-    }
-
-    protected function clearTmpUploads()
-    {
-        $path = FCPATH . 'uploads/tmp/';
-        $files = glob($path . '*');
-
-        foreach ($files as $file) {
-            if (is_file($file) && time() - filemtime($file) > 3600) {
-                unlink($file);
-            }
-        }
-    }
 }

@@ -598,9 +598,6 @@ use App\Models\CategoryModel;
                     <h3 class="mb-20"><?= translate('images') ?> (<span id="image-count">10</span>)</h3>
                     <div class="create-art-images-container" id="create-art-images-container">
 
-
-
-
                         <label class="create-art-add-image" id="create-art-add-image">
                             <input type="file" class="apartment-image" id="apartment-image" multiple
                                    accept="image/jpeg, image/png, image/webp">
@@ -609,7 +606,6 @@ use App\Models\CategoryModel;
 
                     </div>
                     <div id="image-errors"></div>
-                    <div id="progressBars"></div>
                     <?= show_error('images', $validation) ?>
                 </div>
 
@@ -809,8 +805,6 @@ use App\Models\CategoryModel;
     const maxFileSizeAllow = 1024 * 1024 * 2
     const imagesInput = document.querySelector('#apartment-image');
     const imageCountEle = document.getElementById('image-count');
-    const progressBars = document.getElementById('progressBars');
-    const preview = document.getElementById('create-art-images-container');
 
     imageCountEle.innerHTML = imagesCount
 
@@ -835,43 +829,89 @@ use App\Models\CategoryModel;
         const imageErrors = document.getElementById('image-errors');
         imageErrors.innerHTML = '';
 
-        [...files].forEach(uploadFile);
-    }
+        Array.from(files).forEach(file => {
 
-    function uploadFile(file) {
-        const formData = new FormData();
-        formData.append('image', file);
-
-        // progress UI
-
-        const imgItem = document.createElement('div');
-        imgItem.classList.add('image-item')
-        imgItem.classList.add('loading')
-
-        preview.prepend(imgItem);
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/upload-article-img'); // backend endpoint
+            if (imagesCount > 0) {
 
 
+                if (!allowedTypes.includes(file.type)) {
+                    const errorMsgEle = document.createElement('div')
+                    errorMsgEle.classList.add('error-msg')
+                    errorMsgEle.classList.add('mime-error')
+                    errorMsgEle.innerHTML = 'Only JPG, JPEG, PNG, and WEBP images are allowed!'
+
+                    Array.from(document.querySelectorAll('.mime-error')).forEach(el => el.remove());
+                    imageErrors.appendChild(errorMsgEle)
+
+                    // } else if (file.size > maxFileSizeAllow) {
+                } else if (file.size > 11111111111111111111111) {
 
 
-        xhr.upload.onprogress = (e) => {
-            if (e.lengthComputable) {
-                const percent = (e.loaded / e.total) * 100;
-                bar.style.width = percent + '%';
-            }
-        };
+                    const errorMsgEle = document.createElement('div')
+                    errorMsgEle.classList.add('error-msg')
+                    errorMsgEle.classList.add('size-error')
+                    errorMsgEle.innerHTML = 'Image ' + file.name + ' size more than 2Mb!'
 
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                bar.style.background = '#2196f3';
+                    Array.from(document.querySelectorAll('.size-error')).forEach(el => el.remove());
+                    imageErrors.appendChild(errorMsgEle)
+
+
+                } else {
+
+
+                    const imgItem = document.createElement('div');
+                    imgItem.classList.add('art-image-item')
+
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    img.onload = () => URL.revokeObjectURL(img.src);
+                    imgItem.appendChild(img)
+
+
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'images[]';
+                        hiddenInput.value = e.target.result; // BASE64 STRING
+
+                        imgItem.appendChild(hiddenInput);
+                    };
+                    reader.readAsDataURL(file);
+
+
+                    const removeImgEl = document.createElement('i');
+                    removeImgEl.classList.add('fa-solid')
+                    removeImgEl.classList.add('fa-circle-xmark')
+                    removeImgEl.classList.add('remove-img-item')
+                    removeImgEl.addEventListener('click', () => {
+                        if (confirm('<?= translate('are_you_sure') ?>')) {
+                            imgItem.remove()
+                            ++imagesCount;
+                            imageCountEle.innerHTML = imagesCount
+                        }
+                    })
+
+                    imgItem.appendChild(removeImgEl)
+
+                    preview.prepend(imgItem);
+
+
+                    --imagesCount;
+                    imageCountEle.innerHTML = imagesCount
+
+                }
             } else {
-                bar.style.background = 'red';
-            }
-        };
+                const errorMsgEle = document.createElement('div')
+                errorMsgEle.classList.add('error-msg')
+                errorMsgEle.classList.add('count-error')
+                errorMsgEle.innerHTML = 'You can add not max 10 image!'
 
-        xhr.send(formData);
+                Array.from(document.querySelectorAll('.count-error')).forEach(el => el.remove());
+
+                imageErrors.appendChild(errorMsgEle)
+            }
+        });
     }
 
     label = document.querySelector('#create-art-add-image');

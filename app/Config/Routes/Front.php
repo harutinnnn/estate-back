@@ -41,6 +41,7 @@ $routes->post('/(' . implode('|', $locales) . ')/user/create', 'Properties::crea
 $routes->get('/(' . implode('|', $locales) . ')/user/create-step-2', 'Properties::create_step_2');
 $routes->post('/(' . implode('|', $locales) . ')/user/create-step-2', 'Properties::create_step_2');
 
+$routes->post('/upload-article-img', 'Properties::imageUpload');
 
 $routes->get('/(' . implode('|', $locales) . ')/user/messages', 'User::messages');
 
