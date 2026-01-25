@@ -23,7 +23,6 @@ class Properties extends MainController
             return redirect()->to($this->_lang . '/sign-in')->send();
         }
 
-
         $categoriesModel = new CategoryModel();
         $categories = $categoriesModel->getAllItems($this->_lang, 0, [], ['col' => 'pos', 'sort' => 'ASC']);
         $this->pageData['categories'] = array_column($categories, 'title', 'id');
@@ -63,6 +62,8 @@ class Properties extends MainController
 
     public function create_step_2(): string|\CodeIgniter\HTTP\RedirectResponse
     {
+//        session()->remove('tmp-images');
+        $this->pageData['tmpImages'] = session()->get("tmp-images");
 
         if (!isset($this->userData->id)) {
             return redirect()->to($this->_lang . '/sign-in')->send();
@@ -262,14 +263,25 @@ class Properties extends MainController
         $name = time() . '_' . $file->getRandomName();
         $file->move('uploads/tmp', $name);
 
-        //TODO save in session the images
-        //TODO after move to final directory and remove from session
-        return $this->response->setJSON([
+        $imageData = [
             'success' => true,
             'file' => $name,
             'path' => '/uploads/tmp/' . $name,
             'expires_at' => time() + 3600 // 1 hour
-        ]);
+        ];
+
+
+        $images = session()->get('tmp-images');
+        if (empty($images)) {
+            $images = [];
+            $images[$imageData['file']] = $imageData;
+
+        } else {
+            $images[$imageData['file']] = $imageData;
+        }
+        session()->set('tmp-images', $images);
+
+        return $this->response->setJSON($imageData);
     }
 
     protected function clearTmpUploads()
@@ -282,5 +294,29 @@ class Properties extends MainController
                 unlink($file);
             }
         }
+    }
+
+    public function removeImage()
+    {
+
+        $obj = new \stdClass();
+        $obj->success = false;
+
+        if ($this->userData && $this->request->getPost('file')) {
+            $obj->success = true;
+            if (is_file(FCPATH . 'uploads/tmp/' . $this->request->getPost('file'))) {
+                unlink(FCPATH . 'uploads/tmp/' . $this->request->getPost('file'));
+            }
+
+            $images = session()->get('tmp-images');
+
+            if (isset($images[$this->request->getPost('file')])) {
+                unset($images[$this->request->getPost('file')]);
+                session()->set('tmp-images', $images);
+            }
+
+        }
+
+        return $this->response->setJSON($obj);
     }
 }

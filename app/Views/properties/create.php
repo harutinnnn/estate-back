@@ -58,12 +58,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="prepayment"><?= translate('prepayment') ?></label>
                             <?= form_dropdown(
-                                    [
-                                            'class' => 'form-input',
-                                            'name' => 'prepayment',
-                                            'id' => 'prepayment',
-                                    ],
-                                    PropertyParameters::getPrepaymentParameters(),
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'prepayment',
+                                    'id' => 'prepayment',
+                                ],
+                                PropertyParameters::getPrepaymentParameters(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -79,12 +79,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="rooms"><?= translate('rooms') ?></label>
                             <?= form_dropdown(
-                                    [
-                                            'class' => 'form-input',
-                                            'name' => 'rooms',
-                                            'id' => 'rooms',
-                                    ],
-                                    PropertyParameters::getRooms(),
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'rooms',
+                                    'id' => 'rooms',
+                                ],
+                                PropertyParameters::getRooms(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -112,12 +112,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="floor"><?= translate('floor') ?></label>
                             <?= form_dropdown(
-                                    [
-                                            'class' => 'form-input',
-                                            'name' => 'floor',
-                                            'id' => 'floor',
-                                    ],
-                                    PropertyParameters::getPropertyFloor(),
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'floor',
+                                    'id' => 'floor',
+                                ],
+                                PropertyParameters::getPropertyFloor(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -131,12 +131,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="balcony"><?= translate('balcony') ?></label>
                             <?= form_dropdown(
-                                    [
-                                            'class' => 'form-input',
-                                            'name' => 'balcony',
-                                            'id' => 'balcony',
-                                    ],
-                                    PropertyParameters::getBalcony(),
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'balcony',
+                                    'id' => 'balcony',
+                                ],
+                                PropertyParameters::getBalcony(),
                             ) ?>
                             <div class="error-msg mb-3">
                                 <?= show_error("balcony", $validation); ?>
@@ -151,12 +151,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="utility_payments"><?= translate('utility_payments') ?></label>
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'utility_payments',
-                                                'id' => 'utility_payments',
-                                        ],
-                                        PropertyParameters::getUtilityPayments(),
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'utility_payments',
+                                        'id' => 'utility_payments',
+                                    ],
+                                    PropertyParameters::getUtilityPayments(),
                                 ) ?>
                                 <div class="error-msg mb-3">
                                     <?= show_error("utility_payments", $validation); ?>
@@ -170,12 +170,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="furniture"><?= translate('furniture') ?></label>
                             <?= form_dropdown(
-                                    [
-                                            'class' => 'form-input',
-                                            'name' => 'furniture',
-                                            'id' => 'furniture',
-                                    ],
-                                    PropertyParameters::getFurniture(),
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'furniture',
+                                    'id' => 'furniture',
+                                ],
+                                PropertyParameters::getFurniture(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -189,12 +189,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="furniture"><?= translate('views_from_windows') ?></label>
                             <?= form_dropdown(
-                                    [
-                                            'class' => 'form-input',
-                                            'name' => 'views_from_windows',
-                                            'id' => 'views_from_windows',
-                                    ],
-                                    PropertyParameters::getViewsFromWindows(),
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'views_from_windows',
+                                    'id' => 'views_from_windows',
+                                ],
+                                PropertyParameters::getViewsFromWindows(),
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -219,12 +219,12 @@ use App\Models\CategoryModel;
                             <label for="state"><?= translate('state') ?></label>
 
                             <?= form_dropdown(
-                                    [
-                                            'class' => 'form-input',
-                                            'name' => 'state',
-                                            'id' => 'state',
-                                    ],
-                                    $states ?? []
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'state',
+                                    'id' => 'state',
+                                ],
+                                $states ?? []
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -304,12 +304,12 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="area_size_prefix"><?= translate('size_prefix') ?></label>
                             <?= form_dropdown(
-                                    [
-                                            'class' => 'form-input',
-                                            'name' => 'size_prefix',
-                                            'id' => 'size_prefix',
-                                    ],
-                                    PropertyParameters::getAreaUnits()
+                                [
+                                    'class' => 'form-input',
+                                    'name' => 'size_prefix',
+                                    'id' => 'size_prefix',
+                                ],
+                                PropertyParameters::getAreaUnits()
                             ) ?>
                             <div class="error-msg mb-3">
                                 <?= show_error("size_prefix", $validation); ?>
@@ -330,12 +330,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="land_area_size_prefix"><?= translate('size_prefix') ?></label>
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'land_area_size_prefix',
-                                                'id' => 'land_area_size_prefix',
-                                        ],
-                                        PropertyParameters::getAreaUnits()
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'land_area_size_prefix',
+                                        'id' => 'land_area_size_prefix',
+                                    ],
+                                    PropertyParameters::getAreaUnits()
                                 ) ?>
                                 <div class="error-msg mb-3">
                                     <?= show_error("land_area_size_prefix", $validation); ?>
@@ -353,12 +353,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="bedrooms"><?= translate('bedrooms') ?></label>
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'bedrooms',
-                                                'id' => 'bedrooms',
-                                        ],
-                                        PropertyParameters::getBadRooms()
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'bedrooms',
+                                        'id' => 'bedrooms',
+                                    ],
+                                    PropertyParameters::getBadRooms()
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -374,12 +374,12 @@ use App\Models\CategoryModel;
                                 <label for="garages"><?= translate('garages') ?></label>
 
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'garages',
-                                                'id' => 'garages',
-                                        ],
-                                        PropertyParameters::getGarages()
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'garages',
+                                        'id' => 'garages',
+                                    ],
+                                    PropertyParameters::getGarages()
                                 ) ?>
 
 
@@ -396,12 +396,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for=" Year Built"><?= translate('year_built') ?></label>
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'year_built',
-                                                'id' => 'year_built',
-                                        ],
-                                        PropertyParameters::getBuildYears()
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'year_built',
+                                        'id' => 'year_built',
+                                    ],
+                                    PropertyParameters::getBuildYears()
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -418,12 +418,12 @@ use App\Models\CategoryModel;
                                 <label for="new_building"><?= translate('new_building') ?></label>
 
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'new_building',
-                                                'id' => 'new_building',
-                                        ],
-                                        PropertyParameters::getYesNo()
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'new_building',
+                                        'id' => 'new_building',
+                                    ],
+                                    PropertyParameters::getYesNo()
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -439,12 +439,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="number_of_floors"><?= translate('number_of_floors') ?></label>
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'number_of_floors',
-                                                'id' => 'number_of_floors',
-                                        ],
-                                        PropertyParameters::getPropertyFloor(),
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'number_of_floors',
+                                        'id' => 'number_of_floors',
+                                    ],
+                                    PropertyParameters::getPropertyFloor(),
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -460,12 +460,12 @@ use App\Models\CategoryModel;
                                 <label for="building_type"><?= translate('building_type') ?></label>
 
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'building_type',
-                                                'id' => 'building_type',
-                                        ],
-                                        PropertyParameters::getBuildingType(),
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'building_type',
+                                        'id' => 'building_type',
+                                    ],
+                                    PropertyParameters::getBuildingType(),
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -479,12 +479,12 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="bathrooms"><?= translate('number_of_rooms') ?></label>
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'bathrooms',
-                                                'id' => 'bathrooms',
-                                        ],
-                                        PropertyParameters::getBadRooms(),
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'bathrooms',
+                                        'id' => 'bathrooms',
+                                    ],
+                                    PropertyParameters::getBadRooms(),
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -499,12 +499,12 @@ use App\Models\CategoryModel;
                                 <label for="parking"><?= translate('parking') ?></label>
 
                                 <?= form_dropdown(
-                                        [
-                                                'class' => 'form-input',
-                                                'name' => 'parking',
-                                                'id' => 'parking',
-                                        ],
-                                        PropertyParameters::getParkingParams(),
+                                    [
+                                        'class' => 'form-input',
+                                        'name' => 'parking',
+                                        'id' => 'parking',
+                                    ],
+                                    PropertyParameters::getParkingParams(),
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -598,8 +598,15 @@ use App\Models\CategoryModel;
                     <h3 class="mb-20"><?= translate('images') ?> (<span id="image-count">10</span>)</h3>
                     <div class="create-art-images-container" id="create-art-images-container">
 
-
-
+                        <?php if (isset($tmpImages) && !empty($tmpImages)): ?>
+                            <?php foreach ($tmpImages as $tmpImage): ?>
+                                <div class="art-image-item">
+                                    <img src="<?= $tmpImage['path'] ?>" alt=""/>
+                                    <i onclick='removeImage(<?= json_encode($tmpImage) ?>,this)'
+                                       class="fa-solid fa-circle-xmark remove-img-item"></i>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
 
                         <label class="create-art-add-image" id="create-art-add-image">
                             <input type="file" class="apartment-image" id="apartment-image" multiple
@@ -692,8 +699,8 @@ use App\Models\CategoryModel;
         }
 
         <?php if(in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
-            document.querySelector('#address').value = addressStr.trim()
-            document.getElementById('postal-code').value = addr.postcode
+        document.querySelector('#address').value = addressStr.trim()
+        document.getElementById('postal-code').value = addr.postcode
         <?php endif; ?>
 
         return {
@@ -731,70 +738,70 @@ use App\Models\CategoryModel;
 
     <?php if(in_array($propertyCategory->cat_key, [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
 
-        document.querySelector('#address').addEventListener('input', async (e) => {
+    document.querySelector('#address').addEventListener('input', async (e) => {
 
-            document.querySelector('#addr-autocomplete').innerHTML = ''
+        document.querySelector('#addr-autocomplete').innerHTML = ''
 
-            if (addrTimeout) {
-                clearTimeout(addrTimeout);
+        if (addrTimeout) {
+            clearTimeout(addrTimeout);
+        }
+        if (e.target.value.length < 3) return;
+
+        addrTimeout = setTimeout(async () => {
+
+            const addrList = [];
+            const results = await searchAddress(e.target.value);
+            if (results && results.length) {
+
+                let addrHtmlList = document.createElement('ul');
+
+                results.map(ele => {
+
+                    console.log(ele)
+
+                    const addrData = {
+                        display_name: ele.display_name,
+                        lat: ele.lat,
+                        lng: ele.lon,
+                        postcode: ele.address.postcode || ''
+                    }
+
+                    const li = document.createElement('li');
+                    li.textContent = ele.display_name;
+                    li.onclick = () => {
+                        useAddress(addrData)
+                    }
+                    addrHtmlList.appendChild(li);
+                    addrList.push(addrData)
+                })
+
+                // console.log(addrHtmlList)
+                document.querySelector('#addr-autocomplete').appendChild(addrHtmlList)
             }
-            if (e.target.value.length < 3) return;
 
-            addrTimeout = setTimeout(async () => {
+            console.log(addrList);
+        }, 1000)
+    });
 
-                const addrList = [];
-                const results = await searchAddress(e.target.value);
-                if (results && results.length) {
+    const useAddress = (addr) => {
+        console.log(addr)
+        document.querySelector('#address').value = addr.display_name
+        document.querySelector('#postal-code').value = addr.postcode
+        marker.setLatLng([addr.lat, addr.lng]);
+        map.setView([addr.lat, addr.lng])
+        setLatLngInput(addr.lat, addr.lng)
 
-                    let addrHtmlList = document.createElement('ul');
+        document.querySelector('#addr-autocomplete').innerHTML = ''
+    }
 
-                    results.map(ele => {
+    const box = document.getElementById('autocomplete-container');
 
-                        console.log(ele)
+    document.addEventListener('click', (e) => {
 
-                        const addrData = {
-                            display_name: ele.display_name,
-                            lat: ele.lat,
-                            lng: ele.lon,
-                            postcode: ele.address.postcode || ''
-                        }
-
-                        const li = document.createElement('li');
-                        li.textContent = ele.display_name;
-                        li.onclick = () => {
-                            useAddress(addrData)
-                        }
-                        addrHtmlList.appendChild(li);
-                        addrList.push(addrData)
-                    })
-
-                    // console.log(addrHtmlList)
-                    document.querySelector('#addr-autocomplete').appendChild(addrHtmlList)
-                }
-
-                console.log(addrList);
-            }, 1000)
-        });
-
-        const useAddress = (addr) => {
-            console.log(addr)
-            document.querySelector('#address').value = addr.display_name
-            document.querySelector('#postal-code').value = addr.postcode
-            marker.setLatLng([addr.lat, addr.lng]);
-            map.setView([addr.lat, addr.lng])
-            setLatLngInput(addr.lat, addr.lng)
-
+        if (!box.contains(e.target)) {
             document.querySelector('#addr-autocomplete').innerHTML = ''
         }
-
-        const box = document.getElementById('autocomplete-container');
-
-        document.addEventListener('click', (e) => {
-
-            if (!box.contains(e.target)) {
-                document.querySelector('#addr-autocomplete').innerHTML = ''
-            }
-        });
+    });
 
     <?php endif; ?>
 
@@ -847,15 +854,13 @@ use App\Models\CategoryModel;
         // progress UI
 
         const imgItem = document.createElement('div');
-        imgItem.classList.add('image-item')
+        imgItem.classList.add('art-image-item')
         imgItem.classList.add('loading')
 
         preview.prepend(imgItem);
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/upload-article-img'); // backend endpoint
-
-
 
 
         xhr.upload.onprogress = (e) => {
@@ -865,12 +870,39 @@ use App\Models\CategoryModel;
             }
         };
 
-        xhr.onload = () => {
+        xhr.onload = (e) => {
             if (xhr.status === 200) {
-                bar.style.background = '#2196f3';
-            } else {
-                bar.style.background = 'red';
+
+                console.log(xhr.responseText);
+
+                // parse JSON
+                const data = JSON.parse(xhr.responseText);
+                console.log(data.success, data.file);
+
+                if (data.success) {
+
+                    const img = document.createElement('img');
+                    img.src = data.path;
+                    imgItem.appendChild(img)
+
+                    const removeImgEl = document.createElement('i');
+                    removeImgEl.classList.add('fa-solid')
+                    removeImgEl.classList.add('fa-circle-xmark')
+                    removeImgEl.classList.add('remove-img-item')
+                    removeImgEl.addEventListener('click', () => {
+                        removeImage(data, removeImgEl)
+
+                    })
+
+                    imgItem.appendChild(removeImgEl)
+                    imgItem.classList.remove('loading')
+
+                } else {
+
+                }
             }
+
+
         };
 
         xhr.send(formData);
@@ -894,6 +926,35 @@ use App\Models\CategoryModel;
         const files = e.dataTransfer.files;
         uploadFiles(files)
     });
+
+    function removeImage(data, removeImgEl) {
+        if (confirm('<?= translate('are_you_sure') ?>')) {
+            // imgItem.remove()
+            ++imagesCount;
+            imageCountEle.innerHTML = imagesCount;
+
+            $.ajax({
+                type: 'post',
+                url: '/remove-tmp-img',
+                data: data,
+                dataType: 'json',
+                beforeSend: function (data) {
+
+                },
+                success: function (data) {
+                    if (data.success) {
+
+                        $(removeImgEl).closest('.art-image-item').remove()
+
+                    }
+                },
+                error: function (error) {
+
+                }
+            })
+
+        }
+    }
 
 
 </script>

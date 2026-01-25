@@ -648,19 +648,15 @@ footer,
 
 }
 
-.image-item {
-    width: 150px;
-    height: 150px;
-    border-radius: 15px;
+
+
+.art-image-item.loading {
+    animation: pulse 1.5s infinite ease-in-out;
+
     background-position: center;
     background-repeat: no-repeat;
     background-image: url("/assets/images/image-icon.png");
     background-size: 50px;
-    background-color: var(--lighter-gray);
-}
-
-.image-item.loading {
-    animation: pulse 1.5s infinite ease-in-out;
 }
 
 @keyframes pulse {
