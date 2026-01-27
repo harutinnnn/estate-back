@@ -107,7 +107,7 @@ class ArticleModel extends MainModel
             ];
 
 
-            if ($request->getPost('property-rent-type') == self::TYPE_RENT) {
+            if ($request->getPost('property_rent_type') == self::TYPE_RENT) {
                 $data['prepayment'] = $request->getPost('prepayment');
             }
 
@@ -133,7 +133,7 @@ class ArticleModel extends MainModel
                     $data['bathrooms'] = $request->getPost('bathrooms');
                     $data['parking'] = $request->getPost('parking');
 
-                    if ($request->getPost('property-rent-type') == self::TYPE_RENT) {
+                    if ($request->getPost('property_rent_type') == self::TYPE_RENT) {
                         $data['utility_payments'] = $request->getPost('utility_payments');
                     }
 
@@ -160,7 +160,7 @@ class ArticleModel extends MainModel
                     $data['bathrooms'] = $request->getPost('bathrooms');
                     $data['parking'] = $request->getPost('parking');
 
-                    if ($request->getPost('property-rent-type') == self::TYPE_RENT) {
+                    if ($request->getPost('property_rent_type') == self::TYPE_RENT) {
                         $data['utility_payments'] = $request->getPost('utility_payments');
                     }
 
@@ -176,7 +176,7 @@ class ArticleModel extends MainModel
                     $data['number_of_floors'] = $request->getPost('number_of_floors');
                     $data['parking'] = $request->getPost('parking');
 
-                    if ($request->getPost('property-rent-type') == self::TYPE_RENT) {
+                    if ($request->getPost('property_rent_type') == self::TYPE_RENT) {
                         $data['utility_payments'] = $request->getPost('utility_payments');
                     }
 
@@ -251,6 +251,9 @@ class ArticleModel extends MainModel
                 }
 
 
+
+
+
             }
 
 
@@ -302,7 +305,6 @@ class ArticleModel extends MainModel
                     'label' => translate('utility_payments')
                 ];
             }
-
         }
 
         if (in_array($category, [CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_HOUSES])) {
@@ -460,6 +462,14 @@ class ArticleModel extends MainModel
             ];
         }
 
+
+        $rules['images'] = [
+            'rules' => 'isHaveImage',
+            'label' => translate('sadasd')
+        ];
+        /*$rules = [
+            'images' => 'isHaveImage',
+        ];*/
 
         return $rules;
     }

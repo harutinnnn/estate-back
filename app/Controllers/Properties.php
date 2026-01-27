@@ -60,34 +60,68 @@ class Properties extends MainController
         return $this->render('admin');
     }
 
-    public function create_step_2(): string|\CodeIgniter\HTTP\RedirectResponse
+    public function create_step_2($id = 0): string|\CodeIgniter\HTTP\RedirectResponse
     {
-//        session()->remove('tmp-images');
-        $this->pageData['tmpImages'] = session()->get("tmp-images");
+
+        $tmpImages = session()->get("tmp-images");
+        $this->pageData['tmpImages'] = $tmpImages;
 
         if (!isset($this->userData->id)) {
             return redirect()->to($this->_lang . '/sign-in')->send();
         }
 
-        if (!session()->get('property-type') || !session()->get('property-rent-type')) {
-            return redirect()->to($this->_lang . '/user/create')->send();
-        } else {
+        $articleModel = new ArticleModel();
+
+        $article = null;
+        if (intval($id)) {
+            $article = $articleModel->find(intval($id));
+        }
+
+        $this->pageData['article'] = $article;
+
+        if (session()->get('property-type') && session()->get('property-rent-type')) {
+
             $this->pageData['propertyType'] = session()->get('property-type');
             $this->pageData['propertyRentType'] = session()->get('property-rent-type');
+
+        } else if (isset($article->property_rent_type) && isset($article->category)) {
+
+            $this->pageData['propertyType'] = $article->category;
+            $this->pageData['propertyRentType'] = $article->property_type;
+
+        } else {
+
+            return redirect()->to($this->_lang . '/user/create')->send();
+
         }
 
         if ($this->request->getPost('submit')) {
 
-            if ($this->validate(ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang))) {
+
+            if (
+                $this->validate(
+                    ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang),
+                    [
+                        'images' => [
+                            'isHaveImage' => 'Must have at least 1 photo',
+                        ],
+                        'password' => [
+                            'strong_password' => 'Password must contain uppercase, lowercase and number.',
+                        ],
+                    ]
+                )) {
 
                 if ($artId = ArticleModel::saveArticle($this->request, $this->userData->id)) {
 
                     //Images Base64 save in db and str to img
-                    if ($this->request->getPost('images') && count($this->request->getPost('images')) > 0) {
-                        foreach ($this->request->getPost('images') as $image) {
+
+                    if (count($tmpImages) > 0) {
+                        foreach ($tmpImages as $image) {
                             ArticleImages::saveArticleImage($artId, $image, $this->userData->id);
                         }
                     }
+
+                    session()->remove('tmp-images');
 
                 }
 
@@ -179,7 +213,6 @@ class Properties extends MainController
         return $this->render('admin');
     }
 
-
     public function removeProperty($id = 0)
     {
 
@@ -247,7 +280,6 @@ class Properties extends MainController
         ]);
 
     }
-
 
     public function imageUpload()
     {

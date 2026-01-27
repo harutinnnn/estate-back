@@ -27,7 +27,8 @@ use App\Models\CategoryModel;
 
                 <div class="form-input-row">
                     <label for="title"><?= translate('property_name') ?></label>
-                    <input type="text" class="form-input" name="title" id="title" value="<?= set_value('title') ?>">
+                    <input type="text" class="form-input" name="title" id="title"
+                           value="<?= isset($article->title) ? $article->title : set_value('title') ?>">
                     <div class="error-msg mb-3">
                         <?= show_error("title", $validation); ?>
                     </div>
@@ -36,7 +37,7 @@ use App\Models\CategoryModel;
                 <div class="form-input-row">
                     <label for="description"><?= translate('description') ?></label>
                     <textarea class="form-input" id="description"
-                              name="description"><?= set_value('description') ?></textarea>
+                              name="description"><?= isset($article->description) ? $article->description : set_value('description') ?></textarea>
                     <div class="error-msg mb-3">
                         <?= show_error("description", $validation); ?>
                     </div>
@@ -46,7 +47,7 @@ use App\Models\CategoryModel;
                     <div class="form-input-row">
                         <label for="price"><?= translate('price') ?></label>
                         <input type="number" class="form-input" id="price" name="price"
-                               value="<?= set_value('price') ?>">
+                               value="<?= isset($article->price) ? $article->price : set_value('price') ?>">
                         <div class="error-msg mb-3">
                             <?= show_error("price", $validation); ?>
                         </div>
@@ -64,6 +65,7 @@ use App\Models\CategoryModel;
                                     'id' => 'prepayment',
                                 ],
                                 PropertyParameters::getPrepaymentParameters(),
+                                $article->prepayment ?? null
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -85,6 +87,7 @@ use App\Models\CategoryModel;
                                     'id' => 'rooms',
                                 ],
                                 PropertyParameters::getRooms(),
+                                $article->rooms ?? null
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -293,7 +296,7 @@ use App\Models\CategoryModel;
 
                         <div class="form-input-row">
                             <label for="area_size"><?= translate('area_size') ?></label>
-                            <input type="text" class="form-input" id="area_size" name="area_size"
+                            <input type="number" class="form-input" id="area_size" name="area_size"
                                    value="<?= set_value('area_size') ?>">
                             <div class="error-msg mb-3">
                                 <?= show_error("area_size", $validation); ?>
@@ -610,13 +613,15 @@ use App\Models\CategoryModel;
 
                         <label class="create-art-add-image" id="create-art-add-image">
                             <input type="file" class="apartment-image" id="apartment-image" multiple
-                                   accept="image/jpeg, image/png, image/webp">
+                                   accept="image/jpeg, image/png, image/webp" name="apartment-image">
                             <span>Select upload <br> images or drop</span>
+                            <input type="hidden" name="images">
                         </label>
 
                     </div>
                     <div id="image-errors"></div>
-                    <div id="progressBars"></div>
+
+
                     <?= show_error('images', $validation) ?>
                 </div>
 

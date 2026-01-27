@@ -28,7 +28,49 @@ class ArticleImages extends MainModel
 
     }
 
-    public static function saveArticleImage(int $articleId, string $imgBase64, $userId): int
+    public static function saveArticleImage(int $articleId, array $image, $userId): int
+    {
+
+        $lid = 0;
+
+        try {
+
+
+            $fileName = $image['file'];
+            $filePath = FCPATH . $image['path'];
+
+            $imagePath = '/uploads' . DIRECTORY_SEPARATOR . '/articles/' . DIRECTORY_SEPARATOR . $userId;
+            $uploadDirPath = FCPATH . 'uploads' . DIRECTORY_SEPARATOR . '/articles/' . DIRECTORY_SEPARATOR . $userId;
+
+
+            if (!is_dir($uploadDirPath)) {
+                mkdir($uploadDirPath, '0777', true);
+            }
+
+            // Save image
+
+            $fileAbsPath = $uploadDirPath . DIRECTORY_SEPARATOR . $fileName;
+
+            rename($filePath, $fileAbsPath);
+
+            $imgData = [
+                'article_id' => $articleId,
+                'img' => $imagePath . DIRECTORY_SEPARATOR . $fileName
+            ];
+            $imgModel = new ArticleImages();
+            $lid = $imgModel->insert($imgData);
+
+
+        } catch (\Exception $e) {
+
+
+            var_dump($e->getMessage());
+        }
+
+        return $lid;
+    }
+
+    public static function saveArticleImageBase64(int $articleId, string $imgBase64, $userId): int
     {
 
         $lid = 0;

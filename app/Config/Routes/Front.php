@@ -38,7 +38,9 @@ $routes->get('/(' . implode('|', $locales) . ')/user/create', 'Properties::creat
 $routes->post('/(' . implode('|', $locales) . ')/user/create', 'Properties::create');
 
 
+$routes->get('/(' . implode('|', $locales) . ')/user/create-step-2/(:num)', 'Properties::create_step_2/$2');
 $routes->get('/(' . implode('|', $locales) . ')/user/create-step-2', 'Properties::create_step_2');
+$routes->post('/(' . implode('|', $locales) . ')/user/create-step-2/(:num)', 'Properties::create_step_2/$2');
 $routes->post('/(' . implode('|', $locales) . ')/user/create-step-2', 'Properties::create_step_2');
 
 $routes->post('/upload-article-img', 'Properties::imageUpload');
@@ -53,9 +55,7 @@ $routes->get('/(' . implode('|', $locales) . ')/user/remove-property/(:num)', 'P
 $routes->get('/(' . implode('|', $locales) . ')/user/favorites', 'Properties::favorites');
 
 
-
 $routes->get('/email-send', 'Content::emailSend');
-
 
 
 //Category page
@@ -63,7 +63,6 @@ $routes->get('(' . implode('|', $locales) . ')/posts/(' . implode('|', $categori
 
 //Post page
 $routes->get('(' . implode('|', $locales) . ')/(' . implode('|', $categories) . ')/(:segment)/(:num)', 'Post::view/$3/$4');
-
 
 
 $routes->get('(' . implode('|', $locales) . ')/news/(:num)', 'News::view/$2');

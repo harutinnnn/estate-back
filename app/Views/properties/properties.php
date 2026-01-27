@@ -76,7 +76,7 @@
                                 <td>
 
                                     <div class="prop-actions">
-                                        <a href="#" class="prop-edit">
+                                        <a href="/<?= $_lang ?>/user/create-step-2/<?= $property->id ?>" class="prop-edit">
                                             <i class="fa-solid fa-pencil"></i>
                                         </a>
 

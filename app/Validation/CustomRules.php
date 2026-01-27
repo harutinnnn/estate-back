@@ -5,35 +5,22 @@ namespace App\Validation;
 class CustomRules
 {
 
-    public function checkImages($value, string $params, array $data): bool
+    public function isHaveImage(string $images): bool
     {
 
-        if (!is_array($value)) {
-            return false;
-        }
+        $isOk = false;
 
-        foreach ($value as $tag) {
+        $tmpImages = session()->get("tmp-images");
 
-            // trim & basic checks
-            $tag = trim($tag);
 
-            if ($tag === '') {
-                return false;
-            }
+        if (!empty($tmpImages)) {
+            foreach ($tmpImages as $image) {
 
-            // example: only letters, numbers, dash
-            if (!preg_match('/^[a-z0-9\-]+$/i', $tag)) {
-                return false;
-            }
-
-            // example: max length
-            if (strlen($tag) > 30) {
-                return false;
+                if (is_file(FCPATH . $image['path'])) {
+                    $isOk = true;
+                }
             }
         }
-
-        return true;
-
-
+        return $isOk;
     }
 }
