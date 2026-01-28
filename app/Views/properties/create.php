@@ -102,7 +102,8 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="ceiling_height"><?= translate('ceiling_height') ?></label>
                             <input type="number" step="0.1" class="form-input" id="ceiling_height"
-                                   name="ceiling_height">
+                                   name="ceiling_height"
+                                   value="<?= $article->ceiling_height ?? set_value('ceiling_height') ?>">
 
                             <div class="error-msg mb-3">
                                 <?= show_error("ceiling_height", $validation); ?>
@@ -121,6 +122,7 @@ use App\Models\CategoryModel;
                                     'id' => 'floor',
                                 ],
                                 PropertyParameters::getPropertyFloor(),
+                                $article->floor ?? null
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -140,6 +142,7 @@ use App\Models\CategoryModel;
                                     'id' => 'balcony',
                                 ],
                                 PropertyParameters::getBalcony(),
+                                $article->balcony ?? null
                             ) ?>
                             <div class="error-msg mb-3">
                                 <?= show_error("balcony", $validation); ?>
@@ -160,6 +163,7 @@ use App\Models\CategoryModel;
                                         'id' => 'utility_payments',
                                     ],
                                     PropertyParameters::getUtilityPayments(),
+                                    $article->utility_payments ?? null
                                 ) ?>
                                 <div class="error-msg mb-3">
                                     <?= show_error("utility_payments", $validation); ?>
@@ -179,6 +183,7 @@ use App\Models\CategoryModel;
                                     'id' => 'furniture',
                                 ],
                                 PropertyParameters::getFurniture(),
+                                $article->furniture ?? null
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -198,6 +203,7 @@ use App\Models\CategoryModel;
                                     'id' => 'views_from_windows',
                                 ],
                                 PropertyParameters::getViewsFromWindows(),
+                                $article->views_from_windows ?? null
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -227,7 +233,8 @@ use App\Models\CategoryModel;
                                     'name' => 'state',
                                     'id' => 'state',
                                 ],
-                                $states ?? []
+                                $states ?? [],
+                                $article->state ?? null
                             ) ?>
 
                             <div class="error-msg mb-3">
@@ -237,8 +244,9 @@ use App\Models\CategoryModel;
 
                         <div class="form-input-row">
                             <label for="city"><?= translate('city') ?></label>
-                            <select name="city" id="city" class="form-input"></select>
-
+                            <select name="city" id="city" class="form-input">
+                                <!--TODO add selected city-->
+                            </select>
                             <div class="error-msg mb-3">
                                 <?= show_error("city", $validation); ?>
                             </div>
@@ -248,7 +256,7 @@ use App\Models\CategoryModel;
                             <div class="form-input-row">
                                 <label for="postal_code"><?= translate('postal_code') ?></label>
                                 <input type="number" class="form-input" id="postal_code" name="postal_code"
-                                       value="<?= set_value('postal_code') ?>">
+                                       value="<?= $article->postal_code ?? set_value('postal_code') ?>">
 
                                 <div class="error-msg mb-3">
                                     <?= show_error("postal_code", $validation); ?>
@@ -259,7 +267,7 @@ use App\Models\CategoryModel;
                             <div class="form-input-row relative" id="autocomplete-container">
                                 <label for="address"><?= translate('address') ?></label>
                                 <input type="text" class="form-input" name="address" id="address" autocomplete="off"
-                                       value="<?= set_value('address') ?>">
+                                       value="<?= $article->address ?? set_value('address') ?>">
 
                                 <div class="error-msg mb-3">
                                     <?= show_error("address", $validation); ?>
@@ -277,8 +285,8 @@ use App\Models\CategoryModel;
 
                     <div class="form-input-row">
                         <div id="property-map" style="width: 100%;height: 360px"></div>
-                        <input type="hidden" name="lat" id="lat" value="<?= set_value('lat') ?>">
-                        <input type="hidden" name="lng" id="lng" value="<?= set_value('lng') ?>">
+                        <input type="hidden" name="lat" id="lat" value="<?= $article->lat ?? set_value('lat') ?>">
+                        <input type="hidden" name="lng" id="lng" value="<?= $article->lng ?? set_value('lng') ?>">
                     </div>
 
                     <div class="error-msg mb-3">
@@ -297,7 +305,7 @@ use App\Models\CategoryModel;
                         <div class="form-input-row">
                             <label for="area_size"><?= translate('area_size') ?></label>
                             <input type="number" class="form-input" id="area_size" name="area_size"
-                                   value="<?= set_value('area_size') ?>">
+                                   value="<?= $article->area_size ?? set_value('area_size') ?>">
                             <div class="error-msg mb-3">
                                 <?= show_error("area_size", $validation); ?>
                             </div>
@@ -312,7 +320,8 @@ use App\Models\CategoryModel;
                                     'name' => 'size_prefix',
                                     'id' => 'size_prefix',
                                 ],
-                                PropertyParameters::getAreaUnits()
+                                PropertyParameters::getAreaUnits(),
+                                $article->size_prefix ?? null
                             ) ?>
                             <div class="error-msg mb-3">
                                 <?= show_error("size_prefix", $validation); ?>
@@ -323,7 +332,8 @@ use App\Models\CategoryModel;
 
                             <div class="form-input-row">
                                 <label for="land_area"><?= translate('land_area') ?></label>
-                                <input type="number" step="0.1" class="form-input" id="land_area" name="land_area">
+                                <input type="number" step="0.1" class="form-input" id="land_area" name="land_area"
+                                       value="<?= $article->land_area ?? set_value('land_area') ?>">
                             </div>
                             <div class="error-msg mb-3">
                                 <?= show_error("land_area", $validation); ?>
@@ -338,7 +348,9 @@ use App\Models\CategoryModel;
                                         'name' => 'land_area_size_prefix',
                                         'id' => 'land_area_size_prefix',
                                     ],
-                                    PropertyParameters::getAreaUnits()
+                                    PropertyParameters::getAreaUnits(),
+                                    $article->land_area_size_prefix ?? null
+
                                 ) ?>
                                 <div class="error-msg mb-3">
                                     <?= show_error("land_area_size_prefix", $validation); ?>
@@ -361,7 +373,8 @@ use App\Models\CategoryModel;
                                         'name' => 'bedrooms',
                                         'id' => 'bedrooms',
                                     ],
-                                    PropertyParameters::getBadRooms()
+                                    PropertyParameters::getBadRooms(),
+                                    $article->bedrooms ?? null
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -382,7 +395,8 @@ use App\Models\CategoryModel;
                                         'name' => 'garages',
                                         'id' => 'garages',
                                     ],
-                                    PropertyParameters::getGarages()
+                                    PropertyParameters::getGarages(),
+                                    $article->garages ?? null
                                 ) ?>
 
 
@@ -404,7 +418,8 @@ use App\Models\CategoryModel;
                                         'name' => 'year_built',
                                         'id' => 'year_built',
                                     ],
-                                    PropertyParameters::getBuildYears()
+                                    PropertyParameters::getBuildYears(),
+                                    $article->year_built ?? null
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -426,7 +441,8 @@ use App\Models\CategoryModel;
                                         'name' => 'new_building',
                                         'id' => 'new_building',
                                     ],
-                                    PropertyParameters::getYesNo()
+                                    PropertyParameters::getYesNo(),
+                                    $article->new_building ?? null
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -448,6 +464,7 @@ use App\Models\CategoryModel;
                                         'id' => 'number_of_floors',
                                     ],
                                     PropertyParameters::getPropertyFloor(),
+                                    $article->number_of_floors ?? null
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -469,6 +486,7 @@ use App\Models\CategoryModel;
                                         'id' => 'building_type',
                                     ],
                                     PropertyParameters::getBuildingType(),
+                                    $article->building_type ?? null
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -488,6 +506,7 @@ use App\Models\CategoryModel;
                                         'id' => 'bathrooms',
                                     ],
                                     PropertyParameters::getBadRooms(),
+                                    $article->bathrooms ?? null
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -508,6 +527,7 @@ use App\Models\CategoryModel;
                                         'id' => 'parking',
                                     ],
                                     PropertyParameters::getParkingParams(),
+                                    $article->parking ?? null
                                 ) ?>
 
                                 <div class="error-msg mb-3">
@@ -529,7 +549,9 @@ use App\Models\CategoryModel;
                                     <?php foreach ($householdAppliances as $id => $title): ?>
                                         <li>
                                             <label for="household_appliances-<?= $id ?>">
-                                                <input type="checkbox" name="household_appliances[]" value="<?= $id ?>"
+                                                <input type="checkbox"
+                                                       name="household_appliances[]" <?= isset($propHouseholdAppliances[$id]) ? 'checked' : '' ?>
+                                                       value="<?= $id ?>"
                                                        id="household_appliances-<?= $id ?>"/>
                                                 <?= $title ?>
                                             </label>
@@ -557,7 +579,8 @@ use App\Models\CategoryModel;
                                             <?php foreach ($amenityList as $amenityId => $amenityTitle): ?>
                                                 <li>
                                                     <label for="amenities-<?= $amenityId ?>">
-                                                        <input type="checkbox" name="amenities[]"
+                                                        <input type="checkbox"
+                                                               name="amenities[]" <?= isset($propAmenities[$amenityId]) ? 'checked' : '' ?>
                                                                value="<?= $amenityId ?>"
                                                                id="amenities-<?= $amenityId ?>"/>
                                                         <?= $amenityTitle ?>
@@ -585,7 +608,8 @@ use App\Models\CategoryModel;
                                 <?php foreach ($communications as $id => $title): ?>
                                     <li>
                                         <label for="communications-<?= $id ?>">
-                                            <input type="checkbox" name="communications[]" value="<?= $id ?>"
+                                            <input type="checkbox" name="communications[]"
+                                                   value="<?= $id ?>" <?= isset($propCommunications[$id]) ? 'checked' : '' ?>
                                                    id="communications-<?= $id ?>"/>
                                             <?= $title ?>
                                         </label>
@@ -605,7 +629,17 @@ use App\Models\CategoryModel;
                             <?php foreach ($tmpImages as $tmpImage): ?>
                                 <div class="art-image-item">
                                     <img src="<?= $tmpImage['path'] ?>" alt=""/>
-                                    <i onclick='removeImage(<?= json_encode($tmpImage) ?>,this)'
+                                    <i onclick='removeTmpImage(<?= json_encode($tmpImage) ?>,this)'
+                                       class="fa-solid fa-circle-xmark remove-img-item"></i>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <?php if (isset($images) && !empty($images)): ?>
+                            <?php foreach ($images as $imageItem): ?>
+                                <div class="art-image-item">
+                                    <img src="<?= $imageItem->img ?>" alt=""/>
+                                    <i onclick='removeImage(<?= json_encode($imageItem) ?>,this)'
                                        class="fa-solid fa-circle-xmark remove-img-item"></i>
                                 </div>
                             <?php endforeach; ?>
@@ -895,7 +929,7 @@ use App\Models\CategoryModel;
                     removeImgEl.classList.add('fa-circle-xmark')
                     removeImgEl.classList.add('remove-img-item')
                     removeImgEl.addEventListener('click', () => {
-                        removeImage(data, removeImgEl)
+                        removeTmpImage(data, removeImgEl)
 
                     })
 
@@ -932,7 +966,7 @@ use App\Models\CategoryModel;
         uploadFiles(files)
     });
 
-    function removeImage(data, removeImgEl) {
+    function removeTmpImage(data, removeImgEl) {
         if (confirm('<?= translate('are_you_sure') ?>')) {
             // imgItem.remove()
             ++imagesCount;
@@ -960,6 +994,37 @@ use App\Models\CategoryModel;
 
         }
     }
+
+    function removeImage(data, removeImgEl) {
+        if (confirm('<?= translate('are_you_sure') ?>')) {
+            // imgItem.remove()
+            ++imagesCount;
+            imageCountEle.innerHTML = imagesCount;
+
+            $.ajax({
+                type: 'post',
+                url: '/remove-img',
+                data: {id: data.id, article_id: data.article_id},
+                dataType: 'json',
+                beforeSend: function (data) {
+
+                },
+                success: function (data) {
+                    if (data.success) {
+
+                        $(removeImgEl).closest('.art-image-item').remove()
+
+                    }
+                },
+                error: function (error) {
+
+                }
+            })
+
+        }
+    }
+
+    const cityId = <?= $article->city ?? 0 ?>;
 
 
 </script>

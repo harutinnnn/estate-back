@@ -44,7 +44,8 @@ $routes->post('/(' . implode('|', $locales) . ')/user/create-step-2/(:num)', 'Pr
 $routes->post('/(' . implode('|', $locales) . ')/user/create-step-2', 'Properties::create_step_2');
 
 $routes->post('/upload-article-img', 'Properties::imageUpload');
-$routes->post('/remove-tmp-img', 'Properties::removeImage');
+$routes->post('/remove-tmp-img', 'Properties::removeTmpImage');
+$routes->post('/remove-img', 'Properties::removeImage');
 
 $routes->get('/(' . implode('|', $locales) . ')/user/messages', 'User::messages');
 

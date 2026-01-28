@@ -73,11 +73,37 @@ class Properties extends MainController
         $articleModel = new ArticleModel();
 
         $article = null;
+        $propHouseholdAppliances = [];
+        $propAmenities = [];
+        $propCommunications = [];
+        $images = [];
+
+
         if (intval($id)) {
             $article = $articleModel->find(intval($id));
+
+            $propHouseholdAppliancesModel = new HouseholdAppliancesLcpModel();
+            $propHouseholdAppliances = $propHouseholdAppliancesModel->select('household_appliance_id')->where(['article_id' => intval($id)])->findAll();
+
+
+            $propAmenitiesModel = new AmenitiesLcpModel();
+            $propAmenities = $propAmenitiesModel->select('amenity_id')->where(['article_id' => intval($id)])->findAll();
+
+            $propCommunicationsModel = new CommunicationsLcpModel();
+            $propCommunications = $propCommunicationsModel->select('communication_id')->where(['article_id' => intval($id)])->findAll();
+
+
+            $imagesModel = new ArticleImages();
+            $images = $imagesModel->select('*')->where(['article_id' => intval($id)])->findAll();
+
         }
 
         $this->pageData['article'] = $article;
+        $this->pageData['propHouseholdAppliances'] = array_column($propHouseholdAppliances, 'household_appliance_id', 'household_appliance_id');
+        $this->pageData['propAmenities'] = array_column($propAmenities, 'amenity_id', 'amenity_id');
+        $this->pageData['propCommunications'] = array_column($propCommunications, 'communication_id', 'communication_id');
+        $this->pageData['images'] = $images;
+
 
         if (session()->get('property-type') && session()->get('property-rent-type')) {
 
@@ -111,7 +137,7 @@ class Properties extends MainController
                     ]
                 )) {
 
-                if ($artId = ArticleModel::saveArticle($this->request, $this->userData->id)) {
+                if ($artId = ArticleModel::saveArticle($this->request, $this->userData->id,$id)) {
 
                     //Images Base64 save in db and str to img
 
@@ -328,7 +354,7 @@ class Properties extends MainController
         }
     }
 
-    public function removeImage()
+    public function removeTmpImage()
     {
 
         $obj = new \stdClass();
@@ -347,6 +373,41 @@ class Properties extends MainController
                 session()->set('tmp-images', $images);
             }
 
+        }
+
+        return $this->response->setJSON($obj);
+    }
+
+    public function removeImage()
+    {
+
+        $obj = new \stdClass();
+        $obj->success = false;
+
+        $imageId = $this->request->getPost('id');
+        $articleId = $this->request->getPost('article_id');
+
+
+        if ($this->userData && intval($imageId) && intval($articleId)) {
+            $obj->success = true;
+
+            $articleModel = new ArticleModel();
+            $article = $articleModel->select('*')->where(['id' => intval($articleId), 'user_id' => $this->userData->id])->first();
+
+            if (isset($article->id)) {
+
+
+                $imgModel = new ArticleImages();
+                $imageItem = $imgModel->select('*')->where(['id' => intval($imageId), 'article_id' => $article->id])->first();
+
+                if (isset($imageItem->img)) {
+
+                    if (is_file(FCPATH . $imageItem->img)) {
+                        unlink(FCPATH . $imageItem->img);
+                    }
+                    $imgModel->delete($imageItem->id);
+                }
+            }
         }
 
         return $this->response->setJSON($obj);

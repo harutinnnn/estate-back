@@ -14,6 +14,7 @@ class Ajax extends MainController
 
         $html = '';
         $state = $this->request->getPost('state');
+        $cityId = $this->request->getPost('cityId');
 
         if (intval($state)) {
 
@@ -21,7 +22,7 @@ class Ajax extends MainController
 
             $states = $cityModel->getAllItems($this->_lang, 0, [$cityModel->getTable() . '.state' => intval($state)], ['col' => 'title', 'sort' => 'ASC']);
             foreach ($states as $state) {
-                $html .= '<option value="' . $state->id . '">' . $state->title . '</option>';
+                $html .= '<option value="' . $state->id . '" ' . ($cityId == $state->id ? 'selected' : '') . '>' . $state->title . '</option>';
             }
 
         }

@@ -77,10 +77,8 @@ class ArticleModel extends MainModel
 
     }
 
-    public static function saveArticle($request, int $userId): int
+    public static function saveArticle($request, int $userId, int $lid = 0): int
     {
-
-        $lid = 0;
 
         $propertyType = session()->get('property-type');
 
@@ -208,7 +206,14 @@ class ArticleModel extends MainModel
             }
 
 
-            $lid = $model->insert($data);
+            if ($lid) {
+
+                $lid = $model->update($data);
+
+            } else {
+
+                $lid = $model->insert($data);
+            }
 
             if ($lid) {
 
@@ -249,9 +254,6 @@ class ArticleModel extends MainModel
                         ]);
                     }
                 }
-
-
-
 
 
             }

@@ -172,14 +172,15 @@ function getSities(state) {
         type: 'post',
         url: '/' + lang + '/ajax/get-cities',
         data: {
-            'state': state
+            'state': state,
+            cityId: cityId || 0
         },
         dataType: 'html',
         beforeSend: function (data) {
 
         }, success: function (data) {
-            $('#city').html(data)
 
+            $('#city').html(data)
         }, error: function (error) {
 
         }
