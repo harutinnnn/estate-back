@@ -208,7 +208,7 @@ class ArticleModel extends MainModel
 
             if ($lid) {
 
-                $lid = $model->update($data);
+                $model->update($lid, $data);
 
             } else {
 
@@ -267,7 +267,7 @@ class ArticleModel extends MainModel
 
     }
 
-    public static function rules($category, $rentType, $lang = 'en')
+    public static function rules($category, $rentType, $lang = 'en', $articleId)
     {
 
         $rules = [
@@ -465,10 +465,25 @@ class ArticleModel extends MainModel
         }
 
 
-        $rules['images'] = [
-            'rules' => 'isHaveImage',
-            'label' => translate('sadasd')
-        ];
+        if ($articleId) {
+
+            $articleIMagesModel = new ArticleImages();
+            $articleIMages = $articleIMagesModel->select('id')->where(['article_id' => intval($articleId)]);
+
+            if (empty($articleIMages)) {
+                $rules['images'] = [
+                    'rules' => 'isHaveImage',
+                    'label' => translate('sadasd')
+                ];
+            }
+
+        } else {
+
+            $rules['images'] = [
+                'rules' => 'isHaveImage',
+                'label' => translate('sadasd')
+            ];
+        }
         /*$rules = [
             'images' => 'isHaveImage',
         ];*/

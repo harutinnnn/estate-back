@@ -126,7 +126,7 @@ class Properties extends MainController
 
             if (
                 $this->validate(
-                    ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang),
+                    ArticleModel::rules($this->pageData['propertyType'], $this->pageData['propertyRentType'], $this->_lang, intval($id)),
                     [
                         'images' => [
                             'isHaveImage' => 'Must have at least 1 photo',
@@ -137,11 +137,11 @@ class Properties extends MainController
                     ]
                 )) {
 
-                if ($artId = ArticleModel::saveArticle($this->request, $this->userData->id,$id)) {
+                if ($artId = ArticleModel::saveArticle($this->request, $this->userData->id, $id)) {
 
                     //Images Base64 save in db and str to img
 
-                    if (count($tmpImages) > 0) {
+                    if ($tmpImages && count($tmpImages) > 0) {
                         foreach ($tmpImages as $image) {
                             ArticleImages::saveArticleImage($artId, $image, $this->userData->id);
                         }
