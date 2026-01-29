@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.127.126.30
--- Generation Time: Jan 21, 2026 at 04:40 PM
+-- Generation Time: Jan 29, 2026 at 11:41 AM
 -- Server version: 5.7.44
 -- PHP Version: 7.4.33
 
@@ -278,7 +278,38 @@ INSERT INTO `amenities_lcp` (`article_id`, `amenity_id`) VALUES
 (1, 31),
 (1, 52),
 (1, 59),
-(1, 65);
+(1, 65),
+(28, 25),
+(28, 27),
+(28, 30),
+(28, 31),
+(28, 34),
+(28, 35),
+(28, 38),
+(28, 39),
+(28, 42),
+(28, 43),
+(28, 44),
+(28, 46),
+(28, 49),
+(28, 50),
+(28, 51),
+(28, 52),
+(28, 53),
+(28, 54),
+(28, 55),
+(28, 56),
+(28, 57),
+(28, 58),
+(28, 59),
+(28, 60),
+(28, 61),
+(28, 62),
+(28, 63),
+(28, 64),
+(28, 65),
+(28, 66),
+(28, 68);
 
 -- --------------------------------------------------------
 
@@ -478,12 +509,9 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `user_id`, `status`, `category`, `title`, `property_rent_type`, `description`, `price`, `prepayment`, `rooms`, `ceiling_height`, `floor`, `balcony`, `utility_payments`, `furniture`, `views_from_windows`, `state`, `city`, `postal_code`, `address`, `lat`, `lng`, `area_size`, `size_prefix`, `land_area`, `land_area_size_prefix`, `bedrooms`, `bathrooms`, `garages`, `year_built`, `new_building`, `number_of_floors`, `building_type`, `parking`, `created_at`, `updated_at`) VALUES
-(22, 140, 1, 11, 'asdsadasds', 'rent', NULL, 1000, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 'Komitas avenue, Arabkir, Yerevan, 0012, Armenia,', NULL, NULL, 0, NULL, 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL),
-(23, 140, 1, 14, 'asdsadsada', 'rent', NULL, 0, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, '', NULL, NULL, 0, NULL, 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL),
-(24, 140, 1, 17, 'asdsadsad', 'sale', NULL, 0, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, '', NULL, NULL, 0, NULL, 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL),
-(25, 140, 1, 16, 'dsadaasd', 'rent', 'sdsdsadsa', 400000, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 3, 106, 0, '', 40.20634311029025, 44.505301306238444, 345, 'unit_sqm', 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL),
-(26, 140, 1, 13, 'as dsad sadsad', 'sale', 'as dsadsa dsadsad ', 430000, NULL, 0, 0, 1, NULL, NULL, 'with_furniture', 'view_to_the_courtyard', 1, 1, 31042, 'asdsadasd', 40.206567, 44.50621, 345, 'unit_sqm', 0, NULL, 0, 0, NULL, 0, NULL, 1, NULL, 'outdoor_parking', NULL, NULL),
-(27, 140, 1, 16, 'asdsad', 'sale', 'asd asdas dsd', 400000, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 1, 1, 0, '', 40.20643324286266, 44.506503794718796, 500, 'unit_heq', 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL);
+(28, 140, 1, 11, 'asd asdsa', 'rent', 'dsa dasdas das', 430000, 'two_weeks', 3, 234234, 16, 'enclosed_balcony', NULL, 'partial_furniture', 'city_view', 1, 1, 3104, 'Komitas avenue, Arabkir, Yerevan, 0051, Armenia,', 40.206567, 44.50621, 34, 'unit_kmq', 0, NULL, 2, 3, 'garage_two_place', 2010, 'no', 12, 'building_type_monolith', 'covered_parking', NULL, NULL),
+(29, 140, 1, 15, 'zxcccxzc', 'rent', 'xczxcas ads ', 9000, 'two_weeks', 0, 0, 0, NULL, NULL, NULL, NULL, 1, 1, 0, '', 40.206567, 44.50621, 34, 'unit_sqm', 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL),
+(30, 140, 1, 16, 'ga', 'sale', 'sad sad sdas', 9000, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 4, 182, 0, '', 40.206567, 44.50621, 500, 'unit_heq', 0, NULL, 0, 0, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -494,26 +522,28 @@ INSERT INTO `articles` (`id`, `user_id`, `status`, `category`, `title`, `propert
 CREATE TABLE `article_images` (
   `id` int(11) UNSIGNED NOT NULL,
   `article_id` int(11) UNSIGNED NOT NULL,
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pos` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `article_images`
 --
 
-INSERT INTO `article_images` (`id`, `article_id`, `img`) VALUES
-(5, 21, '/uploads/articles/140/69707e8117219.jpeg'),
-(6, 21, '/uploads/articles/140/69707e81185f7.jpeg'),
-(7, 21, '/uploads/articles/140/69707e8118fec.png'),
-(8, 21, '/uploads/articles/140/69707e811a8cd.jpeg'),
-(9, 22, '/uploads/articles/140/69708132693fa.png'),
-(10, 22, '/uploads/articles/140/697081326a6ba.jpeg'),
-(11, 23, '/uploads/articles/140/6970c302d4368.jpeg'),
-(12, 23, '/uploads/articles/140/6970c302d58a6.jpeg'),
-(13, 26, '/uploads/articles/140/6970c4c9018e9.jpeg'),
-(14, 26, '/uploads/articles/140/6970c4c90231a.png'),
-(15, 26, '/uploads/articles/140/6970c4c90328a.jpeg'),
-(16, 26, '/uploads/articles/140/6970c4c903d35.png');
+INSERT INTO `article_images` (`id`, `article_id`, `img`, `pos`) VALUES
+(5, 21, '/uploads/articles/140/69707e8117219.jpeg', 0),
+(6, 21, '/uploads/articles/140/69707e81185f7.jpeg', 0),
+(7, 21, '/uploads/articles/140/69707e8118fec.png', 0),
+(8, 21, '/uploads/articles/140/69707e811a8cd.jpeg', 0),
+(18, 28, '/uploads\\/articles/\\140\\1769670367_1769670367_dee89d6a928a2b46b943.jpg', 0),
+(19, 28, '/uploads\\/articles/\\140\\1769670584_1769670584_30adcfc7991418f25f65.jpeg', 0),
+(20, 29, '/uploads\\/articles/\\140\\1769670905_1769670905_446dee4c5f837c94c2e5.jpeg', 0),
+(21, 29, '/uploads\\/articles/\\140\\1769670905_1769670905_27a3bd48d571a739ab60.jpeg', 0),
+(23, 30, '/uploads\\/articles/\\140\\1769670965_1769670965_7b6717362f84236fa4de.jpg', 5),
+(24, 30, '/uploads\\/articles/\\140\\1769670965_1769670965_d7b412cc71a5d65fac8b.jpeg', 1),
+(25, 30, '/uploads\\/articles/\\140\\1769670966_1769670966_fd9ec3d8e13196214d60.jpg', 3),
+(26, 30, '/uploads\\/articles/\\140\\1769670966_1769670966_27c74d97ced764b4b57f.jpg', 4),
+(27, 30, '/uploads\\/articles/\\140\\1769670966_1769670966_0ed738b4e11e9739a77d.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -5133,6 +5163,13 @@ CREATE TABLE `communications_lcp` (
   `communication_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
+--
+-- Dumping data for table `communications_lcp`
+--
+
+INSERT INTO `communications_lcp` (`article_id`, `communication_id`) VALUES
+(29, 47);
+
 -- --------------------------------------------------------
 
 --
@@ -5680,7 +5717,11 @@ CREATE TABLE `household_appliances_lcp` (
 INSERT INTO `household_appliances_lcp` (`article_id`, `household_appliance_id`) VALUES
 (1, 35),
 (1, 39),
-(1, 43);
+(1, 43),
+(28, 31),
+(28, 35),
+(28, 39),
+(28, 43);
 
 -- --------------------------------------------------------
 
@@ -7207,13 +7248,13 @@ ALTER TABLE `amenities_ml`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `article_images`
 --
 ALTER TABLE `article_images`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `categories`
