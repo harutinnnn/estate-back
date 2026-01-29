@@ -33,8 +33,8 @@
                                     <div class="property-img">
                                         <div class="property-type"><?= translate($property->property_rent_type) ?></div>
 
-                                        <?php if (isset($property->images[0])): ?>
-                                            <img src="<?= $property->images[0]->img ?>" alt="">
+                                        <?php if (isset($property->images)): ?>
+                                            <img src="<?= $property->images->img ?>" alt="">
                                         <?php endif; ?>
                                     </div>
                                 </td>

@@ -216,7 +216,8 @@ class Properties extends MainController
         $articleImageModel = new ArticleImages();
         foreach ($properties as $property) {
 
-            $images = $articleImageModel->getList(['article_id' => $property->id]);
+
+            $images = $articleImageModel->select('*')->where(['article_id' => $property->id])->orderBy('pos','ASC')->first();
             $property->images = $images;
 
         }
