@@ -164,7 +164,6 @@ $(document).ready(function () {
     })
     getSities($('#state').val())
 
-
 })
 
 function getSities(state) {

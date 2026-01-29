@@ -94,7 +94,7 @@ class Properties extends MainController
 
 
             $imagesModel = new ArticleImages();
-            $images = $imagesModel->select('*')->where(['article_id' => intval($id)])->findAll();
+            $images = $imagesModel->select('*')->where(['article_id' => intval($id)])->orderBy('pos','ASC')->findAll();
 
         }
 
@@ -113,7 +113,7 @@ class Properties extends MainController
         } else if (isset($article->property_rent_type) && isset($article->category)) {
 
             $this->pageData['propertyType'] = $article->category;
-            $this->pageData['propertyRentType'] = $article->property_type;
+            $this->pageData['propertyRentType'] = $article->property_rent_type;
 
         } else {
 
@@ -198,6 +198,7 @@ class Properties extends MainController
 
         $this->pageData['propertyCategory'] = $categoriesModel->find($this->pageData['propertyType']);
 
+        $this->pageData['id'] = $id;
 
         $this->currentView = 'properties/create';
         return $this->render('admin');
@@ -411,5 +412,26 @@ class Properties extends MainController
         }
 
         return $this->response->setJSON($obj);
+    }
+
+
+    public function sortImages()
+    {
+
+        if ($this->userData && $this->request->getPost('imagesList') && $this->request->getPost('articleId')) {
+
+
+            $articleImagesModel = new ArticleImages();
+
+            foreach ($this->request->getPost('imagesList') as $i => $imageId) {
+
+
+                $articleImagesModel
+                    ->where(['id' => intval($imageId), 'article_id' => intval($this->request->getPost('articleId'))])
+                    ->set([
+                        'pos' => $i + 1
+                    ])->update();
+            }
+        }
     }
 }

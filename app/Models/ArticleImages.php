@@ -11,6 +11,7 @@ class ArticleImages extends MainModel
     protected $allowedFields = [
         "article_id",
         "img",
+        "pos"
     ];
 
     protected $returnType = 'object';
@@ -55,7 +56,8 @@ class ArticleImages extends MainModel
 
             $imgData = [
                 'article_id' => $articleId,
-                'img' => $imagePath . DIRECTORY_SEPARATOR . $fileName
+                'img' => $imagePath . DIRECTORY_SEPARATOR . $fileName,
+                'pos' => 0
             ];
             $imgModel = new ArticleImages();
             $lid = $imgModel->insert($imgData);

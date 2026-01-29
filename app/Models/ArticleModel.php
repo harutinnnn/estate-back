@@ -220,10 +220,10 @@ class ArticleModel extends MainModel
 
                 //TODO household_appliances_lcp
                 $household_appliances_lcp_model = new HouseholdAppliancesLcpModel();
-
+                $household_appliances_lcp_model->where(['article_id' => $lid])->delete();
                 if (!empty($request->getPost('household_appliances'))) {
                     foreach ($request->getPost('household_appliances') as $key => $value) {
-                        $household_appliances_lcp_model->insert([
+                        $household_appliances_lcp_model->replace([
                             'article_id' => $lid,
                             'household_appliance_id' => $value
                         ]);
@@ -232,10 +232,10 @@ class ArticleModel extends MainModel
 
                 //TODO amenities_lcp
                 $amenities_lcp_model = new AmenitiesLcpModel();
-
+                $amenities_lcp_model->where(['article_id' => $lid])->delete();
                 if (!empty($request->getPost('amenities'))) {
                     foreach ($request->getPost('amenities') as $key => $value) {
-                        $amenities_lcp_model->insert([
+                        $amenities_lcp_model->replace([
                             'article_id' => $lid,
                             'amenity_id' => $value
                         ]);
@@ -246,9 +246,10 @@ class ArticleModel extends MainModel
                 //TODO communications_lcp
                 $communications_lcp_model = new CommunicationsLcpModel();
 
+                $communications_lcp_model->where(['article_id' => $lid])->delete();
                 if (!empty($request->getPost('communications'))) {
                     foreach ($request->getPost('communications') as $key => $value) {
-                        $communications_lcp_model->insert([
+                        $communications_lcp_model->replace([
                             'article_id' => $lid,
                             'communication_id' => $value
                         ]);

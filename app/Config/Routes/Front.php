@@ -46,6 +46,7 @@ $routes->post('/(' . implode('|', $locales) . ')/user/create-step-2', 'Propertie
 $routes->post('/upload-article-img', 'Properties::imageUpload');
 $routes->post('/remove-tmp-img', 'Properties::removeTmpImage');
 $routes->post('/remove-img', 'Properties::removeImage');
+$routes->post('/sort-images', 'Properties::sortImages');
 
 $routes->get('/(' . implode('|', $locales) . ')/user/messages', 'User::messages');
 
