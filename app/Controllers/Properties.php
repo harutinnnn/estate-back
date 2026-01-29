@@ -50,6 +50,7 @@ class Properties extends MainController
                 return redirect()->to($this->_lang . '/user/create-step-2')->send();
 
             } else {
+
                 $this->pageData['validation'] = $this->validator;
             }
         }

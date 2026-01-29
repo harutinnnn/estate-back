@@ -21,7 +21,7 @@ $categories = array_column($categoriesQuery, 'slug', 'id');
 $routes->get('/', 'Home::index');
 $routes->get('/(' . implode('|', $locales) . ')', 'Home::index');
 
-$routes->get('/(' . implode('|', $locales) . ')/properties', 'Properties::index');
+$routes->get('/(' . implode('|', $locales) . ')/properties', 'PropertiesSearch::index');
 
 
 $routes->get('/(' . implode('|', $locales) . ')/sign-in', 'Auth::signIn');
@@ -33,6 +33,7 @@ $routes->post('/(' . implode('|', $locales) . ')/sign-up', 'Auth::signUp');
 $routes->get('/(' . implode('|', $locales) . ')/sign-out', 'Auth::signOut');
 
 $routes->get('/(' . implode('|', $locales) . ')/user/dashboard', 'User::dashboard');
+
 
 $routes->get('/(' . implode('|', $locales) . ')/user/create', 'Properties::create');
 $routes->post('/(' . implode('|', $locales) . ')/user/create', 'Properties::create');
@@ -47,6 +48,9 @@ $routes->post('/upload-article-img', 'Properties::imageUpload');
 $routes->post('/remove-tmp-img', 'Properties::removeTmpImage');
 $routes->post('/remove-img', 'Properties::removeImage');
 $routes->post('/sort-images', 'Properties::sortImages');
+
+
+
 
 $routes->get('/(' . implode('|', $locales) . ')/user/messages', 'User::messages');
 

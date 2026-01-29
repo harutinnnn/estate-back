@@ -80,7 +80,7 @@ class ArticleModel extends MainModel
     public static function saveArticle($request, int $userId, int $lid = 0): int
     {
 
-        $propertyType = session()->get('property-type');
+        $propertyType = $request->getPost('category');
 
         try {
 
