@@ -50,6 +50,8 @@
                         <select name="category" id="category" class="form-input">
                             <option>Property type</option>
                             <?php use App\Libraries\PropertyParameters;
+                            use App\Models\ArticleModel;
+                            use App\Models\CategoryModel;
 
                             if (isset($categories) && !empty($categories)): ?>
                                 <?php foreach ($categories as $category) : ?>
@@ -373,437 +375,84 @@
 
             <div class="properties-list-container">
 
-                <div class="property">
+                <?php if (isset($properties) && !empty($properties)): ?>
+                    <?php foreach ($properties as $property): ?>
 
-                    <div class="thumb">
-                        <img src="/assets/images/tips/art-tip-1.jpg" alt="">
+                        <div class="property">
 
-                        <div class="slide-caption">
+                            <div class="thumb">
+                                <img src="<?= $property->artImg ?>" alt="">
 
-                            <div class="caption-tags">
-                                <div class="tag tag-featured">Featured</div>
-                                <div class="tag tag-rent">For Rent</div>
+                                <div class="slide-caption">
+
+                                    <div class="caption-tags">
+                                        <div class="tag tag-rent"><?= translate($property->property_rent_type) ?></div>
+                                    </div>
+
+                                    <div class="caption-info">
+                                        <?php if ($property->property_rent_type == ArticleModel::TYPE_RENT): ?>
+                                            <div class="caption-price">$<?= $property->price ?>/mo</div>
+                                        <?php else: ?>
+                                            <div class="caption-price">$<?= $property->price ?></div>
+                                        <?php endif; ?>
+                                        <i class="fa-solid fa-heart-circle-check"></i>
+                                    </div>
+
+                                </div>
                             </div>
 
-                            <div class="caption-info">
-                                <div class="caption-price">$16000/mo</div>
-                                <i class="fa-solid fa-heart-circle-check"></i>
+                            <div class="property-type mt-10 mb-10">
+                                <?= translate($categories_list[$property->category] ?? '-') ?>
+                            </div>
+                            <h3><a href="/details.php" class="property-list-title"><?= $property->title ?></a></h3>
+
+                            <div class="address">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <?php if (isset($categories_map[$property->category]) && in_array($categories_map[$property->category], [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT, CategoryModel::TYPE_ROOMS, CategoryModel::TYPE_COMMERCIAL_REAL_ESTATE])): ?>
+                                    <?= $property->address ?>
+                                <?php else: ?>
+                                    <?= $states[$property->state] ?? '' ?>,
+                                    <?= $cities[$property->city] ?? '' ?>
+                                <?php endif; ?>
                             </div>
 
-                        </div>
-                    </div>
+                            <?php if ($property->category): ?>
+                            <?php else: ?>
+                            <?php endif; ?>
+                            <div class="property-other-info">
 
-                    <div class="property-type mt-10 mb-10">
-                        Apartment
-                    </div>
-                    <h3><a href="/details.php">Luxury Family Home</a></h3>
+                                <?php if (isset($categories_map[$property->category]) && in_array($categories_map[$property->category], [CategoryModel::TYPE_HOUSES, CategoryModel::TYPE_APARTMENT])): ?>
+                                    <div>
+                                        <?= translate('beds') ?>: <?= $property->bedrooms ?>
+                                    </div>
+                                    <div>
+                                        <?= translate('baths') ?>: <?= $property->bathrooms ?>
+                                    </div>
+                                <?php endif; ?>
 
-                    <div class="address">
-                        <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                    </div>
-
-                    <div class="property-other-info">
-                        <div>
-                            Beds: 1
-                        </div>
-                        <div>
-                            Baths: 1
-                        </div>
-
-                        <div>
-                            Sq: 80
-                        </div>
-                    </div>
-
-                    <div class="line mt-20 mb-20"></div>
-
-                    <div class="property-publisher">
-                        <img src="/assets/images/icons/man.png" alt="">
-                        <div class="publisher-info fs-14">
-                            <div class="publisher-name">Sarah Taylor</div>
-                            <div class="publish-date ml-auto">March 10, 2023</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="property">
-
-                    <div class="thumb">
-                        <img src="/assets/images/tips/art-tip-2.jpg" alt="">
-
-                        <div class="slide-caption">
-
-                            <div class="caption-tags">
-                                <div class="tag tag-featured">Featured</div>
-                                <div class="tag tag-rent">For Rent</div>
+                                <div>
+                                    <?= translate($property->size_prefix) ?>: <?= $property->area_size ?>
+                                </div>
                             </div>
 
-                            <div class="caption-info">
-                                <div class="caption-price">$16000/mo</div>
-                                <i class="fa-solid fa-heart-circle-check"></i>
+                            <div class="line mt-20 mb-20"></div>
+
+                            <div class="property-publisher">
+                                <?php if (isset($property->userImg) && is_file(FCPATH . $property->userImg)): ?>
+                                    <img src="<?= $property->userImg ?>" alt="">
+                                <?php else: ?>
+                                    <img src="/assets/images/icons/man.png" alt="">
+                                <?php endif; ?>
+                                <div class="publisher-info fs-14">
+                                    <div class="publisher-name"><?= $property->userName ?></div>
+                                    <div class="publish-date ml-auto"><?= date('M d, Y', strtotime($property->created_at)) ?></div>
+                                </div>
                             </div>
-
-                        </div>
-                    </div>
-
-                    <div class="property-type mt-10 mb-10">
-                        House
-                    </div>
-                    <h3><a href="/details.php">Renovated Apartment</a></h3>
-                    <div class="address">
-                        <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                    </div>
-
-
-                    <div class="property-other-info">
-                        <div>
-                            Beds: 1
-                        </div>
-                        <div>
-                            Baths: 1
                         </div>
 
-                        <div>
-                            Sq: 80
-                        </div>
-                    </div>
 
-                    <div class="line mt-20 mb-20"></div>
-
-                    <div class="property-publisher">
-                        <img src="/assets/images/icons/man.png" alt="">
-                        <div class="publisher-info fs-14">
-                            <div class="publisher-name">Sarah Taylor</div>
-                            <div class="publish-date ml-auto">March 10, 2023</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="property">
-
-                    <div class="thumb">
-                        <img src="/assets/images/tips/art-tip-4.jpg" alt="">
-
-                        <div class="slide-caption">
-
-                            <div class="caption-tags">
-                                <div class="tag tag-featured">Featured</div>
-                                <div class="tag tag-rent">For Rent</div>
-                            </div>
-
-                            <div class="caption-info">
-                                <div class="caption-price">$16000/mo</div>
-                                <i class="fa-solid fa-heart-circle-check"></i>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="property-type mt-10 mb-10">
-                        Bungalow
-                    </div>
-
-                    <h3><a href="/details.php">Single Family Home</a></h3>
-
-                    <div class="address">
-                        <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                    </div>
-
-
-                    <div class="property-other-info">
-                        <div>
-                            Beds: 1
-                        </div>
-                        <div>
-                            Baths: 1
-                        </div>
-
-                        <div>
-                            Sq: 80
-                        </div>
-                    </div>
-
-                    <div class="line mt-20 mb-20"></div>
-
-
-                    <div class="property-publisher">
-                        <img src="/assets/images/icons/man.png" alt="">
-                        <div class="publisher-info fs-14">
-                            <div class="publisher-name">Sarah Taylor</div>
-                            <div class="publish-date ml-auto">March 10, 2023</div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="property">
-
-                    <div class="thumb">
-                        <img src="/assets/images/tips/art-tip-1.jpg" alt="">
-
-                        <div class="slide-caption">
-
-                            <div class="caption-tags">
-                                <div class="tag tag-featured">Featured</div>
-                                <div class="tag tag-rent">For Rent</div>
-                            </div>
-
-                            <div class="caption-info">
-                                <div class="caption-price">$16000/mo</div>
-                                <i class="fa-solid fa-heart-circle-check"></i>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="property-type mt-10 mb-10">
-                        Bungalow
-                    </div>
-
-                    <h3><a href="/details.php">Gorgeous Villa Bay View</a></h3>
-
-                    <div class="address">
-                        <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                    </div>
-
-                    <div class="property-other-info">
-                        <div>
-                            Beds: 1
-                        </div>
-                        <div>
-                            Baths: 1
-                        </div>
-
-                        <div>
-                            Sq: 80
-                        </div>
-                    </div>
-
-                    <div class="line mt-20 mb-20"></div>
-
-                    <div class="property-publisher">
-                        <img src="/assets/images/icons/man.png" alt="">
-                        <div class="publisher-info fs-14">
-                            <div class="publisher-name">Sarah Taylor</div>
-                            <div class="publish-date ml-auto">March 10, 2023</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="property">
-
-                    <div class="thumb">
-                        <img src="/assets/images/tips/art-tip-1.jpg" alt="">
-
-                        <div class="slide-caption">
-
-                            <div class="caption-tags">
-                                <div class="tag tag-featured">Featured</div>
-                                <div class="tag tag-rent">For Rent</div>
-                            </div>
-
-                            <div class="caption-info">
-                                <div class="caption-price">$16000/mo</div>
-                                <i class="fa-solid fa-heart-circle-check"></i>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="property-type mt-10 mb-10">
-                        Apartment
-                    </div>
-                    <h3><a href="/details.php">Luxury Family Home</a></h3>
-
-                    <div class="address">
-                        <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                    </div>
-
-                    <div class="property-other-info">
-                        <div>
-                            Beds: 1
-                        </div>
-                        <div>
-                            Baths: 1
-                        </div>
-
-                        <div>
-                            Sq: 80
-                        </div>
-                    </div>
-
-                    <div class="line mt-20 mb-20"></div>
-
-                    <div class="property-publisher">
-                        <img src="/assets/images/icons/man.png" alt="">
-                        <div class="publisher-info fs-14">
-                            <div class="publisher-name">Sarah Taylor</div>
-                            <div class="publish-date ml-auto">March 10, 2023</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="property">
-
-                    <div class="thumb">
-                        <img src="/assets/images/tips/art-tip-2.jpg" alt="">
-
-                        <div class="slide-caption">
-
-                            <div class="caption-tags">
-                                <div class="tag tag-featured">Featured</div>
-                                <div class="tag tag-rent">For Rent</div>
-                            </div>
-
-                            <div class="caption-info">
-                                <div class="caption-price">$16000/mo</div>
-                                <i class="fa-solid fa-heart-circle-check"></i>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="property-type mt-10 mb-10">
-                        House
-                    </div>
-                    <h3><a href="/details.php">Renovated Apartment</a></h3>
-                    <div class="address">
-                        <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                    </div>
-
-
-                    <div class="property-other-info">
-                        <div>
-                            Beds: 1
-                        </div>
-                        <div>
-                            Baths: 1
-                        </div>
-
-                        <div>
-                            Sq: 80
-                        </div>
-                    </div>
-
-                    <div class="line mt-20 mb-20"></div>
-
-                    <div class="property-publisher">
-                        <img src="/assets/images/icons/man.png" alt="">
-                        <div class="publisher-info fs-14">
-                            <div class="publisher-name">Sarah Taylor</div>
-                            <div class="publish-date ml-auto">March 10, 2023</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="property">
-
-                    <div class="thumb">
-                        <img src="/assets/images/tips/art-tip-4.jpg" alt="">
-
-                        <div class="slide-caption">
-
-                            <div class="caption-tags">
-                                <div class="tag tag-featured">Featured</div>
-                                <div class="tag tag-rent">For Rent</div>
-                            </div>
-
-                            <div class="caption-info">
-                                <div class="caption-price">$16000/mo</div>
-                                <i class="fa-solid fa-heart-circle-check"></i>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="property-type mt-10 mb-10">
-                        Bungalow
-                    </div>
-
-                    <h3><a href="/details.php">Single Family Home</a></h3>
-
-                    <div class="address">
-                        <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                    </div>
-
-
-                    <div class="property-other-info">
-                        <div>
-                            Beds: 1
-                        </div>
-                        <div>
-                            Baths: 1
-                        </div>
-
-                        <div>
-                            Sq: 80
-                        </div>
-                    </div>
-
-                    <div class="line mt-20 mb-20"></div>
-
-
-                    <div class="property-publisher">
-                        <img src="/assets/images/icons/man.png" alt="">
-                        <div class="publisher-info fs-14">
-                            <div class="publisher-name">Sarah Taylor</div>
-                            <div class="publish-date ml-auto">March 10, 2023</div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="property">
-
-                    <div class="thumb">
-                        <img src="/assets/images/tips/art-tip-1.jpg" alt="">
-
-                        <div class="slide-caption">
-
-                            <div class="caption-tags">
-                                <div class="tag tag-featured">Featured</div>
-                                <div class="tag tag-rent">For Rent</div>
-                            </div>
-
-                            <div class="caption-info">
-                                <div class="caption-price">$16000/mo</div>
-                                <i class="fa-solid fa-heart-circle-check"></i>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="property-type mt-10 mb-10">
-                        Bungalow
-                    </div>
-
-                    <h3><a href="/details.php">Gorgeous Villa Bay View</a></h3>
-
-                    <div class="address">
-                        <i class="fa-solid fa-location-dot"></i> 1421 San Pedro St, Los Angeles, CA 900015
-                    </div>
-
-                    <div class="property-other-info">
-                        <div>
-                            Beds: 1
-                        </div>
-                        <div>
-                            Baths: 1
-                        </div>
-
-                        <div>
-                            Sq: 80
-                        </div>
-                    </div>
-
-                    <div class="line mt-20 mb-20"></div>
-
-                    <div class="property-publisher">
-                        <img src="/assets/images/icons/man.png" alt="">
-                        <div class="publisher-info fs-14">
-                            <div class="publisher-name">Sarah Taylor</div>
-                            <div class="publish-date ml-auto">March 10, 2023</div>
-                        </div>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
 
             </div>
 

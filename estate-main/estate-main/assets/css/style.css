@@ -93,8 +93,7 @@ header .header-nav ul.nav li a:hover span,
 header .header-nav ul.nav li.active a {
     color: var(--link-hover-color) !important;
 }
-
-header .header-nav ul.nav li a i {
+header .header-nav ul.nav li a i{
     font-size: 12px;
     margin-left: 5px;
 }
@@ -173,9 +172,6 @@ header .header-nav ul.nav .sub-nav li:hover a {
 
 header .header-nav ul.nav .user-nav-item {
     padding-left: 10px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
 }
 
 header .header-nav ul.nav .user-nav-item:before {
@@ -1210,13 +1206,6 @@ ul.categories-property li span:last-child {
     box-shadow: 0 0 50px 0 rgba(19, 19, 28, .12);
 }
 
-.property .property-list-title {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;           /* Number of lines to show */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    height: 45px;
-}
 .property .thumb {
     background: #1d293e;
     border-radius: 6px;
@@ -1480,48 +1469,21 @@ ul.categories-property li span:last-child {
     gap: 20px;
 }
 
-.property-owner {
+.property-owner{
     display: flex;
     gap: 10px;
 }
-
-.property-owner img {
+.property-owner img{
     width: 90px;
     height: 90px;
     border-radius: 50%;
     object-fit: cover;
 }
-
-.property-owner .property-owner-info {
+.property-owner .property-owner-info{
     display: flex;
     flex-direction: column;
     gap: 5px;
-}
 
-
-section.page-head-img {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-}
-
-section.page-head-img .head-content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-section.page-head-img .head-content h1 {
-    font-size: 38px;
-    color: var(--white-color);
-}
-
-section.page-head-img .head-content .breadcrumb li a,
-section.page-head-img .head-content .breadcrumb li,
-section.page-head-img .head-content .breadcrumb span {
-    color: var(--white-color) !important;
 }
 
 @media only screen and (max-width: 1440px) {

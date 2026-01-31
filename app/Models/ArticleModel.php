@@ -492,4 +492,51 @@ class ArticleModel extends MainModel
         return $rules;
     }
 
+
+    public function articlesSearch(int $pageNum = 0, $where = false, $order = []): array|null
+    {
+
+        $usersTable = (new SiteUserModel())->getTable();
+        $articleImagesTable = (new ArticleImages())->getTable();
+
+        $pageNum = $pageNum > 0 ? $pageNum - 1 : 0;
+
+        $query = $this->select(
+            "{$this->table}.*, {$usersTable}.name as userName,{$usersTable}.img as userImg,
+            (
+                SELECT {$articleImagesTable}.img
+                FROM {$articleImagesTable}
+                WHERE {$articleImagesTable}.article_id = {$this->getTable()}.id
+                ORDER BY {$articleImagesTable}.id DESC
+                LIMIT 1
+            ) AS artImg
+            ");
+
+
+        $query->join($usersTable, "{$this->table}.user_id = {$usersTable}.id", 'LEFT');
+
+
+        if ($pageNum) {
+            $query->limit(FRONT_PER_PAGE, $pageNum);
+        }
+
+        if ($where) {
+            $query->where($where);
+        }
+
+        if (isset($order['col']) && isset($order['sort'])) {
+            $query->orderBy($order['col'], $order['sort']);
+        } else {
+            $query->orderBy("{$this->table}.id", 'DESC');
+
+        }
+
+
+        $result = $query->findAll();
+//        dd((string)$query->getLastQuery());
+
+        return $result;
+
+    }
+
 }
